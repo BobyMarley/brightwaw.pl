@@ -1,0 +1,4 @@
+Contact: mailto:sales@brightwaw.pl
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: pl, ru, en
+Canonical: https://brightwaw.pl/.well-known/security.txt

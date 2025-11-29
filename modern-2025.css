@@ -1,0 +1,214 @@
+/* Modern 2025 Design Enhancements */
+
+/* SVG Icon Styles */
+.icon-svg {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  filter: drop-shadow(0 4px 8px rgba(15, 133, 201, 0.2));
+}
+
+.icon-svg path:first-child {
+  color: var(--primary-blue);
+  opacity: 0.4;
+}
+
+/* Glassmorphism Effects */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Scroll Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Modern Gradient Backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, 
+    rgba(15, 133, 201, 0.05) 0%, 
+    rgba(30, 144, 255, 0.05) 50%,
+    rgba(15, 133, 201, 0.05) 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Enhanced Card Hover Effects */
+.benefit-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(15, 133, 201, 0.1), 
+    transparent);
+  transition: left 0.5s;
+}
+
+.benefit-card:hover::before {
+  left: 100%;
+}
+
+.benefit-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(15, 133, 201, 0.2);
+}
+
+/* Smooth Scroll Behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Modern Button Styles */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  z-index: -1;
+}
+
+.btn-modern:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation for Important Elements */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.pulse-animation {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Modern FAQ Accordion */
+details[open] {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton Loader */
+.skeleton {
+  background: linear-gradient(90deg, 
+    rgba(15, 133, 201, 0.1) 25%, 
+    rgba(15, 133, 201, 0.2) 50%, 
+    rgba(15, 133, 201, 0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Parallax Effect */
+.parallax {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Modern Shadow Styles */
+.shadow-modern {
+  box-shadow: 
+    0 2px 4px rgba(15, 133, 201, 0.1),
+    0 8px 16px rgba(15, 133, 201, 0.1),
+    0 16px 32px rgba(15, 133, 201, 0.1);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Micro-interactions */
+.interactive {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive:active {
+  transform: scale(0.95);
+}
+
+/* Modern Border Gradient */
+.border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, var(--primary), var(--primary-blue)) border-box;
+}
+
+/* Responsive Utilities */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

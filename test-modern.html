@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест новой адаптивной системы</title>
+    <link rel="stylesheet" href="/modern-layout.css">
+    <style>
+        .demo-section {
+            border: 2px dashed #ccc;
+            margin: 2rem 0;
+            position: relative;
+        }
+        .demo-label {
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            background: white;
+            padding: 0 8px;
+            font-size: 12px;
+            color: #666;
+            font-weight: bold;
+        }
+        .color-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 4px;
+        }
+        .bg-primary { background: var(--primary); }
+        .bg-primary-blue { background: var(--primary-blue); }
+        .bg-text-dark { background: var(--text-dark); }
+        .bg-text-gray { background: var(--text-gray); }
+    </style>
+</head>
+<body>
+    <div class="container container-xl py-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-primary">
+            Тест Новой Адаптивной Системы
+        </h1>
+
+        <!-- Цветовая палитра -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Цветовая палитра</div>
+            <div class="flex flex-wrap gap-4">
+                <div class="text-center">
+                    <div class="color-box bg-primary"></div>
+                    <p class="text-xs">Primary</p>
+                </div>
+                <div class="text-center">
+                    <div class="color-box bg-primary-blue"></div>
+                    <p class="text-xs">Primary Blue</p>
+                </div>
+                <div class="text-center">
+                    <div class="color-box bg-text-dark"></div>
+                    <p class="text-xs">Text Dark</p>
+                </div>
+                <div class="text-center">
+                    <div class="color-box bg-text-gray"></div>
+                    <p class="text-xs">Text Gray</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Типографика -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Типографика</div>
+            <div class="space-y-4">
+                <h1 class="text-5xl font-extrabold">Заголовок H1 (5xl)</h1>
+                <h2 class="text-4xl font-bold">Заголовок H2 (4xl)</h2>
+                <h3 class="text-3xl font-semibold">Заголовок H3 (3xl)</h3>
+                <h4 class="text-2xl font-medium">Заголовок H4 (2xl)</h4>
+                <p class="text-lg">Большой текст (lg)</p>
+                <p class="text-base">Обычный текст (base)</p>
+                <p class="text-sm">Маленький текст (sm)</p>
+                <p class="text-xs">Очень маленький текст (xs)</p>
+            </div>
+        </div>
+
+        <!-- Сетка -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Сетка</div>
+            <div class="grid grid-cols-4 gap-4 mb-6">
+                <div class="card p-4 text-center">1</div>
+                <div class="card p-4 text-center">2</div>
+                <div class="card p-4 text-center">3</div>
+                <div class="card p-4 text-center">4</div>
+            </div>
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="card p-4 text-center">1</div>
+                <div class="card p-4 text-center">2</div>
+                <div class="card p-4 text-center">3</div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="card p-4 text-center">1</div>
+                <div class="card p-4 text-center">2</div>
+            </div>
+        </div>
+
+        <!-- Кнопки -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Кнопки</div>
+            <div class="flex flex-wrap gap-4">
+                <button class="btn btn-primary">Основная кнопка</button>
+                <button class="btn btn-primary btn-lg">Большая кнопка</button>
+                <a href="#" class="btn btn-primary">Ссылка-кнопка</a>
+            </div>
+        </div>
+
+        <!-- Карточки -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Карточки</div>
+            <div class="grid grid-cols-auto gap-6">
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold mb-4">Карточка 1</h3>
+                    <p class="text-gray">Это пример карточки с тенью и скругленными углами.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold mb-4">Карточка 2</h3>
+                    <p class="text-gray">Карточки автоматически адаптируются под размер экрана.</p>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-xl font-semibold mb-4">Карточка 3</h3>
+                    <p class="text-gray">На мобильных устройствах они выстраиваются в одну колонку.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Отступы -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Система отступов (8px)</div>
+            <div class="space-y-4">
+                <div class="p-2 bg-light rounded">Padding 2 (8px)</div>
+                <div class="p-4 bg-light rounded">Padding 4 (16px)</div>
+                <div class="p-6 bg-light rounded">Padding 6 (24px)</div>
+                <div class="p-8 bg-light rounded">Padding 8 (32px)</div>
+            </div>
+        </div>
+
+        <!-- Адаптивность -->
+        <div class="demo-section p-6">
+            <div class="demo-label">Адаптивные контейнеры</div>
+            <div class="space-y-4">
+                <div class="container-xs bg-light p-4 rounded mx-auto">
+                    <p class="text-center">Container XS (480px)</p>
+                </div>
+                <div class="container-sm bg-light p-4 rounded mx-auto">
+                    <p class="text-center">Container SM (640px)</p>
+                </div>
+                <div class="container-md bg-light p-4 rounded mx-auto">
+                    <p class="text-center">Container MD (768px)</p>
+                </div>
+                <div class="container-lg bg-light p-4 rounded mx-auto">
+                    <p class="text-center">Container LG (1024px)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Тестовый хедер -->
+        <div class="demo-section p-0">
+            <div class="demo-label">Тестовый хедер</div>
+            <header class="header" style="position: relative; top: 0;">
+                <div class="container container-2xl">
+                    <nav class="navbar">
+                        <img class="logo" src="/public/logo.svg" alt="Logo" />
+                        
+                        <ul class="nav-menu">
+                            <li><a href="#">Цены</a></li>
+                            <li><a href="#">Химчистка</a></li>
+                            <li><a href="#">Отзывы</a></li>
+                        </ul>
+
+                        <div class="nav-icons">
+                            <div class="nav-icon">📱</div>
+                            <div class="nav-icon">📧</div>
+                            <div class="phone">+48 888 742 534</div>
+                        </div>
+
+                        <div class="hamburger">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </div>
+                    </nav>
+                </div>
+            </header>
+        </div>
+    </div>
+
+    <script>
+        // Тест гамбургер меню
+        const hamburger = document.querySelector('.hamburger');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

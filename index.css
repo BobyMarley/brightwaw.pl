@@ -542,6 +542,8 @@ section.cards-input {
   color: black;
   font-family: var(--main-font);
   font-weight: 600;
+  font-size: 1.15rem;
+  white-space: nowrap;
 }
 
 .card:hover {
@@ -562,56 +564,101 @@ span.price-value {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 12px;
 }
 
 .tab {
   cursor: pointer;
-  padding: 20px 40px;
-  background-color: #ccc;
-  transition: background-color 0.3s ease;
+  padding: 12px 24px;
+  background: #fff;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s;
   margin: 0;
   font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 15px;
+  color: #2c3e50;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .tab:hover {
-  background-color: #ddd;
+  background: #f8f9fa;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
 .tab.active {
-  background-color: #007bff;
+  background: #0f85c9;
   color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(15,133,201,0.3);
 }
 
 .tabs-content {
-  margin: 0;
+  margin: 24px 0 0 0;
+  padding: 0 16px;
 }
 
 .tab-content {
   display: none;
-  padding: 20px 40px;
+  padding: 32px;
   font-family: var(--main-font);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
 }
 
 .tab-content.active {
   display: block;
 }
 
-.tab-content ul {
-  display: contents;  
-  list-style-type: none;     
-  list-style-position: inside;
-  line-height: 1.4rem;
-  margin: 0;    
-}
-
-.tab-content ul li {	
-  padding: 5px 0;
-  font-family: var(--main-font);
-}
-
-.tab-content ul li::marker {  
-  color: var(--primary);
+.tab-content h2 {
   font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+  font-family: var(--main-font);
+  text-align: left;
+}
+
+.tab-content h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #7f8c8d;
+  margin: 0 0 20px 0;
+  font-family: var(--main-font);
+  text-align: left;
+}
+
+.tab-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  display: block;
+}
+
+.tab-content ul li {
+  display: block;
+  padding: 8px 0 8px 20px;
+  font-family: var(--main-font);
+  font-size: 14px;
+  color: #2c3e50;
+  line-height: 1.6;
+  position: relative;
+  text-align: left;
+}
+
+.tab-content ul li:before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #0f85c9;
+  font-weight: 700;
 }
 
 /* ===========================================

@@ -2,19 +2,25 @@ User-agent: *
 Allow: /
 Disallow: /js/
 Disallow: /css/
-Disallow: /modal.js
-Disallow: /form.js
+Disallow: /*.js$
+Disallow: /privacy-policy/
+Disallow: /ru/privacy-policy/
+Disallow: /en/privacy-policy/
+Disallow: /by/privacy-policy/
 
 Sitemap: https://brightwaw.pl/sitemap.xml
 
 # Google
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
 
 # Yandex
 User-agent: Yandex
 Allow: /
+Crawl-delay: 1
 
 # Bing
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
