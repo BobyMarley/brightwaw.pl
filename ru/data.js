@@ -77,12 +77,11 @@
       });
       
       loadTabs(tabsDataKompleksowa);
+      initTabHandlers();
     } catch (error) {
       console.error("Error while fetching and creating cards: " + error);
     }
   }
-  fetchAndCreateCards();
-
   function loadTabs(tabData) {
     try {
       const tabNumbers = [1, 2, 3, 4];
@@ -107,12 +106,10 @@
       console.error("Error while updating tabs: " + error);
     }
   }
-  
-  document.addEventListener("DOMContentLoaded", function () {
+
+  function initTabHandlers() {
     const tabs = document.querySelectorAll(".tab");
     const tabContents = document.querySelectorAll(".tab-content");
-    const initialTab = document.querySelector(".tab.active");
-    const initialTabContent = document.querySelector(".tab-content.active");
     tabs.forEach((tab) => {
       tab.addEventListener("click", function () {
         const item = this.getAttribute("data-item");
@@ -122,4 +119,8 @@
         document.querySelector(`.tab-content[data-item="${item}"]`).classList.add("active");
       });
     });
+  }
+
+  fetchAndCreateCards().then(() => {
+    initTabHandlers();
   });

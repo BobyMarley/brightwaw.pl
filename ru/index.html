@@ -88,6 +88,11 @@
       },
       "areaServed": "Warszawa",
       "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 08:00-20:00",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "52.229676",
+        "longitude": "21.012229"
+      },
       "sameAs": [
         "https://facebook.com/BrightHouseWaw",
         "https://instagram.com/cleaning_bright_house/",
@@ -145,10 +150,20 @@
     }
     </script>
     
-    <link rel="stylesheet" href="/global.css?ver2" />
-    <link rel="stylesheet" href="/index.css?ver3" />
-    <link rel="stylesheet" href="/fonts.css?ver1" />
-    <script src="https://unpkg.com/imask"></script>
+    <link rel="preload" href="/fonts/subset-Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
+    <style>
+      @font-face{font-family:'Montserrat';src:url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+      @font-face{font-family:'Montserrat';src:url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+      @font-face{font-family:'Montserrat';src:url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+      :root{--h2:Montserrat;--main-font:Montserrat;--h2-size:1.5rem;--font-size-lg:1.13rem;--primary:#0f85c9;--primary-contrast:#fff;--primary-blue:#1E90FF;--primary-dark:#1874CD;--text-dark:#2c3e50;--text-gray:#7f8c8d;--text-light:#bdc3c7;--bg-darker:#050508;--bg-overlay:rgba(255,255,255,0.95);--shadow-soft:0 8px 32px rgba(0,0,0,0.1);--shadow-hover:0 16px 48px rgba(0,0,0,0.15);--gap-5xl:1.5rem;--gap-lg:1.13rem;--padding-13xl:2rem;--padding-111xl:8.13rem;--padding-base:1rem;--padding-5xl:1.5rem;--br-mini:15px;--radio-border-color:#8b8c89;--radio-checked-color:var(--primary);--radio-hover-color:#a3cef1;--radio-disabled-bg-color:#d9d9d9;--button-prime:0px 207px 58px rgba(25,23,176,0.01),0px 133px 53px rgba(25,23,176,0.06),0px 75px 45px rgba(25,23,176,0.2),0px 33px 33px rgba(25,23,176,0.34),0px 8px 18px rgba(25,23,176,0.39),0px 0px 0px rgba(25,23,176,0.4)}
+    </style>
+    <link rel="stylesheet" href="/index.css?ver3" media="print" onload="this.media='all'">
+    <noscript>
+      <link rel="stylesheet" href="/index.css?ver3">
+    </noscript>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffffff%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🛀</text></svg>" />
     
     <!-- Google tag (gtag.js) -->
@@ -166,7 +181,7 @@
       html{scroll-behavior:smooth}
       .header{position:fixed;top:0;width:100%;background:transparent;backdrop-filter:none;border-bottom:none;z-index:1000;transition:all .3s}
       .header.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.1);box-shadow:0 2px 10px rgba(0,0,0,.05)}
-      .navbar{display:flex;justify-content:space-between;align-items:center;padding:var(--space-md) var(--space-xl);max-width:1400px;margin:0 auto}
+      .navbar{display:flex;justify-content:space-between;align-items:center;padding:.25rem .5rem;max-width:1400px;margin:0 auto}
       .logo-icon{height:5rem;width:auto}
       .nav-menu{display:flex;gap:var(--space-md);list-style:none;margin:0;padding:0}
       .nav-menu a{color:#343a40;text-decoration:none;font-weight:600;font-size:1.2rem;transition:all .3s}
@@ -180,7 +195,12 @@
       .hamburger-menu{display:none;cursor:pointer}
       .overlay{position:fixed;top:0;left:-100%;width:100%;height:100vh;background:rgba(255,255,255,.98);z-index:999;transition:left .3s;display:flex;flex-direction:column;align-items:center;justify-content:center}
       .overlay.active{left:0}
-      .content{padding-top:120px;display:flex;flex-direction:column;align-items:center}
+      .mobile-nav-menu ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:1.5rem;align-items:center}
+      .mobile-nav-menu a{color:var(--primary);text-decoration:none;font-weight:600;font-size:1.3rem;transition:all .3s}
+      .mobile-nav-menu a:hover{transform:scale(1.1)}
+      .contact-info{margin-top:2rem;text-align:center}
+      .contact-info a{color:var(--primary);text-decoration:none;font-weight:600}
+      .content{padding-top:90px;display:flex;flex-direction:column;align-items:center}
       section.hero{display:flex;flex-direction:column;width:100%;background:linear-gradient(180deg,rgba(68,112,133,0) 58.65%,rgba(68,112,133,.7) 74.27%,rgba(68,112,133,.7) 86.77%,#447085 100%),linear-gradient(180deg,#FFF 0%,rgba(255,255,255,.5) 66.98%,rgba(255,255,255,0) 100%),url(/public/bg.webp);background-size:cover;background-position:top;background-repeat:no-repeat;align-items:center;min-height:90vh}
       .hero-text{text-align:center}
       .hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:800;margin:3rem 0 1rem 0;color:var(--primary)}
@@ -193,11 +213,11 @@
       .cards h2{padding:30px 0 15px 0;font-weight:600;text-align:center;font-size:2.5rem;margin-bottom:var(--space-2xl);color:var(--text-dark)}
       .cards-container{display:flex;flex-wrap:wrap;gap:15px;justify-content:center}
       section.what_cleaning{display:flex;flex-direction:column;align-items:center;width:100%;min-height:100vh;justify-content:flex-start;background:linear-gradient(180deg,#FFF 0%,rgba(255,255,255,.5) 66.98%,rgba(255,255,255,0) 100%),linear-gradient(0deg,rgba(159,181,192,0) 58.65%,rgba(150,186,203,.7) 74.27%,#b3cbd7 100%),url(/public/bg_sect_2.webp);background-size:cover;background-position:top;background-repeat:no-repeat}
-      .what_cleaning h2{margin:0 1rem .5rem 1rem;font-weight:600;text-align:center;font-size:2.5rem;color:var(--text-dark)}
-      .tabs{display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap;margin:0 1rem .5rem 1rem}
-      .tab{padding:20px 40px;background:#ccc;cursor:pointer;transition:all .3s;margin:0;border-radius:15px}
-      .tab:hover{background:#ddd}
-      .tab.active{background:#007bff;color:#fff}
+      .what_cleaning h2{margin:2rem 1rem 2rem 1rem;font-weight:600;text-align:center;font-size:2.5rem;color:var(--text-dark)}
+      .tabs{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:0 1rem 1.5rem 1rem}
+      .tab{padding:1rem 2rem;background:rgba(255,255,255,.9);border:2px solid rgba(15,133,201,.2);cursor:pointer;transition:all .3s;margin:0;border-radius:12px;font-weight:600;font-size:1.05rem;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+      .tab:hover{background:rgba(15,133,201,.1);border-color:var(--primary);transform:translateY(-2px);box-shadow:0 4px 12px rgba(15,133,201,.2)}
+      .tab.active{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-blue) 100%);color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(15,133,201,.4)}
       .tab-content{display:none;padding:20px 40px;border-radius:15px;box-shadow:-9px -2px 64px -34px rgba(106,122,122,.32);background:rgba(255,255,255,.7)}
       .tab-content.active{display:block}
       .tab-content ul{list-style-position:inside;line-height:1.4rem;margin:0}
@@ -221,7 +241,17 @@
       .footer-legal{color:rgba(255,255,255,.8);font-size:.85rem;line-height:1.8}
       .footer-legal p{color:rgba(255,255,255,.8);margin:.5rem 0}
       .footer-legal strong{color:#fff;font-weight:600}
-      @media(max-width:768px){.nav-menu,.nav-icons,.langSwitch{display:none}.hamburger-menu{display:block;padding:var(--space-sm)}.hamburger-icon{display:flex;flex-direction:column;gap:5px}.line{width:25px;height:3px;background:var(--primary);border-radius:2px}.mobile-langSwitch,.mobile-nav-menu,.mobile-nav-icons{padding:var(--space-xl)}.mobile-langSwitch{display:flex;gap:var(--space-sm);justify-content:center;list-style:none}.hero h1{font-size:2rem}.profesjonalnie-bezpiecznie-s{font-size:1rem}.price-info p{font-size:.9rem}div#app{padding:1rem}.tabs{margin:0 1rem .5rem 1rem}.tab{width:calc(40% - 15px);padding:20px}.tab-content{padding:20px 15px}}
+      #modal-container{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);display:none;justify-content:center;align-items:center;z-index:9999;padding:1rem}
+      #modal{background:#fff;padding:2rem;border-radius:15px;max-width:500px;width:calc(100% - 2rem);max-height:90vh;overflow-y:auto}
+      @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+      .cards-container>*{animation:fadeInUp .6s ease forwards;opacity:0}
+      .cards-container>*:nth-child(1){animation-delay:.1s}
+      .cards-container>*:nth-child(2){animation-delay:.2s}
+      .cards-container>*:nth-child(3){animation-delay:.3s}
+      .cards-container>*:nth-child(4){animation-delay:.4s}
+      .cards-container>*:nth-child(5){animation-delay:.5s}
+      .cards-container>*:nth-child(6){animation-delay:.6s}
+      @media(max-width:768px){.nav-menu,.nav-icons,.langSwitch{display:none}.hamburger-menu{display:block;padding:var(--space-sm)}.hamburger-icon{display:flex;flex-direction:column;gap:5px}.line{width:25px;height:3px;background:var(--primary);border-radius:2px}.mobile-langSwitch,.mobile-nav-menu,.mobile-nav-icons{padding:var(--space-xl)}.mobile-langSwitch{display:flex;gap:var(--space-sm);justify-content:center;list-style:none}.hero h1{font-size:2rem}.profesjonalnie-bezpiecznie-s{font-size:1rem}.price-info p{font-size:.9rem}div#app{padding:1rem}.tabs{margin:0 1rem .5rem 1rem}.tab{width:calc(40% - 15px);padding:20px}.tab-content{padding:20px 15px}#modal-container{padding:.5rem}#modal{padding:1rem;width:calc(100% - 1rem);transform:scale(0.8)}#modal h2{font-size:1.1rem;margin-bottom:.8rem}#modal label{font-size:.85rem}#modal input{font-size:13px;padding:.6rem}#modal button{font-size:.9rem;padding:.6rem 1rem}}
     </style>
   </head>
    
@@ -434,23 +464,23 @@
             <p style="text-align:center;color:var(--text-dark);font-size:1.1rem;margin-bottom:3rem;font-weight:500;">Ответы на популярные вопросы о наших услугах</p>
             <div style="display:grid;gap:1.2rem;">
               <details style="padding:2rem;background:#fff;border:2px solid rgba(30,144,255,.1);border-radius:16px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:all .3s;">
-                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;"><span style="font-size:1.8rem;">⏱️</span>Сколько времени занимает уборка квартиры?</summary>
+                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;"><span style="font-size:1.8rem;">⏱️</span>Сколько времени занимает уборка квартиры?</summary>
                 <p style="margin-top:1.2rem;color:var(--text-gray);line-height:1.8;padding-left:3rem;font-size:1rem;">Стандартная уборка 2-комнатной квартиры занимает 2-3 часа. Генеральная уборка - 4-6 часов. Точное время зависит от площади и степени загрязнения.</p>
               </details>
               <details style="padding:2rem;background:#fff;border:2px solid rgba(30,144,255,.1);border-radius:16px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:all .3s;">
-                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;"><span style="font-size:1.8rem;">🧴</span>Какие средства вы используете?</summary>
+                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;"><span style="font-size:1.8rem;">🧴</span>Какие средства вы используете?</summary>
                 <p style="margin-top:1.2rem;color:var(--text-gray);line-height:1.8;padding-left:3rem;font-size:1rem;">Мы используем только профессиональные экологичные средства, безопасные для детей и животных. Все средства сертифицированы в ЕС.</p>
               </details>
               <details style="padding:2rem;background:#fff;border:2px solid rgba(30,144,255,.1);border-radius:16px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:all .3s;">
-                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;"><span style="font-size:1.8rem;">🏠</span>Нужно ли мне быть дома во время уборки?</summary>
+                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;"><span style="font-size:1.8rem;">🏠</span>Нужно ли мне быть дома во время уборки?</summary>
                 <p style="margin-top:1.2rem;color:var(--text-gray);line-height:1.8;padding-left:3rem;font-size:1rem;">Нет, это не обязательно. Многие наши клиенты оставляют ключи и уходят по своим делам. Мы гарантируем безопасность и конфиденциальность.</p>
               </details>
               <details style="padding:2rem;background:#fff;border:2px solid rgba(30,144,255,.1);border-radius:16px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:all .3s;">
-                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;"><span style="font-size:1.8rem;">🚗</span>Как быстро вы можете приехать?</summary>
+                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;"><span style="font-size:1.8rem;">🚗</span>Как быстро вы можете приехать?</summary>
                 <p style="margin-top:1.2rem;color:var(--text-gray);line-height:1.8;padding-left:3rem;font-size:1rem;">При наличии свободных специалистов мы можем приехать в течение 2 часов. Также можно запланировать уборку на удобное для вас время.</p>
               </details>
               <details style="padding:2rem;background:#fff;border:2px solid rgba(30,144,255,.1);border-radius:16px;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,.08);transition:all .3s;">
-                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;"><span style="font-size:1.8rem;">📍</span>Какие районы Варшавы вы обслуживаете?</summary>
+                <summary style="font-weight:700;font-size:1.2rem;color:var(--text-dark);cursor:pointer;display:flex;align-items:center;gap:1rem;user-select:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation;"><span style="font-size:1.8rem;">📍</span>Какие районы Варшавы вы обслуживаете?</summary>
                 <p style="margin-top:1.2rem;color:var(--text-gray);line-height:1.8;padding-left:3rem;font-size:1rem;">Мы работаем по всей Варшаве и пригородам: Śródmieście, Mokotów, Ursynów, Wilanów, Ochota, Wola, Żoliborz, Praga, Bemowo, Bielany и другие районы.</p>
               </details>
             </div>
@@ -540,12 +570,14 @@
       <button id="accept-button">Принять</button>
     </div> 
     
-    <script src="/js/vue.js?ver134" defer></script>  
-    <script src="/ru/vueapp.js?ver4" defer></script> 
-    <script src="/modal.js?ver133" defer></script>  
-    <script src="/form.js?ver133" defer></script>
-    <script src="/cookie.js?ver145" defer></script>
-    <script src="/ru/data.js?ver1" defer></script>  
+    <script>
+      window.addEventListener('load',()=>{
+        const scripts=['/ru/vueapp.js?ver4','/modal.js?ver133','/form.js?ver133','/cookie.js?ver145','/ru/data.js?ver1'];
+        scripts.forEach((src,i)=>setTimeout(()=>{const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)},i*50));
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/imask@7.1.3/dist/imask.min.js" defer></script>  
     <script>
       document.addEventListener('DOMContentLoaded',()=>{const h=document.querySelector('.hamburger-menu'),o=document.querySelector('.overlay'),hdr=document.querySelector('.header');h&&h.addEventListener('click',()=>o.classList.toggle('active'));window.addEventListener('scroll',()=>{window.scrollY>50?hdr.classList.add('scrolled'):hdr.classList.remove('scrolled')})});
     </script> 

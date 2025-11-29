@@ -15,7 +15,7 @@ showModalButton.addEventListener("click", function() {
     });    
     return;
   }
-  modalContainer.style.display = "block";
+  modalContainer.style.display = "flex";
 });
 /*
 showModalButton.addEventListener("click", function() {
@@ -43,5 +43,5 @@ window.addEventListener("click", function(event) {
 
 successModalCloseButton.addEventListener("click", function() {
   successModalContainer.style.display = "none";
-  modalContainer.style.display = "none";        
+  modalContainer.style.display = "none";
 });
