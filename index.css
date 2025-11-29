@@ -1,12 +1,15 @@
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;  
   line-height: normal;
   font-family: var(--main-font);
-  font-weight: 500;  
+  font-weight: 500;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* ===========================================
@@ -67,10 +70,11 @@ a#pl.active, a#by.active, a#ru.active, a#en.active {
 .navbar {
   display: flex;
   flex-direction: row;
-  padding: 0.3rem 0 0;
+  padding: 0.3rem 1rem 0;
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
+  max-width: 100%;
 }
 
 .phone, .icons {
@@ -1653,7 +1657,7 @@ input[type="radio"]:focus-visible {
     display: flex;
   }    
   .langSwitch {margin: 0}
-  h1{
+  .hero h1{
     font-size: 1.5rem;
     margin: 0 1rem 0.5rem 1rem;
     white-space: break-spaces;
@@ -1705,13 +1709,21 @@ input[type="radio"]:focus-visible {
    }
 }
 
-@media screen and (min-width: 950px) {
-  h1{
-    font-size: 2.5rem;     
-  }  
+@media screen and (min-width: 1301px) {
   .navbar {
-    padding: var(--padding-13xl) var(--padding-111xl) 0; 
+    padding: 30px var(--padding-111xl) 0; 
   }
+  
+  .logo-icon {
+    width: 16.4rem;
+    height: 5.65rem;
+    margin-left: 5rem;
+  }
+  
+  .langSwitch {
+    margin-right: 5rem;
+  }
+  
   .profesjonalnie-bezpiecznie-s {
     font-size: var(--h2-size);
     font-weight: 500;
@@ -1719,10 +1731,47 @@ input[type="radio"]:focus-visible {
    }    
 }  
 
-@media screen and (max-width: 1299px) {
-  .navbar {flex-direction: column;}
-  .langSwitch {margin: 0.5rem 0 0.7rem}
-   .nav-icons {gap: 0.8rem;margin: 0 0 0.5rem;}
+@media screen and (min-width: 1024px) and (max-width: 1300px) {
+  .navbar {
+    padding: 0.75rem 0;
+  }
+  
+  .logo-icon {
+    width: 10rem;
+    height: 3rem;
+    margin-left: 1rem;
+  }
+  
+  .nav-menu {
+    gap: 0.3rem;
+  }
+  
+  .nav-menu a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.5rem;
+  }
+  
+  .nav-icons {
+    gap: 0.5rem;
+  }
+  
+  .posicon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+  
+  .phone {
+    font-size: 0.95rem;
+  }
+  
+  .langSwitch {
+    gap: 0.3rem;
+    margin-right: 1rem;
+  }
+  
+  .langSwitch a {
+    font-size: 13px;
+  }
 }
 
 @media screen and (max-width: 950px) {    
