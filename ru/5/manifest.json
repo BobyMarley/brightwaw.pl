@@ -1,0 +1,25 @@
+{
+  "short_name": "BrightHouse",
+  "name": "BrightHouse Cleaning - Химчистка в Варшаве",
+  "lang": "ru",
+  "icons": [
+    {
+      "src": "/images/icons/icon-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icons/icon-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/ru/pranie.html?utm_source=homescreen",
+  "background_color": "#0a0a0f",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#0a0a0f",
+  "description": "Профессиональная химчистка мягкой мебели, диванов, ковров и матрасов в Варшаве."
+}

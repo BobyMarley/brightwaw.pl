@@ -1,0 +1,62 @@
+{
+  "card1": {
+    "kompleksowa": {
+      "roomCount": "Аднапакаёвы (да 36 m2)",
+      "price": "160 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Аднапакаёвы (да 36 m2)",
+      "price": "510 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card2": {
+    "kompleksowa": {
+      "roomCount": "Двухпакаёвы (да 55 m2)",
+      "price": "190 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Двухпакаёвы (да 55 m2)",
+      "price": "620 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card3": {
+    "kompleksowa": {
+      "roomCount": "Трохпакаёвы (да 80 m2)",
+      "price": "230 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Трохпакаёвы (да 80 m2)",
+      "price": "770 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card4": {
+    "kompleksowa": {
+      "roomCount": "Чатырохпакаёвы (да 100 m2)",
+      "price": "280 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Чатырохпакаёвы (да 100 m2)",
+      "price": "900 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card5": {
+    "kompleksowa": {
+      "roomCount": "Пяціпакаёвы (да 120 m2)",
+      "price": "320 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Пяціпакаёвы (да 120 m2)",
+      "price": "1050 zł",
+      "description": "Описание генеральной уборки"
+    }
+  }
+}

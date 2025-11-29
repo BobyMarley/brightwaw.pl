@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /css/
+Disallow: /modal.js
+Disallow: /form.js
+
+Sitemap: https://brightwaw.pl/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0f"/>
+      <stop offset="100%" style="stop-color:#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00f5ff"/>
+      <stop offset="100%" style="stop-color:#6366F1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1000" cy="150" r="300" fill="#00f5ff" opacity="0.05"/>
+  <circle cx="200" cy="500" r="250" fill="#6366F1" opacity="0.05"/>
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#accent)" text-anchor="middle">BrightHouse</text>
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="48" fill="#ffffff" text-anchor="middle">Уборка Квартир Варшава</text>
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="42" fill="#00f5ff" text-anchor="middle">от 160 zł ⭐ 4.9/5</text>
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="36" fill="rgba(255,255,255,0.8)" text-anchor="middle">2500+ довольных клиентов</text>
+  <text x="600" y="520" font-family="Arial, sans-serif" font-size="32" fill="rgba(255,255,255,0.6)" text-anchor="middle">Профессиональное оборудование Kärcher</text>
+</svg>
