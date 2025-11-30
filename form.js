@@ -86,9 +86,9 @@ form.addEventListener("submit", function(event) {
       if (successfulSends > 0) {
         console.log('Отправка успешна, показываем модальное окно');
         
-        // Отправка события конверсии
+        // Отправка события конверсии без редиректа
         if (typeof gtag_report_conversion === 'function') {
-          gtag_report_conversion('https://brightwaw.pl');
+          gtag_report_conversion();
         }
 
         // Закрываем форму и показываем успех

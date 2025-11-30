@@ -77,50 +77,88 @@
       });
       
       loadTabs(tabsDataKompleksowa);
-      initTabHandlers();
+      initCleaningTypeButtons();
     } catch (error) {
       console.error("Error while fetching and creating cards: " + error);
     }
   }
+  
+  function initCleaningTypeButtons() {
+    const buttons = document.querySelectorAll('.cleaning-type-btn');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', async function() {
+        const type = this.getAttribute('data-type');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        const heading = document.getElementById('cleaning-type-heading');
+        heading.textContent = type === 'kompleksowa' ? 'Что Входит в Стандартную Уборку' : 'Что Входит в Генеральную Уборку';
+        
+        const fileName = type === 'kompleksowa' ? 'tabData_ru_kompleksowa.json' : 'tabData_ru_generalna.json';
+        const newTabsData = await fetchTabsData(fileName);
+        loadTabs(newTabsData);
+      });
+    });
+  }
+  const roomIcons = {
+    '1': ['fa-broom', 'fa-couch', 'fa-utensils', 'fa-lightbulb', 'fa-window-maximize', 'fa-tv', 'fa-plug', 'fa-image', 'fa-check', 'fa-door-open', 'fa-couch', 'fa-bed', 'fa-broom', 'fa-couch', 'fa-box', 'fa-arrows-up-down-left-right', 'fa-bars', 'fa-hand-sparkles'],
+    '2': ['fa-broom', 'fa-check', 'fa-box', 'fa-plug', 'fa-broom', 'fa-box', 'fa-bars', 'fa-hand-sparkles', 'fa-arrows-up-down-left-right'],
+    '3': ['fa-kitchen-set', 'fa-droplet', 'fa-utensils', 'fa-fire', 'fa-fire-burner', 'fa-sink', 'fa-faucet', 'fa-trash-can', 'fa-trash-can', 'fa-temperature-low', 'fa-plug', 'fa-broom', 'fa-box', 'fa-temperature-low', 'fa-fire', 'fa-wind', 'fa-bars', 'fa-hand-sparkles'],
+    '4': ['fa-shower', 'fa-droplet', 'fa-bath', 'fa-faucet', 'fa-toilet', 'fa-box', 'fa-temperature-half', 'fa-washing-machine', 'fa-plug', 'fa-broom', 'fa-box', 'fa-wind', 'fa-arrows-up-down-left-right', 'fa-bars', 'fa-hand-sparkles']
+  };
+  
   function loadTabs(tabData) {
     try {
       const tabNumbers = [1, 2, 3, 4];
+      const roomEmojis = {1: '🛏️', 2: '🚪', 3: '🍳', 4: '🛁'};
 
       tabNumbers.forEach(tabNumber => {
-        const tabContent = document.querySelector(`.tab-content[data-item="${tabNumber}"]`);
+        const cleaningContent = document.querySelector(`.cleaning-content[data-room="${tabNumber}"]`);
         const tabDataItem = tabData[tabNumber.toString()];
+        const icons = roomIcons[tabNumber.toString()];
 
-        tabContent.innerHTML = `
-          <div class="item">
-            <div class="item-text">
-              <h2>${tabDataItem.title}</h2>
-              <h3>${tabDataItem.description}</h3>
-              <ul>
-                ${tabDataItem.items.map(item => `<li>${item}</li>`).join('')}
-              </ul>
-            </div>
+        const roomImages = {
+          '1': '/public/rooms/room.png',
+          '2': '/public/rooms/corridor.png',
+          '3': '/public/rooms/kitchen.png',
+          '4': '/public/rooms/bathroom.png'
+        };
+
+        cleaningContent.innerHTML = `
+          <div>
+            <ul>
+              ${tabDataItem.items.map((item, index) => `<li><i class="fa-solid ${icons[index] || 'fa-check'}"></i>${item}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="cleaning-image">
+            <img src="${roomImages[tabNumber.toString()]}" alt="${tabDataItem.title || 'Уборка'}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
           </div>
         `;
       });
+      
+      initCleaningTabs();
     } catch (error) {
       console.error("Error while updating tabs: " + error);
     }
   }
-
-  function initTabHandlers() {
-    const tabs = document.querySelectorAll(".tab");
-    const tabContents = document.querySelectorAll(".tab-content");
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", function () {
-        const item = this.getAttribute("data-item");
-        tabs.forEach((t) => t.classList.remove("active"));
-        tabContents.forEach((content) => content.classList.remove("active"));
-        this.classList.add("active");
-        document.querySelector(`.tab-content[data-item="${item}"]`).classList.add("active");
+  
+  function initCleaningTabs() {
+    const tabs = document.querySelectorAll('.cleaning-tab');
+    const contents = document.querySelectorAll('.cleaning-content');
+    
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        const roomId = this.getAttribute('data-room');
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+        
+        this.classList.add('active');
+        document.querySelector(`.cleaning-content[data-room="${roomId}"]`).classList.add('active');
       });
     });
   }
 
-  fetchAndCreateCards().then(() => {
-    initTabHandlers();
-  });
+  fetchAndCreateCards();
