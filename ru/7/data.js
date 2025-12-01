@@ -30,8 +30,9 @@
     cardContent.innerHTML = `
       <h3>${cardData[cardId][initialType].roomCount}</h3>    
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
+      <!--<p class="description">${cardData[cardId][initialType].description}</p>-->
       <section class="cards-input">
-        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
+        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked>
         <label>Стандартная уборка</label>
       </section>
       <section class="cards-input">
@@ -132,7 +133,7 @@
             </ul>
           </div>
           <div class="cleaning-image">
-            <img src="${roomImages[tabNumber.toString()]}" alt="${tabDataItem.title || 'Уборка'}" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
+            <img src="${roomImages[tabNumber.toString()]}" alt="${tabDataItem.title || 'Уборка'}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
           </div>
         `;
       });

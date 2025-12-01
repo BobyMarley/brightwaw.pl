@@ -92,8 +92,8 @@ app.component('button-counter', {
       }
     }
     return '';
-   }     
   },
+    },
     mounted() {
       window.addEventListener('reset-button-counter', this.reset);      
     },

@@ -1541,7 +1541,7 @@ input[type="radio"] {
   transition: outline 0.1s;
 }
 
-input[type="radio"]:not(:disabled):checked {
+input[type="radio"]:checked {
   border-color: var(--radio-checked-color);
   background-color: var(--radio-checked-color);
   background-clip: content-box;
