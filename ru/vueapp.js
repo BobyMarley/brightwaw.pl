@@ -23,12 +23,12 @@ const app = Vue.createApp({
         this.isConditionMet = false;
       }
     },
-    handleCleaningTypeUpdated(cleaningType) { // Добавлена функция для обновления cleaningType
+    handleCleaningTypeUpdated(cleaningType) {
       this.cleaningType = cleaningType;
     },
     reset() {
       this.selectedItems = [];
-      this.cleaningType = 'general'; // Добавлено значение по умолчанию для cleaningType
+      this.cleaningType = 'kompleksowa';
     }
   },
   mounted() {
@@ -40,7 +40,7 @@ app.component('button-counter', {
   emits: ['count-updated', 'cleaning-type-updated'],
   data() {
     return {     
-      cleaningType: 'general',
+      cleaningType: 'kompleksowa',
       buttons: [
       { id: 1, title: '', count: 0 },
       { id: 2, title: '', count: 0 },
@@ -101,11 +101,11 @@ app.component('button-counter', {
   template: `
   <div class="cleaning-type-toggle">
     <section>
-      <input type="radio" value="general" v-model="cleaningType" name="cleaningType" @change="$emit('cleaning-type-updated', cleaningType)">
+      <input type="radio" value="generalna" v-model="cleaningType" name="cleaningType" @change="$emit('cleaning-type-updated', cleaningType)">
       <label>Генеральная уборка</label>    
     </section>  
     <section>
-      <input type="radio" value="complex" v-model="cleaningType" name="cleaningType" @change="$emit('cleaning-type-updated', cleaningType)">
+      <input type="radio" value="kompleksowa" v-model="cleaningType" name="cleaningType" @change="$emit('cleaning-type-updated', cleaningType)">
       <label>Стандартная уборка</label>
     </section>
   </div>

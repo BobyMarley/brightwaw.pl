@@ -1,0 +1,6 @@
+name = "brighthouse-website"
+main = "worker.js"
+compatibility_date = "2025-01-15"
+
+[site]
+bucket = "./www"

@@ -1,6 +1,6 @@
  async function fetchCardsData() {
     try {
-      const response = await fetch('/data/ru/priceData_ru.json?v=16');
+      const response = await fetch('/data/by/priceData_by.json?v=16');
       return await response.json();
     } catch (error) {
       console.error("Error loading card data from JSON file: " + error);
@@ -10,7 +10,7 @@
 
   async function fetchTabsData(fileName) {
     try {
-      const response = await fetch(`/data/ru/${fileName}?v=16`);
+      const response = await fetch(`/data/by/${fileName}?v=16`);
       return await response.json();
     } catch (error) {
       console.error("Error loading tab data from JSON file: " + error);
@@ -30,14 +30,13 @@
     cardContent.innerHTML = `
       <h3>${cardData[cardId][initialType].roomCount}</h3>    
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
-      <!--<p class="description">${cardData[cardId][initialType].description}</p>-->
       <section class="cards-input">
         <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked>
-        <label>Стандартная уборка</label>
+        <label>Стандартная ўборка</label>
       </section>
       <section class="cards-input">
         <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
-        <label>Генеральная уборка</label>
+        <label>Генеральная ўборка</label>
       </section>
     `;
 
@@ -48,7 +47,7 @@
     try {
       const [cardsData, tabsDataKompleksowa] = await Promise.all([
         fetchCardsData(),
-        fetchTabsData("tabData_ru_kompleksowa.json")
+        fetchTabsData("tabData_by_kompleksowa.json")
       ]);
 
       const cardsContainer = document.querySelector(".cards-container");
@@ -59,18 +58,24 @@
         cardsContainer.appendChild(cardElement);
       }));
 
+      setTimeout(()=>{
+        document.querySelectorAll('input[type="radio"][value="kompleksowa"]').forEach(r=>r.checked=true);
+      },100);
+
       const radioInputs = document.querySelectorAll('input[type="radio"]');
       radioInputs.forEach(input => {
         input.addEventListener("change", async () => {
           const cardId = input.getAttribute("data-card");
           const priceValue = document.querySelector(`#${cardId} .price-value`);
           const selectedType = input.value;
-          priceValue.textContent = cardsData[cardId][selectedType].price;
+          if(cardsData[cardId]&&cardsData[cardId][selectedType]){
+            priceValue.textContent = cardsData[cardId][selectedType].price;
+          }
 
           const heading = document.getElementById("cleaning-type-heading");
-          heading.textContent = selectedType === "kompleksowa" ? "Что включает стандартная уборка" : "Что включает генеральная уборка";
+          heading.textContent = selectedType === "kompleksowa" ? "Што ўключае стандартная ўборка" : "Што ўключае генеральная ўборка";
           
-          const fileName = selectedType === "kompleksowa" ? "tabData_ru_kompleksowa.json" : "tabData_ru_generalna.json";
+          const fileName = selectedType === "kompleksowa" ? "tabData_by_kompleksowa.json" : "tabData_by_generalna.json";
           const newTabsData = await fetchTabsData(fileName);
           loadTabs(newTabsData);
         });
@@ -94,9 +99,9 @@
         this.classList.add('active');
         
         const heading = document.getElementById('cleaning-type-heading');
-        heading.textContent = type === 'kompleksowa' ? 'Что Входит в Стандартную Уборку' : 'Что Входит в Генеральную Уборку';
+        heading.textContent = type === 'kompleksowa' ? 'Што Ўваходзіць у Стандартную Ўборку' : 'Што Ўваходзіць у Генеральную Ўборку';
         
-        const fileName = type === 'kompleksowa' ? 'tabData_ru_kompleksowa.json' : 'tabData_ru_generalna.json';
+        const fileName = type === 'kompleksowa' ? 'tabData_by_kompleksowa.json' : 'tabData_by_generalna.json';
         const newTabsData = await fetchTabsData(fileName);
         loadTabs(newTabsData);
       });

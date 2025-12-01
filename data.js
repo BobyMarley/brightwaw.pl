@@ -1,6 +1,6 @@
  async function fetchCardsData() {
     try {
-      const response = await fetch('/data/pl/priceData_pl.json');
+      const response = await fetch('/data/pl/priceData_pl.json?v=5');
       return await response.json();
     } catch (error) {
       console.error("Error loading card data from JSON file: " + error);
@@ -10,7 +10,7 @@
 
   async function fetchTabsData(fileName) {
     try {
-      const response = await fetch(`/data/pl/${fileName}`);
+      const response = await fetch(`/data/pl/${fileName}?v=5`);
       return await response.json();
     } catch (error) {
       console.error("Error loading tab data from JSON file: " + error);
@@ -30,9 +30,8 @@
     cardContent.innerHTML = `
       <h3>${cardData[cardId][initialType].roomCount}</h3>    
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
-      <!--<p class="description">${cardData[cardId][initialType].description}</p>-->
       <section class="cards-input">
-        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked>
+        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
         <label>Standardowe sprzątanie</label>
       </section>
       <section class="cards-input">
