@@ -1403,7 +1403,7 @@ section.what_cleaning {
 
 .what_cleaning>div {
   max-width: 1200px;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
 
 .cleaning-type-btn {
@@ -1550,7 +1550,7 @@ section.cards-input {
   padding: 0;
 }
 
-.cards h2 {  
+.cards h2 {
   text-align: center;
   font-size: 36px;
   margin: 0 0 16px 0;
@@ -1594,7 +1594,7 @@ section.cards-input {
 
 .card-content h3 {
   margin: 0 0 16px 0;
-  color: #2c3e50;  
+  color: #2c3e50;
   font-size: 24px;
   text-align: center;
 }
@@ -2139,7 +2139,7 @@ span.price-value {
 
 .faq h2 {
   text-align: center;
-  font-size: 42px;  
+  font-size: 42px;
   color: var(--text-dark);
   margin-bottom: 80px;
   letter-spacing: -0.5px;
@@ -2754,54 +2754,114 @@ input[type="radio"]:focus-visible {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-.overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  z-index: 1000;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem 1rem;
-  box-sizing: border-box;
-}
-
-.overlay.active {
-  display: flex;
-}
-
-.mobile-langSwitch,
-.mobile-nav-menu ul,
-.mobile-nav-icons {
+/* Unified Navigation */
+.nav-content {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex: 1;
+  /* Take up remaining space */
 }
 
-.mobile-nav-menu ul li {
+.nav-menu {
+  display: flex;
+  margin: auto;
+  /* Push away from Logo */
+}
+
+.nav-content .nav-menu ul {
+  display: flex;
+  gap: 1rem;
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
-.mobile-nav-menu a,
-.contact-info a {
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 1.2rem;
+.nav-content .nav-icons {
+  margin: 0;
+  margin-right: auto;
+  /* Push away from LangSwitch */
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Reusing existing overlay styles for the active mobile state */
+@media screen and (max-width: 1023px) {
+  .nav-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .nav-menu,
+  .nav-content .nav-icons {
+    margin: 0;
+    /* Reset margins for mobile column layout */
+  }
+
+  .nav-content.active {
+    display: flex;
+  }
+
+  .nav-menu {
+    flex: initial;
+    /* Reset flex growth for mobile column layout */
+  }
+
+
+  .nav-content .nav-menu ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-content .nav-menu a {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  .nav-content .nav-icons {
+    display: flex !important;
+    /* Override display: none from desktop logic if set */
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .nav-content .langSwitch {
+    display: flex !important;
+  }
+
+  .contact-info {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .contact-info a {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-decoration: none;
+  }
 }
 
 .contact-info {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  display: none;
 }
 
 .contact-info p {
@@ -2841,12 +2901,6 @@ input[type="radio"]:focus-visible {
 @media screen and (max-width: 1023px) {
   .hamburger-menu {
     display: flex;
-  }
-
-  .nav-menu,
-  .nav-icons,
-  .langSwitch {
-    display: none !important;
   }
 }
 
@@ -3554,7 +3608,7 @@ button#send:disabled {
     font-size: 1.1rem;
   }
 
-  .cta-buttons {    
+  .cta-buttons {
     gap: 1rem;
   }
 
