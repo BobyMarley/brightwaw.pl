@@ -5,17 +5,17 @@ const successModalContainer = document.getElementById("success-modal-container")
 const successModalCloseButton = document.getElementById("success-modal-close");
 const pokojBtns = document.querySelectorAll(".pokoj-btn");
 
-showModalButton.addEventListener("click", function() {
+showModalButton.addEventListener("click", function () {
   if (vm.isConditionMet) {
     vm.$el.querySelectorAll(".pokoj-btn").forEach(btn => {
       btn.classList.add("shake");
       setTimeout(() => {
         btn.classList.remove("shake");
       }, 500);
-    });    
+    });
     return;
   }
-  modalContainer.style.display = "block";
+  modalContainer.classList.add("is-visible");
 });
 /*
 showModalButton.addEventListener("click", function() {
@@ -28,20 +28,20 @@ showModalButton.addEventListener("click", function() {
     });    
     return;
   }
-  modalContainer.style.display = "block";
+  modalContainer.classList.add("is-visible");
 });*/
 
-cancelButton.addEventListener("click", function() {
-  modalContainer.style.display = "none";
+cancelButton.addEventListener("click", function () {
+  modalContainer.classList.remove("is-visible");
 });
 
-window.addEventListener("click", function(event) {
+window.addEventListener("click", function (event) {
   if (event.target === modalContainer) {
-    modalContainer.style.display = "none";
+    modalContainer.classList.remove("is-visible");
   }
 });
 
-successModalCloseButton.addEventListener("click", function() {
-  successModalContainer.style.display = "none";
-  modalContainer.style.display = "none";        
+successModalCloseButton.addEventListener("click", function () {
+  successModalContainer.classList.remove("is-visible");
+  modalContainer.classList.remove("is-visible");
 });

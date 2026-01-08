@@ -9,7 +9,7 @@ const sendButton = document.getElementById("send");
 // Флаг для предотвращения множественных отправок
 let isSubmitting = false;
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", function (event) {
   event.preventDefault();
 
   // Предотвращаем множественные отправки
@@ -36,8 +36,7 @@ form.addEventListener("submit", function(event) {
   sendButton.disabled = true;
   const originalText = sendButton.textContent;
   sendButton.textContent = 'Wysyłanie... / Отправка...';
-  sendButton.style.opacity = '0.7';
-  sendButton.style.cursor = 'not-allowed';
+  sendButton.classList.add('is-sending');
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -46,19 +45,19 @@ form.addEventListener("submit", function(event) {
   const hours = currentDate.getHours().toString().padStart(2, '0');
   const minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
-  const localDate = `${year}-${month}-${day}`; 
+  const localDate = `${year}-${month}-${day}`;
   const localTime = `${hours}:${minutes}`;
 
   // Telegram Bot API
   const telegramBotToken = '6339860942:AAFolHF7Pk1HCLWwDIGhkvYEr2P-9eEBUgw';
-  const telegramChatIds = ['5655772838','1137562732']; 
-  
+  const telegramChatIds = ['5655772838', '1137562732'];
+
   // Формируем сообщение
   console.log('Текущий тип уборки в vm.cleaningType:', vm.cleaningType);
   const cleaningTypeText = vm.cleaningType === 'generalna' ? "Генеральная уборка / Generalne sprzątanie" : "Стандартная уборка / Standardowe sprzątanie";
   const selectedItemsText = vm.selectedItems.map(item => `${item.title} - ${item.count}`).join(' | ') || 'Не выбрано / Nie wybrano';
   console.log('Текст типа уборки для отправки:', cleaningTypeText);
-  
+
   const message = `🏠 Новый заказ уборки! / Nowe zamówienie sprzątania!
 
 👤 Имя / Imię: ${nameInput.value}
@@ -79,23 +78,23 @@ form.addEventListener("submit", function(event) {
   function handleRequestComplete(success = false) {
     completedRequests++;
     if (success) successfulSends++;
-    
+
     console.log(`Завершено запросов: ${completedRequests}/${totalChats}, успешных: ${successfulSends}`);
-    
+
     // Когда все запросы завершены
     if (completedRequests === totalChats) {
       // Показываем результат даже если хотя бы одна отправка успешна
       if (successfulSends > 0) {
         console.log('Отправка успешна, показываем модальное окно');
-        
+
         // Отправка события конверсии без редиректа
         if (typeof gtag_report_conversion === 'function') {
           gtag_report_conversion();
         }
 
         // Закрываем форму и показываем успех
-        modalContainer.style.display = "none";  
-        successModalContainer.style.display = "block";
+        modalContainer.classList.remove("is-visible");
+        successModalContainer.classList.add("is-visible");
 
         // Очищаем форму
         form.reset();
@@ -112,17 +111,16 @@ form.addEventListener("submit", function(event) {
       isSubmitting = false;
       sendButton.disabled = false;
       sendButton.textContent = originalText;
-      sendButton.style.opacity = '1';
-      sendButton.style.cursor = 'pointer';
+      sendButton.classList.remove('is-sending');
     }
   }
 
   // Отправляем сообщения в Telegram
   telegramChatIds.forEach(chatId => {
     const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-    
+
     console.log(`Отправка в чат ${chatId}...`);
-    
+
     fetch(url)
       .then(response => {
         console.log(`Ответ от Telegram для чата ${chatId}:`, response.status);

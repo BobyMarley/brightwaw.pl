@@ -1009,16 +1009,16 @@
           <h3 class="ref-footer-title">Media społecznościowe</h3>
           <div class="ref-footer-socials">
             <a href="https://facebook.com/BrightHouseWaw" class="ref-footer-social-icon" title="Facebook">
-              <img src="/public/facebook.svg" alt="Facebook" style="width:18px;height:18px;">
+              <img src="/public/facebook.svg" alt="Facebook">
             </a>
             <a href="https://instagram.com/cleaning_bright_house/" class="ref-footer-social-icon" title="Instagram">
-              <img src="/public/insta.svg" alt="Instagram" style="width:18px;height:18px;">
+              <img src="/public/insta.svg" alt="Instagram">
             </a>
             <a href="https://t.me/BrightHouse_Cleaning" class="ref-footer-social-icon" title="Telegram">
-              <img src="/public/tg.svg" alt="Telegram" style="width:18px;height:18px;">
+              <img src="/public/tg.svg" alt="Telegram">
             </a>
             <a href="https://wa.me/message/B3AQALEBNNLJH1" class="ref-footer-social-icon" title="WhatsApp">
-              <img src="/public/whatsapp.svg" alt="WhatsApp" style="width:18px;height:18px;">
+              <img src="/public/whatsapp.svg" alt="WhatsApp">
             </a>
           </div>
         </div>
@@ -1093,7 +1093,7 @@
         fetch(`/data/pl/tabData_pl_${type}.json`).then(r => r.json()).then(data => {
           const content = document.querySelector(`.cleaning-content[data-room="${room}"]`);
           const d = data[room];
-          content.innerHTML = `<div><h2 style="font-size:1.5rem;font-weight:600;color:#2c3e50;margin:0 0 0.5rem 0;">${d.title}</h2><p style="font-size:1rem;color:#7f8c8d;margin:0 0 1.5rem 0;">${d.description}</p><ul>${d.items.map(i => i === '<br>' ? '' : '<li><i class="fa-solid fa-check"></i><span>' + i + '</span></li>').join('')}</ul></div><div class="cleaning-image"><img src="/public/rooms/${roomImages[room]}" alt="${d.title}"></div>`;
+          content.innerHTML = `<div><h2 class="room-title">${d.title}</h2><p class="room-description">${d.description}</p><ul>${d.items.map(i => i === '<br>' ? '' : '<li><i class="fa-solid fa-check"></i><span>' + i + '</span></li>').join('')}</ul></div><div class="cleaning-image"><img src="/public/rooms/${roomImages[room]}" alt="${d.title}"></div>`;
         });
       }
 

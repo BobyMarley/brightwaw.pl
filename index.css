@@ -1403,8 +1403,7 @@ section.what_cleaning {
 
 .what_cleaning>div {
   max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
+  margin: 0 auto;  
 }
 
 .cleaning-type-btn {
@@ -1543,7 +1542,7 @@ section.what_cleaning {
 
 section.cards {
   padding: 80px 24px;
-  width: 100%;
+  width: 90%;
   background: #fff;
 }
 
@@ -1551,8 +1550,7 @@ section.cards-input {
   padding: 0;
 }
 
-.cards h2 {
-  font-weight: 700;
+.cards h2 {  
   text-align: center;
   font-size: 36px;
   margin: 0 0 16px 0;
@@ -1596,8 +1594,7 @@ section.cards-input {
 
 .card-content h3 {
   margin: 0 0 16px 0;
-  color: #2c3e50;
-  font-weight: 700;
+  color: #2c3e50;  
   font-size: 24px;
   text-align: center;
 }
@@ -2142,8 +2139,7 @@ span.price-value {
 
 .faq h2 {
   text-align: center;
-  font-size: 42px;
-  font-weight: 300;
+  font-size: 42px;  
   color: var(--text-dark);
   margin-bottom: 80px;
   letter-spacing: -0.5px;
@@ -3558,8 +3554,7 @@ button#send:disabled {
     font-size: 1.1rem;
   }
 
-  .cta-buttons {
-    flex-direction: column;
+  .cta-buttons {    
     gap: 1rem;
   }
 
@@ -3593,9 +3588,7 @@ button#send:disabled {
   margin-bottom: 2rem;
 }
 
-.ref-footer-col {
-  /* Container for column content */
-}
+
 
 .ref-footer-title {
   font-size: 1.2rem;
@@ -3694,4 +3687,38 @@ button#send:disabled {
   color: rgba(255, 255, 255, 0.6);
   margin: 0.3rem 0;
   font-family: var(--main-font);
+}
+
+/* Utility Classes for JS State Management */
+.is-hidden {
+  display: none !important;
+}
+
+.is-visible {
+  display: flex !important;
+}
+
+.is-sending {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Dynamic Room Content */
+.room-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 0.5rem 0;
+}
+
+.room-description {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0 0 1.5rem 0;
+}
+
+/* Footer Icons */
+.ref-footer-social-icon img {
+  width: 18px;
+  height: 18px;
 }
