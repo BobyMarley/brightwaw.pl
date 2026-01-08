@@ -222,7 +222,7 @@
   <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="/index.css?ver6" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/index.css?ver7" media="print" onload="this.media='all'">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3E🛀%3C/text%3E%3C/svg%3E" />
   <script src="https://unpkg.com/imask"></script>
@@ -383,8 +383,8 @@
               <i class="fa-solid fa-hand-holding-dollar"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Przejrzyste ceny</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">Bez ukrytych opłat</div>
+              <div class="benefit-text-title">Przejrzyste ceny</div>
+              <div class="benefit-text-desc">Bez ukrytych opłat</div>
             </div>
           </div>
           <div class="benefit-card-3d">
@@ -392,8 +392,8 @@
               <i class="fa-solid fa-gift"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Rabat 10%</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">Przy pierwszym zamówieniu</div>
+              <div class="benefit-text-title">Rabat 10%</div>
+              <div class="benefit-text-desc">Przy pierwszym zamówieniu</div>
             </div>
           </div>
           <div class="benefit-card-3d">
@@ -401,8 +401,8 @@
               <i class="fa-solid fa-bolt-lightning"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Szybki dojazd</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">W ciągu 2 godzin</div>
+              <div class="benefit-text-title">Szybki dojazd</div>
+              <div class="benefit-text-desc">W ciągu 2 godzin</div>
             </div>
           </div>
         </div>
@@ -410,14 +410,11 @@
     </section>
 
     <section class="what_cleaning">
-      <div style="max-width:1200px;margin:0 auto;">
-        <h2 id="cleaning-type-heading"
-          style="text-align:center;font-size:2.25rem;font-weight:700;color:#2c3e50;margin:0 0 1rem 0;">Co zawiera
-          sprzątanie standardowe</h2>
-        <p style="text-align:center;font-size:1rem;color:#7f8c8d;margin:0 0 2rem 0;">Szczegółowa lista prac dla każdego
-          pomieszczenia</p>
+      <div class="section-container">
+        <h2 id="cleaning-type-heading" class="section-title">Co zawiera sprzątanie standardowe</h2>
+        <p class="section-subtitle">Szczegółowa lista prac dla każdego pomieszczenia</p>
 
-        <div style="display:flex;justify-content:center;gap:1rem;margin-bottom:2.5rem;">
+        <div class="button-group">
           <button class="cleaning-type-btn active" data-type="kompleksowa">
             <i class="fa-solid fa-broom"></i> Sprzątanie standardowe
           </button>
@@ -441,96 +438,59 @@
         </div>
       </div>
     </section>
-    <section class="full-width-section" style="background:#fdfdfd;">
+    <section class="full-width-section section-light">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem;">
-          Profesjonalne Sprzątanie Warszawa - Kompleksowa Obsługa</h2>
-        <p style="text-align:center;color:var(--text-gray);margin-bottom:3rem;max-width:800px;margin:0 auto 3rem;">
-          Kompleksowe usługi sprzątania dostosowane do Twoich potrzeb. Pracujemy 7 dni w tygodniu.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
-          <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏠 Mieszkania</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Standardowe sprzątanie od 160
-              zł. Idealne na co dzień.</p>
+        <h2 class="section-title" style="font-size:2rem;color:var(--primary);">Profesjonalne Sprzątanie Warszawa -
+          Kompleksowa Obsługa</h2>
+        <p class="section-subtitle-lg">Kompleksowe usługi sprzątania dostosowane do Twoich potrzeb. Pracujemy 7 dni w
+          tygodniu.</p>
+        <div class="service-grid">
+          <div class="service-card">
+            <h3>🏠 Mieszkania</h3>
+            <p>Standardowe sprzątanie od 160 zł. Idealne na co dzień.</p>
           </div>
-          <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">✨ Generalne</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Głębokie doczyszczanie
-              wszystkich powierzchni i detali.</p>
+          <div class="service-card">
+            <h3>✨ Generalne</h3>
+            <p>Głębokie doczyszczanie wszystkich powierzchni i detali.</p>
           </div>
-          <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏡 Domy</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Kompleksowa obsługa dużych
-              powierzchni mieszkalnych.</p>
+          <div class="service-card">
+            <h3>🏡 Domy</h3>
+            <p>Kompleksowa obsługa dużych powierzchni mieszkalnych.</p>
           </div>
-          <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🧱 Po Remoncie</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Usuwanie pyłu pobudowlanego i
-              resztek farby.</p>
+          <div class="service-card">
+            <h3>🧱 Po Remoncie</h3>
+            <p>Usuwanie pyłu pobudowlanego i resztek farby.</p>
           </div>
-          <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏢 Biura</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Regularne sprzątanie firm i
-              lokali komercyjnych.</p>
+          <div class="service-card">
+            <h3>🏢 Biura</h3>
+            <p>Regularne sprzątanie firm i lokali komercyjnych.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- SEO: Districts Section -->
-    <section class="full-width-section" style="background:linear-gradient(135deg,#f8f9fa 0%,#eef2f5 100%);">
+    <section class="full-width-section section-gradient">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem;">Wszystkie
-          Dzielnice Warszawy</h2>
-        <p style="text-align:center;color:var(--text-gray);margin-bottom:3rem;max-width:800px;margin:0 auto 3rem;">
-          Dojazd
-          gratis w całej Warszawie! Pracujemy we wszystkich dzielnicach 7 dni w tygodniu.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:3rem;">
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Mokotów</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Ursynów</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Wilanów</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Śródmieście</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Wola</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Żoliborz</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Praga</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Bemowo</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Bielany</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Ochota</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Białołęka</div>
-          <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
-            📍 Targówek</div>
-        </div>
-        <div style="text-align:center;">
-          <a href="tel:+48888742534"
-            style="text-decoration:none;color:var(--primary);font-weight:700;font-size:1.1rem;display:inline-flex;align-items:center;gap:0.5rem;">
+        <h2 class="section-title" style="font-size:2rem;color:var(--primary);">Wszystkie Dzielnice Warszawy</h2>
+        <p class="section-subtitle-lg">Dojazd gratis w całej Warszawie! Pracujemy we wszystkich dzielnicach 7 dni w
+          tygodniu.</p>
+        <ul class="district-grid">
+          <li class="district-badge">📍 Mokotów</li>
+          <li class="district-badge">📍 Ursynów</li>
+          <li class="district-badge">📍 Wilanów</li>
+          <li class="district-badge">📍 Śródmieście</li>
+          <li class="district-badge">📍 Wola</li>
+          <li class="district-badge">📍 Żoliborz</li>
+          <li class="district-badge">📍 Praga</li>
+          <li class="district-badge">📍 Bemowo</li>
+          <li class="district-badge">📍 Bielany</li>
+          <li class="district-badge">📍 Ochota</li>
+          <li class="district-badge">📍 Białołęka</li>
+          <li class="district-badge">📍 Targówek</li>
+        </ul>
+        <div class="text-center">
+          <a href="tel:+48888742534" class="phone-link">
             📞 Sprawdź dostępność w Twojej dzielnicy: +48 888 742 534
           </a>
         </div>
@@ -538,162 +498,118 @@
     </section>
 
     <!-- SEO: Pricing Section -->
-    <section style="padding:5rem 1.5rem;background:#fff;">
-      <div style="max-width:1200px;margin:0 auto;">
-        <h2 style="text-align:center;font-size:2.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">Cennik
-          Sprzątania Warszawa - Przejrzyste Ceny</h2>
-        <p
-          style="text-align:center;font-size:1.1rem;color:#7f8c8d;margin-bottom:3rem;max-width:800px;margin-left:auto;margin-right:auto;">
-          Oferujemy konkurencyjne ceny na wszystkie usługi sprzątania w Warszawie. Bez ukrytych opłat. Rabat 10% dla
-          nowych klientów.</p>
+    <section class="section-padded">
+      <div class="section-container">
+        <h2 class="section-title" style="font-size:2.5rem;margin-bottom:1rem;">Cennik Sprzątania Warszawa - Przejrzyste
+          Ceny</h2>
+        <p class="section-subtitle-lg">Oferujemy konkurencyjne ceny na wszystkie usługi sprzątania w Warszawie. Bez
+          ukrytych opłat. Rabat 10% dla nowych klientów.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:3rem;">
-          <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;position:relative;overflow:hidden;">
-            <div
-              style="position:absolute;top:0;right:0;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;padding:.5rem 1.5rem;border-bottom-left-radius:12px;font-weight:600;font-size:.85rem;">
-              POPULARNE</div>
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🧹 Sprzątanie Standardowe
-              </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">160 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-badge">POPULARNE</div>
+            <div class="pricing-header">
+              <div class="pricing-title">🧹 Sprzątanie Standardowe</div>
+              <div class="pricing-amount">160 zł</div>
+              <div class="pricing-period">od / mieszkanie</div>
             </div>
-            <ul class="price-card-features">
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Odkurzanie wszystkich
-                  pomieszczeń</span>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Odkurzanie wszystkich pomieszczeń</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie podłóg</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Mycie podłóg</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie łazienki i
-                  kuchni</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Czyszczenie łazienki i kuchni</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wycieranie kurzu</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Wycieranie kurzu</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wynoszenie śmieci</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Wynoszenie śmieci</span>
               </li>
             </ul>
-            <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
-              Zamów teraz</a>
+            <a href="tel:+48888742534" class="pricing-cta">☎ Zamów teraz</a>
           </div>
 
-          <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;">
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">✨ Sprzątanie Generalne
-              </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">510 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <div class="pricing-title">✨ Sprzątanie Generalne</div>
+              <div class="pricing-amount">510 zł</div>
+              <div class="pricing-period">od / mieszkanie</div>
             </div>
-            <ul class="price-card-features">
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wszystko ze sprzątania
-                  standardowego</span>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Wszystko ze sprzątania standardowego</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie okien od
-                  wewnątrz</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Mycie okien od wewnątrz</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie szaf i
-                  szafek</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Czyszczenie szaf i szafek</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Pranie dywanów i
-                  tapicerki</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Pranie dywanów i tapicerki</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie trudno
-                  dostępnych miejsc</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Czyszczenie trudno dostępnych miejsc</span>
               </li>
             </ul>
-            <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
-              Zamów teraz</a>
+            <a href="tel:+48888742534" class="pricing-cta">☎ Zamów teraz</a>
           </div>
 
-          <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;">
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🔨 Sprzątanie Po Remoncie
-              </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">450 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <div class="pricing-title">🔨 Sprzątanie Po Remoncie</div>
+              <div class="pricing-amount">450 zł</div>
+              <div class="pricing-period">od / mieszkanie</div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0 0 1.5rem 0;display:flex;flex-direction:column;gap:0.5rem;">
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Usuwanie kurzu
-                  budowlanego</span>
+            <ul class="pricing-features">
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Usuwanie kurzu budowlanego</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie plam po
-                  farbie</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Czyszczenie plam po farbie</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie okien i ram</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Mycie okien i ram</span>
               </li>
-              <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie wszystkich
-                  powierzchni</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Czyszczenie podłóg po remoncie</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Profesjonalny sprzęt
-                  przemysłowy</span>
+              <li class="pricing-feature">
+                <i class="fa-solid fa-check"></i> <span>Usuwanie resztek materiałów budowlanych</span>
               </li>
             </ul>
-            <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
-              Zamów teraz</a>
+            <a href="tel:+48888742534" class="pricing-cta">☎ Zamów teraz</a>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🏡 Sprzątanie Domów</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 400 zł</div>
+        <div class="price-info-grid">
+          <div class="price-info-card">
+            <div class="price-info-title">🏡 Sprzątanie Domów</div>
+            <div class="price-info-amount">od 400 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🏢 Sprzątanie Biur</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 300 zł</div>
+          <div class="price-info-card">
+            <div class="price-info-title">🏢 Sprzątanie Biur</div>
+            <div class="price-info-amount">od 300 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">💇 Sprzątanie Salonów</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 350 zł</div>
+          <div class="price-info-card">
+            <div class="price-info-title">💇 Sprzątanie Salonów</div>
+            <div class="price-info-amount">od 350 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🛍️ Sprzątanie Sklepów
-            </div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 400 zł</div>
+          <div class="price-info-card">
+            <div class="price-info-title">🛍️ Sprzątanie Sklepów</div>
+            <div class="price-info-amount">od 400 zł</div>
           </div>
         </div>
 
-        <div
-          style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg,rgba(15,133,201,.05) 0%,rgba(30,144,255,.05) 100%);border-radius:16px;border:2px dashed #0f85c9;text-align:center;">
-          <h3 style="font-size:1.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">🎁 Rabat 10% dla Nowych
-            Klientów!</h3>
-          <p style="color:#7f8c8d;font-size:1.1rem;margin-bottom:1.5rem;">Przy pierwszym zamówieniu sprzątania
-            standardowego lub generalnego otrzymasz rabat 10%. Zadzwoń i sprawdź ostateczną cenę!</p>
-          <a href="tel:+48888742534"
-            style="display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;font-size:1.1rem;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
-            +48 888 742 534</a>
+        <div class="promo-box">
+          <h3>🎁 Rabat 10% dla Nowych Klientów!</h3>
+          <p>Przy pierwszym zamówieniu sprzątania standardowego lub generalnego otrzymasz rabat 10%. Zadzwoń i sprawdź
+            ostateczną cenę!</p>
+          <a href="tel:+48888742534" class="promo-cta">☎ +48 888 742 534</a>
         </div>
       </div>
     </section>

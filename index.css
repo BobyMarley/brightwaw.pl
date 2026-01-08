@@ -414,6 +414,299 @@ body {
   flex-wrap: wrap;
 }
 
+.benefit-text-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 6px;
+}
+
+.benefit-text-desc {
+  font-size: 14px;
+  color: #7f8c8d;
+  line-height: 1.5;
+}
+
+/* Section Headers */
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0 0 2rem 0;
+}
+
+.section-subtitle-lg {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-padded {
+  padding: 5rem 1.5rem;
+  background: #fff;
+}
+
+.section-light {
+  background: #fdfdfd;
+}
+
+/* Service Cards */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+}
+
+.service-card {
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border-top: 4px solid var(--primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.service-card p {
+  color: var(--text-gray);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.section-gradient {
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef2f5 100%);
+}
+
+/* District Grid */
+.district-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+  list-style: none;
+  padding: 0;
+  margin-left: 0;
+}
+
+.district-badge {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.phone-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Price Info Cards */
+.price-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.price-info-card {
+  padding: 1.8rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.price-info-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.price-info-amount {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f85c9;
+}
+
+/* Promo Box */
+.promo-box {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(15, 133, 201, 0.05) 0%, rgba(30, 144, 255, 0.05) 100%);
+  border-radius: 16px;
+  border: 2px dashed #0f85c9;
+  text-align: center;
+}
+
+.promo-box h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.promo-box p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.promo-cta {
+  display: inline-block;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(15, 133, 201, 0.3);
+}
+
+/* ===========================================
+   PRICING CARDS
+   =========================================== */
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.pricing-card {
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e9ecef;
+  position: relative;
+  overflow: hidden;
+}
+
+.pricing-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-bottom-left-radius: 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.pricing-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.pricing-amount {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0f85c9;
+  line-height: 1;
+}
+
+.pricing-period {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin-top: 0.3rem;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pricing-feature {
+  padding: 0.6rem 0;
+  color: #7f8c8d;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.pricing-feature:last-child {
+  border-bottom: none;
+}
+
+.pricing-feature i {
+  color: #0f85c9;
+  margin-top: 4px;
+}
+
+.pricing-cta {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(15, 133, 201, 0.3);
+}
+
+.pricing-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 133, 201, 0.4);
+  color: #fff;
+  text-decoration: none;
+}
+
 /* ===========================================
    НАВИГАЦИЯ И ШАПКА
    =========================================== */
