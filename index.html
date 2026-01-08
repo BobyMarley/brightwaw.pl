@@ -222,7 +222,7 @@
   <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="/index.css?ver7" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="/index.css?ver8">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3E🛀%3C/text%3E%3C/svg%3E" />
   <script src="https://unpkg.com/imask"></script>
@@ -615,474 +615,336 @@
     </section>
 
     <!-- SEO: Reviews Section -->
-    <section style="padding:5rem 1.5rem;background:#fff;">
-      <div style="max-width:1200px;margin:0 auto;">
-        <h2 style="text-align:center;font-size:2.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">Co Mówią Nasi
-          Klienci</h2>
-        <p style="text-align:center;font-size:1.1rem;color:#7f8c8d;margin-bottom:1rem;">⭐ Ocena 4.9/5 na Google i Booksy
-          • 280+ pozytywnych opinii</p>
-        <p style="text-align:center;font-size:1rem;color:#0f85c9;font-weight:600;margin-bottom:3rem;">2500+ zadowolonych
-          klientów poleca nasze usługi sprzątania</p>
+    <section class="section-padded">
+      <div class="section-container">
+        <h2 class="section-title" style="font-size:2.5rem;">Co Mówią Nasi Klienci</h2>
+        <p class="section-subtitle-lg">⭐ Ocena 4.9/5 na Google i Booksy • 280+ pozytywnych opinii</p>
+        <p class="review-highlight">2500+ zadowolonych klientów poleca nasze usługi sprzątania</p>
 
-        <div
-          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:2.5rem;">
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">
+            <p class="review-text">
               "Profesjonalne sprzątanie mieszkania na Mokotowie. Ekipa przyjechała punktualnie, sprzątali 3 godziny.
-              Mieszkanie lśni jak nowe! Polecam sprzątanie standardowe - super jakość za rozsądną cenę."</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                AK</div>
+              Mieszkanie lśni jak nowe! Polecam sprzątanie standardowe - super jakość za rozsądną cenę."
+            </p>
+            <div class="review-author">
+              <div class="review-avatar">AK</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Anna Kowalska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Mokotów, Warszawa</div>
+                <div class="review-author-name">Anna Kowalska</div>
+                <div class="review-author-location">Mokotów, Warszawa</div>
               </div>
             </div>
           </div>
 
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Zamówiłem
-              sprzątanie po remoncie. Ekipa usunęła cały kurz budowlany, wymyła plamy po farbie. Używają profesjonalnego
-              sprzętu Kärcher. Najlepsza firma sprzątająca w Warszawie!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                MN</div>
+            <p class="review-text">"Zamówiłem sprzątanie po remoncie. Ekipa usunęła cały kurz budowlany, wymyła plamy po
+              farbie. Używają profesjonalnego sprzętu Kärcher. Najlepsza firma sprzątająca w Warszawie!"</p>
+            <div class="review-author">
+              <div class="review-avatar">MN</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Marek Nowak</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Ursynów, Warszawa</div>
+                <div class="review-author-name">Marek Nowak</div>
+                <div class="review-author-location">Ursynów, Warszawa</div>
               </div>
             </div>
           </div>
 
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
-              generalne domu w Wilanowie. Ekipa sprzątała 6 godzin - wymyła okna, wyprali dywany, wyczyścili szafy.
-              Używają ekologicznych środków, bezpiecznych dla dzieci. Goraco polecam!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                KW</div>
+            <p class="review-text">"Sprzątanie generalne domu w Wilanowie. Ekipa sprzątała 6 godzin - wymyła okna,
+              wyprali dywany, wyczyścili szafy. Używają ekologicznych środków, bezpiecznych dla dzieci. Goraco polecam!"
+            </p>
+            <div class="review-author">
+              <div class="review-avatar">KW</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Katarzyna Wiśniewska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Wilanów, Warszawa</div>
+                <div class="review-author-name">Katarzyna Wiśniewska</div>
+                <div class="review-author-location">Wilanów, Warszawa</div>
               </div>
             </div>
           </div>
 
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
-              biura w Śródmieściu. Ekipa przyjechała po godzinach pracy, sprzątali 4 godziny. Rano biuro było idealnie
-              czyste. Polecam usługi sprzątania dla firm!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                PK</div>
+            <p class="review-text">"Sprzątanie biura w Śródmieściu. Ekipa przyjechała po godzinach pracy, sprzątali 4
+              godziny. Rano biuro było idealnie czyste. Polecam usługi sprzątania dla firm!"</p>
+            <div class="review-author">
+              <div class="review-avatar">PK</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Piotr Kamiński</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Śródmieście, Warszawa</div>
+                <div class="review-author-name">Piotr Kamiński</div>
+                <div class="review-author-location">Śródmieście, Warszawa</div>
               </div>
             </div>
           </div>
 
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
-              salonu kosmetycznego na Woli. Ekipa dezynfekuje wszystkie powierzchnie, myje lustra i witryny. Utrzymują
-              najwyższe standardy higieny. Polecam cleaning Warszawa!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                EZ</div>
+            <p class="review-text">"Sprzątanie salonu kosmetycznego na Woli. Ekipa dezynfekuje wszystkie powierzchnie,
+              myje lustra i witryny. Utrzymują najwyższe standardy higieny. Polecam cleaning Warszawa!"</p>
+            <div class="review-author">
+              <div class="review-avatar">EZ</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Ewa Zielińska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Wola, Warszawa</div>
+                <div class="review-author-name">Ewa Zielińska</div>
+                <div class="review-author-location">Wola, Warszawa</div>
               </div>
             </div>
           </div>
 
-          <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+          <div class="review-card">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
-              mieszkania na Żoliborzu. Zamówiłam przez telefon, ekipa przyjechała w 2 godziny. Sprzątali szybko i
-              dokładnie. Cena przejrzysta, bez ukrytych opłat. Polecam!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
-              <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
-                JS</div>
+            <p class="review-text">"Sprzątanie mieszkania na Żoliborzu. Zamówiłam przez telefon, ekipa przyjechała w 2
+              godziny. Sprzątali szybko i dokładnie. Cena przejrzysta, bez ukrytych opłat. Polecam!"</p>
+            <div class="review-author">
+              <div class="review-avatar">JS</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Joanna Szymczak</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Żoliborz, Warszawa</div>
+                <div class="review-author-name">Joanna Szymczak</div>
+                <div class="review-author-location">Żoliborz, Warszawa</div>
               </div>
             </div>
           </div>
         </div>
 
-        <div
-          style="text-align:center;padding:2.5rem;background:linear-gradient(135deg,rgba(15,133,201,.05) 0%,rgba(30,144,255,.05) 100%);border-radius:16px;">
-          <h3 style="font-size:1.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">🌟 Zobacz Więcej Opinii na
-            Google</h3>
-          <p style="color:#7f8c8d;font-size:1rem;margin-bottom:1.5rem;">Przeczytaj 280+ pozytywnych opinii od naszych
-            klientów na Google i Booksy</p>
-          <a href="https://g.page/r/CQmCteFzMdvWEB0" target="_blank" rel="noopener"
-            style="display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;font-size:1.1rem;box-shadow:0 4px 15px rgba(15,133,201,.3);">Zobacz
-            opinie na Google</a>
+        <div class="reviews-cta-box">
+          <h3>🌟 Zobacz Więcej Opinii na Google</h3>
+          <p>Przeczytaj 280+ pozytywnych opinii od naszych klientów na Google i Booksy</p>
+          <a href="https://g.page/r/CQmCteFzMdvWEB0" target="_blank" rel="noopener" class="promo-cta">Zobacz opinie na
+            Google</a>
         </div>
       </div>
     </section>
 
-    <section class="benefits"
-      style="padding:5rem 1.5rem;width:100%;background:linear-gradient(135deg,rgba(255,255,255,.95) 0%,rgba(240,248,255,.98) 100%);position:relative;overflow:hidden;">
-      <div style="max-width:1200px;margin:0 auto;position:relative;z-index:1;">
-        <h2
-          style="text-align:center;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;color:var(--text-dark);margin-bottom:1rem;">
-          Dlaczego Wybierają BrightHouse?</h2>
-        <p
-          style="text-align:center;color:var(--text-gray);font-size:1.1rem;margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto;">
-          Ponad 2500 zadowolonych klientów ufa nam sprzątanie swoich domów</p>
-        <p
-          style="text-align:center;color:#0f85c9;font-size:1.15rem;font-weight:700;margin-bottom:3rem;max-width:700px;margin-left:auto;margin-right:auto;">
-          🇵🇱 Polska firma • Polski zespół • Obsługa w języku polskim</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-bolt"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Szybki Wyjazd</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Przyjeżdżamy w ciągu 2 godzin od
-              zamówienia. Pracujemy 7 dni w tygodniu od 8:00 do 20:00</p>
+    <section class="benefits benefits-section">
+      <div class="benefits-container">
+        <h2 class="benefits-title">Dlaczego Wybierają BrightHouse?</h2>
+        <p class="benefits-subtitle">Ponad 2500 zadowolonych klientów ufa nam sprzątanie swoich domów</p>
+        <p class="benefits-highlight">🇵🇱 Polska firma • Polski zespół • Obsługa w języku polskim</p>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>Szybki Wyjazd</h3>
+            <p>Przyjeżdżamy w ciągu 2 godzin od zamówienia. Pracujemy 7 dni w tygodniu od 8:00 do 20:00</p>
           </div>
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-trophy"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Profesjonalny Sprzęt
-            </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Używamy sprzętu Kärcher i ekologicznych
-              środków. Bezpieczne dla dzieci i zwierząt</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-trophy"></i></div>
+            <h3>Profesjonalny Sprzęt</h3>
+            <p>Używamy sprzętu Kärcher i ekologicznych środków. Bezpieczne dla dzieci i zwierząt</p>
           </div>
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-shield-halved"></i>
-            </div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Gwarancja Jakości
-            </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">100% gwarancja na wszystkie usługi. Jeśli
-              nie będziesz zadowolony - przerabiamy za darmo</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Gwarancja Jakości</h3>
+            <p>100% gwarancja na wszystkie usługi. Jeśli nie będziesz zadowolony - przerabiamy za darmo</p>
           </div>
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i
-                class="fa-solid fa-hand-holding-dollar"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Przejrzyste Ceny
-            </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Stała cena bez ukrytych opłat. Rabat 10%
-              przy pierwszym zamówieniu</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+            <h3>Przejrzyste Ceny</h3>
+            <p>Stała cena bez ukrytych opłat. Rabat 10% przy pierwszym zamówieniu</p>
           </div>
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-people-roof"></i>
-            </div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Bezpieczne dla
-              Rodziny</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Ekologiczne środki bez szkodliwych
-              chemikaliów. Bezpieczne dla dzieci i zwierząt domowych</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-people-roof"></i></div>
+            <h3>Bezpieczne dla Rodziny</h3>
+            <p>Ekologiczne środki bez szkodliwych chemikaliów. Bezpieczne dla dzieci i zwierząt domowych</p>
           </div>
-          <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-star"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Ocena 4.9/5</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">280+ pozytywnych opinii na Google i
-              Booksy. Nasi klienci polecają nas swoim znajomym</p>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-star"></i></div>
+            <h3>Ocena 4.9/5</h3>
+            <p>280+ pozytywnych opinii na Google i Booksy. Nasi klienci polecają nas swoim znajomym</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="faq" style="padding:80px 24px;width:100%;background:#f8f9fa;">
-      <div style="max-width:900px;margin:0 auto;">
-        <h2
-          style="text-align:center;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;color:#2c3e50;margin-bottom:1rem;">
-          Często Zadawane Pytania o Sprzątanie w Warszawie</h2>
-        <p style="text-align:center;color:#7f8c8d;font-size:1.1rem;margin-bottom:3rem;">Odpowiedzi na popularne pytania
-          o nasze usługi sprzątania mieszkań, domów i biur</p>
-        <div style="display:flex;flex-direction:column;gap:16px;">
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
-                czasu zajmuje sprzątanie mieszkania?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+    <section class="faq ref-faq-section" aria-label="Często zadawane pytania">
+      <div class="ref-faq-container">
+        <h2 class="ref-faq-title">Często Zadawane Pytania o Sprzątanie w Warszawie</h2>
+        <p class="ref-faq-subtitle">Odpowiedzi na popularne pytania o nasze usługi sprzątania mieszkań, domów i biur</p>
+        <div class="ref-faq-list">
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Ile czasu zajmuje sprzątanie mieszkania?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Standardowe
-                sprzątanie 2-pokojowego mieszkania zajmuje 2-3 godziny. Sprzątanie generalne - 4-6 godzin. Dokładny czas
-                zależy od powierzchni i stopnia zabrudzenia.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jakich środków
-                używają?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Używamy tylko
-                profesjonalnych ekologicznych środków, bezpiecznych dla dzieci i zwierząt. Wszystkie środki są
-                certyfikowane w UE.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
-                muszę być w domu podczas sprzątania?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Nie, to nie jest
-                konieczne. Wielu naszych klientów zostawia klucze i zajmuje się swoimi sprawami. Gwarantujemy
-                bezpieczeństwo i poufność.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jak
-                szybko możecie przyjść?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Przy dostępności
-                wolnych specjalistów możemy przyjść w ciągu 2 godzin. Można również zaplanować sprzątanie na wygodny dla
-                Ciebie czas.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jak
-                takie dzielnice Warszawy obsługujecie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Pracujemy w
-                całej Warszawie i na przedmieściach: Śródmieście, Mokotów, Ursynów, Wilanów, Ochota, Wola, Żoliborz,
-                Praga, Bemowo, Bielany i inne dzielnice.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
-                kosztuje sprzątanie po remoncie w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Sprzątanie po
-                remoncie w Warszawie kosztuje od 450 zł w zależności od powierzchni i stopnia zabrudzenia. Cena obejmuje
-                usuwanie kurzu budowlanego, czyszczenie plam po farbie i mycie okien.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
-                sprzątacie biura i lokale komercyjne?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Tak, oferujemy
-                kompleksowe sprzątanie biur, sklepów, salonów kosmetycznych i innych lokali komercyjnych w Warszawie.
-                Możemy pracować w elastycznych godzinach, również po godzinach pracy.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jaka
-                jest różnica
-                między sprzątaniem standardowym a generalnym?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Sprzątanie
-                standardowe obejmuje podstawowe prace: odkurzanie, mycie podłóg, czyszczenie łazienki i kuchni.
-                Sprzątanie generalne to głębokie czyszczenie wszystkich powierzchni, mycie okien, czyszczenie szaf,
-                pranie dywanów i tapicerki.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
-                kosztuje sprzątanie mieszkania w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Sprzątanie
-                standardowe mieszkania w Warszawie kosztuje od 160 zł, sprzątanie generalne od 350 zł, sprzątanie po
-                remoncie od 450 zł. Dokładna cena zależy od powierzchni i zakresu prac. Oferujemy rabat 10% dla nowych
-                klientów.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
-                sprzątacie w weekendy i święta?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Tak, pracujemy 7
-                dni w tygodniu, również w weekendy i święta. Godziny pracy: 8:00-20:00. Możesz zamówić sprzątanie na
-                wygodny dla Ciebie termin, również w soboty i niedziele.</p>
-            </div>
-          </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jak
-                zamówić sprzątanie mieszkania w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
-            </summary>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Możesz zamówić
-                sprzątanie przez telefon +48 888 742 534, WhatsApp, formularz na stronie lub media społecznościowe.
-                Podaj adres, powierzchnię i preferowany termin. Nasz menedżer skontaktuje się z Tobą w ciągu 15 minut.
+              <p itemprop="text" class="ref-faq-answer">Standardowe sprzątanie 2-pokojowego mieszkania zajmuje 2-3
+                godziny. Sprzątanie generalne - 4-6 godzin. Dokładny czas zależy od powierzchni i stopnia zabrudzenia.
               </p>
             </div>
           </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
-                oferujecie regularne sprzątanie mieszkań?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jakich środków używają?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Tak, oferujemy
-                regularne sprzątanie mieszkań w Warszawie - raz w tygodniu, dwa razy w tygodniu lub codziennie. Przy
-                regularnym sprzątaniu oferujemy specjalne ceny i rabaty. Możesz wybrać stałego specjalistę, który będzie
-                sprzątać Twoje mieszkanie.</p>
+              <p itemprop="text" class="ref-faq-answer">Używamy tylko profesjonalnych ekologicznych środków,
+                bezpiecznych dla dzieci i zwierząt. Wszystkie środki są certyfikowane w UE.</p>
             </div>
           </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
-                sprzątacie małe kawalerki i duże apartamenty?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Czy muszę być w domu podczas sprzątania?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Tak, sprzątamy
-                mieszkania o każdej powierzchni - od małych kawalerek 25m2 po duże apartamenty 200m2+. Cena zależy od
-                powierzchni i zakresu prac. Sprzątamy również domy jednorodzinne, biura i lokale komercyjne.</p>
+              <p itemprop="text" class="ref-faq-answer">Nie, to nie jest konieczne. Wielu naszych klientów zostawia
+                klucze i zajmuje się swoimi sprawami. Gwarantujemy bezpieczeństwo i poufność.</p>
             </div>
           </details>
-          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jakie
-                formy płatności
-                akceptujecie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jak szybko możecie przyjść?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
-                Akceptujemy
-                gotówkę, BLIK i przelew bankowy. Płatność następuje po wykonaniu usługi. Wystawiamy faktury VAT i
-                paragony. Dla firm oferujemy płatność z odroczonym terminem.</p>
+              <p itemprop="text" class="ref-faq-answer">Przy dostępności wolnych specjalistów możemy przyjść w ciągu 2
+                godzin. Można również zaplanować sprzątanie na wygodny dla Ciebie czas.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jakie dzielnice Warszawy obsługujecie?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Pracujemy w całej Warszawie i na przedmieściach: Śródmieście,
+                Mokotów, Ursynów, Wilanów, Ochota, Wola, Żoliborz, Praga, Bemowo, Bielany i inne dzielnice.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Ile kosztuje sprzątanie po remoncie w
+                Warszawie?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Sprzątanie po remoncie w Warszawie kosztuje od 450 zł w
+                zależności od powierzchni i stopnia zabrudzenia. Cena obejmuje usuwanie kurzu budowlanego, czyszczenie
+                plam po farbie i mycie okien.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Czy sprzątacie biura i lokale komercyjne?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Tak, oferujemy kompleksowe sprzątanie biur, sklepów, salonów
+                kosmetycznych i innych lokali komercyjnych w Warszawie. Możemy pracować w elastycznych godzinach,
+                również po godzinach pracy.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jaka jest różnica między sprzątaniem standardowym a
+                generalnym?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Sprzątanie standardowe obejmuje podstawowe prace: odkurzanie,
+                mycie podłóg, czyszczenie łazienki i kuchni. Sprzątanie generalne to głębokie czyszczenie wszystkich
+                powierzchni, mycie okien, czyszczenie szaf, pranie dywanów i tapicerki.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Ile kosztuje sprzątanie mieszkania w Warszawie?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Sprzątanie standardowe mieszkania w Warszawie kosztuje od 160
+                zł, sprzątanie generalne od 350 zł, sprzątanie po remoncie od 450 zł. Dokładna cena zależy od
+                powierzchni i zakresu prac. Oferujemy rabat 10% dla nowych klientów.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Czy sprzątacie w weekendy i święta?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Tak, pracujemy 7 dni w tygodniu, również w weekendy i święta.
+                Godziny pracy: 8:00-20:00. Możesz zamówić sprzątanie na wygodny dla Ciebie termin, również w soboty i
+                niedziele.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jak zamówić sprzątanie mieszkania w Warszawie?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Możesz zamówić sprzątanie przez telefon +48 888 742 534,
+                WhatsApp, formularz na stronie lub media społecznościowe. Podaj adres, powierzchnię i preferowany
+                termin. Nasz menedżer skontaktuje się z Tobą w ciągu 15 minut.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Czy oferujecie regularne sprzątanie mieszkań?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Tak, oferujemy regularne sprzątanie mieszkań w Warszawie - raz w
+                tygodniu, dwa razy w tygodniu lub codziennie. Przy regularnym sprzątaniu oferujemy specjalne ceny i
+                rabaty. Możesz wybrać stałego specjalistę, który będzie sprzątać Twoje mieszkanie.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Czy sprzątacie małe kawalerki i duże
+                apartamenty?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Tak, sprzątamy mieszkania o każdej powierzchni - od małych
+                kawalerek 25m2 po duże apartamenty 200m2+. Cena zależy od powierzchni i zakresu prac. Sprzątamy również
+                domy jednorodzinne, biura i lokale komercyjne.</p>
+            </div>
+          </details>
+          <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="ref-faq-item">
+            <summary class="ref-faq-question">
+              <span itemprop="name" class="ref-faq-question-text">Jakie formy płatności akceptujecie?</span>
+              <i class="fa-solid fa-chevron-down ref-faq-icon"></i>
+            </summary>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <p itemprop="text" class="ref-faq-answer">Akceptujemy gotówkę, BLIK i przelew bankowy. Płatność następuje
+                po wykonaniu usługi. Wystawiamy faktury VAT i paragony. Dla firm oferujemy płatność z odroczonym
+                terminem.</p>
             </div>
           </details>
         </div>

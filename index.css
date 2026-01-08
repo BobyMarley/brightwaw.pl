@@ -600,6 +600,261 @@ body {
   font-weight: 600;
   font-size: 1.1rem;
   box-shadow: 0 4px 15px rgba(15, 133, 201, 0.3);
+  transition: all 0.3s;
+}
+
+.promo-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 133, 201, 0.4);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Calculator Button */
+#show-modal {
+  border-radius: 12px !important;
+}
+
+/* Reviews Section */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.review-card {
+  padding: 2rem;
+  background: #f8f9fa;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.review-stars {
+  display: flex;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.review-stars i {
+  color: #ffc107;
+  font-size: 1.2rem;
+}
+
+.review-text {
+  color: #2c3e50;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.review-author-name {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.review-author-location {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+}
+
+.review-highlight {
+  text-align: center;
+  font-size: 1rem;
+  color: #0f85c9;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.reviews-cta-box {
+  text-align: center;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, rgba(15, 133, 201, 0.05) 0%, rgba(30, 144, 255, 0.05) 100%);
+  border-radius: 16px;
+}
+
+.reviews-cta-box h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.reviews-cta-box p {
+  color: #7f8c8d;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Benefits/Features Section */
+.benefits-section {
+  padding: 5rem 1.5rem;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 248, 255, 0.98) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefits-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.benefits-subtitle {
+  text-align: center;
+  color: var(--text-gray);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.benefits-highlight {
+  text-align: center;
+  color: #0f85c9;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(30, 144, 255, 0.1);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.feature-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  color: #0f85c9;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.feature-card p {
+  color: var(--text-gray);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: 80px 24px;
+  width: 100%;
+  background: #f8f9fa;
+}
+
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.faq-subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.faq-question {
+  padding: 28px 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+}
+
+.faq-question-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.faq-icon {
+  color: #0f85c9;
+  font-size: 20px;
+}
+
+.faq-answer {
+  margin: 0;
+  padding: 0 32px 28px 32px;
+  color: #7f8c8d;
+  line-height: 1.8;
+  font-size: 1rem;
 }
 
 /* ===========================================
@@ -2275,6 +2530,85 @@ small {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* ===========================================
+   FAQ REF-STYLES (STRICT)
+   =========================================== */
+
+.ref-faq-section {
+  padding: 80px 24px;
+  width: 100%;
+  background: #f8f9fa;
+}
+
+.ref-faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.ref-faq-section .ref-faq-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-family: var(--main-font);
+}
+
+.ref-faq-subtitle {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  font-family: var(--main-font);
+}
+
+.ref-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ref-faq-item {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  overflow: hidden;
+}
+
+.ref-faq-question {
+  padding: 28px 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  list-style: none;
+}
+
+.ref-faq-question-text {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+  line-height: 1.5;
+  font-family: var(--main-font);
+}
+
+.ref-faq-icon {
+  color: #0f85c9;
+  font-size: 20px;
+  transition: transform 0.3s;
+}
+
+.ref-faq-answer {
+  margin: 0;
+  padding: 0 32px 28px 32px;
+  color: #7f8c8d;
+  line-height: 1.8;
+  font-size: 1rem;
+  font-family: var(--main-font);
 }
 
 /* ===========================================
