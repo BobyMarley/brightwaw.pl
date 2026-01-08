@@ -36,13 +36,11 @@
   Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
-# Force HTTPS
+# Force HTTPS and remove www in one redirect
 RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC,OR]
 RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# Remove www
-RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteCond %{HTTP_HOST} ^(?:www\.)?(.*)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # Custom Error Pages

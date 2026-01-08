@@ -1,0 +1,672 @@
+.enhanced-workers-schedule {
+  padding: 20px;
+  max-width: 100%;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+/* Заголовок */
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.header-left h1 {
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.week-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.week-range {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.workers-count {
+  font-size: 14px;
+  color: #6b7280;
+  background: #f3f4f6;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.header-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.view-toggle {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.view-toggle button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.view-toggle button.active {
+  background: white;
+  color: #2563eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.week-navigation {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  padding: 10px 16px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.today-btn {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+.today-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Статистика */
+.schedule-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 4px;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Легенда */
+.schedule-legend {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Контейнер расписания */
+.schedule-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.schedule-grid {
+  min-width: 1200px;
+}
+
+/* Заголовок сетки */
+.grid-header {
+  display: grid;
+  grid-template-columns: 280px repeat(7, 1fr);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.time-column-header {
+  padding: 20px;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.time-label {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.worker-label {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.day-header {
+  padding: 16px 12px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  transition: background-color 0.2s;
+}
+
+.day-header.today {
+  background: rgba(255,255,255,0.15);
+}
+
+.day-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.day-date {
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 4px;
+}
+
+.day-orders {
+  font-size: 12px;
+  opacity: 0.8;
+  background: rgba(255,255,255,0.1);
+  padding: 2px 8px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* Секция работника */
+.worker-section {
+  border-bottom: 1px solid #f3f4f6;
+  transition: all 0.3s ease;
+}
+
+.worker-section.selected {
+  background: #fef7ff;
+  border-left: 4px solid #2563eb;
+}
+
+.worker-info {
+  display: grid;
+  grid-template-columns: 280px repeat(7, 1fr);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  background: #fafbfc;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.worker-info:hover {
+  background: #f1f5f9;
+}
+
+.worker-info > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.worker-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.worker-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.worker-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.worker-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 2px;
+}
+
+.worker-position {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 6px;
+}
+
+.worker-stats {
+  display: flex;
+  gap: 12px;
+}
+
+.stat {
+  font-size: 12px;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.expand-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #6b7280;
+  font-size: 18px;
+}
+
+/* Временные слоты */
+.time-slots {
+  display: none;
+}
+
+.worker-section.selected .time-slots {
+  display: block;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: 280px repeat(7, 1fr);
+  border-bottom: 1px solid #f8f9fa;
+}
+
+.time-row .time-label {
+  padding: 8px 20px;
+  font-size: 12px;
+  color: #6b7280;
+  background: #fafbfc;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+.time-cell {
+  min-height: 40px;
+  border-right: 1px solid #f3f4f6;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.time-cell.free:hover {
+  background: #f8f9fa;
+}
+
+.time-cell.occupied {
+  color: white;
+  font-weight: 500;
+}
+
+.order-preview {
+  text-align: center;
+  padding: 4px;
+  width: 100%;
+  position: relative;
+}
+
+.service-type {
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.multiple-orders {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: rgba(0,0,0,0.3);
+  color: white;
+  font-size: 10px;
+  padding: 1px 4px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Детальная информация о работнике */
+.worker-details-expanded {
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #e5e7eb;
+}
+
+.worker-details-expanded h4 {
+  margin: 0 0 16px 0;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.orders-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+.order-item {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.order-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 4px;
+}
+
+.order-service {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.order-address {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.order-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #d97706;
+  border-left-color: #f59e0b;
+}
+
+.status-confirmed {
+  background: #dbeafe;
+  color: #2563eb;
+  border-left-color: #3b82f6;
+}
+
+.status-in_progress {
+  background: #dcfce7;
+  color: #16a34a;
+  border-left-color: #22c55e;
+}
+
+.status-completed {
+  background: #cffafe;
+  color: #0891b2;
+  border-left-color: #06b6d4;
+}
+
+.status-cancelled {
+  background: #fee2e2;
+  color: #dc2626;
+  border-left-color: #ef4444;
+}
+
+/* Загрузка */
+.enhanced-schedule-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid #f3f4f6;
+  border-top: 4px solid #2563eb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.enhanced-schedule-loading p {
+  font-size: 16px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* Экспорт */
+.schedule-export {
+  margin-bottom: 20px;
+}
+
+.export-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.export-btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.excel-btn {
+  background: #217346;
+  color: white;
+}
+
+.excel-btn:hover {
+  background: #1e6b3e;
+}
+
+.csv-btn {
+  background: #6b7280;
+  color: white;
+}
+
+.csv-btn:hover {
+  background: #4b5563;
+}
+
+.print-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.print-btn:hover {
+  background: #1d4ed8;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .enhanced-workers-schedule {
+    padding: 16px;
+  }
+  
+  .schedule-header {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .header-controls {
+    justify-content: space-between;
+  }
+  
+  .schedule-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .schedule-legend {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .schedule-header {
+    padding: 16px;
+  }
+  
+  .header-left h1 {
+    font-size: 24px;
+  }
+  
+  .week-info {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  
+  .header-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .schedule-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .schedule-container {
+    overflow-x: auto;
+  }
+  
+  .grid-header {
+    grid-template-columns: 200px repeat(7, 120px);
+  }
+  
+  .worker-info {
+    grid-template-columns: 200px repeat(7, 120px);
+  }
+  
+  .time-row {
+    grid-template-columns: 200px repeat(7, 120px);
+  }
+  
+  .worker-info > div:first-child {
+    padding: 12px 16px;
+  }
+  
+  .worker-avatar {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .worker-name {
+    font-size: 14px;
+  }
+  
+  .worker-position {
+    font-size: 12px;
+  }
+  
+  .orders-list {
+    grid-template-columns: 1fr;
+  }
+}

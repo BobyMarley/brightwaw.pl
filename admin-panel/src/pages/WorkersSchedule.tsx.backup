@@ -1,0 +1,300 @@
+import React, { useState, useEffect } from 'react';
+import { Calendar, momentLocalizer, View } from 'react-big-calendar';
+import moment from 'moment';
+import 'moment/locale/ru';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
+import { db } from '../firebase';
+import SimpleAdminSchedule from '../components/SimpleAdminSchedule';
+import './WorkersSchedule.css';
+
+moment.locale('ru');
+const localizer = momentLocalizer(moment);
+
+interface Worker {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  position?: string;
+}
+
+interface Order {
+  id: string;
+  assignedWorkerId: string;
+  assignedWorkerName: string;
+  scheduledDate: any;
+  scheduledTime: string;
+  estimatedDuration: number;
+  status: string;
+  serviceType: string;
+  address: string;
+}
+
+interface CalendarEvent {
+  id: string;
+  title: string;
+  start: Date;
+  end: Date;
+  resource: {
+    workerId: string;
+    workerName: string;
+    orderId: string;
+    status: string;
+    serviceType: string;
+    address: string;
+  };
+}
+
+const WorkersSchedule: React.FC = () => {
+  const [workers, setWorkers] = useState<Worker[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [events, setEvents] = useState<CalendarEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [viewMode, setViewMode] = useState<'simple' | 'calendar'>('simple');
+
+  useEffect(() => {
+    loadData();
+  }, [currentDate]);
+
+  const loadData = async () => {
+    try {
+      setLoading(true);
+      
+      // Загружаем работников
+      const workersQuery = query(collection(db, 'workers'));
+      const workersSnapshot = await getDocs(workersQuery);
+      const workersData = workersSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as Worker[];
+      setWorkers(workersData);
+
+      // Загружаем заказы на текущую неделю
+      const startOfWeek = moment(currentDate).startOf('week').toDate();
+      const endOfWeek = moment(currentDate).endOf('week').toDate();
+      
+      const ordersQuery = query(
+        collection(db, 'orders'),
+        where('scheduledDate', '>=', startOfWeek),
+        where('scheduledDate', '<=', endOfWeek),
+        where('assignedWorkerId', '!=', null),
+        orderBy('assignedWorkerId'),
+        orderBy('scheduledDate')
+      );
+      
+      const ordersSnapshot = await getDocs(ordersQuery);
+      const ordersData = ordersSnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as Order[];
+      setOrders(ordersData);
+
+      // Преобразуем заказы в события календаря
+      const calendarEvents = ordersData.map(order => {
+        const startTime = moment(order.scheduledDate.toDate())
+          .set({
+            hour: parseInt(order.scheduledTime.split(':')[0]),
+            minute: parseInt(order.scheduledTime.split(':')[1])
+          }).toDate();
+        
+        const endTime = moment(startTime)
+          .add(order.estimatedDuration || 120, 'minutes')
+          .toDate();
+
+        return {
+          id: order.id,
+          title: `${order.serviceType} - ${order.address}`,
+          start: startTime,
+          end: endTime,
+          resource: {
+            workerId: order.assignedWorkerId,
+            workerName: order.assignedWorkerName,
+            orderId: order.id,
+            status: order.status,
+            serviceType: order.serviceType,
+            address: order.address
+          }
+        };
+      });
+
+      setEvents(calendarEvents);
+    } catch (error) {
+      console.error('Ошибка загрузки данных:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const eventStyleGetter = (event: CalendarEvent) => {
+    const colors = {
+      'pending': '#FFA726',
+      'confirmed': '#42A5F5', 
+      'in_progress': '#66BB6A',
+      'completed': '#26A69A',
+      'cancelled': '#EF5350'
+    };
+
+    return {
+      style: {
+        backgroundColor: colors[event.resource.status as keyof typeof colors] || '#9E9E9E',
+        borderRadius: '4px',
+        opacity: 0.8,
+        color: 'white',
+        border: '0px',
+        display: 'block',
+        fontSize: '12px'
+      }
+    };
+  };
+
+  const CustomEvent = ({ event }: { event: CalendarEvent }) => (
+    <div className="custom-event">
+      <div className="event-title">{event.resource.serviceType}</div>
+      <div className="event-worker">{event.resource.workerName}</div>
+      <div className="event-time">
+        {moment(event.start).format('HH:mm')} - {moment(event.end).format('HH:mm')}
+      </div>
+    </div>
+  );
+
+  if (loading) {
+    return (
+      <div className="schedule-loading">
+        <div className="loading-spinner"></div>
+        <p>Загрузка расписания...</p>
+      </div>
+    );
+  }
+
+  if (viewMode === 'simple') {
+    return (
+      <div className="workers-schedule">
+        <div className="schedule-header">
+          <h1>Расписание работников</h1>
+          <div className="schedule-controls">
+            <button 
+              onClick={() => setViewMode('calendar')}
+              className="nav-button"
+              style={{ marginRight: '10px' }}
+            >
+              Календарный вид
+            </button>
+          </div>
+        </div>
+        <SimpleAdminSchedule />
+      </div>
+    );
+  }
+
+  return (
+    <div className="workers-schedule">
+      <div className="schedule-header">
+        <h1>Расписание работников</h1>
+        <div className="schedule-controls">
+          <button 
+            onClick={() => setViewMode('simple')}
+            className="nav-button"
+            style={{ marginRight: '10px' }}
+          >
+            Простой вид
+          </button>
+          <button 
+            onClick={() => setCurrentDate(moment(currentDate).subtract(1, 'week').toDate())}
+            className="nav-button"
+          >
+            ← Предыдущая неделя
+          </button>
+          <span className="current-week">
+            {moment(currentDate).startOf('week').format('DD.MM')} - {moment(currentDate).endOf('week').format('DD.MM.YYYY')}
+          </span>
+          <button 
+            onClick={() => setCurrentDate(moment(currentDate).add(1, 'week').toDate())}
+            className="nav-button"
+          >
+            Следующая неделя →
+          </button>
+        </div>
+      </div>
+
+      <div className="schedule-legend">
+        <div className="legend-item">
+          <span className="legend-color" style={{ backgroundColor: '#FFA726' }}></span>
+          Ожидает подтверждения
+        </div>
+        <div className="legend-item">
+          <span className="legend-color" style={{ backgroundColor: '#42A5F5' }}></span>
+          Подтвержден
+        </div>
+        <div className="legend-item">
+          <span className="legend-color" style={{ backgroundColor: '#66BB6A' }}></span>
+          В процессе
+        </div>
+        <div className="legend-item">
+          <span className="legend-color" style={{ backgroundColor: '#26A69A' }}></span>
+          Завершен
+        </div>
+        <div className="legend-item">
+          <span className="legend-color" style={{ backgroundColor: '#EF5350' }}></span>
+          Отменен
+        </div>
+      </div>
+
+      <div className="calendar-container">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 600 }}
+          view="week"
+          views={['week']}
+          date={currentDate}
+          onNavigate={setCurrentDate}
+          eventPropGetter={eventStyleGetter}
+          components={{
+            event: CustomEvent
+          }}
+          min={new Date(2024, 0, 1, 8, 0)} // 8:00
+          max={new Date(2024, 0, 1, 22, 0)} // 22:00
+          step={30}
+          timeslots={2}
+          messages={{
+            week: 'Неделя',
+            today: 'Сегодня',
+            previous: 'Назад',
+            next: 'Вперед'
+          }}
+        />
+      </div>
+
+      <div className="workers-summary">
+        <h3>Сводка по работникам</h3>
+        <div className="workers-grid">
+          {workers.map(worker => {
+            const workerOrders = orders.filter(order => order.assignedWorkerId === worker.id);
+            const totalHours = workerOrders.reduce((sum, order) => sum + (order.estimatedDuration || 120), 0) / 60;
+            
+            return (
+              <div key={worker.id} className="worker-card">
+                <h4>{worker.name}</h4>
+                <p>Заказов: {workerOrders.length}</p>
+                <p>Часов: {totalHours.toFixed(1)}</p>
+                <div className="worker-status">
+                  {workerOrders.length > 0 ? (
+                    <span className="status-busy">Занят</span>
+                  ) : (
+                    <span className="status-free">Свободен</span>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WorkersSchedule;

@@ -64,10 +64,14 @@
           const cardId = input.getAttribute("data-card");
           const priceValue = document.querySelector(`#${cardId} .price-value`);
           const selectedType = input.value;
-          priceValue.textContent = cardsData[cardId][selectedType].price;
+          if (cardsData[cardId] && cardsData[cardId][selectedType]) {
+            priceValue.textContent = cardsData[cardId][selectedType].price;
+          }
           
           const heading = document.getElementById("cleaning-type-heading");
-          heading.textContent = selectedType === "standardowe" ? "Co zawiera sprzątanie standardowe" : "Co zawiera sprzątanie generalne";
+          if (heading) {
+            heading.textContent = selectedType === "standardowe" ? "Co zawiera sprzątanie standardowe" : "Co zawiera sprzątanie generalne";
+          }
 
           const fileName = selectedType === "standardowe" ? "tabData_pl_kompleksowa.json" : "tabData_pl_generalna.json";
           const newTabsData = await fetchTabsData(fileName);
@@ -90,17 +94,19 @@
         const tabContent = document.querySelector(`.tab-content[data-item="${tabNumber}"]`);
         const tabDataItem = tabData[tabNumber.toString()];
 
-        tabContent.innerHTML = `
-          <div class="item">
-            <div class="item-text">
-              <h2>${tabDataItem.title}</h2>
-              <h3>${tabDataItem.description}</h3>
-              <ul>
-                ${tabDataItem.items.map(item => `<li>${item}</li>`).join('')}
-              </ul>
+        if (tabContent && tabDataItem) {
+          tabContent.innerHTML = `
+            <div class="item">
+              <div class="item-text">
+                <h2>${tabDataItem.title}</h2>
+                <h3>${tabDataItem.description}</h3>
+                <ul>
+                  ${tabDataItem.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+              </div>
             </div>
-          </div>
-        `;
+          `;
+        }
       });
     } catch (error) {
       console.error("Error while updating tabs: " + error);

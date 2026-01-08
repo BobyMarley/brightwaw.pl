@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Font Awesome Icons</title>
+</head>
+<body>
+    <h1>Downloading Font Awesome Icons...</h1>
+    <div id="status"></div>
+    <script>
+        const icons = [
+            'hand-holding-dollar',
+            'gift',
+            'bolt-lightning',
+            'broom',
+            'sparkles',
+            'couch',
+            'door-open',
+            'kitchen-set',
+            'bath',
+            'bolt',
+            'trophy',
+            'shield-halved',
+            'people-roof',
+            'star',
+            'chevron-down',
+            'check',
+            'arrow-right'
+        ];
+
+        const baseUrl = 'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/6.x/svgs/solid/';
+        const status = document.getElementById('status');
+
+        async function downloadIcon(iconName) {
+            try {
+                const response = await fetch(baseUrl + iconName + '.svg');
+                const svg = await response.text();
+                
+                // Create download link
+                const blob = new Blob([svg], { type: 'image/svg+xml' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = iconName + '.svg';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                status.innerHTML += `<p>✓ Downloaded: ${iconName}.svg</p>`;
+            } catch (error) {
+                status.innerHTML += `<p>✗ Failed: ${iconName}.svg - ${error.message}</p>`;
+            }
+        }
+
+        async function downloadAll() {
+            for (const icon of icons) {
+                await downloadIcon(icon);
+                await new Promise(resolve => setTimeout(resolve, 500)); // Delay between downloads
+            }
+            status.innerHTML += '<h2>Done! All icons downloaded.</h2>';
+        }
+
+        downloadAll();
+    </script>
+</body>
+</html>

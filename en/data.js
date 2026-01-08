@@ -3,11 +3,11 @@
   let currentType='kompleksowa';
   
   function loadRoom(room){
-    const d=roomData[currentType][room];
+    const d=roomData[currentType]?.[room];
     if(!d)return;
     const c=document.querySelector(`.cleaning-content[data-room="${room}"]`);
     const roomImages={'1':'/public/rooms/room.png','2':'/public/rooms/corridor.png','3':'/public/rooms/kitchen.png','4':'/public/rooms/bathroom.png'};
-    if(c)c.innerHTML=`<ul>${d.items.map(i=>`<li><i class="fa-solid fa-check"></i>${i}</li>`).join('')}</ul><div class="cleaning-image"><img src="${roomImages[room]}" alt="${d.title}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" /></div>`;
+    if(c&&d.items)c.innerHTML=`<ul>${d.items.map(i=>`<li><i class="fa-solid fa-check"></i>${i}</li>`).join('')}</ul><div class="cleaning-image"><img src="${roomImages[room]}" alt="${d.title||'Cleaning'}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" /></div>`;
   }
   
   Promise.all([

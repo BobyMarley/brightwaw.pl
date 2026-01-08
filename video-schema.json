@@ -1,0 +1,12 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Химчистка мебели BrightHouse",
+  "description": "Профессиональная химчистка мягкой мебели в Варшаве",
+  "thumbnailUrl": "https://brightwaw.pl/video/video-poster.jpg",
+  "uploadDate": "2024-01-01",
+  "contentUrl": "https://brightwaw.pl/video/video.mp4",
+  "embedUrl": "https://brightwaw.pl/video/video.mp4"
+}
+</script>

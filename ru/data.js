@@ -31,12 +31,12 @@
       <h3>${cardData[cardId][initialType].roomCount}</h3>    
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
       <section class="cards-input">
-        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
-        <label>Стандартная уборка</label>
+        <input type="radio" id="kompleksowa-${cardId}" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
+        <label for="kompleksowa-${cardId}">Стандартная уборка</label>
       </section>
       <section class="cards-input">
-        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
-        <label>Генеральная уборка</label>
+        <input type="radio" id="generalna-${cardId}" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
+        <label for="generalna-${cardId}">Генеральная уборка</label>
       </section>
     `;
 
@@ -64,10 +64,14 @@
           const cardId = input.getAttribute("data-card");
           const priceValue = document.querySelector(`#${cardId} .price-value`);
           const selectedType = input.value;
-          priceValue.textContent = cardsData[cardId][selectedType].price;
+          if (cardsData[cardId] && cardsData[cardId][selectedType]) {
+            priceValue.textContent = cardsData[cardId][selectedType].price;
+          }
 
           const heading = document.getElementById("cleaning-type-heading");
-          heading.textContent = selectedType === "kompleksowa" ? "Что включает стандартная уборка" : "Что включает генеральная уборка";
+          if (heading) {
+            heading.textContent = selectedType === "kompleksowa" ? "Что включает стандартная уборка" : "Что включает генеральная уборка";
+          }
           
           const fileName = selectedType === "kompleksowa" ? "tabData_ru_kompleksowa.json" : "tabData_ru_generalna.json";
           const newTabsData = await fetchTabsData(fileName);

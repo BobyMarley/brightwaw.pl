@@ -54,8 +54,10 @@ form.addEventListener("submit", function(event) {
   const telegramChatIds = ['5655772838','1137562732']; 
   
   // Формируем сообщение
+  console.log('Текущий тип уборки в vm.cleaningType:', vm.cleaningType);
   const cleaningTypeText = vm.cleaningType === 'generalna' ? "Генеральная уборка / Generalne sprzątanie" : "Стандартная уборка / Standardowe sprzątanie";
   const selectedItemsText = vm.selectedItems.map(item => `${item.title} - ${item.count}`).join(' | ') || 'Не выбрано / Nie wybrano';
+  console.log('Текст типа уборки для отправки:', cleaningTypeText);
   
   const message = `🏠 Новый заказ уборки! / Nowe zamówienie sprzątania!
 

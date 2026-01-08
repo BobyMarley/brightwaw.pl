@@ -32,11 +32,11 @@
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
       <section class="cards-input">
         <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked>
-        <label>Стандартная ўборка</label>
+        <label>Стандартнае прыбіранне</label>
       </section>
       <section class="cards-input">
         <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
-        <label>Генеральная ўборка</label>
+        <label>Генеральнае прыбіранне</label>
       </section>
     `;
 
@@ -51,8 +51,10 @@
       ]);
 
       const cardsContainer = document.querySelector(".cards-container");
+      cardsContainer.innerHTML = '';
       
-      await Promise.all(Object.keys(cardsData).map(async (cardId) => {
+      const cardIds = Object.keys(cardsData).slice(0, 4);
+      await Promise.all(cardIds.map(async (cardId) => {
         const initialType = "kompleksowa";
         const cardElement = await createCardElement(cardId, initialType, cardsData);
         cardsContainer.appendChild(cardElement);
@@ -73,7 +75,9 @@
           }
 
           const heading = document.getElementById("cleaning-type-heading");
-          heading.textContent = selectedType === "kompleksowa" ? "Што ўключае стандартная ўборка" : "Што ўключае генеральная ўборка";
+          if (heading) {
+            heading.textContent = selectedType === "kompleksowa" ? "Што ўключае стандартнае прыбіранне" : "Што ўключае генеральнае прыбіранне";
+          }
           
           const fileName = selectedType === "kompleksowa" ? "tabData_by_kompleksowa.json" : "tabData_by_generalna.json";
           const newTabsData = await fetchTabsData(fileName);
@@ -99,7 +103,9 @@
         this.classList.add('active');
         
         const heading = document.getElementById('cleaning-type-heading');
-        heading.textContent = type === 'kompleksowa' ? 'Што Ўваходзіць у Стандартную Ўборку' : 'Што Ўваходзіць у Генеральную Ўборку';
+        if (heading) {
+          heading.textContent = type === 'kompleksowa' ? 'Што ўключае стандартнае прыбіранне' : 'Што ўключае генеральнае прыбіранне';
+        }
         
         const fileName = type === 'kompleksowa' ? 'tabData_by_kompleksowa.json' : 'tabData_by_generalna.json';
         const newTabsData = await fetchTabsData(fileName);
@@ -131,16 +137,18 @@
           '4': '/public/rooms/bathroom.png'
         };
 
-        cleaningContent.innerHTML = `
-          <div>
-            <ul>
-              ${tabDataItem.items.map((item, index) => `<li><i class="fa-solid ${icons[index] || 'fa-check'}"></i>${item}</li>`).join('')}
-            </ul>
-          </div>
-          <div class="cleaning-image">
-            <img src="${roomImages[tabNumber.toString()]}" alt="${tabDataItem.title || 'Уборка'}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
-          </div>
-        `;
+        if (cleaningContent && tabDataItem) {
+          cleaningContent.innerHTML = `
+            <div>
+              <ul>
+                ${tabDataItem.items.map((item, index) => `<li><i class="fa-solid ${icons[index] || 'fa-check'}"></i>${item}</li>`).join('')}
+              </ul>
+            </div>
+            <div class="cleaning-image">
+              <img src="${roomImages[tabNumber.toString()]}" alt="${tabDataItem.title || 'Уборка'}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;" />
+            </div>
+          `;
+        }
       });
       
       initCleaningTabs();
