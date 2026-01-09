@@ -4144,6 +4144,7 @@ h4 {
   line-height: 1.8;
   color: #555;
 }
+
 /* ===========================================
    LANDING PAGE STYLES (sprzatanie-mieszkan-warszawa.html)
    =========================================== */
@@ -4412,6 +4413,7 @@ h4 {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -4507,22 +4509,3 @@ h4 {
   color: #666;
   font-size: 0.9rem;
 }
-
-
-/* Additional Utility Classes */
-.p-0 {
-  padding: 0 !important;
-}
-
-.text-gray {
-  color: var(--text-gray);
-}
-
-.text-primary {
-  color: var(--primary);
-}
-
-.section-title-lg {
-  font-size: 2rem;
-}
-
