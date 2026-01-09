@@ -29,280 +29,6 @@
   <!-- Global CSS to inherit variables -->
   <link rel="stylesheet" href="/index.css?ver5">
 
-  <style>
-    /* Unique Landing Page Styles */
-    .land-hero {
-      position: relative;
-      height: 90vh;
-      /* Full viewport height for modern look */
-      min-height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: var(--white);
-      background: url('/public/cleaning_hero_v2.webp') no-repeat center center/cover;
-      margin-top: 70px;
-      /* Offset fixed header */
-    }
-
-    .land-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 133, 201, 0.4) 100%);
-    }
-
-    .land-hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      padding: 0 1.5rem;
-      animation: fadeIn Up 0.8s ease-out;
-    }
-
-    .land-hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4rem);
-      font-weight: 800;
-      margin-bottom: 1.5rem;
-      line-height: 1.1;
-      color: var(--white);
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    }
-
-    .land-hero p {
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      margin-bottom: 2.5rem;
-      color: var(--white);
-      opacity: 0.95;
-    }
-
-    .land-btn {
-      display: inline-block;
-      background: var(--primary-color);
-      color: var(--white);
-      padding: 1.2rem 2.8rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 10px 25px rgba(15, 133, 201, 0.3);
-      border: 2px solid var(--primary-color);
-      transition: all 0.3s ease;
-    }
-
-    .land-btn:hover {
-      background: transparent;
-      color: var(--primary-color);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(15, 133, 201, 0.4);
-    }
-
-    .land-btn-white {
-      display: inline-block;
-      background: var(--white);
-      color: var(--primary-color);
-      padding: 1.2rem 2.8rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
-      border: 2px solid var(--white);
-      transition: all 0.3s ease;
-    }
-
-    .land-btn-white:hover {
-      background: transparent;
-      color: var(--white);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
-    }
-
-    .land-btn-outline {
-      display: inline-block;
-      background: transparent;
-      color: var(--white);
-      padding: 1.2rem 2.8rem;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      box-shadow: none;
-      border: 2px solid var(--white);
-      transition: all 0.3s ease;
-    }
-
-    .land-btn-outline:hover {
-      background: var(--white);
-      color: var(--primary-color);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Cards Grid */
-    .land-section {
-      padding: 5rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .land-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .land-title h2 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    .land-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .land-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-sm);
-      transition: all 0.3s;
-      border: 1px solid #eee;
-    }
-
-    .land-card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--primary-color);
-    }
-
-    .land-card img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 1.5rem;
-      object-fit: contain;
-    }
-
-    /* Fix for lists inside cards becoming flex items */
-    .land-card ul {
-      display: block;
-      list-style: none;
-      padding-left: 0;
-      margin-top: 1rem;
-    }
-
-    .land-card ul li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-
-    .land-card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--primary);
-    }
-
-    h4 {
-      color: var(--primary);
-      font-weight: 700;
-    }
-
-    .land-price {
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-
-    /* Accordions (Clean Style) */
-    .land-accordion details {
-      background: var(--white);
-      border: 1px solid #e9ecef;
-      border-radius: 12px;
-      margin-bottom: 1rem;
-      overflow: hidden;
-      transition: all 0.3s;
-    }
-
-    .land-accordion summary {
-      padding: 1.5rem;
-      cursor: pointer;
-      font-weight: 600;
-      list-style: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #fdfdfd;
-    }
-
-    .land-accordion summary:hover {
-      background: #f8f9fa;
-    }
-
-    .land-accordion summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .land-accordion-content {
-      padding: 1.5rem;
-      border-top: 1px solid #eee;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    /* Footer */
-    .land-footer {
-      background: #1a1a2e;
-      color: var(--white);
-      padding: 4rem 1.5rem 2rem;
-    }
-
-    .land-footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .land-footer h3 {
-      font-size: 1.2rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .land-footer a {
-      color: rgba(255, 255, 255, 0.7);
-      display: block;
-      margin-bottom: 0.8rem;
-    }
-
-    .land-footer a:hover {
-      color: var(--white);
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -381,7 +107,7 @@
       <h1>Profesjonalne Sprzątanie<br>Mieszkań w Warszawie</h1>
       <p>Standardowe, generalne i poremontowe. Gwarancja satysfakcji, ekologiczne środki i szybki dojazd w 2 godziny.
       </p>
-      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+      <div class="land-btn-group">
         <a href="tel:+48888742534" class="land-btn">Zadzwoń Teraz</a>
         <a href="#cennik" class="land-btn-outline">Sprawdź Ceny</a>
       </div>
@@ -392,7 +118,7 @@
   <section id="uslugi" class="land-section">
     <div class="land-title">
       <h2>Nasze Pakiety Sprzątania</h2>
-      <p style="color: var(--text-gray);">Wybierz idealne rozwiązanie dla swojego domu</p>
+      <p class="land-card-desc text-gray">Wybierz idealne rozwiązanie dla swojego domu</p>
     </div>
     <div class="land-grid">
       <!-- Standard -->
@@ -400,55 +126,51 @@
         <img src="/public/icon_standard.webp" alt="Standard">
         <h3>Sprzątanie Standardowe</h3>
         <span class="land-price">Od 160 zł</span>
-        <p style="color: #666; font-size: 0.95rem;">Regularne utrzymanie czystości. Odkurzanie, mycie podłóg, ścieranie
+        <p class="land-card-desc">Regularne utrzymanie czystości. Odkurzanie, mycie podłóg, ścieranie
           kurzu, kuchnia i łazienka.</p>
-        <ul style="color: #555;">
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Odkurzanie i
+        <ul class="land-card-list">
+          <li><i class="fa-solid fa-check"></i> Odkurzanie i
             mycie podłóg</li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Kuchnia i
+          <li><i class="fa-solid fa-check"></i> Kuchnia i
             łazienka</li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Ścieranie kurzu
+          <li><i class="fa-solid fa-check"></i> Ścieranie kurzu
           </li>
         </ul>
       </div>
 
       <!-- General -->
-      <div class="land-card"
-        style="border: 2px solid var(--primary-color); box-shadow: var(--shadow-md); position: relative;">
-        <div
-          style="position: absolute; top: -12px; right: 2rem; background: var(--primary-color); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
-          POLECANE</div>
+      <div class="land-card land-card-featured">
+        <div class="land-badge">POLECANE</div>
         <img src="/public/icon_deep.webp" alt="General">
         <h3>Sprzątanie Generalne</h3>
         <span class="land-price">Od 350 zł</span>
-        <p style="color: #666; font-size: 0.95rem;">Dogłębne czyszczenie całego domu. Mycie okien, fug, wnętrza szafek,
+        <p class="land-card-desc">Dogłębne czyszczenie całego domu. Mycie okien, fug, wnętrza szafek,
           piekarnika i lamp.</p>
-        <ul style="color: #555;">
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Wszystko ze
+        <ul class="land-card-list">
+          <li><i class="fa-solid fa-check"></i> Wszystko ze
             standardu</li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Mycie okien i
+          <li><i class="fa-solid fa-check"></i> Mycie okien i
             fug</li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Wnętrze szafek
+          <li><i class="fa-solid fa-check"></i> Wnętrze szafek
           </li>
         </ul>
       </div>
 
       <!-- Renovation -->
       <div class="land-card">
-        <div
-          style="width: 80px; height: 80px; background: #e0f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-          <i class="fa-solid fa-paint-roller" style="font-size: 2rem; color: var(--primary-color);"></i>
+        <div class="land-icon-circle">
+          <i class="fa-solid fa-paint-roller"></i>
         </div>
         <h3>Po Remoncie</h3>
         <span class="land-price">Wycena Indywidualna</span>
-        <p style="color: #666; font-size: 0.95rem;">Specjalistyczne usuwanie pyłu budowlanego, farby i gruzu.
+        <p class="land-card-desc">Specjalistyczne usuwanie pyłu budowlanego, farby i gruzu.
           Przygotowanie do zamieszkania.</p>
-        <ul style="color: #555;">
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Usuwanie pyłu
+        <ul class="land-card-list">
+          <li><i class="fa-solid fa-check"></i> Usuwanie pyłu
           </li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Pył po
+          <li><i class="fa-solid fa-check"></i> Pył po
             gładzi/remoncie</li>
-          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Mycie okien i
+          <li><i class="fa-solid fa-check"></i> Mycie okien i
             ram</li>
         </ul>
       </div>
@@ -456,27 +178,24 @@
   </section>
 
   <!-- Features Icons -->
-  <section style="background: var(--bg-light); padding: 5rem 1.5rem;">
-    <div class="land-section" style="padding: 0;">
-      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; text-align: center;">
-        <div style="max-width: 250px;">
-          <i class="fa-solid fa-shield-halved"
-            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
-          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Pełne Ubezpieczenie</h4>
-          <p style="color: #666; font-size: 0.9rem;">Twoje mienie jest chronione polisą OC do 1 mln zł.</p>
+  <section class="land-features-section">
+    <div class="land-section p-0">
+      <div class="land-features-grid">
+        <div class="land-feature-item">
+          <i class="fa-solid fa-shield-halved land-feature-icon"></i>
+          <h4 class="land-feature-title">Pełne Ubezpieczenie</h4>
+          <p class="land-feature-desc">Twoje mienie jest chronione polisą OC do 1 mln zł.</p>
         </div>
-        <div style="max-width: 250px;">
-          <i class="fa-solid fa-user-check"
-            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
-          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Zaufany Zespół</h4>
-          <p style="color: #666; font-size: 0.9rem;">Weryfikujemy tożsamość i dbamy o najwyższą kulturę osobistą naszych
+        <div class="land-feature-item">
+          <i class="fa-solid fa-user-check land-feature-icon"></i>
+          <h4 class="land-feature-title">Zaufany Zespół</h4>
+          <p class="land-feature-desc">Weryfikujemy tożsamość i dbamy o najwyższą kulturę osobistą naszych
             pracowników.</p>
         </div>
-        <div style="max-width: 250px;">
-          <i class="fa-solid fa-flask"
-            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
-          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Profesjonalna Chemia</h4>
-          <p style="color: #666; font-size: 0.9rem;">Pracujemy na środkach Kärcher i Prochem. Skuteczne i bezpieczne dla
+        <div class="land-feature-item">
+          <i class="fa-solid fa-flask land-feature-icon"></i>
+          <h4 class="land-feature-title">Profesjonalna Chemia</h4>
+          <p class="land-feature-desc">Pracujemy na środkach Kärcher i Prochem. Skuteczne i bezpieczne dla
             alergików.</p>
         </div>
       </div>
@@ -486,8 +205,7 @@
   <!-- SEO: Districts Section -->
   <section class="full-width-section section-gradient">
     <div class="section-container">
-      <h2 class="section-title" style="font-size:2rem;color:var(--primary);">Obsługujemy Wszystkie Dzielnice Warszawy
-      </h2>
+      <h2 class="section-title text-primary section-title-lg">Obsługujemy Wszystkie Dzielnice Warszawy</h2>
       <p class="section-subtitle-lg">Dojazd gratis w całej Warszawie! Pracujemy we wszystkich dzielnicach 7 dni w
         tygodniu.</p>
       <ul class="district-grid">
