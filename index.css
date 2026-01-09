@@ -4140,3 +4140,23 @@ h4 {
   color: #555;
 }
 
+
+/* Recommended Card Styles */
+.land-card.recommended {
+  border: 2px solid var(--primary-color);
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.badge-recommended {
+  position: absolute;
+  top: -12px;
+  right: 2rem;
+  background: var(--primary-color);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
