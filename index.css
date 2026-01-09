@@ -3776,6 +3776,7 @@ button#send:disabled {
   width: 18px;
   height: 18px;
 }
+
 /* ===========================================
    PRICING TABLE STYLES (Migrated from cennik.html)
    =========================================== */
@@ -3893,8 +3894,6 @@ button#send:disabled {
   font-weight: 700;
   text-align: right;
 }
-
-
 /* ===========================================
    LANDING PAGE STYLES (Migrated from sprzatanie...html)
    =========================================== */
@@ -3946,6 +3945,20 @@ button#send:disabled {
   opacity: 0.95;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Landing Buttons */
 .land-btn {
   display: inline-block;
   background: var(--primary-color);
@@ -4125,17 +4138,5 @@ h4 {
   border-top: 1px solid #eee;
   line-height: 1.8;
   color: #555;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
