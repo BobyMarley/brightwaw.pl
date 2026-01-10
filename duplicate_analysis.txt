@@ -1,0 +1,358 @@
+АНАЛИЗ ДУБЛИКАТОВ И ИЗБЫТОЧНОСТИ
+================================================================================
+
+СТАТИСТИКА:
+  Всего правил: 508
+  Групп дубликатов: 51
+  Можно удалить: 60 правил
+  Похожих пар: 80
+  Медиа-запросов: 22
+  Можно объединить: 3
+
+ДУБЛИКАТЫ (первые 20 групп):
+--------------------------------------------------------------------------------
+
+Группа 1 (2 дубликатов):
+  Селектор: .flex
+  Селектор: #modal-container.active
+  Свойства: display: flex;...
+
+Группа 2 (4 дубликатов):
+  Селектор: .text-center
+  Селектор: .hero-stat
+  Селектор: .hero-text
+  Селектор: .reviews-cta
+  Свойства: text-align: center;...
+
+Группа 3 (2 дубликатов):
+  Селектор: .text-white
+  Селектор: .ref-footer-link:hover
+  Свойства: color: #fff;...
+
+Группа 4 (3 дубликатов):
+  Селектор: .benefit-card-3d:hover::before
+  Селектор: .advantage-card:hover::before
+  Селектор: to
+  Свойства: opacity: 1;...
+
+Группа 5 (3 дубликатов):
+  Селектор: .section-container
+  Селектор: .what_cleaning>div
+  Селектор: .ref-footer-container
+  Свойства: max-width: 1200px;
+  margin: 0 auto;...
+
+Группа 6 (2 дубликатов):
+  Селектор: .section-title
+  Селектор: .what_cleaning h2
+  Свойства: text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 1rem 0...
+
+Группа 7 (2 дубликатов):
+  Селектор: .promo-box h3
+  Селектор: .reviews-cta-box h3
+  Свойства: font-size: 1.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 1rem;...
+
+Группа 8 (2 дубликатов):
+  Селектор: .promo-cta:hover
+  Селектор: .pricing-cta:hover
+  Свойства: transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(15, 133, 201, 0.4);
+  color: #fff;
+  text...
+
+Группа 9 (3 дубликатов):
+  Селектор: .features-grid
+  Селектор: .land-grid
+  Селектор: .land-grid
+  Свойства: display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;...
+
+Группа 10 (2 дубликатов):
+  Селектор: .faq-section
+  Селектор: .ref-faq-section
+  Свойства: padding: 80px 24px;
+  width: 100%;
+  background: #f8f9fa;...
+
+Группа 11 (2 дубликатов):
+  Селектор: .faq-container
+  Селектор: .ref-faq-container
+  Свойства: max-width: 900px;
+  margin: 0 auto;...
+
+Группа 12 (2 дубликатов):
+  Селектор: .faq-list
+  Селектор: .ref-faq-list
+  Свойства: display: flex;
+  flex-direction: column;
+  gap: 16px;...
+
+Группа 13 (2 дубликатов):
+  Селектор: .faq-item
+  Селектор: .ref-faq-item
+  Свойства: background: #fff;
+  border-radius: 16px;
+  border: 1px solid #e9ecef;
+  overflow: hidden;...
+
+Группа 14 (2 дубликатов):
+  Селектор: .faq-question
+  Селектор: .ref-faq-question
+  Свойства: padding: 28px 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: sp...
+
+Группа 15 (3 дубликатов):
+  Селектор: .sprztanie-mieszka
+  Селектор: .contact-info p
+  Селектор: .flex
+  Свойства: margin: 0;...
+
+Группа 16 (2 дубликатов):
+  Селектор: button#send:disabled
+  Селектор: button#send:disabled
+  Свойства: opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;...
+
+Группа 17 (4 дубликатов):
+  Селектор: .cleaning-content
+  Селектор: .contact-info
+  Селектор: .land-accordion summary::-webkit-details-marker
+  Селектор: .land-accordion summary::-webkit-details-marker
+  Свойства: display: none;...
+
+Группа 18 (2 дубликатов):
+  Селектор: 10%,
+  90%
+  Селектор: 30%,
+  50%,
+  70%
+  Свойства: transform: translateX(-10px);...
+
+Группа 19 (2 дубликатов):
+  Селектор: 20%,
+  80%
+  Селектор: 40%,
+  60%
+  Свойства: transform: translateX(10px);...
+
+Группа 20 (2 дубликатов):
+  Селектор: 0%
+  Селектор: 100%
+  Свойства: transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);...
+
+
+ПОХОЖИЕ ПРАВИЛА (первые 30):
+--------------------------------------------------------------------------------
+
+1. Похожесть: 100%
+   Селектор 1: .flex
+   Селектор 2: #modal-container.active
+   Общих свойств: 1
+
+2. Похожесть: 100%
+   Селектор 1: .text-center
+   Селектор 2: .hero-stat
+   Общих свойств: 1
+
+3. Похожесть: 100%
+   Селектор 1: .text-center
+   Селектор 2: .hero-text
+   Общих свойств: 1
+
+4. Похожесть: 100%
+   Селектор 1: .text-center
+   Селектор 2: .reviews-cta
+   Общих свойств: 1
+
+5. Похожесть: 100%
+   Селектор 1: .text-white
+   Селектор 2: .ref-footer-link:hover
+   Общих свойств: 1
+
+6. Похожесть: 100%
+   Селектор 1: .hero-stat
+   Селектор 2: .hero-text
+   Общих свойств: 1
+
+7. Похожесть: 100%
+   Селектор 1: .hero-stat
+   Селектор 2: .reviews-cta
+   Общих свойств: 1
+
+8. Похожесть: 100%
+   Селектор 1: .benefit-card-3d:hover::before
+   Селектор 2: .advantage-card:hover::before
+   Общих свойств: 1
+
+9. Похожесть: 100%
+   Селектор 1: .benefit-card-3d:hover::before
+   Селектор 2: to
+   Общих свойств: 1
+
+10. Похожесть: 100%
+   Селектор 1: .section-container
+   Селектор 2: .what_cleaning>div
+   Общих свойств: 2
+
+11. Похожесть: 100%
+   Селектор 1: .section-container
+   Селектор 2: .ref-footer-container
+   Общих свойств: 2
+
+12. Похожесть: 100%
+   Селектор 1: .section-title
+   Селектор 2: .what_cleaning h2
+   Общих свойств: 5
+
+13. Похожесть: 100%
+   Селектор 1: .promo-box h3
+   Селектор 2: .reviews-cta-box h3
+   Общих свойств: 4
+
+14. Похожесть: 100%
+   Селектор 1: .promo-cta:hover
+   Селектор 2: .pricing-cta:hover
+   Общих свойств: 4
+
+15. Похожесть: 80%
+   Селектор 1: .benefits-container
+   Селектор 2: .advantages-container
+   Общих свойств: 4
+   Уникальные 2: padding: 0 20px
+
+16. Похожесть: 80%
+   Селектор 1: .benefits-title
+   Селектор 2: .faq-title
+   Общих свойств: 4
+   Уникальные 1: color: var(--text-dark)
+   Уникальные 2: color: #2c3e50
+
+17. Похожесть: 100%
+   Селектор 1: .features-grid
+   Селектор 2: .land-grid
+   Общих свойств: 3
+
+18. Похожесть: 100%
+   Селектор 1: .features-grid
+   Селектор 2: .land-grid
+   Общих свойств: 3
+
+19. Похожесть: 100%
+   Селектор 1: .faq-section
+   Селектор 2: .ref-faq-section
+   Общих свойств: 3
+
+20. Похожесть: 100%
+   Селектор 1: .faq-container
+   Селектор 2: .ref-faq-container
+   Общих свойств: 2
+
+21. Похожесть: 83%
+   Селектор 1: .faq-title
+   Селектор 2: .ref-faq-section .ref-faq-title
+   Общих свойств: 5
+   Уникальные 2: font-family: var(--main-font)
+
+22. Похожесть: 80%
+   Селектор 1: .faq-subtitle
+   Селектор 2: .ref-faq-subtitle
+   Общих свойств: 4
+   Уникальные 2: font-family: var(--main-font)
+
+23. Похожесть: 100%
+   Селектор 1: .faq-list
+   Селектор 2: .ref-faq-list
+   Общих свойств: 3
+
+24. Похожесть: 100%
+   Селектор 1: .faq-item
+   Селектор 2: .ref-faq-item
+   Общих свойств: 4
+
+25. Похожесть: 100%
+   Селектор 1: .faq-question
+   Селектор 2: .ref-faq-question
+   Общих свойств: 7
+
+26. Похожесть: 83%
+   Селектор 1: .faq-question-text
+   Селектор 2: .ref-faq-question-text
+   Общих свойств: 5
+   Уникальные 2: font-family: var(--main-font)
+
+27. Похожесть: 83%
+   Селектор 1: .faq-answer
+   Селектор 2: .ref-faq-answer
+   Общих свойств: 5
+   Уникальные 2: font-family: var(--main-font)
+
+28. Похожесть: 100%
+   Селектор 1: .sprztanie-mieszka
+   Селектор 2: .contact-info p
+   Общих свойств: 1
+
+29. Похожесть: 100%
+   Селектор 1: .sprztanie-mieszka
+   Селектор 2: .flex
+   Общих свойств: 1
+
+30. Похожесть: 100%
+   Селектор 1: .hero-text
+   Селектор 2: .reviews-cta
+   Общих свойств: 1
+
+
+МЕДИА-ЗАПРОСЫ ПО ГРУППАМ:
+--------------------------------------------------------------------------------
+
+@media (hover: hover) (1 вхождений)
+
+@media screen and (max-width: 1023px) (2 вхождений)
+
+@media screen and (min-width: 2000px) (1 вхождений)
+
+@media screen and (max-width: 640px) (1 вхождений)
+
+@media screen and (min-width: 640px) (1 вхождений)
+
+@media screen and (min-width: 1301px) (1 вхождений)
+
+@media screen and (min-width: 1024px) and (max-width: 1300px) (1 вхождений)
+
+@media screen and (max-width: 950px) (2 вхождений)
+
+@media screen and (min-width: 950px) (1 вхождений)
+
+@media screen and (min-width:1300px) (1 вхождений)
+
+@media (min-width: 768px) (1 вхождений)
+
+@media (min-width: 992px) (1 вхождений)
+
+@media (min-width: 1200px) (1 вхождений)
+
+@media (max-width: 768px) (2 вхождений)
+
+@media (prefers-reduced-motion: reduce) (1 вхождений)
+
+@media (prefers-reduced-motion: reduce) and (hover: hover) (1 вхождений)
+
+@media screen and (max-width: 400px) (1 вхождений)
+
+@media (max-width: 640px) (1 вхождений)
+
+@media (max-width: 400px) (1 вхождений)

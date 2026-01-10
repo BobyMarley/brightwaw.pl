@@ -1,0 +1,460 @@
+/* ===========================================
+   1. FOUNDATION (Variables & Reset)
+   =========================================== */
+:root {
+  /* Colors */
+  --primary: #0f85c9;
+  --primary-dark: #1874CD;
+  --primary-gradient: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
+  --secondary: #2c3e50;
+  --text-dark: #2c3e50;
+  --text-gray: #7f8c8d;
+  --text-light: #bdc3c7;
+  --bg-light: #f8f9fa;
+  --white: #fff;
+
+  /* Typography */
+  --main-font: 'Montserrat', sans-serif;
+
+  /* Spacing & Layout */
+  --gap-sm: 0.5rem;
+  --gap-md: 1rem;
+  --gap-lg: 2rem;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+
+  /* Effects */
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 25px rgba(15, 133, 201, 0.25);
+  --trans-default: 0.3s ease;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--main-font);
+  color: var(--text-dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--trans-default);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Font Integration */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+/* ===========================================
+   2. UTILITIES & LAYOUT
+   =========================================== */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-light {
+  background-color: var(--bg-light);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Container & Sections */
+.section-container,
+.container,
+.benefits-container,
+.ref-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+}
+
+.section-padded,
+.benefits-section,
+.land-section {
+  padding: 4rem 0;
+}
+
+/* Grid Systems */
+.service-grid,
+.features-grid,
+.reviews-grid,
+.pricing-grid,
+.district-grid,
+.price-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Animations */
+@keyframes shake {
+
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.shake {
+  animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* ===========================================
+   3. COMPONENTS
+   =========================================== */
+
+/* --- BUTTONS --- */
+.btn-primary,
+.zamow-btn,
+.land-btn,
+.btn-cta-primary,
+.pricing-cta,
+.promo-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: var(--primary-gradient);
+  color: var(--white);
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 15px rgba(15, 133, 201, 0.3);
+  transition: var(--trans-default);
+}
+
+.btn-primary:hover,
+.zamow-btn:hover,
+.land-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  color: var(--white);
+}
+
+.btn-outline,
+.land-btn-outline,
+.btn-cta-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  transition: var(--trans-default);
+}
+
+.btn-outline:hover,
+.land-btn-outline:hover {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  color: var(--white);
+}
+
+/* Calculator Tabs */
+.cleaning-type-btn,
+.cleaning-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background: var(--white);
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radius-md);
+  color: var(--text-gray);
+  font-weight: 500;
+  transition: var(--trans-default);
+}
+
+.cleaning-type-btn.active,
+.cleaning-tab.active {
+  background: var(--primary);
+  color: var(--white);
+  border-color: var(--primary);
+}
+
+/* Calculator Icon Buttons */
+.btn-minus,
+.btn-plus {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #dcdcdc;
+  background: var(--white);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* --- CARDS --- */
+.card,
+.service-card,
+.pricing-card,
+.review-card,
+.feature-card,
+.benefit-card-3d,
+.land-card,
+.price-info-card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--trans-default);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover,
+.service-card:hover,
+.review-card:hover,
+.land-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Card Specifics */
+.service-card {
+  border-top: 4px solid var(--primary);
+}
+
+.review-stars {
+  margin-bottom: 1rem;
+  color: #ffc107;
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* --- INPUTS --- */
+input[type="text"],
+input[type="tel"],
+.form-input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-md);
+  margin-bottom: 1rem;
+  font-family: inherit;
+}
+
+input:focus {
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* ===========================================
+   4. SECTIONS (Hero, Header, Footer)
+   =========================================== */
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.nav-menu ul {
+  display: flex;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+}
+
+/* Mobile logic needed */
+
+/* Hero */
+.hero,
+.land-hero {
+  padding: 8rem 1.5rem 4rem;
+  text-align: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('/public/bg.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+}
+
+/* Hero Stats - Critical Visual */
+.hero-stats {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  background: var(--primary);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  color: white;
+}
+
+.hero-stat-number {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+/* Footer */
+.ref-footer {
+  background: var(--secondary);
+  color: white;
+  padding: 4rem 0 2rem;
+}
+
+.ref-footer a {
+  color: var(--text-light);
+}
+
+.ref-footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+}
+
+/* Modal */
+#modal-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+#modal-container.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 500px;
+}
