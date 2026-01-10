@@ -16,6 +16,10 @@ attr_regex = re.compile(r'(class|id)="([^"]+)"')
 for html_path in glob.glob(HTML_GLOB):
     with open(html_path, encoding='utf-8') as f:
         content = f.read()
+    
+    # Remove comments: <!-- ... -->
+    content = re.sub(r'<!--.*?-->', '', content, flags=re.DOTALL)
+    
     for match in attr_regex.finditer(content):
         attr_type, attr_value = match.groups()
         for name in attr_value.split():

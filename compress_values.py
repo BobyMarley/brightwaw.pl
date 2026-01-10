@@ -1,7 +1,7 @@
 import re
 
-INPUT_FILE = 'index.dedup.css'
-OUTPUT_FILE = 'index.compressed.css'
+INPUT_FILE = 'index.merged.css'
+OUTPUT_FILE = 'index.min.css'
 
 def compress_css_values(css_text):
     # 1. Compress Hex Colors: #aabbcc -> #abc
