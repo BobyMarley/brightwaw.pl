@@ -3154,37 +3154,6 @@ b.pokj {
   }.cleaning-image {
     display: none;
   }
-#modal-container {
-    padding: 0;
-  }
-
-  #modal {
-    max-width: 100%;
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-    margin: 0;
-  }
-
-  #modal h2 {
-    font-size: 1.5rem;
-    padding: 1.5rem 1.5rem 1rem;
-  }
-
-  #modal form {
-    padding: 1rem 1.5rem 1.5rem;
-  }
-
-  .button-container {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  button#cancel,
-  button#send {
-    width: 100%;
-  }
 }
 
 @media screen and (min-width: 640px) {
@@ -3197,7 +3166,7 @@ b.pokj {
   }
 }
 
-@media screen and (min-width: 1300px) {
+@media screen and (min-width: 1301px) {
 .navbar {
     padding: 30px var(--padding-111xl) 0;
   }.logo-icon {
@@ -3210,14 +3179,6 @@ b.pokj {
     font-size: var(--h2-size);
     font-weight: 500;
     color: var(--color-gray-200);
-  }
-.hero {
-    min-height: 90vh;
-  }li.price {
-    background-color: #0f85c9;
-    border-radius: 15px;
-  }li.price a {
-    color: white;
   }
 }
 
@@ -3281,7 +3242,18 @@ h1 {
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width:1300px) {
+.hero {
+    min-height: 90vh;
+  }li.price {
+    background-color: #0f85c9;
+    border-radius: 15px;
+  }li.price a {
+    color: white;
+  }
+}
+
+@media (min-width: 768px) {
 .card {
     width: 280px;
   }
@@ -3396,6 +3368,43 @@ section.hero {
   }div#app {
     padding: 0.75rem !important;
   }
+}
+
+@media (max-width: 640px) {
+#modal-container {
+    padding: 0;
+  }
+
+  #modal {
+    max-width: 100%;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    margin: 0;
+  }
+
+  #modal h2 {
+    font-size: 1.5rem;
+    padding: 1.5rem 1.5rem 1rem;
+  }
+
+  #modal form {
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  button#cancel,
+  button#send {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
 #modal h2 {
     font-size: 1.25rem;
     padding: 1.25rem 1rem 0.75rem;
