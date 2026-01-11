@@ -1,6 +1,4 @@
-﻿/* ===========================================
-   FONT DECLARATIONS
-   =========================================== */
+﻿
 
 @font-face {
   font-family: 'Montserrat';
@@ -26,26 +24,24 @@
   font-display: swap;
 }
 
-/* ===========================================
-   CSS VARIABLES
-   =========================================== */
+
 
 :root {
-  /* Typography */
+  
   --h2: Montserrat;
   --main-font: Montserrat;
   --h2-size: 1.5rem;
   --font-size-lg: 1.13rem;
 
-  /* Colors */
+  
   --primary: #0f85c9;
   --primary-color: #0f85c9;
-  /* Alias for landing pages */
+  
   --primary-contrast: #fff;
   --primary-blue: #1E90FF;
   --primary-dark: #1874CD;
   --white: #fff;
-  /* Explicit white variable */
+  
   --text-dark: #2c3e50;
   --text-gray: #7f8c8d;
   --text-light: #bdc3c7;
@@ -53,13 +49,13 @@
   --bg-light: #f8f9fa;
   --bg-overlay: rgba(255, 255, 255, 0.95);
 
-  /* Shadows */
+  
   --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
 
-  /* Spacing */
+  
   --gap-5xl: 1.5rem;
   --gap-lg: 1.13rem;
   --padding-13xl: 2rem;
@@ -67,23 +63,23 @@
   --padding-base: 1rem;
   --padding-5xl: 1.5rem;
 
-  /* Border Radius */
+  
   --radius-sm: 8px;
-  /* Small elements (inputs, checkboxes) */
+  
   --radius-md: 16px;
-  /* Cards, modals (primary radius) */
+  
   --radius-lg: 24px;
-  /* Large sections, hero blocks */
+  
   --radius-pill: 50px;
-  /* CTA buttons (pill shape) */
+  
 
-  /* Radio Buttons */
+  
   --radio-border-color: #8b8c89;
   --radio-checked-color: var(--primary);
   --radio-hover-color: #a3cef1;
   --radio-disabled-bg-color: #d9d9d9;
 
-  /* Button Effects */
+  
   --button-prime: 0px 207px 58px rgba(25, 23, 176, 0.01), 0px 133px 53px rgba(25, 23, 176, 0.06), 0px 75px 45px rgba(25, 23, 176, 0.2), 0px 33px 33px rgba(25, 23, 176, 0.34), 0px 8px 18px rgba(25, 23, 176, 0.39), 0px 0px 0px rgba(25, 23, 176, 0.4);
 }
 
@@ -101,19 +97,11 @@ body {
   width: 100%;
 }
 
-/* ===========================================
-   UTILITY CLASSES
-   =========================================== */
 
-/* Layout */
+
+
 .flex {
   display: flex;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .flex-wrap {
@@ -124,54 +112,12 @@ body {
   display: grid;
 }
 
-/* Spacing */
-.gap-sm {
-  gap: 0.5rem;
-}
 
-.gap-md {
-  gap: 1rem;
-}
-
-.gap-lg {
-  gap: 1.5rem;
-}
-
-.gap-xl {
-  gap: 2rem;
-}
-
-.gap-2xl {
-  gap: 2.5rem;
-}
-
-/* Text Alignment */
 .text-center {
   text-align: center;
 }
 
-.text-left {
-  text-align: left;
-}
 
-.text-right {
-  text-align: right;
-}
-
-/* Font Weight */
-.font-bold {
-  font-weight: 700;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-medium {
-  font-weight: 500;
-}
-
-/* Typography Components */
 .section-heading {
   font-family: var(--main-font);
   font-weight: 700;
@@ -191,29 +137,12 @@ body {
   line-height: 1.6;
 }
 
-/* Colors */
-.text-dark {
-  color: var(--text-dark);
-}
-
 .text-gray {
   color: var(--text-gray);
 }
 
-.text-light {
-  color: var(--text-light);
-}
-
 .text-primary {
   color: var(--primary);
-}
-
-.text-white {
-  color: #fff;
-}
-
-.bg-white {
-  background: #fff;
 }
 
 .bg-light {
@@ -224,54 +153,9 @@ body {
   background: var(--primary);
 }
 
-/* Border Radius */
-.rounded-sm {
-  border-radius: var(--radius-sm);
-}
 
-.rounded-md {
-  border-radius: var(--radius-md);
-}
 
-.rounded-lg {
-  border-radius: var(--radius-lg);
-}
 
-.rounded-pill {
-  border-radius: var(--radius-pill);
-}
-
-/* Shadows */
-.shadow-sm {
-  box-shadow: var(--shadow-sm);
-}
-
-.shadow-md {
-  box-shadow: var(--shadow-md);
-}
-
-.shadow-soft {
-  box-shadow: var(--shadow-soft);
-}
-
-.shadow-hover {
-  box-shadow: var(--shadow-hover);
-}
-
-/* Transitions */
-.transition-smooth {
-  transition: all 0.3s ease;
-}
-
-.transition-slow {
-  transition: all 0.4s ease;
-}
-
-/* ===========================================
-   HERO COMPONENTS
-   =========================================== */
-
-/* Hero Statistics */
 .hero-stats {
   display: flex;
   gap: 2.5rem;
@@ -299,9 +183,7 @@ body {
   margin-top: 0.5rem;
 }
 
-/* ===========================================
-   3D ICONS & BENEFIT CARDS
-   =========================================== */
+
 
 .icon-3d {
   width: 80px;
@@ -461,7 +343,7 @@ body {
   line-height: 1.5;
 }
 
-/* Section Headers */
+
 .section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -508,7 +390,7 @@ body {
   background: #fdfdfd;
 }
 
-/* Service Cards */
+
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -543,7 +425,7 @@ body {
   background: linear-gradient(135deg, #f8f9fa 0%, #eef2f5 100%);
 }
 
-/* District Grid */
+
 .district-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -574,7 +456,7 @@ body {
   gap: 0.5rem;
 }
 
-/* Price Info Cards */
+
 .price-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -601,7 +483,7 @@ body {
   color: #0f85c9;
 }
 
-/* Promo Box */
+
 .promo-box {
   margin-top: 3rem;
   padding: 2rem;
@@ -644,12 +526,12 @@ body {
   text-decoration: none;
 }
 
-/* Calculator Button */
+
 #show-modal {
   border-radius: 12px !important;
 }
 
-/* Reviews Section */
+
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -741,7 +623,7 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* Benefits/Features Section */
+
 .benefits-section {
   padding: 5rem 1.5rem;
   width: 100%;
@@ -820,7 +702,7 @@ body {
   font-size: 1rem;
 }
 
-/* FAQ Section */
+
 .faq-section {
   padding: 80px 24px;
   width: 100%;
@@ -830,21 +712,6 @@ body {
 .faq-container {
   max-width: 900px;
   margin: 0 auto;
-}
-
-.faq-title {
-  text-align: center;
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  font-weight: 700;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
-.faq-subtitle {
-  text-align: center;
-  color: #7f8c8d;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
 }
 
 .faq-list {
@@ -870,19 +737,6 @@ body {
   list-style: none;
 }
 
-.faq-question-text {
-  font-size: 1.125rem;
-  font-weight: 600;
-  color: #2c3e50;
-  flex: 1;
-  line-height: 1.5;
-}
-
-.faq-icon {
-  color: #0f85c9;
-  font-size: 20px;
-}
-
 .faq-answer {
   margin: 0;
   padding: 0 32px 28px 32px;
@@ -891,9 +745,7 @@ body {
   font-size: 1rem;
 }
 
-/* ===========================================
-   PRICING CARDS
-   =========================================== */
+
 
 .pricing-grid {
   display: grid;
@@ -996,9 +848,7 @@ body {
   text-decoration: none;
 }
 
-/* ===========================================
-   НАВИГАЦИЯ И ШАПКА
-   =========================================== */
+
 
 .nav-menu ul,
 .mobile-nav-menu ul,
@@ -1088,10 +938,6 @@ a#en.active {
   position: relative;
 }
 
-.sprztanie-mieszka {
-  margin: 0;
-}
-
 .profesjonalnie-bezpiecznie-s,
 .sprztanie-mieszka-warszawa-container {
   font-weight: 800;
@@ -1137,9 +983,7 @@ a#en.active {
   font-size: 1.2rem;
 }
 
-/* ===========================================
-   ОСНОВНОЙ КОНТЕНТ
-   =========================================== */
+
 
 .content {
   flex: 1;
@@ -1172,28 +1016,11 @@ section {
   gap: var(--gap-lg);
 }
 
-/* ===========================================
-   СЕКЦИЯ HERO
-   =========================================== */
-
-section.hero {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background: linear-gradient(180deg, rgba(68, 112, 133, 0) 58.65%, rgba(68, 112, 133, 0.7) 74.27%, rgba(68, 112, 133, 0.7) 86.77%, #447085 100%), linear-gradient(180deg, #FFFFFF 0%, rgba(255, 255, 255, 0.5) 66.98%, rgba(255, 255, 255, 0) 100%), url(/public/bg.webp);
-  background-size: cover;
-  background-position: top;
-  background-repeat: no-repeat;
-  align-items: center;
-}
-
 .hero-text {
   text-align: center;
 }
 
-/* ===========================================
-   КАРТОЧКИ И КОМПОНЕНТЫ
-   =========================================== */
+
 
 div#app,
 .card,
@@ -1212,9 +1039,7 @@ div#app,
   min-height: 200px;
 }
 
-/* ===========================================
-   КНОПКИ
-   =========================================== */
+
 
 .btn-plus,
 .btn-minus {
@@ -1264,10 +1089,6 @@ div#app,
   box-shadow: 0 0 0 2px #007aff;
 }
 
-b.pokj {
-  font-size: 1.3rem;
-}
-
 .pokoj-btn {
   display: flex;
   padding: 10px 15px;
@@ -1313,9 +1134,7 @@ b.pokj {
   transform: translateY(-2px);
 }
 
-/* ===========================================
-   ФОРМЫ
-   =========================================== */
+
 
 form label {
   font-weight: 500;
@@ -1331,28 +1150,8 @@ form label {
   font-weight: 400;
 }
 
-button#cancel:hover {
-  background: #e9ecef;
-  color: var(--text-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-button#send:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(15, 133, 201, 0.4);
-}
-
 button#send:active {
   transform: translateY(-1px);
-}
-
-button#send:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
 }
 
 #success-modal-container {
@@ -1444,19 +1243,6 @@ button#send:disabled {
   background: var(--primary-dark);
   box-shadow: 0 6px 20px rgba(15, 133, 201, 0.4);
   transform: translateY(-1px);
-}
-
-/* ===========================================
-   СЕКЦИИ КОНТЕНТА
-   =========================================== */
-
-section.what_cleaning {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  padding: 5rem 1.5rem;
-  background: #f8f9fa;
 }
 
 .what_cleaning h2 {
@@ -1640,33 +1426,33 @@ section.cards-input {
   justify-content: center;
 }
 
-/* FIXED CARD LAYOUT (Phase 9) */
+
 .card {
   background: #fff;
   border: 1px solid #e9ecef;
-  border-radius: 12px;
-  /* 12px */
-  padding: 24px;
-  /* 24px */
+  border-radius: 0.75rem;
+  
+  padding: 1.5rem;
+  
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  flex: 1 1 280px;
-  /* 280px */
-  max-width: 320px;
-  /* 320px */
-  min-width: 280px;
-  /* 280px */
+  flex: 1 1 17.5rem;
+  
+  max-width: 20rem;
+  
+  min-width: 17.5rem;
+  
   display: flex;
   flex-direction: column;
   position: relative;
-  /* Removed min-height and space-between to prevent huge gaps */
+  
 }
 
 .card:hover {
-  transform: translateY(-8px);
-  /* -8px */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-  /* 12px 30px */
+  transform: translateY(-0.5rem);
+  
+  box-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.15);
+  
   border-color: #0f85c9;
 }
 
@@ -1675,48 +1461,48 @@ section.cards-input {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* Pack to top */
-  gap: 12px;
-  /* 12px */
-  /* Consistent gap between elements */
+  
+  gap: 0.75rem;
+  
+  
 }
 
 .card-content h3 {
   margin: 0;
   color: #2c3e50;
-  font-size: 24px;
-  /* 24px */
-  /* Restored original size */
+  font-size: 1.5rem;
+  
+  
   text-align: center;
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  /* 48px */
-  /* Flexible constraint instead of fixed */
+  min-height: 3rem;
+  
+  
 }
 
 span.price-value {
   display: block;
-  font-size: 48px;
-  /* 48px */
-  /* Restored original size */
+  font-size: 3rem;
+  
+  
   line-height: 1;
   font-weight: 800;
   color: #0f85c9;
   text-align: center;
   margin: 0;
-  /* Zero margin, use gap */
+  
 }
 
-/* Clean Radio Inputs (Phase 9.3) */
+
 .cards-input {
   background: transparent;
   padding: 0;
   border-radius: 0;
   margin-bottom: 0;
-  /* Zero margin, use gap */
+  
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1730,7 +1516,7 @@ span.price-value {
   opacity: 0.8;
 }
 
-/* Standard Radio Button Look */
+
 .cards-input input[type="radio"] {
   width: 18px;
   height: 18px;
@@ -1739,11 +1525,11 @@ span.price-value {
   accent-color: #0f85c9;
 }
 
-/* Remove custom radio styling that causes boxy look if not wanted */
-/* Reverting to simple consistent style */
+
+
 .cards-input input[type="radio"] {
   appearance: auto;
-  /* Use browser default or simple circle */
+  
   appearance: none;
   width: 18px;
   height: 18px;
@@ -1754,9 +1540,7 @@ span.price-value {
 }
 
 
-/* ===========================================
-   ВКЛАДКИ
-   =========================================== */
+
 
 .tabs {
   display: flex;
@@ -1855,9 +1639,7 @@ span.price-value {
   flex-shrink: 0;
 }
 
-/* ===========================================
-   ПРЕИМУЩЕСТВА - УЛУЧШЕННЫЙ ФОН
-   =========================================== */
+
 
 .advantages {
   padding: 100px 0;
@@ -2105,9 +1887,7 @@ span.price-value {
   font-family: var(--main-font);
 }
 
-/* ===========================================
-   ОТЗЫВЫ
-   =========================================== */
+
 
 .reviews {
   padding: 100px 0;
@@ -2266,9 +2046,7 @@ span.price-value {
   text-align: center;
 }
 
-/* ===========================================
-   FAQ
-   =========================================== */
+
 
 .faq {
   padding: 100px 0;
@@ -2576,9 +2354,7 @@ footer {
   margin: 0.5rem 0 !important;
 }
 
-/* ===========================================
-   COOKIES И ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ
-   =========================================== */
+
 
 #cookie-popup {
   display: none;
@@ -2623,9 +2399,7 @@ small {
   font-family: var(--main-font);
 }
 
-/* ===========================================
-   АНИМАЦИИ
-   =========================================== */
+
 
 .shake {
   animation: shake 0.5s;
@@ -2694,9 +2468,7 @@ small {
   }
 }
 
-/* ===========================================
-   FAQ REF-STYLES (STRICT)
-   =========================================== */
+
 
 .ref-faq-section {
   padding: 80px 24px;
@@ -2715,14 +2487,6 @@ small {
   font-weight: 700;
   color: #2c3e50;
   margin-bottom: 1rem;
-  font-family: var(--main-font);
-}
-
-.ref-faq-subtitle {
-  text-align: center;
-  color: #7f8c8d;
-  font-size: 1.1rem;
-  margin-bottom: 3rem;
   font-family: var(--main-font);
 }
 
@@ -2773,9 +2537,7 @@ small {
   font-family: var(--main-font);
 }
 
-/* ===========================================
-   ПЕРЕКЛЮЧАТЕЛИ И ФОРМЫ
-   =========================================== */
+
 
 .cleaning-type-toggle {
   display: flex;
@@ -2854,9 +2616,7 @@ input[type="radio"]:focus-visible {
   transform: scale(1.05);
 }
 
-/* ===========================================
-   ГАМБУРГЕР МЕНЮ
-   =========================================== */
+
 
 .hamburger-menu {
   display: none;
@@ -2900,19 +2660,19 @@ input[type="radio"]:focus-visible {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Unified Navigation */
+
 .nav-content {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex: 1;
-  /* Take up remaining space */
+  
 }
 
 .nav-menu {
   display: flex;
   margin: auto;
-  /* Push away from Logo */
+  
 }
 
 .nav-content .nav-menu ul {
@@ -2926,13 +2686,13 @@ input[type="radio"]:focus-visible {
 .nav-content .nav-icons {
   margin: 0;
   margin-right: auto;
-  /* Push away from LangSwitch */
+  
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-/* Reusing existing overlay styles for the active mobile state */
+
 @media screen and (max-width: 1023px) {
   .nav-content {
     display: none;
@@ -2954,7 +2714,7 @@ input[type="radio"]:focus-visible {
   .nav-menu,
   .nav-content .nav-icons {
     margin: 0;
-    /* Reset margins for mobile column layout */
+    
   }
 
   .nav-content.active {
@@ -2963,7 +2723,7 @@ input[type="radio"]:focus-visible {
 
   .nav-menu {
     flex: initial;
-    /* Reset flex growth for mobile column layout */
+    
   }
 
 
@@ -2981,7 +2741,7 @@ input[type="radio"]:focus-visible {
 
   .nav-content .nav-icons {
     display: flex !important;
-    /* Override display: none from desktop logic if set */
+    
     justify-content: center;
     gap: 1.5rem;
   }
@@ -3032,9 +2792,7 @@ input[type="radio"]:focus-visible {
   align-items: center;
 }
 
-/* ===========================================
-   МЕДИА-ЗАПРОСЫ
-   =========================================== */
+
 
 @media screen and (min-width: 2000px) {
   body {
@@ -3532,61 +3290,11 @@ input[type="radio"]:focus-visible {
   justify-content: space-between;
 }
 
-button#cancel {
-  flex: 1;
-  padding: 0.875rem 1.5rem;
-  background: #f8f9fa;
-  border: 2px solid #e9ecef;
-  border-radius: 12px;
-  font-family: var(--main-font);
-  font-size: 1rem;
-  font-weight: 600;
-  color: #6c757d;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button#cancel:hover {
-  background: #e9ecef;
-  border-color: #dee2e6;
-  color: #495057;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-button#send {
-  flex: 1;
-  padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #0f85c9 0%, #1E90FF 100%);
-  border: none;
-  border-radius: 12px;
-  font-family: var(--main-font);
-  font-size: 1rem;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(15, 133, 201, 0.3);
-}
-
-button#send:hover:not(:disabled) {
-  background: linear-gradient(135deg, #1874CD 0%, #0f85c9 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(15, 133, 201, 0.4);
-}
-
 button#send:active {
   transform: translateY(0);
 }
 
-button#send:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
 
-/* Адаптивность для мобильных */
 @media (max-width: 640px) {
   #modal-container {
     padding: 0;
@@ -3641,11 +3349,9 @@ button#send:disabled {
   }
 }
 
-/* ===========================================
-   UTILITY & COMPONENTS (REFACTOR)
-   =========================================== */
 
-/* Unified CTA Section */
+
+
 .cta-banner {
   background: linear-gradient(135deg, #0f85c9 0%, #0c74b0 100%);
   padding: 6rem 0;
@@ -3715,7 +3421,7 @@ button#send:disabled {
   transform: translateY(-3px);
 }
 
-/* Pricing Card List */
+
 .price-card-features {
   list-style: none;
   padding: 0;
@@ -3740,7 +3446,7 @@ button#send:disabled {
   font-size: 1.1rem;
 }
 
-/* Responsive Overrides */
+
 @media (max-width: 768px) {
   .cta-banner {
     padding: 4rem 1.5rem;
@@ -3765,9 +3471,7 @@ button#send:disabled {
   }
 }
 
-/* ===========================================
-   FOOTER REF-STYLES (STRICT)
-   =========================================== */
+
 
 .ref-footer {
   background: #1a1a2e;
@@ -3889,11 +3593,6 @@ button#send:disabled {
   font-family: var(--main-font);
 }
 
-/* Utility Classes for JS State Management */
-.is-hidden {
-  display: none !important;
-}
-
 .is-visible {
   display: flex !important;
 }
@@ -3903,7 +3602,7 @@ button#send:disabled {
   cursor: not-allowed;
 }
 
-/* Dynamic Room Content */
+
 .room-title {
   font-size: 1.5rem;
   font-weight: 600;
@@ -3917,15 +3616,13 @@ button#send:disabled {
   margin: 0 0 1.5rem 0;
 }
 
-/* Footer Icons */
+
 .ref-footer-social-icon img {
   width: 18px;
   height: 18px;
 }
 
-/* ===========================================
-   PRICING TABLE STYLES (Migrated from cennik.html)
-   =========================================== */
+
 .table-container {
   width: 100%;
   max-width: 900px;
@@ -4053,10 +3750,8 @@ button#send:disabled {
   text-align: right;
 }
 
-/* ===========================================
-   LANDING PAGE STYLES (Migrated from sprzatanie...html)
-   =========================================== */
-/* Hero Section */
+
+
 .land-hero {
   position: relative;
   height: 90vh;
@@ -4117,7 +3812,7 @@ button#send:disabled {
 }
 
 
-/* Landing Buttons */
+
 .land-btn {
   display: inline-block;
   background: var(--primary-color);
@@ -4181,7 +3876,7 @@ button#send:disabled {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Cards Grid */
+
 .land-section {
   padding: 5rem 1.5rem;
   max-width: 1200px;
@@ -4228,7 +3923,7 @@ button#send:disabled {
   object-fit: contain;
 }
 
-/* Fix for lists inside cards becoming flex items */
+
 .land-card ul {
   display: block;
   list-style: none;
@@ -4263,7 +3958,7 @@ h4 {
   display: block;
 }
 
-/* Accordions (Clean Style) */
+
 .land-accordion details {
   background: var(--white);
   border: 1px solid #e9ecef;
@@ -4299,11 +3994,9 @@ h4 {
   color: #555;
 }
 
-/* ===========================================
-   LANDING PAGE STYLES (sprzatanie-mieszkan-warszawa.html)
-   =========================================== */
 
-/* Hero Section */
+
+
 .land-hero {
   position: relative;
   height: 90vh;
@@ -4351,7 +4044,7 @@ h4 {
   opacity: 0.95;
 }
 
-/* Landing Buttons */
+
 .land-btn {
   display: inline-block;
   background: var(--primary-color);
@@ -4415,7 +4108,7 @@ h4 {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Cards Grid */
+
 .land-section {
   padding: 5rem 1.5rem;
   max-width: 1200px;
@@ -4496,7 +4189,7 @@ h4 {
   display: block;
 }
 
-/* Accordions */
+
 .land-accordion details {
   background: var(--white);
   border: 1px solid #e9ecef;
@@ -4532,7 +4225,7 @@ h4 {
   color: #555;
 }
 
-/* Footer */
+
 .land-footer {
   background: #1a1a2e;
   color: var(--white);
@@ -4575,7 +4268,7 @@ h4 {
 }
 
 
-/* Utility Classes for Landing Page */
+
 .land-btn-group {
   display: flex;
   gap: 1.5rem;
