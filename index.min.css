@@ -408,7 +408,8 @@ body {
   }
 }
 
-.icon-3d svg {
+.icon-3d svg,
+.icon-3d i {
   font-size: 38px;
   color: #fff;
   filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
@@ -2801,6 +2802,11 @@ button#send:disabled {
     padding: 0;
   }
 
+  .land-hero {
+    margin-top: 0px;
+    display: flex
+  }
+
   #modal {
     max-width: 100%;
     width: 100%;
@@ -3275,7 +3281,7 @@ button#send:disabled {
   text-align: center;
   color: var(--white);
   background: url('/public/cleaning_hero_v2.webp') no-repeat center center/cover;
-  margin-top: 70px;
+  margin-top: 40px;
 }
 
 .land-hero::before {
