@@ -220,6 +220,7 @@
   <link rel="preload" href="/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g"
     crossorigin="anonymous" />
   <style>
     @font-face {
@@ -329,7 +330,9 @@
   <link rel="stylesheet" href="/index.css?ver7">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3E🛀%3C/text%3E%3C/svg%3E" />
-  <script src="https://unpkg.com/imask"></script>
+  <script src="https://unpkg.com/imask@7.6.1/dist/imask.min.js"
+    integrity="sha256-f817BCjkRsuPwQqazeY4OKKvWhz14dkFluMmQx5IlhA="
+    crossorigin="anonymous" defer></script>
 </head>
 
 <body>
@@ -1624,21 +1627,25 @@
         });
       });
     });
-    setTimeout(() => {
+    function initPhoneMask(attempt = 0) {
       const p = document.getElementById('phone');
-      if (p && typeof IMask !== 'undefined') {
-        const m = IMask(p, { mask: '+48 000 000 000', lazy: false, placeholderChar: '_' });
-        p.style.transition = 'background 0.3s';
-        const update = () => {
-          const f = m.unmaskedValue.length;
-          if (f === 0) p.style.background = '#fff';
-          else if (f < 11) p.style.background = 'linear-gradient(90deg,#e8f5e9 0%,#e8f5e9 ' + (f / 11 * 100) + '%,#fff5e6 ' + (f / 11 * 100) + '%,#fff5e6 100%)';
-          else p.style.background = '#e8f5e9';
-        };
-        p.addEventListener('input', update);
-        p.addEventListener('focus', () => { if (m.unmaskedValue === '') m.updateValue(); });
+      if (!p) return;
+      if (typeof IMask === 'undefined') {
+        if (attempt < 20) setTimeout(() => initPhoneMask(attempt + 1), 100);
+        return;
       }
-    }, 500);
+      const m = IMask(p, { mask: '+48 000 000 000', lazy: false, placeholderChar: '_' });
+      p.style.transition = 'background 0.3s';
+      const update = () => {
+        const f = m.unmaskedValue.length;
+        if (f === 0) p.style.background = '#fff';
+        else if (f < 11) p.style.background = 'linear-gradient(90deg,#e8f5e9 0%,#e8f5e9 ' + (f / 11 * 100) + '%,#fff5e6 ' + (f / 11 * 100) + '%,#fff5e6 100%)';
+        else p.style.background = '#e8f5e9';
+      };
+      p.addEventListener('input', update);
+      p.addEventListener('focus', () => { if (m.unmaskedValue === '') m.updateValue(); });
+    }
+    initPhoneMask();
 
     // Accordion animation
     document.querySelectorAll('.faq details').forEach(d => {
