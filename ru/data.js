@@ -31,12 +31,12 @@
       <h3>${cardData[cardId][initialType].roomCount}</h3>    
       <p class="price"><span class="price-value">${cardData[cardId][initialType].price}</span></p>
       <section class="cards-input">
-        <input type="radio" id="kompleksowa-${cardId}" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
-        <label for="kompleksowa-${cardId}">Стандартная уборка</label>
+        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="0" value="kompleksowa" checked="checked">
+        <label>Стандартная уборка</label>
       </section>
       <section class="cards-input">
-        <input type="radio" id="generalna-${cardId}" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
-        <label for="generalna-${cardId}">Генеральная уборка</label>
+        <input type="radio" name="cleaning-type-${cardId}" data-card="${cardId}" data-item="1" value="generalna">
+        <label>Генеральная уборка</label>
       </section>
     `;
 

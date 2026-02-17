@@ -254,6 +254,24 @@
     font-weight: 600;
 }
 
+.calc-note-min.calc-min-order-highlight {
+    color: var(--primary);
+    animation: calcMinPulse 0.6s ease 3;
+}
+@keyframes calcMinPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.min-order-modal.min-order-modal.min-order-modal {
+    align-items: center;
+    justify-content: center;
+}
+.min-order-modal-content {
+    text-align: center;
+    max-width: 420px;
+}
+
 /* ===== PROCESS SECTION ===== */
 .process-section {
     padding: var(--space-4xl) var(--space-xl);

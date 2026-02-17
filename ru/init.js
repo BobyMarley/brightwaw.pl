@@ -3,7 +3,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 const h=document.querySelector('.hamburger-menu'),o=document.querySelector('.overlay'),hdr=document.querySelector('.header');
 h&&h.addEventListener('click',()=>{o.classList.toggle('active');document.body.style.overflow=o.classList.contains('active')?'hidden':'auto'});
 o&&o.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{o.classList.remove('active');document.body.style.overflow='auto'}));
-const scr=()=>window.scrollY>50?hdr.classList.add('scrolled'):hdr.classList.remove('scrolled');
+let scrollTicking=false;
+const scr=()=>{
+  if(!scrollTicking){
+    requestAnimationFrame(()=>{
+      if(hdr){
+        if(window.scrollY>50) hdr.classList.add('scrolled');
+        else hdr.classList.remove('scrolled');
+      }
+      scrollTicking=false;
+    });
+    scrollTicking=true;
+  }
+};
 window.addEventListener('scroll',scr,{passive:true});
 document.querySelectorAll('.faq details').forEach(d=>d.addEventListener('toggle',()=>{const a=d.querySelector('i');a&&(a.style.transform=d.open?'rotate(180deg)':'')}));
 const initPhoneMask=()=>{

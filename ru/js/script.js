@@ -48,13 +48,17 @@
     const ParticleSystem = {
         container: null,
         particles: [],
+        getParticleCount() {
+            return (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches) ? 10 : CONFIG.PARTICLES_COUNT;
+        },
         init() {
             this.container = document.querySelector('.particles');
             if (!this.container) return;
             this.createParticles();
         },
         createParticles() {
-            for (let i = 0; i < CONFIG.PARTICLES_COUNT; i++) {
+            const count = this.getParticleCount();
+            for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Utils.random(0, 100) + '%';
@@ -227,6 +231,15 @@
     };
 
     // ===== ФОРМА =====
+    const FORM_MIN_ORDER = 160;
+    const FORM_SERVICE_PRICES = {
+        'Диван': { price: 180, type: 'quantity' },
+        'Ковёр': { price: 15, type: 'area' },
+        'Кресло': { price: 40, type: 'quantity' },
+        'Стул': { price: 40, type: 'quantity' },
+        'Матрас': { price: 90, type: 'quantity' },
+        'Комплекс': { price: 300, type: 'quantity' }
+    };
     const Form = {
         form: null, feedback: null,
         init() {
@@ -261,8 +274,33 @@
             });
         },
         bindEvents() { this.form.addEventListener('submit', (e) => this.handleSubmit(e)); },
+        getFormOrderTotal() {
+            let total = 0;
+            const items = this.form.querySelectorAll('.service-item-wrapper');
+            items.forEach(item => {
+                const name = item.dataset.serviceName;
+                const cfg = FORM_SERVICE_PRICES[name];
+                if (!cfg) return;
+                const input = item.querySelector('.quantity-input');
+                const value = parseInt(input && input.value, 10) || 0;
+                total += value * cfg.price;
+            });
+            return total;
+        },
         async handleSubmit(event) {
             event.preventDefault();
+            const orderTotal = this.getFormOrderTotal();
+            if (orderTotal < FORM_MIN_ORDER) {
+                const minOrderModal = document.getElementById('minOrderModal');
+                if (minOrderModal) {
+                    minOrderModal.style.display = 'flex';
+                    minOrderModal.style.alignItems = 'center';
+                    minOrderModal.style.justifyContent = 'center';
+                }
+                this.showFeedback('Минимальная сумма заказа — 160 zł. Добавьте услуги на эту сумму.', 'error');
+                ModalScrollEnhancements.scrollToFirstError();
+                return;
+            }
             const data = this.extractFormData();
             const validation = this.validateForm(data);
 
@@ -391,6 +429,7 @@
         },
         initResizeOptimization() {
             const handleResize = Utils.debounce(() => {
+                if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) return;
                 ParticleSystem.destroy();
                 ParticleSystem.createParticles();
             }, 250);
@@ -401,8 +440,9 @@
 
 
     const Calculator = {
+    MIN_ORDER: 160,
     prices: {
-        sofa: 160,
+        sofa: 180,
         carpet: 15,
         chair: 40,
         mattress: 90
@@ -424,6 +464,24 @@
         if (calcOrderBtn) {
             calcOrderBtn.addEventListener('click', () => this.openModalWithCalc());
         }
+        
+        const minOrderModal = document.getElementById('minOrderModal');
+        const minOrderClose = document.getElementById('minOrderModalClose');
+        if (minOrderClose && minOrderModal) {
+            minOrderClose.addEventListener('click', () => {
+                minOrderModal.style.display = 'none';
+            });
+            minOrderModal.addEventListener('click', (e) => {
+                if (e.target === minOrderModal) minOrderModal.style.display = 'none';
+            });
+        }
+    },
+    getTotal() {
+        let total = 0;
+        for (let type in this.values) {
+            total += this.values[type] * this.prices[type];
+        }
+        return total;
     },
     handleCalc(e) {
         const button = e.target;
@@ -451,16 +509,40 @@
             total += this.values[type] * this.prices[type];
         }
         
-        // Скидка 10% при заказе через калькулятор
-        const discount = total * 0.1;
-        const finalPrice = total - discount;
-        
+        // Итого — полная сумма заказа (без скидки)
         const totalElement = document.getElementById('calcTotal');
         if (totalElement) {
-            totalElement.innerHTML = `<span style="text-decoration: line-through; opacity: 0.5; font-size: 1.5rem;">${total} zł</span><br>${Math.round(finalPrice)} zł`;
+            totalElement.textContent = total + ' zł';
+        }
+        
+        // Скидка 10% при заказе через калькулятор — показываем цену к оплате отдельно
+        const discountRow = document.getElementById('calcTotalDiscountRow');
+        const discountElement = document.getElementById('calcTotalDiscount');
+        if (total > 0 && discountRow && discountElement) {
+            const discount = total * 0.1;
+            const finalPrice = total - discount;
+            discountElement.textContent = Math.round(finalPrice) + ' zł';
+            discountRow.style.display = '';
+        } else if (discountRow) {
+            discountRow.style.display = 'none';
         }
     },
     openModalWithCalc() {
+        const total = this.getTotal();
+        if (total < this.MIN_ORDER) {
+            const minOrderModal = document.getElementById('minOrderModal');
+            const minOrderNote = document.getElementById('calcMinOrderNote');
+            if (minOrderModal) {
+                minOrderModal.style.display = 'flex';
+                minOrderModal.style.alignItems = 'center';
+                minOrderModal.style.justifyContent = 'center';
+            }
+            if (minOrderNote) {
+                minOrderNote.classList.add('calc-min-order-highlight');
+                setTimeout(() => minOrderNote.classList.remove('calc-min-order-highlight'), 3000);
+            }
+            return;
+        }
         // Открываем модальное окно и заполняем данными из калькулятора
         Modal.open();
         

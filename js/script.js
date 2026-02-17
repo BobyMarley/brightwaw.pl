@@ -41,13 +41,17 @@
     const ParticleSystem = {
         container: null,
         particles: [],
+        getParticleCount() {
+            return (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches) ? 10 : CONFIG.PARTICLES_COUNT;
+        },
         init() {
             this.container = document.querySelector('.particles');
             if (!this.container) return;
             this.createParticles();
         },
         createParticles() {
-            for (let i = 0; i < CONFIG.PARTICLES_COUNT; i++) {
+            const count = this.getParticleCount();
+            for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Utils.random(0, 100) + '%';
@@ -205,6 +209,15 @@
         }
     };
 
+    const FORM_MIN_ORDER = 160;
+    const FORM_SERVICE_PRICES = {
+        'Sofa': { price: 180, type: 'quantity' },
+        'Dywan': { price: 15, type: 'area' },
+        'Fotel': { price: 40, type: 'quantity' },
+        'Krzesło': { price: 40, type: 'quantity' },
+        'Materac': { price: 90, type: 'quantity' },
+        'Pakiet': { price: 300, type: 'quantity' }
+    };
     const Form = {
         form: null,
         feedback: null,
@@ -215,6 +228,18 @@
                 this.bindEvents();
                 this.bindQuantityButtons();
             }
+        },
+        getFormOrderTotal() {
+            let total = 0;
+            this.form.querySelectorAll('.service-item-wrapper').forEach(item => {
+                const name = item.dataset.serviceName;
+                const cfg = FORM_SERVICE_PRICES[name];
+                if (!cfg) return;
+                const input = item.querySelector('.quantity-input');
+                const value = parseInt(input && input.value, 10) || 0;
+                total += value * cfg.price;
+            });
+            return total;
         },
         bindQuantityButtons() {
             this.form.addEventListener('click', (e) => {
@@ -239,6 +264,17 @@
         async handleSubmit(e) {
             e.preventDefault();
             const submitButton = this.form.querySelector('.submit-btn');
+            const orderTotal = this.getFormOrderTotal();
+            if (orderTotal < FORM_MIN_ORDER) {
+                const minOrderModal = document.getElementById('minOrderModal');
+                if (minOrderModal) {
+                    minOrderModal.style.display = 'flex';
+                    minOrderModal.style.alignItems = 'center';
+                    minOrderModal.style.justifyContent = 'center';
+                }
+                this.showFeedback('Minimalna kwota zamówienia to 160 zł. Dodaj usługi na tę kwotę.', 'error');
+                return;
+            }
             const data = this.extractFormData();
             const validation = this.validateForm(data);
 
@@ -357,7 +393,8 @@
     };
 
     const Calculator = {
-        prices: { sofa: 160, carpet: 15, chair: 40, mattress: 90 },
+        MIN_ORDER: 160,
+        prices: { sofa: 180, carpet: 15, chair: 40, mattress: 90 },
         values: { sofa: 0, carpet: 0, chair: 0, mattress: 0 },
         init() {
             document.querySelectorAll('.calc-btn').forEach(btn => {
@@ -365,6 +402,17 @@
             });
             const orderBtn = document.getElementById('calcOrderBtn');
             if (orderBtn) orderBtn.addEventListener('click', () => this.openModalWithCalc());
+            const minOrderModal = document.getElementById('minOrderModal');
+            const minOrderClose = document.getElementById('minOrderModalClose');
+            if (minOrderClose && minOrderModal) {
+                minOrderClose.addEventListener('click', () => { minOrderModal.style.display = 'none'; });
+                minOrderModal.addEventListener('click', (e) => { if (e.target === minOrderModal) minOrderModal.style.display = 'none'; });
+            }
+        },
+        getTotal() {
+            let total = 0;
+            for (let key in this.values) total += this.values[key] * this.prices[key];
+            return total;
         },
         handleCalc(e) {
             const btn = e.target;
@@ -383,15 +431,32 @@
         updateTotal() {
             let total = 0;
             for (let key in this.values) total += this.values[key] * this.prices[key];
-            const final = Math.round(total * 0.9); // -10%
             const el = document.getElementById('calcTotal');
-            if (el) {
-                el.innerHTML = total > 0
-                    ? `<span style="text-decoration:line-through;opacity:0.5;font-size:1.5rem">${total} zł</span><br>${final} zł`
-                    : '0 zł';
-            }
+            if (el) el.textContent = total + ' zł';
+            const discountRow = document.getElementById('calcTotalDiscountRow');
+            const discountEl = document.getElementById('calcTotalDiscount');
+            if (total > 0 && discountRow && discountEl) {
+                const final = Math.round(total * 0.9);
+                discountEl.textContent = final + ' zł';
+                discountRow.style.display = '';
+            } else if (discountRow) discountRow.style.display = 'none';
         },
         openModalWithCalc() {
+            const total = this.getTotal();
+            if (total < this.MIN_ORDER) {
+                const minOrderModal = document.getElementById('minOrderModal');
+                const minOrderNote = document.getElementById('calcMinOrderNote');
+                if (minOrderModal) {
+                    minOrderModal.style.display = 'flex';
+                    minOrderModal.style.alignItems = 'center';
+                    minOrderModal.style.justifyContent = 'center';
+                }
+                if (minOrderNote) {
+                    minOrderNote.classList.add('calc-min-order-highlight');
+                    setTimeout(() => minOrderNote.classList.remove('calc-min-order-highlight'), 3000);
+                }
+                return;
+            }
             Modal.open();
             const map = { sofa: 'Sofa', carpet: 'Dywan', chair: 'Fotel', mattress: 'Materac' };
             for (let key in this.values) {

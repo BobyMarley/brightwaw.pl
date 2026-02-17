@@ -1,62 +1,63 @@
 {
   "card1": {
     "kompleksowa": {
-      "roomCount": "Jednopokojowa (do 36 m²)",
+      "roomCount": "Jednopokojowa (do 36 m2)",
       "price": "160 zł",
       "description": "Opis standardowego sprzątania"
     },
     "generalna": {
-      "roomCount": "Jednopokojowa (do 36 m²)",
+      "roomCount": "Jednopokojowa (do 36 m2)",
       "price": "510 zł",
       "description": "Opis generalnego sprzątania"
     }
   },
   "card2": {
     "kompleksowa": {
-      "roomCount": "Dwupokojowa (do 55 m²)",
+      "roomCount": "Dwupokojowa (do 55 m2)",
       "price": "190 zł",
       "description": "Opis standardowego sprzątania"
     },
     "generalna": {
-      "roomCount": "Dwupokojowa (do 55 m²)",
+      "roomCount": "Dwupokojowa (do 55 m2)",
       "price": "620 zł",
       "description": "Opis generalnego sprzątania"
     }
   },
   "card3": {
     "kompleksowa": {
-      "roomCount": "Trzypokojowa (do 80 m²)",
+      "roomCount": "Trzypokojowa (do 80 m2)",
       "price": "230 zł",
       "description": "Opis standardowego sprzątania"
     },
     "generalna": {
-      "roomCount": "Trzypokojowa (do 80 m²)",
+      "roomCount": "Trzypokojowa (do 80 m2)",
       "price": "770 zł",
       "description": "Opis generalnego sprzątania"
     }
   },
   "card4": {
     "kompleksowa": {
-      "roomCount": "Czteropokojowa (do 100 m²)",
+      "roomCount": "Czteropokojowa (do 100 m2)",
       "price": "280 zł",
       "description": "Opis standardowego sprzątania"
     },
     "generalna": {
-      "roomCount": "Czteropokojowa (do 100 m²)",
+      "roomCount": "Czteropokojowa (do 100 m2)",
       "price": "900 zł",
       "description": "Opis generalnego sprzątania"
     }
   },
   "card5": {
     "kompleksowa": {
-      "roomCount": "Pięciopokojowa (do 120 m²)",
+      "roomCount": "Pięciopokojowa (do 120 m2)",
       "price": "320 zł",
       "description": "Opis standardowego sprzątania"
     },
     "generalna": {
-      "roomCount": "Pięciopokojowa (do 120 m²)",
-      "price": "1050 zł",
+      "roomCount": "Pięciopokojowa (do 120 m2)",
+      "price": "550 zł",
       "description": "Opis generalnego sprzątania"
     }
   }
 }
+

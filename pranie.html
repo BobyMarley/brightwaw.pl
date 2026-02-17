@@ -41,7 +41,7 @@
       "url": "https://brightwaw.pl/pranie.html",
       "telephone": "+48 888 742 534",
       "email": "sales@brightwaw.pl",
-      "priceRange": "15 zł - 160 zł",
+      "priceRange": "15 zł - 180 zł",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "ul. WRONIA 45, lok. U2",
@@ -77,7 +77,7 @@
               "name": "Pranie sofy",
               "description": "Profesjonalne pranie mebli tapicerowanych"
             },
-            "price": "160",
+            "price": "180",
             "priceCurrency": "PLN"
           },
           {
@@ -303,7 +303,7 @@
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       z-index: 1000;
-      transition: all var(--transition-normal)
+      transition: background-color 0.3s, box-shadow 0.3s
     }
 
     .header.scrolled {
@@ -1388,7 +1388,7 @@
           <div class="service-header">
             <div class="service-icon">🛋️</div>
             <h3 class="service-title">Sofa</h3>
-            <div class="service-price">od 160 zł</div>
+            <div class="service-price">od 180 zł</div>
           </div>
           <p class="service-description">Głębokie czyszczenie mebli tapicerowanych</p>
           <ul class="service-features">
@@ -1483,7 +1483,7 @@
                 <span class="calc-value" data-calc-display="sofa">0</span>
                 <button type="button" class="calc-btn" data-calc="sofa" data-action="plus">+</button>
               </div>
-              <span class="calc-price">160 zł/szt</span>
+              <span class="calc-price">180 zł/szt</span>
             </div>
             <div class="calc-item">
               <label>Dywan (m²)</label>
@@ -1518,8 +1518,13 @@
               <span>Razem:</span>
               <span class="total-price" id="calcTotal">0 zł</span>
             </div>
+            <div class="total-row total-row-discount" id="calcTotalDiscountRow" style="display: none;">
+              <span>Ze zniżką 10%:</span>
+              <span class="total-price total-price-discount" id="calcTotalDiscount">0 zł</span>
+            </div>
             <button class="cta-button" id="calcOrderBtn">Zamów ze zniżką 10%</button>
             <p class="calc-note">*Przy zamówieniu przez kalkulator - zniżka 10%</p>
+            <p class="calc-note calc-note-min" id="calcMinOrderNote">Minimalny wyjazd: 160 zł</p>
           </div>
         </div>
       </div>
@@ -1920,6 +1925,13 @@
         <button type="submit" class="submit-btn">Wyślij zgłoszenie</button>
         <div id="formFeedback" class="text-center" style="margin-top: var(--space-md);"></div>
       </form>
+    </div>
+  </div>
+  <div id="minOrderModal" class="modal min-order-modal" role="alertdialog" aria-labelledby="minOrderModalTitle" aria-modal="true" style="display: none;">
+    <div class="modal-content min-order-modal-content">
+      <h2 id="minOrderModalTitle" class="modal-title">Minimalne zamówienie 160 zł</h2>
+      <p style="margin: 0 0 var(--space-xl, 1.5rem) 0; color: var(--text-secondary, #94a3b8); line-height: 1.6;">Dodaj usługi na kwotę co najmniej 160 zł, aby złożyć zamówienie. Dojazd możliwy przy zamówieniu od tej kwoty.</p>
+      <button type="button" class="cta-button" id="minOrderModalClose">Rozumiem</button>
     </div>
   </div>
   <script src="/js/script.js?ver4" defer></script>

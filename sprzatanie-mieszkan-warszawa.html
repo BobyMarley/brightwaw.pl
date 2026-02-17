@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl-PL">
 
 <head>
@@ -23,10 +23,388 @@
   <link rel="preload" href="/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Icons -->
-  
-  <!-- Global CSS to inherit variables -->
-  <link rel="stylesheet" href="/index.min.css?ver=v8.1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" />
 
+  <!-- Global CSS to inherit variables -->
+  <link rel="stylesheet" href="/index.css?ver5">
+
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap
+    }
+
+    :root {
+      --h2: Montserrat;
+      --main-font: Montserrat;
+      --h2-size: 1.5rem;
+      --font-size-lg: 1.13rem;
+      --primary: #0f85c9;
+      --primary-color: #0f85c9;
+      --primary-contrast: #fff;
+      --primary-blue: #1E90FF;
+      --primary-dark: #1874CD;
+      --white: #fff;
+      --text-dark: #2c3e50;
+      --text-gray: #7f8c8d;
+      --text-light: #bdc3c7;
+      --bg-darker: #050508;
+      --bg-overlay: rgba(255, 255, 255, 0.95);
+      --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
+      --gap-5xl: 1.5rem;
+      --gap-lg: 1.13rem;
+      --padding-13xl: 2rem;
+      --padding-111xl: 8.13rem;
+      --padding-base: 1rem;
+      --padding-5xl: 1.5rem;
+      --br-mini: 15px;
+      --radio-border-color: #8b8c89;
+      --radio-checked-color: var(--primary);
+      --radio-hover-color: #a3cef1;
+      --radio-disabled-bg-color: #d9d9d9;
+      --button-prime: 0px 207px 58px rgba(25, 23, 176, 0.01), 0px 133px 53px rgba(25, 23, 176, 0.06), 0px 75px 45px rgba(25, 23, 176, 0.2), 0px 33px 33px rgba(25, 23, 176, 0.34), 0px 8px 18px rgba(25, 23, 176, 0.39), 0px 0px 0px rgba(25, 23, 176, 0.4)
+    }
+
+    body {
+      margin: 0;
+      line-height: normal;
+      font-family: var(--main-font);
+      font-weight: 500;
+      overflow-x: hidden;
+      width: 100%
+    }
+
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      z-index: 1001
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 30px
+    }
+
+    .line {
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all .3s
+    }
+
+    @media(max-width:1023px) {
+      .hamburger-menu {
+        display: flex
+      }
+
+      .nav-menu,
+      .nav-icons,
+      .langSwitch {
+        display: none !important
+      }
+    }
+
+    /* Hero Section */
+    .land-hero {
+      position: relative;
+      height: 90vh;
+      /* Full viewport height for modern look */
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      background: url('/public/cleaning_hero_v2.webp') no-repeat center center/cover;
+      margin-top: 70px;
+      /* Offset fixed header */
+    }
+
+    .land-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 133, 201, 0.4) 100%);
+    }
+
+    .land-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      padding: 0 1.5rem;
+      animation: fadeIn Up 0.8s ease-out;
+    }
+
+    .land-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      color: var(--white);
+      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .land-hero p {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      margin-bottom: 2.5rem;
+      color: var(--white);
+      opacity: 0.95;
+    }
+
+    .land-btn {
+      display: inline-block;
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 1.2rem 2.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(15, 133, 201, 0.3);
+      border: 2px solid var(--primary-color);
+      transition: all 0.3s ease;
+    }
+
+    .land-btn:hover {
+      background: transparent;
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(15, 133, 201, 0.4);
+    }
+
+    .land-btn-white {
+      display: inline-block;
+      background: var(--white);
+      color: var(--primary-color);
+      padding: 1.2rem 2.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+      border: 2px solid var(--white);
+      transition: all 0.3s ease;
+    }
+
+    .land-btn-white:hover {
+      background: transparent;
+      color: var(--white);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(255, 255, 255, 0.3);
+    }
+
+    .land-btn-outline {
+      display: inline-block;
+      background: transparent;
+      color: var(--white);
+      padding: 1.2rem 2.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: none;
+      border: 2px solid var(--white);
+      transition: all 0.3s ease;
+    }
+
+    .land-btn-outline:hover {
+      background: var(--white);
+      color: var(--primary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Cards Grid */
+    .land-section {
+      padding: 5rem 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .land-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .land-title h2 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .land-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .land-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s;
+      border: 1px solid #eee;
+    }
+
+    .land-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary-color);
+    }
+
+    .land-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1.5rem;
+      object-fit: contain;
+    }
+
+    /* Fix for lists inside cards becoming flex items */
+    .land-card ul {
+      display: block;
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+    }
+
+    .land-card ul li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+
+    .land-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    h4 {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .land-price {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    /* Accordions (Clean Style) */
+    .land-accordion details {
+      background: var(--white);
+      border: 1px solid #e9ecef;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .land-accordion summary {
+      padding: 1.5rem;
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fdfdfd;
+    }
+
+    .land-accordion summary:hover {
+      background: #f8f9fa;
+    }
+
+    .land-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .land-accordion-content {
+      padding: 1.5rem;
+      border-top: 1px solid #eee;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* Footer */
+    .land-footer {
+      background: #1a1a2e;
+      color: var(--white);
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    .land-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .land-footer h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .land-footer a {
+      color: rgba(255, 255, 255, 0.7);
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .land-footer a:hover {
+      color: var(--white);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -40,6 +418,45 @@
         </a>
       </div>
 
+      <div class="nav-menu">
+        <ul>
+          <li><a href="https://brightwaw.pl/sprzatanie-mieszkan-warszawa.html" title="Sprzątanie mieszkań">Sprzątanie
+              mieszkań</a></li>
+          <li><a href="https://brightwaw.pl/cennik.html" title="Cennik">Cennik</a></li>
+          <li><a href="https://brightwaw.pl/pranie.html" title="Pranie">Pranie chemiczne</a></li>
+          <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie">Opinie</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-icons">
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+          aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
+            src="/public/facebook.svg" /></a>
+        <a href="https://www.instagram.com/brightwaw.pl/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+          aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
+            src="/public/insta.svg" /></a>
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+          aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
+            src="/public/whatsapp.svg" /></a>
+        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+          aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
+            src="/public/phone_call.svg" /></a>
+        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+          aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
+      </div>
+      <ul class="langSwitch">
+        <li>
+          <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
+            <b class="lang">PL</b>
+          </a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
+            <b class="lang">EN</b>
+          </a>
+        </li>
+      </ul>
       <div class="hamburger-menu">
         <div class="hamburger-icon">
           <span class="line"></span>
@@ -47,56 +464,51 @@
           <span class="line"></span>
         </div>
       </div>
-
-      <div id="nav-content" class="nav-content">
-        <div class="nav-menu">
-          <ul>
-            <li><a href="https://brightwaw.pl/sprzatanie-mieszkan-warszawa.html" title="Sprzątanie mieszkań">Sprzątanie
-                mieszkań</a></li>
-            <li><a href="https://brightwaw.pl/cennik.html" title="Cennik">Cennik</a></li>
-            <li><a href="https://brightwaw.pl/pranie.html" title="Pranie">Pranie chemiczne</a></li>
-            <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie">Opinie</a></li>
-          </ul>
-        </div>
-
-        <div class="nav-icons">
-          <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
-            aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
-              src="/public/facebook.svg" /></a>
-          <a href="https://www.instagram.com/brightwaw.pl/" class="icons" title="Odwiedź naszą stronę na Instagramie"
-            aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
-              src="/public/insta.svg" /></a>
-          <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
-            aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
-              src="/public/whatsapp.svg" /></a>
-          <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
-            aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
-              src="/public/phone_call.svg" /></a>
-          <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
-            aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
-        </div>
-        <ul class="langSwitch">
-          <li>
-            <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
-              <b class="lang">PL</b>
-            </a>
-          </li>
-          <li> | </li>
-          <li>
-            <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
-              <b class="lang">EN</b>
-            </a>
-          </li>
-        </ul>
-        <div class="contact-info">
-          <p><a href="tel:+48888742534" title="Zadzwoń +48 888 742 534" aria-label="Zadzwoń +48 888 742 534">+48 888 742
-              534</a></p>
-          <p><a href="mailto:sales@brightwaw.pl">sales@brightwaw.pl</a></p>
-        </div>
-      </div>
     </div>
 
-
+    <div class="overlay">
+      <ul class="mobile-langSwitch">
+        <li>
+          <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
+            <b class="lang">PL</b>
+          </a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
+            <b class="lang">EN</b>
+          </a>
+        </li>
+      </ul>
+      <div class="mobile-nav-menu">
+        <ul>
+          <li><a href="https://brightwaw.pl/cennik.html" title="Cennik" aria-label="Cennik">Cennik</a></li>
+          <li><a href="https://brightwaw.pl/pranie.html" title="Pranie" aria-label="Pranie">Pranie chemiczne</a></li>
+          <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie" aria-label="Opinie">Opinie</a></li>
+        </ul>
+      </div>
+      <div class="mobile-nav-icons">
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+          aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
+            src="/public/facebook.svg" /></a>
+        <a href="https://instagram.com/cleaning_bright_house/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+          aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
+            src="/public/insta.svg" /></a>
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+          aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
+            src="/public/whatsapp.svg" /></a>
+        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+          aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
+            src="/public/phone_call.svg" /></a>
+        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+          aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
+      </div>
+      <div class="contact-info">
+        <p><a href="tel:+48888742534" title="Zadzwoń +48 888 742 534" aria-label="Zadzwoń +48 888 742 534">+48 888 742
+            534</a></p>
+        <p><a href="mailto:sales@brightwaw.pl">sales@brightwaw.pl</a></p>
+      </div>
+    </div>
   </header>
 
   <!-- Hero Section -->
@@ -105,7 +517,7 @@
       <h1>Profesjonalne Sprzątanie<br>Mieszkań w Warszawie</h1>
       <p>Standardowe, generalne i poremontowe. Gwarancja satysfakcji, ekologiczne środki i szybki dojazd w 2 godziny.
       </p>
-      <div class="land-btn-group">
+      <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
         <a href="tel:+48888742534" class="land-btn">Zadzwoń Teraz</a>
         <a href="#cennik" class="land-btn-outline">Sprawdź Ceny</a>
       </div>
@@ -116,7 +528,7 @@
   <section id="uslugi" class="land-section">
     <div class="land-title">
       <h2>Nasze Pakiety Sprzątania</h2>
-      <p class="land-card-desc text-gray">Wybierz idealne rozwiązanie dla swojego domu</p>
+      <p style="color: var(--text-gray);">Wybierz idealne rozwiązanie dla swojego domu</p>
     </div>
     <div class="land-grid">
       <!-- Standard -->
@@ -124,51 +536,55 @@
         <img src="/public/icon_standard.webp" alt="Standard">
         <h3>Sprzątanie Standardowe</h3>
         <span class="land-price">Od 160 zł</span>
-        <p class="land-card-desc">Regularne utrzymanie czystości. Odkurzanie, mycie podłóg, ścieranie
+        <p style="color: #666; font-size: 0.95rem;">Regularne utrzymanie czystości. Odkurzanie, mycie podłóg, ścieranie
           kurzu, kuchnia i łazienka.</p>
-        <ul class="land-card-list">
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Odkurzanie i
+        <ul style="color: #555;">
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Odkurzanie i
             mycie podłóg</li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Kuchnia i
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Kuchnia i
             łazienka</li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Ścieranie kurzu
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Ścieranie kurzu
           </li>
         </ul>
       </div>
 
       <!-- General -->
-      <div class="land-card land-card-featured">
-        <div class="land-badge">POLECANE</div>
+      <div class="land-card"
+        style="border: 2px solid var(--primary-color); box-shadow: var(--shadow-md); position: relative;">
+        <div
+          style="position: absolute; top: -12px; right: 2rem; background: var(--primary-color); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700;">
+          POLECANE</div>
         <img src="/public/icon_deep.webp" alt="General">
         <h3>Sprzątanie Generalne</h3>
         <span class="land-price">Od 350 zł</span>
-        <p class="land-card-desc">Dogłębne czyszczenie całego domu. Mycie okien, fug, wnętrza szafek,
+        <p style="color: #666; font-size: 0.95rem;">Dogłębne czyszczenie całego domu. Mycie okien, fug, wnętrza szafek,
           piekarnika i lamp.</p>
-        <ul class="land-card-list">
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Wszystko ze
+        <ul style="color: #555;">
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Wszystko ze
             standardu</li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Mycie okien i
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Mycie okien i
             fug</li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Wnętrze szafek
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Wnętrze szafek
           </li>
         </ul>
       </div>
 
       <!-- Renovation -->
       <div class="land-card">
-        <div class="land-icon-circle">
-          <svg class="fa-solid fa-paint-roller" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="1em" height="1em"><path d="M0 64C0 28.7 28.7 0 64 0H352c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM160 352c0-17.7 14.3-32 32-32V304c0-44.2 35.8-80 80-80H416c17.7 0 32-14.3 32-32V160 69.5c37.3 13.2 64 48.7 64 90.5v32c0 53-43 96-96 96H272c-8.8 0-16 7.2-16 16v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V352H160z"/></svg>
+        <div
+          style="width: 80px; height: 80px; background: #e0f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+          <i class="fa-solid fa-paint-roller" style="font-size: 2rem; color: var(--primary-color);"></i>
         </div>
         <h3>Po Remoncie</h3>
         <span class="land-price">Wycena Indywidualna</span>
-        <p class="land-card-desc">Specjalistyczne usuwanie pyłu budowlanego, farby i gruzu.
+        <p style="color: #666; font-size: 0.95rem;">Specjalistyczne usuwanie pyłu budowlanego, farby i gruzu.
           Przygotowanie do zamieszkania.</p>
-        <ul class="land-card-list">
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Usuwanie pyłu
+        <ul style="color: #555;">
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Usuwanie pyłu
           </li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Pył po
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Pył po
             gładzi/remoncie</li>
-          <li><svg class="fa-solid fa-check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg> Mycie okien i
+          <li><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i> Mycie okien i
             ram</li>
         </ul>
       </div>
@@ -176,54 +592,77 @@
   </section>
 
   <!-- Features Icons -->
-  <section class="land-features-section">
-    <div class="land-section p-0">
-      <div class="land-features-grid">
-        <div class="land-feature-item">
-          <svg class="fa-solid fa-shield-halved land-feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="1em" height="1em"><path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.7 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0zm0 66.8V444.8C394 378 431.1 230.1 432 141.4L256 66.8l0 0z"/></svg>
-          <h4 class="land-feature-title">Pełne Ubezpieczenie</h4>
-          <p class="land-feature-desc">Twoje mienie jest chronione polisą OC do 1 mln zł.</p>
+  <section style="background: var(--bg-light); padding: 5rem 1.5rem;">
+    <div class="land-section" style="padding: 0;">
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; text-align: center;">
+        <div style="max-width: 250px;">
+          <i class="fa-solid fa-shield-halved"
+            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
+          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Pełne Ubezpieczenie</h4>
+          <p style="color: #666; font-size: 0.9rem;">Twoje mienie jest chronione polisą OC do 1 mln zł.</p>
         </div>
-        <div class="land-feature-item">
-          <svg class="fa-solid fa-user-check land-feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor" width="1em" height="1em"><path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM625 177L497 305c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L591 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
-          <h4 class="land-feature-title">Zaufany Zespół</h4>
-          <p class="land-feature-desc">Weryfikujemy tożsamość i dbamy o najwyższą kulturę osobistą naszych
+        <div style="max-width: 250px;">
+          <i class="fa-solid fa-user-check"
+            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
+          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Zaufany Zespół</h4>
+          <p style="color: #666; font-size: 0.9rem;">Weryfikujemy tożsamość i dbamy o najwyższą kulturę osobistą naszych
             pracowników.</p>
         </div>
-        <div class="land-feature-item">
-          <svg class="fa-solid fa-flask land-feature-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M160 32V64H288V32c0-17.7-14.3-32-32-32H192c-17.7 0-32 14.3-32 32zM128 96H320l85.3 149.3c14.9 26.1 22.7 55.8 22.7 85.8V432c0 44.2-35.8 80-80 80H100c-44.2 0-80-35.8-80-80V331.1c0-30 7.8-59.7 22.7-85.8L128 96z"/></svg>
-          <h4 class="land-feature-title">Profesjonalna Chemia</h4>
-          <p class="land-feature-desc">Pracujemy na środkach Kärcher i Prochem. Skuteczne i bezpieczne dla
+        <div style="max-width: 250px;">
+          <i class="fa-solid fa-flask"
+            style="font-size: 3.5rem; color: var(--primary-color); margin-bottom: 1.5rem;"></i>
+          <h4 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Profesjonalna Chemia</h4>
+          <p style="color: #666; font-size: 0.9rem;">Pracujemy na środkach Kärcher i Prochem. Skuteczne i bezpieczne dla
             alergików.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SEO: Districts Section -->
-  <section class="full-width-section section-gradient">
+  <section class="full-width-section"
+    style="background:linear-gradient(135deg,#f8f9fa 0%,#eef2f5 100%);padding:4rem 0;">
     <div class="section-container">
-      <h2 class="section-title text-primary section-title-lg">Obsługujemy Wszystkie Dzielnice Warszawy</h2>
-      <p class="section-subtitle-lg">Dojazd gratis w całej Warszawie! Pracujemy we wszystkich dzielnicach 7 dni w
-        tygodniu.</p>
-      <ul class="district-grid">
-        <li class="district-badge">📍 Mokotów</li>
-        <li class="district-badge">📍 Ursynów</li>
-        <li class="district-badge">📍 Wilanów</li>
-        <li class="district-badge">📍 Śródmieście</li>
-        <li class="district-badge">📍 Wola</li>
-        <li class="district-badge">📍 Żoliborz</li>
-        <li class="district-badge">📍 Praga</li>
-        <li class="district-badge">📍 Bemowo</li>
-        <li class="district-badge">📍 Bielany</li>
-        <li class="district-badge">📍 Ochota</li>
-        <li class="district-badge">📍 Białołęka</li>
-        <li class="district-badge">📍 Targówek</li>
-      </ul>
-      <div class="text-center">
-        <a href="tel:+48888742534" class="phone-link">
-          � Sprawdź dostępność w Twojej dzielnicy: +48 888 742 534
-        </a>
+      <h2 style="text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem;">Obsługujemy
+        Wszystkie Dzielnice Warszawy</h2>
+      <p style="text-align:center;color:var(--text-gray);margin-bottom:2.5rem;max-width:800px;margin:0 auto 2.5rem;">
+        Pracujemy 7 dni w tygodniu. Dojazd w dowolne miejsce Warszawy jest zawsze bezpłatny!</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.8rem;">
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Mokotów</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Ursynów</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Wilanów</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Śródmieście</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Wola</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Żoliborz</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Praga</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Bemowo</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Bielany</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Ochota</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Białołęka</div>
+        <div
+          style="padding:0.8rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);font-size:0.9rem;">
+          📍 Targówek</div>
       </div>
     </div>
   </section>
@@ -232,75 +671,77 @@
 
   <section class="cta-banner">
     <div class="section-container">
-      <h2>Gotowy na Profesjonalne Sprzątanie?</h2>
-      <p>Zadzwoń teraz i zamów sprzątanie mieszkania w Warszawie. Szybki wyjazd w 2 godziny. Rabat 10% dla nowych
-        klientów!</p>
+      <h2>Gotowy na porządek?</h2>
+      <p>Dołącz do tysięcy zadowolonych klientów w Warszawie. Czystość i spokój na wyciągnięcie ręki.</p>
       <div class="cta-buttons">
-        <a href="tel:+48888742534" class="btn-cta-primary">
-          <svg class="fa-solid fa-phone" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="1em" height="1em"><path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.8-20.9-19-23.4z"/></svg> +48 888 742 534
-        </a>
-        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="btn-cta-outline">
-          <svg class="fa-brands fa-whatsapp" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg> WhatsApp
-        </a>
+        <a href="tel:+48888742534" class="btn-cta-primary">Zadzwoń Teraz</a>
       </div>
     </div>
   </section>
 
-  <footer class="ref-footer">
-    <div class="ref-footer-container">
-      <div class="ref-footer-grid">
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Kontakt</h3>
-          <div class="ref-footer-links">
-            <a href="tel:+48888742534" class="ref-footer-link">📞 +48 888 742 534</a>
-            <a href="mailto:sales@brightwaw.pl" class="ref-footer-link">📧 sales@brightwaw.pl</a>
-            <span class="ref-footer-text">📍 ul. WRONIA 45, lok. U2, 00-870 Warszawa</span>
-            <span class="ref-footer-text">🕐 Pn-Nd: 08:00-20:00</span>
+  <footer style="background:#1a1a2e;color:#fff;padding:3rem 1.5rem 1.5rem;margin-top:0;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem;margin-bottom:2rem;">
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Kontakt</h3>
+          <div style="display:flex;flex-direction:column;gap:.7rem;font-size:.95rem;">
+            <a href="tel:+48888742534" style="color:rgba(255,255,255,.85);text-decoration:none;">📞 +48 888 742 534</a>
+            <a href="mailto:sales@brightwaw.pl" style="color:rgba(255,255,255,.85);text-decoration:none;">📧
+              sales@brightwaw.pl</a>
+            <span style="color:rgba(255,255,255,.85);">📍 ul. WRONIA 45, lok. U2, 00-870 Warszawa</span>
+            <span style="color:rgba(255,255,255,.85);">🕐 Pn-Nd: 08:00-20:00</span>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Usługi</h3>
-          <div class="ref-footer-links">
-            <a href="https://brightwaw.pl/cennik.html" class="ref-footer-link">Sprzątanie mieszkań</a>
-            <a href="https://brightwaw.pl/pranie.html" class="ref-footer-link">Pranie chemiczne mebli</a>
-            <a href="https://brightwaw.pl/cennik.html" class="ref-footer-link">Sprzątanie biur</a>
-            <a href="https://g.page/r/CQmCteFzMdvWEB0" class="ref-footer-link">Opinie</a>
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Usługi</h3>
+          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;">
+            <a href="https://brightwaw.pl/cennik.html"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie mieszkań</a>
+            <a href="https://brightwaw.pl/pranie.html" style="color:rgba(255,255,255,.85);text-decoration:none;">Pranie
+              chemiczne mebli</a>
+            <a href="https://brightwaw.pl/cennik.html"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie biur</a>
+            <a href="https://g.page/r/CQmCteFzMdvWEB0"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Opinie</a>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Płatność</h3>
-          <div class="ref-footer-payment-list">
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Płatność</h3>
+          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;color:rgba(255,255,255,.85);">
             <span>✓ Gotówka / BLIK</span>
             <span>✓ Przelew bankowy</span>
             <span>✓ Faktury i paragony</span>
           </div>
-          <div class="ref-footer-badges">
-            <span class="ref-footer-badge">Kärcher</span>
-            <span class="ref-footer-badge">Professional</span>
+          <div style="margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+            <span
+              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Kärcher</span>
+            <span
+              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Professional</span>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Media społecznościowe</h3>
-          <div class="ref-footer-socials">
-            <a href="https://facebook.com/BrightHouseWaw" class="ref-footer-social-icon" title="Facebook">
-              <img src="/public/facebook.svg" alt="Facebook">
-            </a>
-            <a href="https://instagram.com/cleaning_bright_house/" class="ref-footer-social-icon" title="Instagram">
-              <img src="/public/insta.svg" alt="Instagram">
-            </a>
-            <a href="https://t.me/BrightHouse_Cleaning" class="ref-footer-social-icon" title="Telegram">
-              <img src="/public/tg.svg" alt="Telegram">
-            </a>
-            <a href="https://wa.me/message/B3AQALEBNNLJH1" class="ref-footer-social-icon" title="WhatsApp">
-              <img src="/public/whatsapp.svg" alt="WhatsApp">
-            </a>
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Media społecznościowe</h3>
+          <div style="display:flex;gap:.8rem;">
+            <a href="https://facebook.com/BrightHouseWaw"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Facebook"><img src="/public/facebook.svg" alt="Facebook" style="width:18px;height:18px;"></a>
+            <a href="https://instagram.com/cleaning_bright_house/"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Instagram"><img src="/public/insta.svg" alt="Instagram" style="width:18px;height:18px;"></a>
+            <a href="https://t.me/BrightHouse_Cleaning"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Telegram"><img src="/public/tg.svg" alt="Telegram" style="width:18px;height:18px;"></a>
+            <a href="https://wa.me/message/B3AQALEBNNLJH1"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="WhatsApp"><img src="/public/whatsapp.svg" alt="WhatsApp" style="width:18px;height:18px;"></a>
           </div>
         </div>
       </div>
-      <div class="ref-footer-copyright">
-        <p class="ref-footer-copy-text"><strong>BRIGHTHOUSE Sp. z o.o.</strong> | KRS 0001000542 | NIP: 5273026432</p>
-        <p class="ref-footer-copy-subtext">ul. WRONIA 45, lok. U2, 00-870 WARSZAWA | &copy; 2025 BrightHouse Cleaning
-        </p>
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem;margin-top:2rem;text-align:center;">
+        <p style="font-size:.85rem;color:rgba(255,255,255,.7);margin:.3rem 0;"><strong>BRIGHTHOUSE Sp. z o.o.</strong> |
+          KRS 0001000542 | NIP: 5273026432</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.6);margin:.3rem 0;">ul. WRONIA 45, lok. U2, 00-870 WARSZAWA |
+          &copy; 2025 BrightHouse Cleaning</p>
       </div>
     </div>
   </footer>
@@ -309,15 +750,13 @@
   <script src="/vanilla-app.js?ver2" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const h = document.querySelector('.hamburger-menu'), o = document.querySelector('#nav-content');
+      const h = document.querySelector('.hamburger-menu'), o = document.querySelector('.overlay');
       h && h.addEventListener('click', () => {
         o.classList.toggle('active');
-        o.classList.toggle('is-visible');
         document.body.style.overflow = o.classList.contains('active') ? 'hidden' : 'auto';
       });
       o && o.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         o.classList.remove('active');
-        o.classList.remove('is-visible');
         document.body.style.overflow = 'auto';
       }));
 

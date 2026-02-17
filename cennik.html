@@ -16,10 +16,285 @@
   <meta property="og:image" content="https://brightwaw.pl/public/cleaning_hero_v2.webp">
 
   <!-- Fonts & Icons -->
-  
-  <link rel="stylesheet" href="/index.min.css?ver=v8.1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="/index.css?ver5">
+
+  <style>
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap
+    }
+
+    @font-face {
+      font-family: 'Montserrat';
+      src: url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap
+    }
+
+    :root {
+      --h2: Montserrat;
+      --main-font: Montserrat;
+      --h2-size: 1.5rem;
+      --font-size-lg: 1.13rem;
+      --primary: #0f85c9;
+      --primary-color: #0f85c9;
+      --primary-contrast: #fff;
+      --primary-blue: #1E90FF;
+      --primary-dark: #1874CD;
+      --white: #fff;
+      --text-dark: #2c3e50;
+      --text-gray: #7f8c8d;
+      --text-light: #bdc3c7;
+      --bg-darker: #050508;
+      --bg-overlay: rgba(255, 255, 255, 0.95);
+      --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
+      --gap-5xl: 1.5rem;
+      --gap-lg: 1.13rem;
+      --padding-13xl: 2rem;
+      --padding-111xl: 8.13rem;
+      --padding-base: 1rem;
+      --padding-5xl: 1.5rem;
+      --br-mini: 15px;
+      --radius-lg: 16px;
+      --radio-border-color: #8b8c89;
+      --radio-checked-color: var(--primary);
+      --radio-hover-color: #a3cef1;
+      --radio-disabled-bg-color: #d9d9d9;
+      --button-prime: 0px 207px 58px rgba(25, 23, 176, 0.01), 0px 133px 53px rgba(25, 23, 176, 0.06), 0px 75px 45px rgba(25,
+          23, 176, 0.2), 0px 33px 33px rgba(25, 23, 176, 0.34), 0px 8px 18px rgba(25, 23, 176, 0.39), 0px 0px 0px rgba(25, 23,
+          176, 0.4)
+    }
+
+    body {
+      margin: 0;
+      line-height: normal;
+      font-family: var(--main-font);
+      font-weight: 500;
+      overflow-x: hidden;
+      width: 100%
+    }
+
+    .hamburger-menu {
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      z-index: 1001
+    }
+
+    .hamburger-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 30px
+    }
+
+    .line {
+      width: 100%;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: all .3s
+    }
+
+    @media(max-width:1023px) {
+      .hamburger-menu {
+        display: flex
+      }
+
+      .nav-menu,
+      .nav-icons,
+      .langSwitch {
+        display: none !important
+      }
+    }
+
+    /* Table Styles from Original */
+    .table-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    .table-row,
+    .table-row-header {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .table-row {
+      padding: 20px 40px;
+      transition: background-color 0.3s ease;
+      border-top: 1px solid lightgray;
+      border-bottom: 1px solid lightgray;
+      justify-content: space-between;
+      background-color: white;
+    }
+
+    .table-row-header {
+      justify-content: center;
+      background-color: rgb(230 235 237);
+    }
+
+    .table-row-header:first-child {
+      border-top: none;
+      border-radius: 15px 15px 0 0;
+    }
+
+    .table-row:first-child {
+      border-top: none;
+    }
+
+    .table-row:last-child {
+      border-bottom: none;
+      border-radius: 0 0 15px 15px;
+    }
+
+    .table-row:hover {
+      background-color: #f8f9fa;
+    }
+
+    .table-cell {
+      max-width: 70%;
+      font-size: 1.1rem;
+      color: black;
+    }
+
+    .table-cell h3 {
+      color: var(--primary);
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .price-cell {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    @media screen and (max-width: 950px) {
+      .table-cell {
+        padding: 10px 0;
+      }
+
+      .table-row {
+        padding: 20px 10px;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        text-align: center;
+      }
+
+      .table-cell {
+        max-width: 100%;
+      }
+    }
 
 
+    .extra-prices {
+      max-width: 900px;
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .extra-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .extra-table th {
+      background: #f8f9fa;
+      padding: 1.2rem;
+      text-align: left;
+    }
+
+    .extra-table td {
+      padding: 1.2rem;
+      border-top: 1px solid #eee;
+    }
+
+    .extra-table tr:hover {
+      background: #fafafa;
+    }
+
+    .price-tag {
+      color: var(--primary-color);
+      font-weight: 700;
+      text-align: right;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .tab-content ul {
+        columns: 1;
+      }
+
+      .cards-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Footer styles */
+    .land-footer {
+      background: #1a1a2e;
+      color: var(--white);
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    .land-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .land-footer h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .land-footer a {
+      color: rgba(255, 255, 255, 0.7);
+      display: block;
+      margin-bottom: 0.8rem;
+    }
+
+    .land-footer a:hover {
+      color: var(--white);
+    }
+  </style>
 </head>
 
 <body>
@@ -33,6 +308,45 @@
         </a>
       </div>
 
+      <div class="nav-menu">
+        <ul>
+          <li><a href="https://brightwaw.pl/sprzatanie-mieszkan-warszawa.html" title="Sprzątanie mieszkań">Sprzątanie
+              mieszkań</a></li>
+          <li><a href="https://brightwaw.pl/cennik.html" title="Cennik">Cennik</a></li>
+          <li><a href="https://brightwaw.pl/pranie.html" title="Pranie">Pranie chemiczne</a></li>
+          <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie">Opinie</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-icons">
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+          aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
+            src="/public/facebook.svg" /></a>
+        <a href="https://www.instagram.com/brightwaw.pl/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+          aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
+            src="/public/insta.svg" /></a>
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+          aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
+            src="/public/whatsapp.svg" /></a>
+        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+          aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
+            src="/public/phone_call.svg" /></a>
+        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+          aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
+      </div>
+      <ul class="langSwitch">
+        <li>
+          <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
+            <b class="lang">PL</b>
+          </a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
+            <b class="lang">EN</b>
+          </a>
+        </li>
+      </ul>
       <div class="hamburger-menu">
         <div class="hamburger-icon">
           <span class="line"></span>
@@ -40,63 +354,53 @@
           <span class="line"></span>
         </div>
       </div>
-
-      <div id="nav-content" class="nav-content">
-        <div class="nav-menu">
-          <ul>
-            <li><a href="https://brightwaw.pl/sprzatanie-mieszkan-warszawa.html" title="Sprzątanie mieszkań">Sprzątanie
-                mieszkań</a></li>
-            <li><a href="https://brightwaw.pl/cennik.html" title="Cennik">Cennik</a></li>
-            <li><a href="https://brightwaw.pl/pranie.html" title="Pranie">Pranie chemiczne</a></li>
-            <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie">Opinie</a></li>
-          </ul>
-        </div>
-
-        <div class="nav-icons">
-          <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
-            aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
-              src="/public/facebook.svg" /></a>
-          <a href="https://www.instagram.com/brightwaw.pl/" class="icons" title="Odwiedź naszą stronę na Instagramie"
-            aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
-              src="/public/insta.svg" /></a>
-          <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
-            aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
-              src="/public/whatsapp.svg" /></a>
-          <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
-            aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
-              src="/public/phone_call.svg" /></a>
-          <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
-            aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
-        </div>
-        <ul class="langSwitch">
-          <li>
-            <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
-              <b class="lang">PL</b>
-            </a>
-          </li>
-          <li> | </li>
-          <li>
-            <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
-              <b class="lang">EN</b>
-            </a>
-          </li>
-        </ul>
-        <div class="contact-info">
-          <p><a href="tel:+48888742534" title="Zadzwoń +48 888 742 534" aria-label="Zadzwoń +48 888 742 534">+48 888 742
-              534</a></p>
-          <p><a href="mailto:sales@brightwaw.pl">sales@brightwaw.pl</a></p>
-        </div>
-      </div>
     </div>
 
-
+    <div class="overlay">
+      <ul class="mobile-langSwitch">
+        <li>
+          <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
+            <b class="lang">PL</b>
+          </a>
+        </li>
+        <li> | </li>
+        <li>
+          <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
+            <b class="lang">EN</b>
+          </a>
+        </li>
+      </ul>
+      <div class="mobile-nav-menu">
+        <ul>
+          <li><a href="https://brightwaw.pl/cennik.html" title="Cennik" aria-label="Cennik">Cennik</a></li>
+          <li><a href="https://brightwaw.pl/pranie.html" title="Pranie" aria-label="Pranie">Pranie chemiczne</a></li>
+          <li><a href="https://g.page/r/CQmCteFzMdvWEB0" title="Opinie" aria-label="Opinie">Opinie</a></li>
+        </ul>
+      </div>
+      <div class="mobile-nav-icons">
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+          aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
+            src="/public/facebook.svg" /></a>
+        <a href="https://instagram.com/cleaning_bright_house/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+          aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
+            src="/public/insta.svg" /></a>
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+          aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
+            src="/public/whatsapp.svg" /></a>
+        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+          aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
+            src="/public/phone_call.svg" /></a>
+        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+          aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
+      </div>
+    </div>
   </header>
 
-  <main class="bg-light" style="padding-top: 100px;">
-    <div class="text-center" style="padding: 40px 20px;">
-      <h1 class="section-title text-primary">
+  <main style="padding-top: 100px; background: #f8f9fa;">
+    <div style="text-align:center; padding: 40px 20px;">
+      <h1 style="font-size: clamp(1.8rem, 5vw, 2.5rem); font-weight: 800; color: var(--primary); margin-bottom: 10px;">
         Koszt usług <br>sprzątania / czyszczenia w Warszawie</h1>
-      <p class="section-subtitle">Przejrzyste zasady, stałe ceny, brak ukrytych opłat.</p>
+      <p style="color: #666;">Przejrzyste zasady, stałe ceny, brak ukrytych opłat.</p>
     </div>
 
     <div class="container" style="max-width: 1000px; margin: 0 auto; padding: 0 20px;">
@@ -238,61 +542,69 @@
     </div>
   </main>
 
-  <footer class="ref-footer">
-    <div class="ref-footer-container">
-      <div class="ref-footer-grid">
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Kontakt</h3>
-          <div class="ref-footer-links">
-            <a href="tel:+48888742534" class="ref-footer-link">📞 +48 888 742 534</a>
-            <a href="mailto:sales@brightwaw.pl" class="ref-footer-link">📧 sales@brightwaw.pl</a>
-            <span class="ref-footer-text">📍 ul. WRONIA 45, lok. U2, 00-870 Warszawa</span>
-            <span class="ref-footer-text">🕐 Pn-Nd: 08:00-20:00</span>
+  <footer style="background:#1a1a2e;color:#fff;padding:3rem 1.5rem 1.5rem;margin-top:0;">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem;margin-bottom:2rem;">
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Kontakt</h3>
+          <div style="display:flex;flex-direction:column;gap:.7rem;font-size:.95rem;">
+            <a href="tel:+48888742534" style="color:rgba(255,255,255,.85);text-decoration:none;">📞 +48 888 742 534</a>
+            <a href="mailto:sales@brightwaw.pl" style="color:rgba(255,255,255,.85);text-decoration:none;">📧
+              sales@brightwaw.pl</a>
+            <span style="color:rgba(255,255,255,.85);">📍 ul. WRONIA 45, lok. U2, 00-870 Warszawa</span>
+            <span style="color:rgba(255,255,255,.85);">🕐 Pn-Nd: 08:00-20:00</span>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Usługi</h3>
-          <div class="ref-footer-links">
-            <a href="https://brightwaw.pl/cennik.html" class="ref-footer-link">Sprzątanie mieszkań</a>
-            <a href="https://brightwaw.pl/pranie.html" class="ref-footer-link">Pranie chemiczne mebli</a>
-            <a href="https://brightwaw.pl/cennik.html" class="ref-footer-link">Sprzątanie biur</a>
-            <a href="https://g.page/r/CQmCteFzMdvWEB0" class="ref-footer-link">Opinie</a>
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Usługi</h3>
+          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;">
+            <a href="https://brightwaw.pl/cennik.html"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie mieszkań</a>
+            <a href="https://brightwaw.pl/pranie.html" style="color:rgba(255,255,255,.85);text-decoration:none;">Pranie
+              chemiczne mebli</a>
+            <a href="https://brightwaw.pl/cennik.html"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie biur</a>
+            <a href="https://g.page/r/CQmCteFzMdvWEB0"
+              style="color:rgba(255,255,255,.85);text-decoration:none;">Opinie</a>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Płatność</h3>
-          <div class="ref-footer-payment-list">
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Płatność</h3>
+          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;color:rgba(255,255,255,.85);">
             <span>✓ Gotówka / BLIK</span>
             <span>✓ Przelew bankowy</span>
             <span>✓ Faktury i paragony</span>
           </div>
-          <div class="ref-footer-badges">
-            <span class="ref-footer-badge">Kärcher</span>
-            <span class="ref-footer-badge">Professional</span>
+          <div style="margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap;">
+            <span
+              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Kärcher</span>
+            <span
+              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Professional</span>
           </div>
         </div>
-        <div class="ref-footer-col">
-          <h3 class="ref-footer-title">Media społecznościowe</h3>
-          <div class="ref-footer-socials">
-            <a href="https://facebook.com/BrightHouseWaw" class="ref-footer-social-icon" title="Facebook">
-              <img src="/public/facebook.svg" alt="Facebook">
-            </a>
-            <a href="https://instagram.com/cleaning_bright_house/" class="ref-footer-social-icon" title="Instagram">
-              <img src="/public/insta.svg" alt="Instagram">
-            </a>
-            <a href="https://t.me/BrightHouse_Cleaning" class="ref-footer-social-icon" title="Telegram">
-              <img src="/public/tg.svg" alt="Telegram">
-            </a>
-            <a href="https://wa.me/message/B3AQALEBNNLJH1" class="ref-footer-social-icon" title="WhatsApp">
-              <img src="/public/whatsapp.svg" alt="WhatsApp">
-            </a>
+        <div>
+          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Media społecznościowe</h3>
+          <div style="display:flex;gap:.8rem;">
+            <a href="https://facebook.com/BrightHouseWaw"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Facebook"><img src="/public/facebook.svg" alt="Facebook" style="width:18px;height:18px;"></a>
+            <a href="https://instagram.com/cleaning_bright_house/"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Instagram"><img src="/public/insta.svg" alt="Instagram" style="width:18px;height:18px;"></a>
+            <a href="https://t.me/BrightHouse_Cleaning"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="Telegram"><img src="/public/tg.svg" alt="Telegram" style="width:18px;height:18px;"></a>
+            <a href="https://wa.me/message/B3AQALEBNNLJH1"
+              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
+              title="WhatsApp"><img src="/public/whatsapp.svg" alt="WhatsApp" style="width:18px;height:18px;"></a>
           </div>
         </div>
       </div>
-      <div class="ref-footer-copyright">
-        <p class="ref-footer-copy-text"><strong>BRIGHTHOUSE Sp. z o.o.</strong> | KRS 0001000542 | NIP: 5273026432</p>
-        <p class="ref-footer-copy-subtext">ul. WRONIA 45, lok. U2, 00-870 WARSZAWA | &copy; 2025 BrightHouse Cleaning
-        </p>
+      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem;margin-top:2rem;text-align:center;">
+        <p style="font-size:.85rem;color:rgba(255,255,255,.7);margin:.3rem 0;"><strong>BRIGHTHOUSE Sp. z o.o.</strong> |
+          KRS 0001000542 | NIP: 5273026432</p>
+        <p style="font-size:.8rem;color:rgba(255,255,255,.6);margin:.3rem 0;">ul. WRONIA 45, lok. U2, 00-870 WARSZAWA |
+          &copy; 2025 BrightHouse Cleaning</p>
       </div>
     </div>
   </footer>
@@ -301,15 +613,13 @@
   <script src="/vanilla-app.js?ver2" defer></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const h = document.querySelector('.hamburger-menu'), o = document.querySelector('#nav-content');
+      const h = document.querySelector('.hamburger-menu'), o = document.querySelector('.overlay');
       h && h.addEventListener('click', () => {
         o.classList.toggle('active');
-        o.classList.toggle('is-visible');
         document.body.style.overflow = o.classList.contains('active') ? 'hidden' : 'auto';
       });
       o && o.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
         o.classList.remove('active');
-        o.classList.remove('is-visible');
         document.body.style.overflow = 'auto';
       }));
     });
