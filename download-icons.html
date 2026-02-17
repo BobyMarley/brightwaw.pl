@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Download Font Awesome Icons</title>
@@ -46,9 +46,9 @@
                 document.body.removeChild(a);
                 URL.revokeObjectURL(url);
                 
-                status.innerHTML += `<p>вњ“ Downloaded: ${iconName}.svg</p>`;
+                status.innerHTML += `<p>✓ Downloaded: ${iconName}.svg</p>`;
             } catch (error) {
-                status.innerHTML += `<p>вњ— Failed: ${iconName}.svg - ${error.message}</p>`;
+                status.innerHTML += `<p>✗ Failed: ${iconName}.svg - ${error.message}</p>`;
             }
         }
 
@@ -64,7 +64,3 @@
     </script>
 </body>
 </html>
-
-
-
-

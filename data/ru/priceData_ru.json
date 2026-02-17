@@ -1,0 +1,62 @@
+{
+  "card1": {
+    "kompleksowa": {
+      "roomCount": "Однокомнатная \n(до 36 м²)",
+      "price": "160 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Однокомнатная \n(до 36 м²)",
+      "price": "510 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card2": {
+    "kompleksowa": {
+      "roomCount": "Двухкомнатная \n(до 55 м²)",
+      "price": "190 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Двухкомнатная \n(до 55 м²)",
+      "price": "620 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card3": {
+    "kompleksowa": {
+      "roomCount": "Трехкомнатная \n(до 80 м²)",
+      "price": "230 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Трехкомнатная \n(до 80 м²)",
+      "price": "770 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card4": {
+    "kompleksowa": {
+      "roomCount": "Четырехкомнатная \n(до 100 м²)",
+      "price": "280 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Четырехкомнатная \n(до 100 м²)",
+      "price": "900 zł",
+      "description": "Описание генеральной уборки"
+    }
+  },
+  "card5": {
+    "kompleksowa": {
+      "roomCount": "Пятикомнатная \n(до 120 м²)",
+      "price": "320 zł",
+      "description": "Описание стандартной уборки"
+    },
+    "generalna": {
+      "roomCount": "Пятикомнатная \n(до 120 м²)",
+      "price": "1050 zł",
+      "description": "Описание генеральной уборки"
+    }
+  }
+}

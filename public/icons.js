@@ -1,4 +1,4 @@
-﻿// РђРІС‚РѕРјР°С‚РёС‡РµСЃРєР°СЏ Р·Р°РјРµРЅР° Font Awesome РёРєРѕРЅРѕРє РЅР° SVG
+// Автоматическая замена Font Awesome иконок на SVG
 (function() {
   const iconMap = {
     'fa-hand-holding-dollar': 'icon-hand-holding-dollar',
@@ -42,6 +42,3 @@
     replaceIcons();
   }
 })();
-
-
-

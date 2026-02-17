@@ -1,11 +1,8 @@
-﻿{
+{
   "version": 2,
   "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "**/*", "use": "@vercel/static" }
-  ],
-  "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/src/assets/$1" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "public/**", "use": "@vercel/static" }
   ],
   "cleanUrls": true,
   "trailingSlash": false,
@@ -20,5 +17,3 @@
     }
   ]
 }
-
-

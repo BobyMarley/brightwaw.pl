@@ -210,16 +210,16 @@
 }
 </script>
 
-  <link rel="preload" href="/assets/fonts/subset-Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/subset-Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g"
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="/assets/css/index.css?ver10">
+  <link rel="stylesheet" href="/index.css?ver10">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3Eрџ›Ђ%3C/text%3E%3C/svg%3E" />
   <script src="https://unpkg.com/imask@7.6.1/dist/imask.min.js"
@@ -1263,11 +1263,11 @@
       one umieszczane w Twoim urzД…dzeniu. <a href="https://brightwaw.pl/privacy-policy/">privacy policy</a>.</p>
     <button id="accept-button">ZgodziД‡ siД™</button>
   </div>
-  <script src="/assets/js/vanilla-app.js?ver2" defer></script>
-  <script src="/assets/js/form.js?ver6" defer></script>
-  <script src="/assets/js/modal.js?ver6" defer></script>
-  <script src="/assets/js/cookie.js?ver5" defer></script>
-  <script src="/assets/js/data.js?ver5" defer></script>
+  <script src="/vanilla-app.js?ver2" defer></script>
+  <script src="/form.js?ver6" defer></script>
+  <script src="/modal.js?ver6" defer></script>
+  <script src="/cookie.js?ver5" defer></script>
+  <script src="/data.js?ver5" defer></script>
   <script>
     const SITE_CONFIG = {
       phoneDisplay: '+48 888 742 534',
@@ -1344,7 +1344,7 @@
       const roomImages = { 1: 'room.png', 2: 'corridor.png', 3: 'kitchen.png', 4: 'bathroom.png' };
 
       function loadRoomData(room, type) {
-        fetch(`/assets/data/pl/tabData_pl_${type}.json`)
+        fetch(`/data/pl/tabData_pl_${type}.json`)
           .then(r => r.json())
           .then(data => {
             const content = document.querySelector(`.cleaning-content[data-room="${room}"]`);
@@ -1442,10 +1442,6 @@
 </body>
 
 </html>
-
-
-
-
 
 
 
