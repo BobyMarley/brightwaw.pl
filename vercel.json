@@ -1,10 +1,15 @@
 {
   "version": 2,
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" },
-    { "src": "public/**", "use": "@vercel/static" }
+    { "src": "api/**/*.js", "use": "@vercel/node" },
+    { "src": "**/*", "use": "@vercel/static" }
   ],
-  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
+    { "source": "/", "destination": "/apps/legacy-static/index.html" },
+    { "source": "/(.*)", "destination": "/apps/legacy-static/$1" }
+  ],
+  "cleanUrls": false,
   "trailingSlash": false,
   "headers": [
     {

@@ -1,13 +1,15 @@
 ﻿(function() {
     'use strict';
 
+    // ===== КОНФИГУРАЦИЯ =====
     const CONFIG = {
-        API_ENDPOINT: '/telegram_proxy.php',
+        API_ENDPOINT: '/api/telegram_proxy',
         ANALYTICS_ID: 'AW-11273981561/8oZpCLqZjvUZEPmc7f8p',
         PARTICLES_COUNT: 30,
         SCROLL_THRESHOLD: 100
     };
 
+    // ===== УТИЛИТЫ =====
     const Utils = {
         throttle(func, wait) {
             let timeout;
@@ -28,19 +30,21 @@
         random(min, max) { return Math.random() * (max - min) + min; }
     };
 
+    // ===== GOOGLE ANALYTICS =====
     const Analytics = {
         reportConversion() {
             try {
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'conversion', { 'send_to': CONFIG.ANALYTICS_ID });
-                    console.log('Conversion sent');
+                    console.log('Конверсия отправлена');
                 } else {
-                    console.warn('Google Analytics not loaded');
+                    console.warn('Google Analytics не загружен');
                 }
-            } catch (error) { console.error('Error sending conversion:', error); }
+            } catch (error) { console.error('Ошибка при отправке конверсии:', error); }
         }
     };
 
+    // ===== ЧАСТИЦЫ =====
     const ParticleSystem = {
         container: null,
         particles: [],
@@ -66,6 +70,7 @@
         }
     };
 
+    // ===== НАВИГАЦИЯ =====
     const Navigation = {
         hamburger: null, mobileMenu: null, header: null, navLinks: null,
         init() {
@@ -125,6 +130,7 @@
         destroy() { window.removeEventListener('scroll', this.handleScroll); }
     };
 
+    // ===== УЛУЧШЕНИЯ СКРОЛЛА МОДАЛЬНОГО ОКНА =====
     const ModalScrollEnhancements = {
         modalContent: null, scrollTimeout: null,
         init() {
@@ -151,6 +157,7 @@
         }
     };
 
+    // ===== МОДАЛЬНОЕ ОКНО =====
     const Modal = {
         modal: null, modalContent: null,
         init() {
@@ -181,14 +188,13 @@
             this.modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
             
-            const form = document.getElementById('cleaningForm');
-            form.querySelectorAll('.quantity-input').forEach(input => {
+            this.form.querySelectorAll('.quantity-input').forEach(input => {
                 input.value = 0;
                 const decreaseBtn = input.parentElement.querySelector('[data-action="decrease"]');
                 if (decreaseBtn) decreaseBtn.disabled = true;
             });
 
-            const pillowsCheckbox = form.querySelector('[name="sofa_pillows"]');
+            const pillowsCheckbox = this.form.querySelector('[name="sofa_pillows"]');
             if (pillowsCheckbox) pillowsCheckbox.checked = false;
 
             if (selectedService) {
@@ -198,7 +204,7 @@
                     const decreaseBtn = serviceWrapper.querySelector('[data-action="decrease"]');
                     
                     if (input.dataset.serviceType === 'area') {
-                        input.value = 3;
+                        input.value = 3; // Минимальное значение для ковра
                     } else {
                         input.value = 1;
                     }
@@ -220,6 +226,7 @@
         isOpen() { return this.modal && this.modal.style.display === 'block'; }
     };
 
+    // ===== ФОРМА =====
     const Form = {
         form: null, feedback: null,
         init() {
@@ -267,11 +274,11 @@
 
             const submitButton = this.form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            this.showFeedback('Sending request...', 'info');
+            this.showFeedback('Отправляем заявку...', 'info');
 
             try {
                 await this.submitToServer(data);
-                this.showFeedback('✓ Request sent successfully! We will contact you shortly.', 'success');
+                this.showFeedback('✓ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                 Analytics.reportConversion();
                 this.form.reset();
                 this.form.querySelectorAll('.quantity-input').forEach(input => {
@@ -281,8 +288,8 @@
                 });
                 setTimeout(() => { Modal.close(); this.showFeedback('', 'info'); }, 2500);
             } catch (error) {
-                console.error('Form submission error:', error);
-                this.showFeedback('An error occurred while sending. Please try again.', 'error');
+                console.error('Ошибка отправки формы:', error);
+                this.showFeedback('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.', 'error');
             } finally {
                 submitButton.disabled = false;
             }
@@ -302,15 +309,16 @@
                     let serviceString = '';
 
                     if (type === 'quantity') {
-                        serviceString = `${serviceName} (${value} pcs)`;
-                        if(serviceName === 'Sofa') {
+                        serviceString = `${serviceName} (${value} шт.)`;
+                        // Проверяем подушки только для дивана
+                        if(serviceName === 'Диван') {
                             const pillowsCheckbox = this.form.querySelector('[name="sofa_pillows"]');
                             if(pillowsCheckbox && pillowsCheckbox.checked) {
-                                serviceString += ' (with pillows)';
+                                serviceString += ' (с подушками)';
                             }
                         }
                     } else if (type === 'area') {
-                        serviceString = `${serviceName} (${value} m²)`;
+                        serviceString = `${serviceName} (${value} м²)`;
                     }
                     services.push(serviceString);
                 }
@@ -325,17 +333,17 @@
             };
         },
         validateForm(data) {
-            if (data.services.length === 0) { return { isValid: false, message: 'Please select at least one service.' }; }
+            if (data.services.length === 0) { return { isValid: false, message: 'Пожалуйста, выберите хотя бы одну услугу.' }; }
             
-            const carpetItem = this.form.querySelector('[data-service-name="Carpet"] .quantity-input');
+            const carpetItem = this.form.querySelector('[data-service-name="Ковёр"] .quantity-input');
             if (carpetItem && carpetItem.value > 0 && carpetItem.value < 3) {
-                return { isValid: false, message: 'Minimum order for carpet - 3 m².' };
+                return { isValid: false, message: 'Минимальный заказ для ковра - 3 м².' };
             }
             
-            if (!data.name) { return { isValid: false, message: 'Please enter your name.' }; }
+            if (!data.name) { return { isValid: false, message: 'Пожалуйста, введите ваше имя.' }; }
             const phoneRegex = /^[+]?[\d\s\-\(\)]{7,}$/;
-            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'Please enter a valid phone number.' }; }
-            if (!data.address) { return { isValid: false, message: 'Please specify your address.' }; }
+            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'Пожалуйста, введите корректный номер телефона.' }; }
+            if (!data.address) { return { isValid: false, message: 'Пожалуйста, укажите ваш адрес.' }; }
             return { isValid: true };
         },
         async submitToServer(data) {
@@ -353,9 +361,9 @@
             return response.json();
         },
         formatTelegramMessage(data) {
-            const timestamp = new Date().toLocaleString('en-US', { timeZone: 'Europe/Warsaw' });
+            const timestamp = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Warsaw' });
             const servicesString = data.services.join('\n- ');
-            return `<b>🆕 New Upholstery Cleaning Request (EN)</b>\n\n<b>🛋️ Services:</b>\n- ${servicesString}\n\n<b>📍 Address:</b> ${data.address}\n<b>👤 Name:</b> ${data.name}\n<b>📞 Phone:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>💬 Comment:</b> ${data.comments}` : ''}\n\n<b>🕐 Time:</b> ${timestamp}`.trim();
+            return `<b>🆕 Новая заявка на химчистку</b>\n\n<b>🛋️ Услуги:</b>\n- ${servicesString}\n\n<b>📍 Адрес:</b> ${data.address}\n<b>👤 Имя:</b> ${data.name}\n<b>📞 Телефон:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>💬 Комментарий:</b> ${data.comments}` : ''}\n\n<b>🕐 Время:</b> ${timestamp}`.trim();
         },
         showFeedback(message, type) {
             if (!this.feedback) return;
@@ -364,6 +372,7 @@
         }
     };
 
+    // ===== ПРОИЗВОДИТЕЛЬНОСТЬ =====
     const Performance = {
         init() { this.initLazyLoading(); this.initResizeOptimization(); },
         initLazyLoading() {
@@ -389,153 +398,177 @@
         }
     };
 
+
+
     const Calculator = {
-        prices: { sofa: 160, carpet: 15, chair: 40, mattress: 90 },
-        values: { sofa: 0, carpet: 0, chair: 0, mattress: 0 },
-        init() {
-            const calcButtons = document.querySelectorAll('.calc-btn');
-            const calcOrderBtn = document.getElementById('calcOrderBtn');
-            
-            calcButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => this.handleCalc(e));
-            });
-            
-            if (calcOrderBtn) {
-                calcOrderBtn.addEventListener('click', () => this.openModalWithCalc());
-            }
-        },
-        handleCalc(e) {
-            const button = e.target;
-            const type = button.dataset.calc;
-            const action = button.dataset.action;
-            
-            if (action === 'plus') {
-                this.values[type]++;
-            } else if (action === 'minus' && this.values[type] > 0) {
-                this.values[type]--;
-            }
-            
-            this.updateDisplay(type);
-            this.updateTotal();
-        },
-        updateDisplay(type) {
-            const display = document.querySelector(`[data-calc-display="${type}"]`);
-            if (display) {
-                display.textContent = this.values[type];
-            }
-        },
-        updateTotal() {
-            let total = 0;
-            for (let type in this.values) {
-                total += this.values[type] * this.prices[type];
-            }
-            
-            const discount = total * 0.1;
-            const finalPrice = total - discount;
-            
-            const totalElement = document.getElementById('calcTotal');
-            if (totalElement) {
-                totalElement.innerHTML = `<span style="text-decoration: line-through; opacity: 0.5; font-size: 1.5rem;">${total} PLN</span><br>${Math.round(finalPrice)} PLN`;
-            }
-        },
-        openModalWithCalc() {
-            Modal.open();
-            
-            const serviceMap = {
-                sofa: 'Sofa',
-                carpet: 'Carpet',
-                chair: 'Armchair',
-                mattress: 'Mattress'
-            };
-            
-            for (let type in this.values) {
-                if (this.values[type] > 0) {
-                    const serviceName = serviceMap[type];
-                    const wrapper = document.querySelector(`.service-item-wrapper[data-service-name="${serviceName}"]`);
-                    if (wrapper) {
-                        const input = wrapper.querySelector('.quantity-input');
-                        const decreaseBtn = wrapper.querySelector('[data-action="decrease"]');
-                        input.value = this.values[type];
-                        if (decreaseBtn) decreaseBtn.disabled = false;
-                    }
+    prices: {
+        sofa: 160,
+        carpet: 15,
+        chair: 40,
+        mattress: 90
+    },
+    values: {
+        sofa: 0,
+        carpet: 0,
+        chair: 0,
+        mattress: 0
+    },
+    init() {
+        const calcButtons = document.querySelectorAll('.calc-btn');
+        const calcOrderBtn = document.getElementById('calcOrderBtn');
+        
+        calcButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => this.handleCalc(e));
+        });
+        
+        if (calcOrderBtn) {
+            calcOrderBtn.addEventListener('click', () => this.openModalWithCalc());
+        }
+    },
+    handleCalc(e) {
+        const button = e.target;
+        const type = button.dataset.calc;
+        const action = button.dataset.action;
+        
+        if (action === 'plus') {
+            this.values[type]++;
+        } else if (action === 'minus' && this.values[type] > 0) {
+            this.values[type]--;
+        }
+        
+        this.updateDisplay(type);
+        this.updateTotal();
+    },
+    updateDisplay(type) {
+        const display = document.querySelector(`[data-calc-display="${type}"]`);
+        if (display) {
+            display.textContent = this.values[type];
+        }
+    },
+    updateTotal() {
+        let total = 0;
+        for (let type in this.values) {
+            total += this.values[type] * this.prices[type];
+        }
+        
+        // Скидка 10% при заказе через калькулятор
+        const discount = total * 0.1;
+        const finalPrice = total - discount;
+        
+        const totalElement = document.getElementById('calcTotal');
+        if (totalElement) {
+            totalElement.innerHTML = `<span style="text-decoration: line-through; opacity: 0.5; font-size: 1.5rem;">${total} zł</span><br>${Math.round(finalPrice)} zł`;
+        }
+    },
+    openModalWithCalc() {
+        // Открываем модальное окно и заполняем данными из калькулятора
+        Modal.open();
+        
+        // Заполняем поля в форме значениями из калькулятора
+        const serviceMap = {
+            sofa: 'Диван',
+            carpet: 'Ковёр',
+            chair: 'Кресло',
+            mattress: 'Матрас'
+        };
+        
+        for (let type in this.values) {
+            if (this.values[type] > 0) {
+                const serviceName = serviceMap[type];
+                const wrapper = document.querySelector(`.service-item-wrapper[data-service-name="${serviceName}"]`);
+                if (wrapper) {
+                    const input = wrapper.querySelector('.quantity-input');
+                    const decreaseBtn = wrapper.querySelector('[data-action="decrease"]');
+                    input.value = this.values[type];
+                    if (decreaseBtn) decreaseBtn.disabled = false;
                 }
             }
         }
-    };
-
-    const PromoTimer = {
-        endTime: null,
-        init() {
-            const saved = localStorage.getItem('promoEndTime');
-            if (saved) {
-                this.endTime = new Date(saved);
-            } else {
-                this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
-                localStorage.setItem('promoEndTime', this.endTime);
-            }
-            
-            this.updateTimer();
-            setInterval(() => this.updateTimer(), 1000);
-            
-            const promoBtn = document.getElementById('promoOrderBtn');
-            if (promoBtn) {
-                promoBtn.addEventListener('click', () => Modal.open());
-            }
-        },
-        updateTimer() {
-            const now = new Date();
-            const diff = this.endTime - now;
-            
-            if (diff <= 0) {
-                this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
-                localStorage.setItem('promoEndTime', this.endTime);
-                return;
-            }
-            
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-            
-            const hoursEl = document.getElementById('hours');
-            const minutesEl = document.getElementById('minutes');
-            const secondsEl = document.getElementById('seconds');
-            
-            if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
-            if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
-            if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
-        }
-    };
-
-    function init() {
-        if (!window.CSS || !window.CSS.supports || !window.CSS.supports('display', 'grid')) {
-            console.warn('Browser does not support modern CSS features');
-        }
-        Navigation.init();
-        Modal.init();
-        Form.init();
-        Performance.init();
-        ModalScrollEnhancements.init();
-        Calculator.init();
-        PromoTimer.init();
-        setTimeout(() => { ParticleSystem.init(); }, 3000);
-        console.log('🚀 BrightHouse Cleaning initialized');
     }
+};
 
-    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        window.BrightHouse = { 
-            ParticleSystem, 
-            Navigation, 
-            Modal, 
-            Form, 
-            Analytics, 
-            Utils, 
-            ModalScrollEnhancements,
-            Calculator,
-            PromoTimer
-        };
+// ===== ТАЙМЕР АКЦИИ =====
+const PromoTimer = {
+    endTime: null,
+    init() {
+        // Устанавливаем время окончания акции (24 часа от текущего момента)
+        const saved = localStorage.getItem('promoEndTime');
+        if (saved) {
+            this.endTime = new Date(saved);
+        } else {
+            this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
+            localStorage.setItem('promoEndTime', this.endTime);
+        }
+        
+        this.updateTimer();
+        setInterval(() => this.updateTimer(), 1000);
+        
+        const promoBtn = document.getElementById('promoOrderBtn');
+        if (promoBtn) {
+            promoBtn.addEventListener('click', () => Modal.open());
+        }
+    },
+    updateTimer() {
+        const now = new Date();
+        const diff = this.endTime - now;
+        
+        if (diff <= 0) {
+            // Сбрасываем таймер
+            this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
+            localStorage.setItem('promoEndTime', this.endTime);
+            return;
+        }
+        
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const hoursEl = document.getElementById('hours');
+        const minutesEl = document.getElementById('minutes');
+        const secondsEl = document.getElementById('seconds');
+        
+        if (hoursEl) hoursEl.textContent = String(hours).padStart(2, '0');
+        if (minutesEl) minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (secondsEl) secondsEl.textContent = String(seconds).padStart(2, '0');
     }
+};
+
+// ===== ОБНОВЛЕННАЯ ИНИЦИАЛИЗАЦИЯ =====
+function init() {
+    if (!window.CSS || !window.CSS.supports || !window.CSS.supports('display', 'grid')) {
+        console.warn('Браузер не поддерживает современные CSS функции');
+    }
+    Navigation.init();
+    Modal.init();
+    Form.init();
+    Performance.init();
+    ModalScrollEnhancements.init();
+    Calculator.init(); // НОВОЕ
+    PromoTimer.init(); // НОВОЕ
+    setTimeout(() => { ParticleSystem.init(); }, 3000);
+    console.log('🚀 BrightHouse Cleaning инициализован');
+}
+
+// Экспорт для отладки (без изменений)
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    window.BrightHouse = { 
+        ParticleSystem, 
+        Navigation, 
+        Modal, 
+        Form, 
+        Analytics, 
+        Utils, 
+        ModalScrollEnhancements,
+        Calculator, // НОВОЕ
+        PromoTimer // НОВОЕ
+    };
+}
 
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
     else { init(); }
+
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        window.BrightHouse = { ParticleSystem, Navigation, Modal, Form, Analytics, Utils, ModalScrollEnhancements };
+    }
 })();
 

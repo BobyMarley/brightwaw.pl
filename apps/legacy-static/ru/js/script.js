@@ -1,15 +1,15 @@
 ﻿(function() {
     'use strict';
 
-    // ===== КОНФИГУРАЦИЯ =====
+    // ===== РљРћРќР¤РР“РЈР РђР¦РРЇ =====
     const CONFIG = {
-        API_ENDPOINT: '/telegram_proxy.php',
+        API_ENDPOINT: '/api/telegram_proxy',
         ANALYTICS_ID: 'AW-11273981561/8oZpCLqZjvUZEPmc7f8p',
         PARTICLES_COUNT: 30,
         SCROLL_THRESHOLD: 100
     };
 
-    // ===== УТИЛИТЫ =====
+    // ===== РЈРўРР›РРўР« =====
     const Utils = {
         throttle(func, wait) {
             let timeout;
@@ -36,25 +36,29 @@
             try {
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'conversion', { 'send_to': CONFIG.ANALYTICS_ID });
-                    console.log('Конверсия отправлена');
+                    console.log('РљРѕРЅРІРµСЂСЃРёСЏ РѕС‚РїСЂР°РІР»РµРЅР°');
                 } else {
-                    console.warn('Google Analytics не загружен');
+                    console.warn('Google Analytics РЅРµ Р·Р°РіСЂСѓР¶РµРЅ');
                 }
-            } catch (error) { console.error('Ошибка при отправке конверсии:', error); }
+            } catch (error) { console.error('РћС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ РєРѕРЅРІРµСЂСЃРёРё:', error); }
         }
     };
 
-    // ===== ЧАСТИЦЫ =====
+    // ===== Р§РђРЎРўРР¦Р« =====
     const ParticleSystem = {
         container: null,
         particles: [],
+        getParticleCount() {
+            return (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 767px)').matches) ? 10 : CONFIG.PARTICLES_COUNT;
+        },
         init() {
             this.container = document.querySelector('.particles');
             if (!this.container) return;
             this.createParticles();
         },
         createParticles() {
-            for (let i = 0; i < CONFIG.PARTICLES_COUNT; i++) {
+            const count = this.getParticleCount();
+            for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Utils.random(0, 100) + '%';
@@ -70,7 +74,7 @@
         }
     };
 
-    // ===== НАВИГАЦИЯ =====
+    // ===== РќРђР’РР“РђР¦РРЇ =====
     const Navigation = {
         hamburger: null, mobileMenu: null, header: null, navLinks: null,
         init() {
@@ -130,7 +134,7 @@
         destroy() { window.removeEventListener('scroll', this.handleScroll); }
     };
 
-    // ===== УЛУЧШЕНИЯ СКРОЛЛА МОДАЛЬНОГО ОКНА =====
+    // ===== РЈР›РЈР§РЁР•РќРРЇ РЎРљР РћР›Р›Рђ РњРћР”РђР›Р¬РќРћР“Рћ РћРљРќРђ =====
     const ModalScrollEnhancements = {
         modalContent: null, scrollTimeout: null,
         init() {
@@ -157,7 +161,7 @@
         }
     };
 
-    // ===== МОДАЛЬНОЕ ОКНО =====
+    // ===== РњРћР”РђР›Р¬РќРћР• РћРљРќРћ =====
     const Modal = {
         modal: null, modalContent: null,
         init() {
@@ -204,7 +208,7 @@
                     const decreaseBtn = serviceWrapper.querySelector('[data-action="decrease"]');
                     
                     if (input.dataset.serviceType === 'area') {
-                        input.value = 3; // Минимальное значение для ковра
+                        input.value = 3; // РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ РєРѕРІСЂР°
                     } else {
                         input.value = 1;
                     }
@@ -226,7 +230,16 @@
         isOpen() { return this.modal && this.modal.style.display === 'block'; }
     };
 
-    // ===== ФОРМА =====
+    // ===== Р¤РћР РњРђ =====
+    const FORM_MIN_ORDER = 160;
+    const FORM_SERVICE_PRICES = {
+        'Р”РёРІР°РЅ': { price: 180, type: 'quantity' },
+        'РљРѕРІС‘СЂ': { price: 15, type: 'area' },
+        'РљСЂРµСЃР»Рѕ': { price: 40, type: 'quantity' },
+        'РЎС‚СѓР»': { price: 40, type: 'quantity' },
+        'РњР°С‚СЂР°СЃ': { price: 90, type: 'quantity' },
+        'РљРѕРјРїР»РµРєСЃ': { price: 300, type: 'quantity' }
+    };
     const Form = {
         form: null, feedback: null,
         init() {
@@ -261,8 +274,33 @@
             });
         },
         bindEvents() { this.form.addEventListener('submit', (e) => this.handleSubmit(e)); },
+        getFormOrderTotal() {
+            let total = 0;
+            const items = this.form.querySelectorAll('.service-item-wrapper');
+            items.forEach(item => {
+                const name = item.dataset.serviceName;
+                const cfg = FORM_SERVICE_PRICES[name];
+                if (!cfg) return;
+                const input = item.querySelector('.quantity-input');
+                const value = parseInt(input && input.value, 10) || 0;
+                total += value * cfg.price;
+            });
+            return total;
+        },
         async handleSubmit(event) {
             event.preventDefault();
+            const orderTotal = this.getFormOrderTotal();
+            if (orderTotal < FORM_MIN_ORDER) {
+                const minOrderModal = document.getElementById('minOrderModal');
+                if (minOrderModal) {
+                    minOrderModal.style.display = 'flex';
+                    minOrderModal.style.alignItems = 'center';
+                    minOrderModal.style.justifyContent = 'center';
+                }
+                this.showFeedback('РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р° вЂ” 160 zЕ‚. Р”РѕР±Р°РІСЊС‚Рµ СѓСЃР»СѓРіРё РЅР° СЌС‚Сѓ СЃСѓРјРјСѓ.', 'error');
+                ModalScrollEnhancements.scrollToFirstError();
+                return;
+            }
             const data = this.extractFormData();
             const validation = this.validateForm(data);
 
@@ -274,11 +312,11 @@
 
             const submitButton = this.form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            this.showFeedback('Отправляем заявку...', 'info');
+            this.showFeedback('РћС‚РїСЂР°РІР»СЏРµРј Р·Р°СЏРІРєСѓ...', 'info');
 
             try {
                 await this.submitToServer(data);
-                this.showFeedback('✓ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                this.showFeedback('вњ“ Р—Р°СЏРІРєР° СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅР°! РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.', 'success');
                 Analytics.reportConversion();
                 this.form.reset();
                 this.form.querySelectorAll('.quantity-input').forEach(input => {
@@ -288,8 +326,8 @@
                 });
                 setTimeout(() => { Modal.close(); this.showFeedback('', 'info'); }, 2500);
             } catch (error) {
-                console.error('Ошибка отправки формы:', error);
-                this.showFeedback('Произошла ошибка при отправке. Пожалуйста, попробуйте снова.', 'error');
+                console.error('РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё С„РѕСЂРјС‹:', error);
+                this.showFeedback('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.', 'error');
             } finally {
                 submitButton.disabled = false;
             }
@@ -309,16 +347,16 @@
                     let serviceString = '';
 
                     if (type === 'quantity') {
-                        serviceString = `${serviceName} (${value} шт.)`;
-                        // Проверяем подушки только для дивана
-                        if(serviceName === 'Диван') {
+                        serviceString = `${serviceName} (${value} С€С‚.)`;
+                        // РџСЂРѕРІРµСЂСЏРµРј РїРѕРґСѓС€РєРё С‚РѕР»СЊРєРѕ РґР»СЏ РґРёРІР°РЅР°
+                        if(serviceName === 'Р”РёРІР°РЅ') {
                             const pillowsCheckbox = this.form.querySelector('[name="sofa_pillows"]');
                             if(pillowsCheckbox && pillowsCheckbox.checked) {
-                                serviceString += ' (с подушками)';
+                                serviceString += ' (СЃ РїРѕРґСѓС€РєР°РјРё)';
                             }
                         }
                     } else if (type === 'area') {
-                        serviceString = `${serviceName} (${value} м²)`;
+                        serviceString = `${serviceName} (${value} РјВІ)`;
                     }
                     services.push(serviceString);
                 }
@@ -333,17 +371,17 @@
             };
         },
         validateForm(data) {
-            if (data.services.length === 0) { return { isValid: false, message: 'Пожалуйста, выберите хотя бы одну услугу.' }; }
+            if (data.services.length === 0) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ СѓСЃР»СѓРіСѓ.' }; }
             
-            const carpetItem = this.form.querySelector('[data-service-name="Ковёр"] .quantity-input');
+            const carpetItem = this.form.querySelector('[data-service-name="РљРѕРІС‘СЂ"] .quantity-input');
             if (carpetItem && carpetItem.value > 0 && carpetItem.value < 3) {
-                return { isValid: false, message: 'Минимальный заказ для ковра - 3 м².' };
+                return { isValid: false, message: 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р·Р°РєР°Р· РґР»СЏ РєРѕРІСЂР° - 3 РјВІ.' };
             }
             
-            if (!data.name) { return { isValid: false, message: 'Пожалуйста, введите ваше имя.' }; }
+            if (!data.name) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ.' }; }
             const phoneRegex = /^[+]?[\d\s\-\(\)]{7,}$/;
-            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'Пожалуйста, введите корректный номер телефона.' }; }
-            if (!data.address) { return { isValid: false, message: 'Пожалуйста, укажите ваш адрес.' }; }
+            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°.' }; }
+            if (!data.address) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РІР°С€ Р°РґСЂРµСЃ.' }; }
             return { isValid: true };
         },
         async submitToServer(data) {
@@ -363,7 +401,7 @@
         formatTelegramMessage(data) {
             const timestamp = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Warsaw' });
             const servicesString = data.services.join('\n- ');
-            return `<b>🆕 Новая заявка на химчистку</b>\n\n<b>🛋️ Услуги:</b>\n- ${servicesString}\n\n<b>📍 Адрес:</b> ${data.address}\n<b>👤 Имя:</b> ${data.name}\n<b>📞 Телефон:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>💬 Комментарий:</b> ${data.comments}` : ''}\n\n<b>🕐 Время:</b> ${timestamp}`.trim();
+            return `<b>рџ†• РќРѕРІР°СЏ Р·Р°СЏРІРєР° РЅР° С…РёРјС‡РёСЃС‚РєСѓ</b>\n\n<b>рџ›‹пёЏ РЈСЃР»СѓРіРё:</b>\n- ${servicesString}\n\n<b>рџ“Ќ РђРґСЂРµСЃ:</b> ${data.address}\n<b>рџ‘¤ РРјСЏ:</b> ${data.name}\n<b>рџ“ћ РўРµР»РµС„РѕРЅ:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>рџ’¬ РљРѕРјРјРµРЅС‚Р°СЂРёР№:</b> ${data.comments}` : ''}\n\n<b>рџ•ђ Р’СЂРµРјСЏ:</b> ${timestamp}`.trim();
         },
         showFeedback(message, type) {
             if (!this.feedback) return;
@@ -372,7 +410,7 @@
         }
     };
 
-    // ===== ПРОИЗВОДИТЕЛЬНОСТЬ =====
+    // ===== РџР РћРР—Р’РћР”РРўР•Р›Р¬РќРћРЎРўР¬ =====
     const Performance = {
         init() { this.initLazyLoading(); this.initResizeOptimization(); },
         initLazyLoading() {
@@ -391,6 +429,7 @@
         },
         initResizeOptimization() {
             const handleResize = Utils.debounce(() => {
+                if (window.matchMedia && window.matchMedia('(max-width: 767px)').matches) return;
                 ParticleSystem.destroy();
                 ParticleSystem.createParticles();
             }, 250);
@@ -401,8 +440,9 @@
 
 
     const Calculator = {
+    MIN_ORDER: 160,
     prices: {
-        sofa: 160,
+        sofa: 180,
         carpet: 15,
         chair: 40,
         mattress: 90
@@ -424,6 +464,24 @@
         if (calcOrderBtn) {
             calcOrderBtn.addEventListener('click', () => this.openModalWithCalc());
         }
+        
+        const minOrderModal = document.getElementById('minOrderModal');
+        const minOrderClose = document.getElementById('minOrderModalClose');
+        if (minOrderClose && minOrderModal) {
+            minOrderClose.addEventListener('click', () => {
+                minOrderModal.style.display = 'none';
+            });
+            minOrderModal.addEventListener('click', (e) => {
+                if (e.target === minOrderModal) minOrderModal.style.display = 'none';
+            });
+        }
+    },
+    getTotal() {
+        let total = 0;
+        for (let type in this.values) {
+            total += this.values[type] * this.prices[type];
+        }
+        return total;
     },
     handleCalc(e) {
         const button = e.target;
@@ -451,25 +509,49 @@
             total += this.values[type] * this.prices[type];
         }
         
-        // Скидка 10% при заказе через калькулятор
-        const discount = total * 0.1;
-        const finalPrice = total - discount;
-        
+        // РС‚РѕРіРѕ вЂ” РїРѕР»РЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р° (Р±РµР· СЃРєРёРґРєРё)
         const totalElement = document.getElementById('calcTotal');
         if (totalElement) {
-            totalElement.innerHTML = `<span style="text-decoration: line-through; opacity: 0.5; font-size: 1.5rem;">${total} zł</span><br>${Math.round(finalPrice)} zł`;
+            totalElement.textContent = total + ' zЕ‚';
+        }
+        
+        // РЎРєРёРґРєР° 10% РїСЂРё Р·Р°РєР°Р·Рµ С‡РµСЂРµР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ вЂ” РїРѕРєР°Р·С‹РІР°РµРј С†РµРЅСѓ Рє РѕРїР»Р°С‚Рµ РѕС‚РґРµР»СЊРЅРѕ
+        const discountRow = document.getElementById('calcTotalDiscountRow');
+        const discountElement = document.getElementById('calcTotalDiscount');
+        if (total > 0 && discountRow && discountElement) {
+            const discount = total * 0.1;
+            const finalPrice = total - discount;
+            discountElement.textContent = Math.round(finalPrice) + ' zЕ‚';
+            discountRow.style.display = '';
+        } else if (discountRow) {
+            discountRow.style.display = 'none';
         }
     },
     openModalWithCalc() {
-        // Открываем модальное окно и заполняем данными из калькулятора
+        const total = this.getTotal();
+        if (total < this.MIN_ORDER) {
+            const minOrderModal = document.getElementById('minOrderModal');
+            const minOrderNote = document.getElementById('calcMinOrderNote');
+            if (minOrderModal) {
+                minOrderModal.style.display = 'flex';
+                minOrderModal.style.alignItems = 'center';
+                minOrderModal.style.justifyContent = 'center';
+            }
+            if (minOrderNote) {
+                minOrderNote.classList.add('calc-min-order-highlight');
+                setTimeout(() => minOrderNote.classList.remove('calc-min-order-highlight'), 3000);
+            }
+            return;
+        }
+        // РћС‚РєСЂС‹РІР°РµРј РјРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ Рё Р·Р°РїРѕР»РЅСЏРµРј РґР°РЅРЅС‹РјРё РёР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°
         Modal.open();
         
-        // Заполняем поля в форме значениями из калькулятора
+        // Р—Р°РїРѕР»РЅСЏРµРј РїРѕР»СЏ РІ С„РѕСЂРјРµ Р·РЅР°С‡РµРЅРёСЏРјРё РёР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°
         const serviceMap = {
-            sofa: 'Диван',
-            carpet: 'Ковёр',
-            chair: 'Кресло',
-            mattress: 'Матрас'
+            sofa: 'Р”РёРІР°РЅ',
+            carpet: 'РљРѕРІС‘СЂ',
+            chair: 'РљСЂРµСЃР»Рѕ',
+            mattress: 'РњР°С‚СЂР°СЃ'
         };
         
         for (let type in this.values) {
@@ -487,11 +569,11 @@
     }
 };
 
-// ===== ТАЙМЕР АКЦИИ =====
+// ===== РўРђР™РњР•Р  РђРљР¦РР =====
 const PromoTimer = {
     endTime: null,
     init() {
-        // Устанавливаем время окончания акции (24 часа от текущего момента)
+        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІСЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ Р°РєС†РёРё (24 С‡Р°СЃР° РѕС‚ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р°)
         const saved = localStorage.getItem('promoEndTime');
         if (saved) {
             this.endTime = new Date(saved);
@@ -513,7 +595,7 @@ const PromoTimer = {
         const diff = this.endTime - now;
         
         if (diff <= 0) {
-            // Сбрасываем таймер
+            // РЎР±СЂР°СЃС‹РІР°РµРј С‚Р°Р№РјРµСЂ
             this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
             localStorage.setItem('promoEndTime', this.endTime);
             return;
@@ -533,23 +615,23 @@ const PromoTimer = {
     }
 };
 
-// ===== ОБНОВЛЕННАЯ ИНИЦИАЛИЗАЦИЯ =====
+// ===== РћР‘РќРћР’Р›Р•РќРќРђРЇ РРќРР¦РРђР›РР—РђР¦РРЇ =====
 function init() {
     if (!window.CSS || !window.CSS.supports || !window.CSS.supports('display', 'grid')) {
-        console.warn('Браузер не поддерживает современные CSS функции');
+        console.warn('Р‘СЂР°СѓР·РµСЂ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ CSS С„СѓРЅРєС†РёРё');
     }
     Navigation.init();
     Modal.init();
     Form.init();
     Performance.init();
     ModalScrollEnhancements.init();
-    Calculator.init(); // НОВОЕ
-    PromoTimer.init(); // НОВОЕ
+    Calculator.init(); // РќРћР’РћР•
+    PromoTimer.init(); // РќРћР’РћР•
     setTimeout(() => { ParticleSystem.init(); }, 3000);
-    console.log('🚀 BrightHouse Cleaning инициализован');
+    console.log('рџљЂ BrightHouse Cleaning РёРЅРёС†РёР°Р»РёР·РѕРІР°РЅ');
 }
 
-// Экспорт для отладки (без изменений)
+// Р­РєСЃРїРѕСЂС‚ РґР»СЏ РѕС‚Р»Р°РґРєРё (Р±РµР· РёР·РјРµРЅРµРЅРёР№)
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     window.BrightHouse = { 
         ParticleSystem, 
@@ -559,8 +641,8 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
         Analytics, 
         Utils, 
         ModalScrollEnhancements,
-        Calculator, // НОВОЕ
-        PromoTimer // НОВОЕ
+        Calculator, // РќРћР’РћР•
+        PromoTimer // РќРћР’РћР•
     };
 }
 
