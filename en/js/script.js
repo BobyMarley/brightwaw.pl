@@ -1,4 +1,4 @@
-(function() {
+﻿(function() {
     'use strict';
 
     const CONFIG = {
@@ -538,3 +538,4 @@
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
     else { init(); }
 })();
+

@@ -1,4 +1,4 @@
- async function fetchCardsData() {
+﻿ async function fetchCardsData() {
     try {
       const response = await fetch('/data/by/priceData_by.json?v=16');
       return await response.json();
@@ -175,3 +175,4 @@
   }
 
   fetchAndCreateCards();
+

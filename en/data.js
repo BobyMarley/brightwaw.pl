@@ -1,4 +1,4 @@
-(function(){
+﻿(function(){
   const roomData={kompleksowa:{},generalna:{}};
   let currentType='kompleksowa';
   
@@ -37,3 +37,4 @@
     }
   });
 })();
+
