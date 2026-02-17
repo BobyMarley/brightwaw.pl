@@ -3,7 +3,14 @@ const showModalButton = document.getElementById("show-modal");
 const cancelButton = document.getElementById("cancel");
 const successModalContainer = document.getElementById("success-modal-container");
 const successModalCloseButton = document.getElementById("success-modal-close");
-const pokojBtns = document.querySelectorAll(".pokoj-btn");
+
+function openModal() {
+  modalContainer.classList.add("active");
+}
+
+function closeModal() {
+  modalContainer.classList.remove("active");
+}
 
 showModalButton.addEventListener("click", function() {
   if (vm.isConditionMet) {
@@ -15,33 +22,18 @@ showModalButton.addEventListener("click", function() {
     });    
     return;
   }
-  modalContainer.style.display = "block";
+  openModal();
 });
-/*
-showModalButton.addEventListener("click", function() {
-  if (vm.selectedItems.length < 1) {
-    pokojBtns.forEach(btn => {
-      btn.classList.add("shake");
-      setTimeout(() => {
-        btn.classList.remove("shake");
-      }, 500);
-    });    
-    return;
-  }
-  modalContainer.style.display = "block";
-});*/
 
-cancelButton.addEventListener("click", function() {
-  modalContainer.style.display = "none";
-});
+cancelButton.addEventListener("click", function() { closeModal(); });
 
 window.addEventListener("click", function(event) {
   if (event.target === modalContainer) {
-    modalContainer.style.display = "none";
+    closeModal();
   }
 });
 
 successModalCloseButton.addEventListener("click", function() {
   successModalContainer.style.display = "none";
-  modalContainer.style.display = "none";        
+  closeModal();
 });

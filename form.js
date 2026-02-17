@@ -94,7 +94,7 @@ form.addEventListener("submit", function(event) {
         }
 
         // Закрываем форму и показываем успех
-        modalContainer.style.display = "none";  
+        modalContainer.classList.remove("active");
         successModalContainer.style.display = "block";
 
         // Очищаем форму

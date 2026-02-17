@@ -222,112 +222,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g"
     crossorigin="anonymous" />
-  <style>
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');
-      font-weight: 800;
-      font-style: normal;
-      font-display: swap
-    }
-
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');
-      font-weight: 500;
-      font-style: normal;
-      font-display: swap
-    }
-
-    @font-face {
-      font-family: 'Montserrat';
-      src: url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap
-    }
-
-    :root {
-      --h2: Montserrat;
-      --main-font: Montserrat;
-      --h2-size: 1.5rem;
-      --font-size-lg: 1.13rem;
-      --primary: #0f85c9;
-      --primary-contrast: #fff;
-      --primary-blue: #1E90FF;
-      --primary-dark: #1874CD;
-      --text-dark: #2c3e50;
-      --text-gray: #7f8c8d;
-      --text-light: #bdc3c7;
-      --bg-darker: #050508;
-      --bg-overlay: rgba(255, 255, 255, 0.95);
-      --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
-      --gap-5xl: 1.5rem;
-      --gap-lg: 1.13rem;
-      --padding-13xl: 2rem;
-      --padding-111xl: 8.13rem;
-      --padding-base: 1rem;
-      --padding-5xl: 1.5rem;
-      --br-mini: 15px;
-      --radio-border-color: #8b8c89;
-      --radio-checked-color: var(--primary);
-      --radio-hover-color: #a3cef1;
-      --radio-disabled-bg-color: #d9d9d9;
-      --button-prime: 0px 207px 58px rgba(25, 23, 176, 0.01), 0px 133px 53px rgba(25, 23, 176, 0.06), 0px 75px 45px rgba(25, 23, 176, 0.2), 0px 33px 33px rgba(25, 23, 176, 0.34), 0px 8px 18px rgba(25, 23, 176, 0.39), 0px 0px 0px rgba(25, 23, 176, 0.4)
-    }
-
-    html {
-      overflow-x: hidden
-    }
-
-    body {
-      margin: 0;
-      line-height: normal;
-      font-family: var(--main-font);
-      font-weight: 500;
-      overflow-x: hidden;
-      width: 100%
-    }
-
-    .hamburger-menu {
-      display: none;
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      right: 1rem;
-      transform: translateY(-50%);
-      z-index: 1001
-    }
-
-    .hamburger-icon {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      width: 30px
-    }
-
-    .line {
-      width: 100%;
-      height: 3px;
-      background: var(--primary);
-      border-radius: 2px;
-      transition: all .3s
-    }
-
-    @media(max-width:1023px) {
-      .hamburger-menu {
-        display: flex
-      }
-
-      .nav-menu,
-      .nav-icons,
-      .langSwitch {
-        display: none !important
-      }
-    }
-  </style>
-  <link rel="stylesheet" href="/index.css?ver7">
+  <link rel="stylesheet" href="/index.css?ver8">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3E🛀%3C/text%3E%3C/svg%3E" />
   <script src="https://unpkg.com/imask@7.6.1/dist/imask.min.js"
@@ -485,143 +380,6 @@
       <p class="cards-subtitle">Profesjonalne sprzątanie mieszkań w Warszawie. Sprzątanie standardowe i generalne
         mieszkań od 160 zł</p>
       <div class="cards-container"></div>
-      <style>
-        .icon-3d {
-          width: 80px;
-          height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 20px;
-          position: relative;
-          transition: all .5s cubic-bezier(.175, .885, .32, 1.275);
-          flex-shrink: 0;
-          transform-style: preserve-3d
-        }
-
-        .icon-3d::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 20px;
-          opacity: .3;
-          transition: all .5s;
-          z-index: -1
-        }
-
-        .icon-3d::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          border-radius: 20px;
-          background: linear-gradient(145deg, rgba(255, 255, 255, .4) 0%, transparent 50%, rgba(0, 0, 0, .1) 100%);
-          z-index: 1;
-          pointer-events: none
-        }
-
-        .benefit-card-3d {
-          flex: 1;
-          min-width: 280px;
-          max-width: 360px;
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          padding: 28px;
-          background: #fff;
-          border-radius: 16px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
-          transition: all .4s cubic-bezier(.175, .885, .32, 1.275);
-          border: 1px solid rgba(0, 0, 0, .06);
-          position: relative;
-          overflow: hidden
-        }
-
-        .benefit-card-3d::before {
-          content: '';
-          position: absolute;
-          top: -50%;
-          left: -50%;
-          width: 200%;
-          height: 200%;
-          background: radial-gradient(circle, rgba(15, 133, 201, .03) 0%, transparent 70%);
-          opacity: 0;
-          transition: opacity .4s
-        }
-
-        .benefit-card-3d:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 12px 40px rgba(0, 0, 0, .12);
-          border-color: rgba(15, 133, 201, .15)
-        }
-
-        .benefit-card-3d:hover::before {
-          opacity: 1
-        }
-
-        .benefit-card-3d:hover .icon-3d {
-          transform: translateZ(20px) rotateY(5deg) scale(1.05)
-        }
-
-        .benefit-card-3d:hover .icon-3d::before {
-          opacity: .5
-        }
-
-        .icon-money {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%);
-          box-shadow: 0 10px 30px rgba(15, 133, 201, .35), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 rgba(0, 0, 0, .1)
-        }
-
-        .icon-money::before {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%)
-        }
-
-        .icon-gift {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%);
-          box-shadow: 0 10px 30px rgba(15, 133, 201, .35), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 rgba(0, 0, 0, .1)
-        }
-
-        .icon-gift::before {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%)
-        }
-
-        .icon-bolt {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%);
-          box-shadow: 0 10px 30px rgba(15, 133, 201, .35), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 -1px 0 rgba(0, 0, 0, .1)
-        }
-
-        .icon-bolt::before {
-          background: linear-gradient(145deg, #0f85c9 0%, #1E90FF 100%)
-        }
-
-        @keyframes float {
-
-          0%,
-          100% {
-            transform: translateY(0) translateZ(0)
-          }
-
-          50% {
-            transform: translateY(-8px) translateZ(10px)
-          }
-        }
-
-        .icon-3d i {
-          font-size: 38px;
-          color: #fff;
-          text-shadow: 0 2px 10px rgba(0, 0, 0, .3);
-          position: relative;
-          z-index: 2;
-          animation: float 4s ease-in-out infinite
-        }
-
-        .icon-gift i {
-          animation-delay: .3s
-        }
-
-        .icon-bolt i {
-          animation-delay: .6s
-        }
-      </style>
       <div style="max-width:1200px;margin:48px auto;padding:0 24px;">
         <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
           <div class="benefit-card-3d">
@@ -658,10 +416,9 @@
 
     <section class="what_cleaning">
       <div class="section-container">
-        <h2 id="cleaning-type-heading"
-          style="text-align:center;font-size:2.25rem;font-weight:700;color:#2c3e50;margin:0 0 1rem 0;">Co zawiera
+        <h2 id="cleaning-type-heading" class="cleaning-section-heading">Co zawiera
           sprzątanie standardowe</h2>
-        <p style="text-align:center;font-size:1rem;color:#7f8c8d;margin:0 0 2rem 0;">Szczegółowa lista prac dla każdego
+        <p class="cleaning-section-subtitle">Szczegółowa lista prac dla każdego
           pomieszczenia</p>
 
         <div class="cleaning-type-btns">
@@ -1510,8 +1267,8 @@
     <button id="accept-button">Zgodzić się</button>
   </div>
   <script src="/vanilla-app.js?ver2" defer></script>
-  <script src="/form.js?ver5"></script>
-  <script src="/modal.js?ver5"></script>
+  <script src="/form.js?ver6"></script>
+  <script src="/modal.js?ver6"></script>
   <script src="/cookie.js?ver5"></script>
   <script src="/data.js?ver5"></script>
   <script>

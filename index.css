@@ -1,3 +1,62 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --h2: Montserrat;
+  --main-font: Montserrat;
+  --h2-size: 1.5rem;
+  --font-size-lg: 1.13rem;
+  --primary: #0f85c9;
+  --primary-contrast: #fff;
+  --primary-blue: #1e90ff;
+  --primary-dark: #1874cd;
+  --text-dark: #2c3e50;
+  --text-gray: #7f8c8d;
+  --text-light: #bdc3c7;
+  --bg-darker: #050508;
+  --bg-overlay: rgba(255, 255, 255, 0.95);
+  --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.15);
+  --gap-5xl: 1.5rem;
+  --gap-lg: 1.13rem;
+  --padding-13xl: 2rem;
+  --padding-111xl: 8.13rem;
+  --padding-base: 1rem;
+  --padding-5xl: 1.5rem;
+  --br-mini: 15px;
+  --radio-border-color: #8b8c89;
+  --radio-checked-color: var(--primary);
+  --radio-hover-color: #a3cef1;
+  --radio-disabled-bg-color: #d9d9d9;
+  --button-prime: 0 207px 58px rgba(25, 23, 176, 0.01),
+    0 133px 53px rgba(25, 23, 176, 0.06),
+    0 75px 45px rgba(25, 23, 176, 0.2),
+    0 33px 33px rgba(25, 23, 176, 0.34),
+    0 8px 18px rgba(25, 23, 176, 0.39),
+    0 0 0 rgba(25, 23, 176, 0.4);
+}
+
 html {
   height: 100%;
   overflow-x: hidden;
@@ -441,6 +500,21 @@ section.what_cleaning {
   color: #2c3e50;
 }
 
+.cleaning-section-heading {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 1rem 0;
+}
+
+.cleaning-section-subtitle {
+  text-align: center;
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0 0 2rem 0;
+}
+
 .what_cleaning > div.section-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -642,11 +716,133 @@ section.cards-input {
   justify-content: center;
 }
 
+.icon-3d {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(.175, .885, .32, 1.275);
+  flex-shrink: 0;
+  transform-style: preserve-3d;
+}
+
+.icon-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  opacity: 0.3;
+  transition: all 0.5s;
+  z-index: -1;
+}
+
+.icon-3d::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.4) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.benefit-card-3d {
+  flex: 1;
+  min-width: 280px;
+  max-width: 360px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 28px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(.175, .885, .32, 1.275);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.benefit-card-3d::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(15, 133, 201, 0.03) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.benefit-card-3d:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border-color: rgba(15, 133, 201, 0.15);
+}
+
+.benefit-card-3d:hover::before {
+  opacity: 1;
+}
+
+.benefit-card-3d:hover .icon-3d {
+  transform: translateZ(20px) rotateY(5deg) scale(1.05);
+}
+
+.benefit-card-3d:hover .icon-3d::before {
+  opacity: 0.5;
+}
+
+.icon-money,
+.icon-gift,
+.icon-bolt {
+  background: linear-gradient(145deg, #0f85c9 0%, #1e90ff 100%);
+  box-shadow: 0 10px 30px rgba(15, 133, 201, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3), inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.icon-money::before,
+.icon-gift::before,
+.icon-bolt::before {
+  background: linear-gradient(145deg, #0f85c9 0%, #1e90ff 100%);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateZ(0);
+  }
+
+  50% {
+    transform: translateY(-8px) translateZ(10px);
+  }
+}
+
+.icon-3d i {
+  font-size: 38px;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+  animation: float 4s ease-in-out infinite;
+}
+
+.icon-gift i {
+  animation-delay: 0.3s;
+}
+
+.icon-bolt i {
+  animation-delay: 0.6s;
+}
+
 .card {
   background: #fff;
   border: 1px solid #e9ecef;
   border-radius: 12px;
   padding: 32px 24px;
+  box-sizing: border-box;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   flex: 1 1 280px;
@@ -1715,6 +1911,11 @@ input[type="radio"]:focus-visible {
 }
 
 @media screen and (max-width: 640px) {
+  section.hero {
+    padding: 1.5rem 1rem 2rem;
+    justify-content: flex-start;
+  }
+
   b.pokj {
     font-size: 1rem;
   }
@@ -1754,7 +1955,12 @@ input[type="radio"]:focus-visible {
   }
 
   div#app {
-    padding: 1rem;
+    padding: 0.75rem 1rem;
+    margin-top: 0.25rem;
+  }
+
+  .zamowlenie-btn {
+    min-height: auto;
   }
 
   .tabs {
@@ -1787,11 +1993,20 @@ input[type="radio"]:focus-visible {
   }
 
   section.what_cleaning {
-    padding: 3rem 1rem;
+    padding: 1.5rem 1rem 2.5rem;
   }
 
   .what_cleaning h2 {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
+  }
+
+  .cleaning-section-heading {
+    font-size: 1.6rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cleaning-section-subtitle {
+    margin: 0 0 1.25rem 0;
   }
 
   .cleaning-type-btn {
@@ -1974,6 +2189,17 @@ input[type="radio"]:focus-visible {
 }
 
 @media (min-width: 1200px) {
+  .cards-container {
+    justify-content: flex-start;
+  }
+
+  .cards-container .card {
+    flex: 0 1 calc((100% - 72px) / 4);
+    width: calc((100% - 72px) / 4);
+    max-width: calc((100% - 72px) / 4);
+    min-width: 0;
+  }
+
   .card:nth-child(5) {
     display: none;
   }
@@ -2036,7 +2262,8 @@ input[type="radio"]:focus-visible {
 
 @media screen and (max-width: 400px) {
   section.hero {
-    min-height: 70vh;
+    min-height: auto;
+    padding: 1rem 0.75rem 1.5rem;
   }
 
   section.cards {
@@ -2044,7 +2271,7 @@ input[type="radio"]:focus-visible {
   }
 
   section.what_cleaning {
-    padding: 2.5rem 1.5rem;
+    padding: 1rem 0.75rem 2rem;
   }
 
   .cleaning-type-btns {
@@ -2096,6 +2323,15 @@ input[type="radio"]:focus-visible {
     margin-bottom: 0.5rem;
   }
 
+  .cleaning-section-heading {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cleaning-section-subtitle {
+    margin-bottom: 1rem;
+  }
+
   .cleaning-type-btn {
     padding: 0.5rem 0.75rem;
     font-size: 0.75rem;
@@ -2118,29 +2354,33 @@ input[type="radio"]:focus-visible {
 
 #modal-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  padding: 0;
-  animation: fadeIn 0.3s ease;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
 #modal-container.active {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 #modal {
   background: #fff;
   border-radius: 24px;
   max-width: 500px;
-  width: 100%;
+  width: min(500px, 100%);
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -2268,17 +2508,13 @@ button#send:disabled {
 
 /* Адаптивность для мобильных */
 @media (max-width: 640px) {
-  #modal-container {
-    padding: 0;
-  }
-
   #modal {
-    max-width: 100%;
+    max-width: 560px;
     width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-    margin: 0;
+    max-height: 92vh;
+    height: auto;
+    border-radius: 18px;
+    margin: auto;
   }
 
   #modal h2 {
