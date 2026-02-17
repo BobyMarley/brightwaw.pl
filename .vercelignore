@@ -1,0 +1,6 @@
+brighthouse-qwik/
+node_modules/
+*.log
+.git/
+*.psd
+*.ai
