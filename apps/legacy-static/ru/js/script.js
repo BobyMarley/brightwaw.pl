@@ -1,15 +1,32 @@
 ﻿(function() {
     'use strict';
+    function resolveApiEndpoint() {
+        const runtimeConfig = (typeof window !== 'undefined' && window.BRIGHTWAW_ENV) ? window.BRIGHTWAW_ENV : {};
+        const explicitEndpoint = runtimeConfig.TELEGRAM_PROXY_URL || localStorage.getItem('BW_TELEGRAM_ENDPOINT');
+        if (explicitEndpoint) return explicitEndpoint;
 
-    // ===== РљРћРќР¤РР“РЈР РђР¦РРЇ =====
+        const metaBase = document.querySelector('meta[name="bw:api-base-url"]')?.content || '';
+        const runtimeBase = runtimeConfig.API_BASE_URL || localStorage.getItem('BW_API_BASE_URL') || metaBase;
+        const fallbackBase = '';
+        const base = (runtimeBase || fallbackBase).replace(/\/$/, "");
+        return base ? `${base}/api/telegram_proxy` : '/api/telegram_proxy';
+    }
+
+    // ===== КОНФИГУРАЦИЯ =====
     const CONFIG = {
-        API_ENDPOINT: '/api/telegram_proxy',
+        API_ENDPOINT: resolveApiEndpoint(),
         ANALYTICS_ID: 'AW-11273981561/8oZpCLqZjvUZEPmc7f8p',
         PARTICLES_COUNT: 30,
         SCROLL_THRESHOLD: 100
     };
+    const I18N_UI = (typeof window !== 'undefined' && window.BW_I18N && window.BW_I18N.ui) ? window.BW_I18N.ui : {};
+    const I18N_MSG = {
+        sending: I18N_UI.sending || 'Отправляем заявку...',
+        sent: I18N_UI.submitSuccess || '✓ Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.',
+        sendError: I18N_UI.submitError || 'Произошла ошибка при отправке. Пожалуйста, попробуйте снова.'
+    };
 
-    // ===== РЈРўРР›РРўР« =====
+    // ===== УТИЛИТЫ =====
     const Utils = {
         throttle(func, wait) {
             let timeout;
@@ -36,15 +53,15 @@
             try {
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'conversion', { 'send_to': CONFIG.ANALYTICS_ID });
-                    console.log('РљРѕРЅРІРµСЂСЃРёСЏ РѕС‚РїСЂР°РІР»РµРЅР°');
+                    console.log('Конверсия отправлена');
                 } else {
-                    console.warn('Google Analytics РЅРµ Р·Р°РіСЂСѓР¶РµРЅ');
+                    console.warn('Google Analytics не загружен');
                 }
-            } catch (error) { console.error('РћС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ РєРѕРЅРІРµСЂСЃРёРё:', error); }
+            } catch (error) { console.error('Ошибка при отправке конверсии:', error); }
         }
     };
 
-    // ===== Р§РђРЎРўРР¦Р« =====
+    // ===== ЧАСТИЦЫ =====
     const ParticleSystem = {
         container: null,
         particles: [],
@@ -74,7 +91,7 @@
         }
     };
 
-    // ===== РќРђР’РР“РђР¦РРЇ =====
+    // ===== НАВИГАЦИЯ =====
     const Navigation = {
         hamburger: null, mobileMenu: null, header: null, navLinks: null,
         init() {
@@ -134,7 +151,7 @@
         destroy() { window.removeEventListener('scroll', this.handleScroll); }
     };
 
-    // ===== РЈР›РЈР§РЁР•РќРРЇ РЎРљР РћР›Р›Рђ РњРћР”РђР›Р¬РќРћР“Рћ РћРљРќРђ =====
+    // ===== УЛУЧШЕНИЯ СКРОЛЛА МОДАЛЬНОГО ОКНА =====
     const ModalScrollEnhancements = {
         modalContent: null, scrollTimeout: null,
         init() {
@@ -161,7 +178,7 @@
         }
     };
 
-    // ===== РњРћР”РђР›Р¬РќРћР• РћРљРќРћ =====
+    // ===== МОДАЛЬНОЕ ОКНО =====
     const Modal = {
         modal: null, modalContent: null,
         init() {
@@ -208,7 +225,7 @@
                     const decreaseBtn = serviceWrapper.querySelector('[data-action="decrease"]');
                     
                     if (input.dataset.serviceType === 'area') {
-                        input.value = 3; // РњРёРЅРёРјР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ РєРѕРІСЂР°
+                        input.value = 3; // Минимальное значение для ковра
                     } else {
                         input.value = 1;
                     }
@@ -230,15 +247,15 @@
         isOpen() { return this.modal && this.modal.style.display === 'block'; }
     };
 
-    // ===== Р¤РћР РњРђ =====
+    // ===== ФОРМА =====
     const FORM_MIN_ORDER = 160;
     const FORM_SERVICE_PRICES = {
-        'Р”РёРІР°РЅ': { price: 180, type: 'quantity' },
-        'РљРѕРІС‘СЂ': { price: 15, type: 'area' },
-        'РљСЂРµСЃР»Рѕ': { price: 40, type: 'quantity' },
-        'РЎС‚СѓР»': { price: 40, type: 'quantity' },
-        'РњР°С‚СЂР°СЃ': { price: 90, type: 'quantity' },
-        'РљРѕРјРїР»РµРєСЃ': { price: 300, type: 'quantity' }
+        'Диван': { price: 180, type: 'quantity' },
+        'Ковёр': { price: 15, type: 'area' },
+        'Кресло': { price: 40, type: 'quantity' },
+        'Стул': { price: 40, type: 'quantity' },
+        'Матрас': { price: 90, type: 'quantity' },
+        'Комплекс': { price: 300, type: 'quantity' }
     };
     const Form = {
         form: null, feedback: null,
@@ -297,7 +314,7 @@
                     minOrderModal.style.alignItems = 'center';
                     minOrderModal.style.justifyContent = 'center';
                 }
-                this.showFeedback('РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р° вЂ” 160 zЕ‚. Р”РѕР±Р°РІСЊС‚Рµ СѓСЃР»СѓРіРё РЅР° СЌС‚Сѓ СЃСѓРјРјСѓ.', 'error');
+                this.showFeedback('Минимальная сумма заказа — 160 zł. Добавьте услуги на эту сумму.', 'error');
                 ModalScrollEnhancements.scrollToFirstError();
                 return;
             }
@@ -312,11 +329,11 @@
 
             const submitButton = this.form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            this.showFeedback('РћС‚РїСЂР°РІР»СЏРµРј Р·Р°СЏРІРєСѓ...', 'info');
+            this.showFeedback(I18N_MSG.sending, 'info');
 
             try {
                 await this.submitToServer(data);
-                this.showFeedback('вњ“ Р—Р°СЏРІРєР° СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅР°! РњС‹ СЃРІСЏР¶РµРјСЃСЏ СЃ РІР°РјРё РІ Р±Р»РёР¶Р°Р№С€РµРµ РІСЂРµРјСЏ.', 'success');
+                this.showFeedback(I18N_MSG.sent, 'success');
                 Analytics.reportConversion();
                 this.form.reset();
                 this.form.querySelectorAll('.quantity-input').forEach(input => {
@@ -326,8 +343,8 @@
                 });
                 setTimeout(() => { Modal.close(); this.showFeedback('', 'info'); }, 2500);
             } catch (error) {
-                console.error('РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё С„РѕСЂРјС‹:', error);
-                this.showFeedback('РџСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°.', 'error');
+                console.error('Ошибка отправки формы:', error);
+                this.showFeedback(I18N_MSG.sendError, 'error');
             } finally {
                 submitButton.disabled = false;
             }
@@ -347,16 +364,16 @@
                     let serviceString = '';
 
                     if (type === 'quantity') {
-                        serviceString = `${serviceName} (${value} С€С‚.)`;
-                        // РџСЂРѕРІРµСЂСЏРµРј РїРѕРґСѓС€РєРё С‚РѕР»СЊРєРѕ РґР»СЏ РґРёРІР°РЅР°
-                        if(serviceName === 'Р”РёРІР°РЅ') {
+                        serviceString = `${serviceName} (${value} шт.)`;
+                        // Проверяем подушки только для дивана
+                        if(serviceName === 'Диван') {
                             const pillowsCheckbox = this.form.querySelector('[name="sofa_pillows"]');
                             if(pillowsCheckbox && pillowsCheckbox.checked) {
-                                serviceString += ' (СЃ РїРѕРґСѓС€РєР°РјРё)';
+                                serviceString += ' (с подушками)';
                             }
                         }
                     } else if (type === 'area') {
-                        serviceString = `${serviceName} (${value} РјВІ)`;
+                        serviceString = `${serviceName} (${value} м²)`;
                     }
                     services.push(serviceString);
                 }
@@ -371,17 +388,17 @@
             };
         },
         validateForm(data) {
-            if (data.services.length === 0) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІС‹Р±РµСЂРёС‚Рµ С…РѕС‚СЏ Р±С‹ РѕРґРЅСѓ СѓСЃР»СѓРіСѓ.' }; }
+            if (data.services.length === 0) { return { isValid: false, message: 'Пожалуйста, выберите хотя бы одну услугу.' }; }
             
-            const carpetItem = this.form.querySelector('[data-service-name="РљРѕРІС‘СЂ"] .quantity-input');
+            const carpetItem = this.form.querySelector('[data-service-name="Ковёр"] .quantity-input');
             if (carpetItem && carpetItem.value > 0 && carpetItem.value < 3) {
-                return { isValid: false, message: 'РњРёРЅРёРјР°Р»СЊРЅС‹Р№ Р·Р°РєР°Р· РґР»СЏ РєРѕРІСЂР° - 3 РјВІ.' };
+                return { isValid: false, message: 'Минимальный заказ для ковра - 3 м².' };
             }
             
-            if (!data.name) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ.' }; }
+            if (!data.name) { return { isValid: false, message: 'Пожалуйста, введите ваше имя.' }; }
             const phoneRegex = /^[+]?[\d\s\-\(\)]{7,}$/;
-            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅС‹Р№ РЅРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°.' }; }
-            if (!data.address) { return { isValid: false, message: 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РІР°С€ Р°РґСЂРµСЃ.' }; }
+            if (!phoneRegex.test(data.phone)) { return { isValid: false, message: 'Пожалуйста, введите корректный номер телефона.' }; }
+            if (!data.address) { return { isValid: false, message: 'Пожалуйста, укажите ваш адрес.' }; }
             return { isValid: true };
         },
         async submitToServer(data) {
@@ -401,7 +418,7 @@
         formatTelegramMessage(data) {
             const timestamp = new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Warsaw' });
             const servicesString = data.services.join('\n- ');
-            return `<b>рџ†• РќРѕРІР°СЏ Р·Р°СЏРІРєР° РЅР° С…РёРјС‡РёСЃС‚РєСѓ</b>\n\n<b>рџ›‹пёЏ РЈСЃР»СѓРіРё:</b>\n- ${servicesString}\n\n<b>рџ“Ќ РђРґСЂРµСЃ:</b> ${data.address}\n<b>рџ‘¤ РРјСЏ:</b> ${data.name}\n<b>рџ“ћ РўРµР»РµС„РѕРЅ:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>рџ’¬ РљРѕРјРјРµРЅС‚Р°СЂРёР№:</b> ${data.comments}` : ''}\n\n<b>рџ•ђ Р’СЂРµРјСЏ:</b> ${timestamp}`.trim();
+            return `<b>🆕 Новая заявка на химчистку</b>\n\n<b>🛋️ Услуги:</b>\n- ${servicesString}\n\n<b>📍 Адрес:</b> ${data.address}\n<b>👤 Имя:</b> ${data.name}\n<b>📞 Телефон:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>💬 Комментарий:</b> ${data.comments}` : ''}\n\n<b>🕐 Время:</b> ${timestamp}`.trim();
         },
         showFeedback(message, type) {
             if (!this.feedback) return;
@@ -410,7 +427,7 @@
         }
     };
 
-    // ===== РџР РћРР—Р’РћР”РРўР•Р›Р¬РќРћРЎРўР¬ =====
+    // ===== ПРОИЗВОДИТЕЛЬНОСТЬ =====
     const Performance = {
         init() { this.initLazyLoading(); this.initResizeOptimization(); },
         initLazyLoading() {
@@ -509,19 +526,19 @@
             total += this.values[type] * this.prices[type];
         }
         
-        // РС‚РѕРіРѕ вЂ” РїРѕР»РЅР°СЏ СЃСѓРјРјР° Р·Р°РєР°Р·Р° (Р±РµР· СЃРєРёРґРєРё)
+        // Итого — полная сумма заказа (без скидки)
         const totalElement = document.getElementById('calcTotal');
         if (totalElement) {
-            totalElement.textContent = total + ' zЕ‚';
+            totalElement.textContent = total + ' zł';
         }
         
-        // РЎРєРёРґРєР° 10% РїСЂРё Р·Р°РєР°Р·Рµ С‡РµСЂРµР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ вЂ” РїРѕРєР°Р·С‹РІР°РµРј С†РµРЅСѓ Рє РѕРїР»Р°С‚Рµ РѕС‚РґРµР»СЊРЅРѕ
+        // Скидка 10% при заказе через калькулятор — показываем цену к оплате отдельно
         const discountRow = document.getElementById('calcTotalDiscountRow');
         const discountElement = document.getElementById('calcTotalDiscount');
         if (total > 0 && discountRow && discountElement) {
             const discount = total * 0.1;
             const finalPrice = total - discount;
-            discountElement.textContent = Math.round(finalPrice) + ' zЕ‚';
+            discountElement.textContent = Math.round(finalPrice) + ' zł';
             discountRow.style.display = '';
         } else if (discountRow) {
             discountRow.style.display = 'none';
@@ -543,15 +560,15 @@
             }
             return;
         }
-        // РћС‚РєСЂС‹РІР°РµРј РјРѕРґР°Р»СЊРЅРѕРµ РѕРєРЅРѕ Рё Р·Р°РїРѕР»РЅСЏРµРј РґР°РЅРЅС‹РјРё РёР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°
+        // Открываем модальное окно и заполняем данными из калькулятора
         Modal.open();
         
-        // Р—Р°РїРѕР»РЅСЏРµРј РїРѕР»СЏ РІ С„РѕСЂРјРµ Р·РЅР°С‡РµРЅРёСЏРјРё РёР· РєР°Р»СЊРєСѓР»СЏС‚РѕСЂР°
+        // Заполняем поля в форме значениями из калькулятора
         const serviceMap = {
-            sofa: 'Р”РёРІР°РЅ',
-            carpet: 'РљРѕРІС‘СЂ',
-            chair: 'РљСЂРµСЃР»Рѕ',
-            mattress: 'РњР°С‚СЂР°СЃ'
+            sofa: 'Диван',
+            carpet: 'Ковёр',
+            chair: 'Кресло',
+            mattress: 'Матрас'
         };
         
         for (let type in this.values) {
@@ -569,11 +586,11 @@
     }
 };
 
-// ===== РўРђР™РњР•Р  РђРљР¦РР =====
+// ===== ТАЙМЕР АКЦИИ =====
 const PromoTimer = {
     endTime: null,
     init() {
-        // РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РІСЂРµРјСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ Р°РєС†РёРё (24 С‡Р°СЃР° РѕС‚ С‚РµРєСѓС‰РµРіРѕ РјРѕРјРµРЅС‚Р°)
+        // Устанавливаем время окончания акции (24 часа от текущего момента)
         const saved = localStorage.getItem('promoEndTime');
         if (saved) {
             this.endTime = new Date(saved);
@@ -595,7 +612,7 @@ const PromoTimer = {
         const diff = this.endTime - now;
         
         if (diff <= 0) {
-            // РЎР±СЂР°СЃС‹РІР°РµРј С‚Р°Р№РјРµСЂ
+            // Сбрасываем таймер
             this.endTime = new Date(Date.now() + 24 * 60 * 60 * 1000);
             localStorage.setItem('promoEndTime', this.endTime);
             return;
@@ -615,23 +632,23 @@ const PromoTimer = {
     }
 };
 
-// ===== РћР‘РќРћР’Р›Р•РќРќРђРЇ РРќРР¦РРђР›РР—РђР¦РРЇ =====
+// ===== ОБНОВЛЕННАЯ ИНИЦИАЛИЗАЦИЯ =====
 function init() {
     if (!window.CSS || !window.CSS.supports || !window.CSS.supports('display', 'grid')) {
-        console.warn('Р‘СЂР°СѓР·РµСЂ РЅРµ РїРѕРґРґРµСЂР¶РёРІР°РµС‚ СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ CSS С„СѓРЅРєС†РёРё');
+        console.warn('Браузер не поддерживает современные CSS функции');
     }
     Navigation.init();
     Modal.init();
     Form.init();
     Performance.init();
     ModalScrollEnhancements.init();
-    Calculator.init(); // РќРћР’РћР•
-    PromoTimer.init(); // РќРћР’РћР•
+    Calculator.init(); // НОВОЕ
+    PromoTimer.init(); // НОВОЕ
     setTimeout(() => { ParticleSystem.init(); }, 3000);
-    console.log('рџљЂ BrightHouse Cleaning РёРЅРёС†РёР°Р»РёР·РѕРІР°РЅ');
+    console.log('🚀 BrightHouse Cleaning инициализован');
 }
 
-// Р­РєСЃРїРѕСЂС‚ РґР»СЏ РѕС‚Р»Р°РґРєРё (Р±РµР· РёР·РјРµРЅРµРЅРёР№)
+// Экспорт для отладки (без изменений)
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     window.BrightHouse = { 
         ParticleSystem, 
@@ -641,8 +658,8 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
         Analytics, 
         Utils, 
         ModalScrollEnhancements,
-        Calculator, // РќРћР’РћР•
-        PromoTimer // РќРћР’РћР•
+        Calculator, // НОВОЕ
+        PromoTimer // НОВОЕ
     };
 }
 
@@ -653,3 +670,7 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
         window.BrightHouse = { ParticleSystem, Navigation, Modal, Form, Analytics, Utils, ModalScrollEnhancements };
     }
 })();
+
+
+
+

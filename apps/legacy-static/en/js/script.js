@@ -1,11 +1,28 @@
 ﻿(function() {
     'use strict';
+    function resolveApiEndpoint() {
+        const runtimeConfig = (typeof window !== 'undefined' && window.BRIGHTWAW_ENV) ? window.BRIGHTWAW_ENV : {};
+        const explicitEndpoint = runtimeConfig.TELEGRAM_PROXY_URL || localStorage.getItem('BW_TELEGRAM_ENDPOINT');
+        if (explicitEndpoint) return explicitEndpoint;
+
+        const metaBase = document.querySelector('meta[name="bw:api-base-url"]')?.content || '';
+        const runtimeBase = runtimeConfig.API_BASE_URL || localStorage.getItem('BW_API_BASE_URL') || metaBase;
+        const fallbackBase = '';
+        const base = (runtimeBase || fallbackBase).replace(/\/$/, "");
+        return base ? `${base}/api/telegram_proxy` : '/api/telegram_proxy';
+    }
 
     const CONFIG = {
-        API_ENDPOINT: '/api/telegram_proxy',
+        API_ENDPOINT: resolveApiEndpoint(),
         ANALYTICS_ID: 'AW-11273981561/8oZpCLqZjvUZEPmc7f8p',
         PARTICLES_COUNT: 30,
         SCROLL_THRESHOLD: 100
+    };
+    const I18N_UI = (typeof window !== 'undefined' && window.BW_I18N && window.BW_I18N.ui) ? window.BW_I18N.ui : {};
+    const I18N_MSG = {
+        sending: I18N_UI.sending || 'Sending request...',
+        sent: I18N_UI.submitSuccess || '✓ Request sent successfully! We will contact you shortly.',
+        sendError: I18N_UI.submitError || 'An error occurred while sending. Please try again.'
     };
 
     const Utils = {
@@ -267,11 +284,11 @@
 
             const submitButton = this.form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
-            this.showFeedback('Sending request...', 'info');
+            this.showFeedback(I18N_MSG.sending, 'info');
 
             try {
                 await this.submitToServer(data);
-                this.showFeedback('✓ Request sent successfully! We will contact you shortly.', 'success');
+                this.showFeedback(I18N_MSG.sent, 'success');
                 Analytics.reportConversion();
                 this.form.reset();
                 this.form.querySelectorAll('.quantity-input').forEach(input => {
@@ -282,7 +299,7 @@
                 setTimeout(() => { Modal.close(); this.showFeedback('', 'info'); }, 2500);
             } catch (error) {
                 console.error('Form submission error:', error);
-                this.showFeedback('An error occurred while sending. Please try again.', 'error');
+                this.showFeedback(I18N_MSG.sendError, 'error');
             } finally {
                 submitButton.disabled = false;
             }
@@ -538,5 +555,8 @@
     if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', init); }
     else { init(); }
 })();
+
+
+
 
 

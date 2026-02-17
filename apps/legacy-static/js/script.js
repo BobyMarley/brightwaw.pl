@@ -1,11 +1,28 @@
 ﻿(function() {
     'use strict';
+    function resolveApiEndpoint() {
+        const runtimeConfig = (typeof window !== 'undefined' && window.BRIGHTWAW_ENV) ? window.BRIGHTWAW_ENV : {};
+        const explicitEndpoint = runtimeConfig.TELEGRAM_PROXY_URL || localStorage.getItem('BW_TELEGRAM_ENDPOINT');
+        if (explicitEndpoint) return explicitEndpoint;
+
+        const metaBase = document.querySelector('meta[name="bw:api-base-url"]')?.content || '';
+        const runtimeBase = runtimeConfig.API_BASE_URL || localStorage.getItem('BW_API_BASE_URL') || metaBase;
+        const fallbackBase = '';
+        const base = (runtimeBase || fallbackBase).replace(/\/$/, "");
+        return base ? `${base}/api/telegram_proxy` : '/api/telegram_proxy';
+    }
 
     const CONFIG = {
-        API_ENDPOINT: '/api/telegram_proxy',
+        API_ENDPOINT: resolveApiEndpoint(),
         ANALYTICS_ID: 'AW-11273981561/8oZpCLqZjvUZEPmc7f8p',
         PARTICLES_COUNT: 30,
         SCROLL_THRESHOLD: 100
+    };
+    const I18N_UI = (typeof window !== 'undefined' && window.BW_I18N && window.BW_I18N.ui) ? window.BW_I18N.ui : {};
+    const I18N_MSG = {
+        sending: I18N_UI.sending || 'Wysyłanie zgłoszenia...',
+        sent: I18N_UI.submitSuccess || '✓ Zgłoszenie wysłane pomyślnie! Skontaktujemy się wkrótce.',
+        sendError: I18N_UI.submitError || 'Wystąpił błąd podczas wysyłania. Spróbuj ponownie.'
     };
 
     const Utils = {
@@ -34,7 +51,7 @@
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'conversion', { 'send_to': CONFIG.ANALYTICS_ID });
                 }
-            } catch (error) { console.error('РћС€РёР±РєР° РїСЂРё РѕС‚РїСЂР°РІРєРµ РєРѕРЅРІРµСЂСЃРёРё:', error); }
+            } catch (error) { console.error('Ошибка при отправке конверсии:', error); }
         }
     };
 
@@ -142,10 +159,10 @@
 
     const Modal = {
         modal: null,
-        form: null, // в†ђ Р’РђР–РќРћ: РґРѕР±Р°РІР»РµРЅРѕ
+        form: null, // ← ВАЖНО: добавлено
         init() {
             this.modal = document.getElementById('modal');
-            this.form = document.getElementById('cleaningForm'); // в†ђ Р’РђР–РќРћ: РґРѕР±Р°РІР»РµРЅРѕ
+            this.form = document.getElementById('cleaningForm'); // ← ВАЖНО: добавлено
             this.bindEvents();
             this.bindServiceButtons();
         },
@@ -172,7 +189,7 @@
             this.modal.style.display = 'block';
             document.body.style.overflow = 'hidden';
 
-            // РЎР±СЂРѕСЃ С„РѕСЂРјС‹
+            // Сброс формы
             this.form.querySelectorAll('.quantity-input').forEach(input => {
                 input.value = 0;
                 const decBtn = input.parentElement.querySelector('[data-action="decrease"]');
@@ -181,14 +198,14 @@
             const pillowsCheckbox = this.form.querySelector('[name="sofa_pillows"]');
             if (pillowsCheckbox) pillowsCheckbox.checked = false;
 
-            // РђРІС‚РѕР·Р°РїРѕР»РЅРµРЅРёРµ РїСЂРё РІС‹Р±РѕСЂРµ СѓСЃР»СѓРіРё РёР· РєР°СЂС‚РѕС‡РєРё
+            // Автозаполнение при выборе услуги из карточки
             if (selectedService) {
                 const wrapper = this.modal.querySelector(`.service-item-wrapper[data-service-name="${selectedService}"]`);
                 if (wrapper) {
                     const input = wrapper.querySelector('.quantity-input');
                     const decBtn = wrapper.querySelector('[data-action="decrease"]');
                     if (input.dataset.serviceType === 'area') {
-                        input.value = 3; // РјРёРЅРёРјСѓРј РґР»СЏ Dywan
+                        input.value = 3; // минимум для Dywan
                     } else {
                         input.value = 1;
                     }
@@ -214,7 +231,7 @@
         'Sofa': { price: 180, type: 'quantity' },
         'Dywan': { price: 15, type: 'area' },
         'Fotel': { price: 40, type: 'quantity' },
-        'KrzesЕ‚o': { price: 40, type: 'quantity' },
+        'Krzesło': { price: 40, type: 'quantity' },
         'Materac': { price: 90, type: 'quantity' },
         'Pakiet': { price: 300, type: 'quantity' }
     };
@@ -272,7 +289,7 @@
                     minOrderModal.style.alignItems = 'center';
                     minOrderModal.style.justifyContent = 'center';
                 }
-                this.showFeedback('Minimalna kwota zamГіwienia to 160 zЕ‚. Dodaj usЕ‚ugi na tД™ kwotД™.', 'error');
+                this.showFeedback('Minimalna kwota zamówienia to 160 zł. Dodaj usługi na tę kwotę.', 'error');
                 return;
             }
             const data = this.extractFormData();
@@ -284,11 +301,11 @@
             }
 
             submitButton.disabled = true;
-            this.showFeedback('WysyЕ‚anie zgЕ‚oszenia...', 'info');
+            this.showFeedback(I18N_MSG.sending, 'info');
 
             try {
                 await this.submitToServer(data);
-                this.showFeedback('вњ“ ZgЕ‚oszenie wysЕ‚ane pomyЕ›lnie! Skontaktujemy siД™ wkrГіtce.', 'success');
+                this.showFeedback(I18N_MSG.sent, 'success');
                 Analytics.reportConversion();
                 this.form.reset();
                 this.form.querySelectorAll('.quantity-input').forEach(input => {
@@ -301,8 +318,8 @@
                     this.showFeedback('', 'info');
                 }, 3000);
             } catch (error) {
-                console.error('BЕ‚Д…d wysyЕ‚ania:', error);
-                this.showFeedback('WystД…piЕ‚ bЕ‚Д…d podczas wysyЕ‚ania. SprГіbuj ponownie.', 'error');
+                console.error('Błąd wysyłania:', error);
+                this.showFeedback(I18N_MSG.sendError, 'error');
             } finally {
                 submitButton.disabled = false;
             }
@@ -324,11 +341,11 @@
                     if (serviceName === 'Sofa') {
                         const pillows = this.form.querySelector('[name="sofa_pillows"]');
                         if (pillows?.checked) {
-                            str += ' (z poduszkami)'; // в†ђ РјРѕР¶РЅРѕ РѕСЃС‚Р°РІРёС‚СЊ СЂСѓСЃСЃРєРёР№ РІР°СЂРёР°РЅС‚, РµСЃР»Рё Р°РґРјРёРЅ СЂСѓСЃСЃРєРёР№
+                            str += ' (z poduszkami)'; // ← можно оставить русский вариант, если админ русский
                         }
                     }
                 } else if (input.dataset.serviceType === 'area') {
-                    str = `${serviceName} (${value} mВІ)`;
+                    str = `${serviceName} (${value} m²)`;
                 }
                 services.push(str);
             });
@@ -343,26 +360,26 @@
         },
         validateForm(data) {
             if (data.services.length === 0) {
-                return { isValid: false, message: 'ProszД™ wybraД‡ przynajmniej jednД… usЕ‚ugД™.' };
+                return { isValid: false, message: 'Proszę wybrać przynajmniej jedną usługę.' };
             }
 
-            // РџСЂРѕРІРµСЂРєР° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ Р·Р°РєР°Р·Р° Dywan вЂ” 3 РјВІ
+            // Проверка минимального заказа Dywan — 3 м²
             const carpetInput = this.form.querySelector('[data-service-name="Dywan"] .quantity-input');
             if (carpetInput && parseInt(carpetInput.value, 10) > 0 && parseInt(carpetInput.value, 10) < 3) {
-                return { isValid: false, message: 'Minimalne zamГіwienie dla dywanu to 3 mВІ.' };
+                return { isValid: false, message: 'Minimalne zamówienie dla dywanu to 3 m².' };
             }
 
             if (!data.name) {
-                return { isValid: false, message: 'ProszД™ podaД‡ swoje imiД™.' };
+                return { isValid: false, message: 'Proszę podać swoje imię.' };
             }
 
             const phoneRegex = /^[+]?[\d\s\-\(\)]{7,}$/;
             if (!phoneRegex.test(data.phone)) {
-                return { isValid: false, message: 'ProszД™ podaД‡ poprawny numer telefonu.' };
+                return { isValid: false, message: 'Proszę podać poprawny numer telefonu.' };
             }
 
             if (!data.address) {
-                return { isValid: false, message: 'ProszД™ podaД‡ adres.' };
+                return { isValid: false, message: 'Proszę podać adres.' };
             }
 
             return { isValid: true };
@@ -383,7 +400,7 @@
         formatTelegramMessage(data) {
             const timestamp = new Date().toLocaleString('pl-PL', { timeZone: 'Europe/Warsaw' });
             const servicesString = data.services.join('\n- ');
-            return `<b>рџ†• Nowe zgЕ‚oszenie - pranie mebli</b>\n\n<b>UsЕ‚ugi:</b>\n- ${servicesString}\n\n<b>Adres:</b> ${data.address}\n<b>ImiД™:</b> ${data.name}\n<b>Telefon:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>Komentarz:</b> ${data.comments}` : ''}\n\n<b>Czas:</b> ${timestamp}`;
+            return `<b>🆕 Nowe zgłoszenie - pranie mebli</b>\n\n<b>Usługi:</b>\n- ${servicesString}\n\n<b>Adres:</b> ${data.address}\n<b>Imię:</b> ${data.name}\n<b>Telefon:</b> <a href="tel:${data.phone}">${data.phone}</a>\n${data.comments ? `<b>Komentarz:</b> ${data.comments}` : ''}\n\n<b>Czas:</b> ${timestamp}`;
         },
         showFeedback(message, type = 'info') {
             if (!this.feedback) return;
@@ -432,12 +449,12 @@
             let total = 0;
             for (let key in this.values) total += this.values[key] * this.prices[key];
             const el = document.getElementById('calcTotal');
-            if (el) el.textContent = total + ' zЕ‚';
+            if (el) el.textContent = total + ' zł';
             const discountRow = document.getElementById('calcTotalDiscountRow');
             const discountEl = document.getElementById('calcTotalDiscount');
             if (total > 0 && discountRow && discountEl) {
                 const final = Math.round(total * 0.9);
-                discountEl.textContent = final + ' zЕ‚';
+                discountEl.textContent = final + ' zł';
                 discountRow.style.display = '';
             } else if (discountRow) discountRow.style.display = 'none';
         },
@@ -519,3 +536,7 @@
         init();
     }
 })();
+
+
+
+

@@ -27,6 +27,10 @@
   --main-font: Montserrat;
   --h2-size: 1.5rem;
   --font-size-lg: 1.13rem;
+  --color-black: #000;
+  --color-gray-200: #6c757d;
+  --color-gainsboro-200: #e9ecef;
+  --zamowie-btn: transparent;
   --primary: #0f85c9;
   --primary-contrast: #fff;
   --primary-blue: #1e90ff;
@@ -3075,6 +3079,12 @@ button#send:disabled {
   color: rgba(255, 255, 255, 0.6);
   margin: 0.3rem 0;
 }
+
+.portfolio > div > div > div:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
 /* Homepage SEO Utility Classes */
 .seo-services-section { background:#fdfdfd; }
 .seo-section-title { text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem; }

@@ -241,6 +241,7 @@
         </div>
     </div>
 
+      <script src="/runtime-env.js?ver1" defer></script>
       <script>
         const hamburgerMenu = document.querySelector('.hamburger-menu');
         const overlay = document.querySelector('.overlay');
@@ -253,6 +254,17 @@
       
       <script>
         document.addEventListener("DOMContentLoaded", function () {
+            function resolveApiEndpoint() {
+                const runtimeConfig = (typeof window !== "undefined" && window.BRIGHTWAW_ENV) ? window.BRIGHTWAW_ENV : {};
+                const explicitEndpoint = runtimeConfig.TELEGRAM_PROXY_URL || localStorage.getItem("BW_TELEGRAM_ENDPOINT");
+                if (explicitEndpoint) return explicitEndpoint;
+                const metaBase = document.querySelector('meta[name="bw:api-base-url"]')?.content || "";
+                const runtimeBase = runtimeConfig.API_BASE_URL || localStorage.getItem("BW_API_BASE_URL") || metaBase;
+                const fallbackBase = "";
+                const base = (runtimeBase || fallbackBase).replace(/\/$/, "");
+                return base ? `${base}/api/telegram_proxy` : "/api/telegram_proxy";
+            }
+
             const modal = document.getElementById('modal');
             const openModalButton = document.getElementById('openModal');
             const closeButton = document.querySelector('.close-button');
@@ -289,39 +301,32 @@
                     return;
                 }
     
-                // Создание объекта с данными
-                const data = {
-                    chat_id: '1137562732', // Замените на ваш chat_id
-                    text: `Новая заявка:\nУслуги: ${services}\nКомментарий: ${comments}\nИмя: ${name}\nТелефон: ${phone}`
-                };
-    
-                // AJAX запрос для отправки данных в Telegram
-                const xhr = new XMLHttpRequest();
-                xhr.open("POST", `https://api.telegram.org/bot6339860942:AAFolHF7Pk1HCLWwDIGhkvYEr2P-9eEBUgw/sendMessage`); // Укажите ваш URL для отправки данных
-                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        feedback.innerText = 'Заявка успешно отправлена!';
-                        feedback.style.color = 'green';
-                        form.reset(); // Сброс формы после успешной отправки
-                        modal.style.display = 'none'; // Закрываем модальное окно
-                    } else {
-                        feedback.innerText = 'Произошла ошибка. Попробуйте снова.';
-                        feedback.style.color = 'red';
+                const message = `Nowa prośba:\nUsługi: ${services}\nKomentarz: ${comments}\nImię: ${name}\nTelefon: ${phone}`;
+
+                fetch(resolveApiEndpoint(), {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ message })
+                })
+                .then(async (response) => {
+                    if (!response.ok) {
+                        const err = await response.json().catch(() => null);
+                        throw new Error(err?.message || `HTTP ${response.status}`);
                     }
-                };
-    
-                xhr.onerror = function () {
-                    feedback.innerText = 'Ошибка сети. Попробуйте снова.';
+                    feedback.innerText = 'Zgłoszenie wysłane pomyślnie!';
+                    feedback.style.color = 'green';
+                    form.reset();
+                    modal.style.display = 'none';
+                })
+                .catch(() => {
+                    feedback.innerText = 'Wystąpił błąd podczas wysyłania.';
                     feedback.style.color = 'red';
-                };
-    
-                // Отправляем данные
-                xhr.send(JSON.stringify(data));
+                });
             });
         });
     </script>
 
   </body>
 </html>
+
+

@@ -1,156 +1,105 @@
-const form = document.querySelector("form");
+﻿const form = document.querySelector("form");
 const nameInput = document.getElementById("name");
 const phoneInput = document.getElementById("phone");
 const adresInput = document.getElementById("adres");
 const sendButton = document.getElementById("send");
 
-// НЕ объявляем modalContainer и successModalContainer здесь - они уже объявлены в modal.js
-
-// Флаг для предотвращения множественных отправок
 let isSubmitting = false;
+const I18N = (typeof window !== "undefined" && window.BW_I18N && window.BW_I18N.ui) ? window.BW_I18N.ui : {};
+const MSG = {
+  fillRequired: I18N.fillRequired || "Prosze wypelnic wszystkie pola.",
+  invalidPhone: I18N.invalidPhone || "Prosze podac poprawny numer telefonu.",
+  sending: I18N.sending || "Wysylanie...",
+  sendErrorPrefix: I18N.submitErrorPrefix || "Wystapil blad wysylania.",
+  sendRetry: I18N.sendRetry || "Sprobuj ponownie.",
+};
 
-form.addEventListener("submit", function(event) {
-  event.preventDefault();
+function resolveApiEndpoint() {
+  const runtimeConfig = (typeof window !== "undefined" && window.BRIGHTWAW_ENV) ? window.BRIGHTWAW_ENV : {};
+  const explicitEndpoint = runtimeConfig.TELEGRAM_PROXY_URL || localStorage.getItem("BW_TELEGRAM_ENDPOINT");
+  if (explicitEndpoint) return explicitEndpoint;
 
-  // Предотвращаем множественные отправки
-  if (isSubmitting) {
-    console.log("Форма уже отправляется...");
-    return;
-  }
+  const metaBase = document.querySelector('meta[name="bw:api-base-url"]')?.content || "";
+  const runtimeBase = runtimeConfig.API_BASE_URL || localStorage.getItem("BW_API_BASE_URL") || metaBase;
+  const fallbackBase = "";
+  const base = (runtimeBase || fallbackBase).replace(/\/$/, "");
+  return base ? `${base}/api/telegram_proxy` : "/api/telegram_proxy";
+}
 
-  // Валидация полей
-  if (nameInput.value.trim() === "" || adresInput.value.trim() === "" || phoneInput.value.trim() === "") {
-    alert("Proszę wypełnić wszystkie pola. / Пожалуйста, заполните все поля.");
-    return;
-  }
+if (form && nameInput && phoneInput && adresInput && sendButton) {
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
 
-  // Проверка валидности телефона (должен содержать хотя бы 9 цифр после +48)
-  const phoneDigits = phoneInput.value.replace(/\D/g, '');
-  if (phoneDigits.length < 11) { // +48 (2 цифры) + 9 цифр номера = 11
-    alert("Proszę podać poprawny numer telefonu. / Пожалуйста, введите корректный номер телефона.");
-    return;
-  }
+    if (isSubmitting) return;
 
-  // Отключаем кнопку и меняем текст
-  isSubmitting = true;
-  sendButton.disabled = true;
-  const originalText = sendButton.textContent;
-  sendButton.textContent = 'Wysyłanie... / Отправка...';
-  sendButton.style.opacity = '0.7';
-  sendButton.style.cursor = 'not-allowed';
+    if (!nameInput.value.trim() || !adresInput.value.trim() || !phoneInput.value.trim()) {
+      alert(MSG.fillRequired);
+      return;
+    }
 
-  const currentDate = new Date();
-  const year = currentDate.getFullYear();
-  const month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-  const day = currentDate.getDate().toString().padStart(2, '0');
-  const hours = currentDate.getHours().toString().padStart(2, '0');
-  const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+    const phoneDigits = phoneInput.value.replace(/\D/g, "");
+    if (phoneDigits.length < 11) {
+      alert(MSG.invalidPhone);
+      return;
+    }
 
-  const localDate = `${year}-${month}-${day}`; 
-  const localTime = `${hours}:${minutes}`;
+    isSubmitting = true;
+    sendButton.disabled = true;
+    const originalText = sendButton.textContent;
+    sendButton.textContent = MSG.sending;
+    sendButton.style.opacity = "0.7";
+    sendButton.style.cursor = "not-allowed";
 
-  // Telegram Bot API
-  const telegramBotToken = '6339860942:AAFolHF7Pk1HCLWwDIGhkvYEr2P-9eEBUgw';
-  const telegramChatIds = ['5655772838','1137562732']; 
-  
-  // Формируем сообщение
-  console.log('Текущий тип уборки в vm.cleaningType:', vm.cleaningType);
-  const cleaningTypeText = vm.cleaningType === 'generalna' ? "Генеральная уборка / Generalne sprzątanie" : "Стандартная уборка / Standardowe sprzątanie";
-  const selectedItemsText = vm.selectedItems.map(item => `${item.title} - ${item.count}`).join(' | ') || 'Не выбрано / Nie wybrano';
-  console.log('Текст типа уборки для отправки:', cleaningTypeText);
-  
-  const message = `🏠 Новый заказ уборки! / Nowe zamówienie sprzątania!
+    const now = new Date();
+    const localDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    const localTime = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+    const cleaningTypeText = vm.cleaningType === "generalna" ? "Generalne sprzatanie" : "Standardowe sprzatanie";
+    const selectedItemsText = vm.selectedItems.map((item) => `${item.title} - ${item.count}`).join(" | ") || "Nie wybrano";
 
-👤 Имя / Imię: ${nameInput.value}
-📞 Телефон / Telefon: ${phoneInput.value}
-📍 Адрес / Adres: ${adresInput.value}
-🧹 Тип уборки / Typ sprzątania: ${cleaningTypeText}
-📋 Выбрано / Wybrano: ${selectedItemsText}
-📅 Дата / Data: ${localDate}
-🕒 Время / Czas: ${localTime}`;
+    const message = [
+      "Nowe zamowienie sprzatania",
+      `Imie: ${nameInput.value}`,
+      `Telefon: ${phoneInput.value}`,
+      `Adres: ${adresInput.value}`,
+      `Typ sprzatania: ${cleaningTypeText}`,
+      `Wybrano: ${selectedItemsText}`,
+      `Data: ${localDate}`,
+      `Czas: ${localTime}`
+    ].join("\n");
 
-  console.log('Отправка сообщения:', message);
+    try {
+      const response = await fetch(resolveApiEndpoint(), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
 
-  // Счетчик успешных отправок
-  let completedRequests = 0;
-  let successfulSends = 0;
-  const totalChats = telegramChatIds.length;
-
-  function handleRequestComplete(success = false) {
-    completedRequests++;
-    if (success) successfulSends++;
-    
-    console.log(`Завершено запросов: ${completedRequests}/${totalChats}, успешных: ${successfulSends}`);
-    
-    // Когда все запросы завершены
-    if (completedRequests === totalChats) {
-      // Показываем результат даже если хотя бы одна отправка успешна
-      if (successfulSends > 0) {
-        console.log('Отправка успешна, показываем модальное окно');
-        
-        // Отправка события конверсии без редиректа
-        if (typeof gtag_report_conversion === 'function') {
-          gtag_report_conversion();
-        }
-
-        // Закрываем форму и показываем успех
-        modalContainer.classList.remove("active");
-        successModalContainer.style.display = "block";
-
-        // Очищаем форму
-        form.reset();
-        vm.selectedItems = [];
-        const resetEvent = new CustomEvent('reset-button-counter');
-        window.dispatchEvent(resetEvent);
-      } else {
-        // Все отправки провалились
-        console.error('Все отправки провалились');
-        alert("Błąd wysyłania. Spróbuj ponownie. / Ошибка отправки. Попробуйте снова.");
+      if (!response.ok) {
+        const err = await response.json().catch(() => null);
+        throw new Error(err?.message || `HTTP ${response.status}`);
       }
 
-      // Возвращаем кнопку в исходное состояние
+      if (typeof gtag_report_conversion === "function") {
+        gtag_report_conversion();
+      }
+
+      modalContainer.classList.remove("active");
+      successModalContainer.style.display = "block";
+
+      form.reset();
+      vm.selectedItems = [];
+      window.dispatchEvent(new CustomEvent("reset-button-counter"));
+    } catch (error) {
+      console.error("Blad wysylania:", error);
+      alert(`${MSG.sendErrorPrefix} ${error?.message || MSG.sendRetry}`);
+    } finally {
       isSubmitting = false;
       sendButton.disabled = false;
       sendButton.textContent = originalText;
-      sendButton.style.opacity = '1';
-      sendButton.style.cursor = 'pointer';
+      sendButton.style.opacity = "1";
+      sendButton.style.cursor = "pointer";
     }
-  }
-
-  // Отправляем сообщения в Telegram
-  telegramChatIds.forEach(chatId => {
-    const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
-    
-    console.log(`Отправка в чат ${chatId}...`);
-    
-    fetch(url)
-      .then(response => {
-        console.log(`Ответ от Telegram для чата ${chatId}:`, response.status);
-        return response.json();
-      })
-      .then(data => {
-        if (data.ok) {
-          console.log(`✓ Сообщение успешно отправлено в чат ${chatId}`);
-          handleRequestComplete(true);
-        } else {
-          console.error(`✗ Ошибка отправки в чат ${chatId}:`, data);
-          handleRequestComplete(false);
-        }
-      })
-      .catch(error => {
-        console.error(`✗ Ошибка сети при отправке в чат ${chatId}:`, error);
-        handleRequestComplete(false);
-      });
   });
+}
 
-  // Таймаут на случай зависания (15 секунд)
-  setTimeout(() => {
-    if (completedRequests < totalChats) {
-      console.warn("⚠ Таймаут отправки формы - принудительное завершение");
-      // Принудительно завершаем оставшиеся запросы
-      while (completedRequests < totalChats) {
-        handleRequestComplete(false);
-      }
-    }
-  }, 15000);
-});
+

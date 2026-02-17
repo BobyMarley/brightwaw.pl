@@ -1,15 +1,19 @@
 {
-    "name": "new",
-    "version": "1.0.0",
-    "description": "",
-    "scripts": {
-      "start": "parcel ./*.html ",
-      "build": "parcel build ./*.html  --dist-dir ./build"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-      "parcel": "^2.7.0"
-    }
+  "name": "brightwaw-pl",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Hybrid legacy static + Qwik migration workspace",
+  "scripts": {
+    "dev": "parcel apps/legacy-static/*.html --dist-dir .tmp/legacy-dev",
+    "dev:vercel": "npx vercel dev --local-config vercel.json",
+    "dev:qwik": "cd apps/web-qwik && npm run dev",
+    "dev:legacy": "parcel apps/legacy-static/*.html --dist-dir .tmp/legacy-dev",
+    "build:legacy": "parcel build apps/legacy-static/*.html --dist-dir .tmp/legacy-build",
+    "vercel:build": "npx vercel build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.7.0"
   }
-  
+}

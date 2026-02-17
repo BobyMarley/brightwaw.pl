@@ -492,7 +492,7 @@
     
     <script>
       window.addEventListener('load',()=>{
-        const scripts=['/vanilla-app.js?ver2','/modal.js?ver16','/form.js?ver16','/cookie.js?ver16','/en/data.js?ver16'];
+        const scripts=['/runtime-env.js?ver1','/vanilla-app.js?ver2','/modal.js?ver16','/form.js?ver17','/cookie.js?ver16','/en/data.js?ver16'];
         scripts.forEach((src,i)=>setTimeout(()=>{const s=document.createElement('script');s.src=src;s.defer=true;document.body.appendChild(s)},i*50));
       });
     </script>
@@ -609,3 +609,5 @@
 
   </body>
 </html>
+
+
