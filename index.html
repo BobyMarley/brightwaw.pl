@@ -215,7 +215,6 @@
 }
 </script>
 
-  </script>
   <link rel="preload" href="/fonts/subset-Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/fonts/subset-Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin>
@@ -354,19 +353,19 @@
       </div>
 
       <div class="nav-icons">
-        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" data-site-facebook title="Odwiedź naszą stronę na Facebooku"
           aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
             src="/public/facebook.svg" /></a>
-        <a href="https://www.instagram.com/brightwaw.pl/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+        <a href="https://instagram.com/cleaning_bright_house/" class="icons" data-site-instagram title="Odwiedź naszą stronę na Instagramie"
           aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
             src="/public/insta.svg" /></a>
-        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" data-site-whatsapp title="Napisz do nas wiadomość na WhatsApp"
           aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
             src="/public/whatsapp.svg" /></a>
-        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+        <a href="tel:+48888742534" class="icons tel" data-site-phone-href title="Zadzwoń +48 888 742 534"
           aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
             src="/public/phone_call.svg" /></a>
-        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+        <div class="phone" data-site-phone title="Numer telefonu do usług sprzątania: +48 888 742 534"
           aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
       </div>
       <ul class="langSwitch">
@@ -413,25 +412,25 @@
         </ul>
       </div>
       <div class="mobile-nav-icons">
-        <a href="https://facebook.com/BrightHouseWaw" class="icons" title="Odwiedź naszą stronę na Facebooku"
+        <a href="https://facebook.com/BrightHouseWaw" class="icons" data-site-facebook title="Odwiedź naszą stronę na Facebooku"
           aria-label="Odwiedź naszą stronę na Facebooku"><img class="posicon" alt="facebook brighthouse cleaning"
             src="/public/facebook.svg" /></a>
-        <a href="https://instagram.com/cleaning_bright_house/" class="icons" title="Odwiedź naszą stronę na Instagramie"
+        <a href="https://instagram.com/cleaning_bright_house/" class="icons" data-site-instagram title="Odwiedź naszą stronę na Instagramie"
           aria-label="Odwiedź naszą stronę na Instagramie"><img class="posicon" alt="instagram brighthouse cleaning"
             src="/public/insta.svg" /></a>
-        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" title="Napisz do nas wiadomość na WhatsApp"
+        <a href="https://wa.me/message/B3AQALEBNNLJH1" class="icons" data-site-whatsapp title="Napisz do nas wiadomość na WhatsApp"
           aria-label="Napisz do nas wiadomość na WhatsApp"><img class="posicon" alt="whatsapp brighthouse cleaning"
             src="/public/whatsapp.svg" /></a>
-        <a href="tel:+48 888 742 534" class="icons tel" title="Zadzwoń +48 888 742 534"
+        <a href="tel:+48888742534" class="icons tel" data-site-phone-href title="Zadzwoń +48 888 742 534"
           aria-label="Zadzwoń +48 888 742 534"><img class="posicon" alt="Zadzwoń +48 888 742 534"
             src="/public/phone_call.svg" /></a>
-        <div class="phone" title="Numer telefonu do usług sprzątania: +48 888 742 534"
+        <div class="phone" data-site-phone title="Numer telefonu do usług sprzątania: +48 888 742 534"
           aria-label="Numer telefonu do usług sprzątania: +48 888 742 534">+48 888 742 534</div>
       </div>
       <div class="contact-info">
-        <p><a href="tel:+48888742534" title="Zadzwoń +48 888 742 534" aria-label="Zadzwoń +48 888 742 534">+48 888 742
-            534</a></p>
-        <p><a href="mailto:sales@brightwaw.pl">sales@brightwaw.pl</a></p>
+        <p><a href="tel:+48888742534" data-site-phone-href title="Zadzwoń +48 888 742 534" aria-label="Zadzwoń +48 888 742 534"><span data-site-phone>+48 888 742
+            534</span></a></p>
+        <p><a href="mailto:sales@brightwaw.pl" data-site-email-href><span data-site-email>sales@brightwaw.pl</span></a></p>
       </div>
     </div>
   </header>
@@ -1173,139 +1172,127 @@
       </div>
     </section>
 
-    <section class="faq" style="padding:80px 0;width:100%;background:#f8f9fa;">
-      <div class="section-container" style="max-width:900px;">
-        <h2
-          style="text-align:center;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;color:#2c3e50;margin-bottom:1rem;">
+    <section class="faq faq-seo">
+      <div class="section-container faq-seo-container">
+        <h2 class="faq-seo-heading">
           Często Zadawane Pytania o Sprzątanie w Warszawie</h2>
-        <p style="text-align:center;color:#7f8c8d;font-size:1.1rem;margin-bottom:3rem;">Odpowiedzi na popularne pytania
+        <p class="faq-seo-subtitle">Odpowiedzi na popularne pytania
           o nasze usługi sprzątania mieszkań, domów i biur</p>
-        <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="faq-seo-list">
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
+            class="faq-seo-item">
+            <summary class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Ile
                 czasu zajmuje sprzątanie mieszkania?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Standardowe
                 sprzątanie 2-pokojowego mieszkania zajmuje 2-3 godziny. Sprzątanie generalne - 4-6 godzin. Dokładny czas
                 zależy od powierzchni i stopnia zabrudzenia.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
-            <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jakich środków
+            class="faq-seo-item">
+            <summary class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Jakich środków
                 używają?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Używamy tylko
                 profesjonalnych ekologicznych środków, bezpiecznych dla dzieci i zwierząt. Wszystkie środki są
                 certyfikowane w UE.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Czy
                 muszę być w domu podczas sprzątania?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Nie, to nie jest
                 konieczne. Wielu naszych klientów zostawia klucze i zajmuje się swoimi sprawami. Gwarantujemy
                 bezpieczeństwo i poufność.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jak
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Jak
                 szybko możecie przyjść?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Przy dostępności
                 wolnych specjalistów możemy przyjść w ciągu 2 godzin. Można również zaplanować sprzątanie na wygodny dla
                 Ciebie czas.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jakie dzielnice Warszawy obsługujecie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Jakie dzielnice Warszawy obsługujecie?</span>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Pracujemy w
                 całej Warszawie i na przedmieściach: Śródmieście, Mokotów, Ursynów, Wilanów, Ochota, Wola, Żoliborz,
                 Praga, Bemowo, Bielany i inne dzielnice.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Ile
                 kosztuje sprzątanie po remoncie w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Sprzątanie po
                 remoncie w Warszawie kosztuje od 450 zł w zależności od powierzchni i stopnia zabrudzenia. Cena obejmuje
                 usuwanie kurzu budowlanego, czyszczenie plam po farbie i mycie okien.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Czy
                 sprzątacie biura i lokale komercyjne?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Tak, oferujemy
                 kompleksowe sprzątanie biur, sklepów, salonów kosmetycznych i innych lokali komercyjnych w Warszawie.
                 Możemy pracować w elastycznych godzinach, również po godzinach pracy.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
+              class="faq-seo-summary">
               <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jaka
+                class="faq-seo-title">Jaka
                 jest różnica
                 między sprzątaniem standardowym a generalnym?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Sprzątanie
                 standardowe obejmuje podstawowe prace: odkurzanie, mycie podłóg, czyszczenie łazienki i kuchni.
                 Sprzątanie generalne to głębokie czyszczenie wszystkich powierzchni, mycie okien, czyszczenie szaf,
@@ -1313,16 +1300,15 @@
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Ile
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Ile
                 kosztuje sprzątanie mieszkania w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Sprzątanie
                 standardowe mieszkania w Warszawie kosztuje od 160 zł, sprzątanie generalne od 350 zł, sprzątanie po
                 remoncie od 450 zł. Dokładna cena zależy od powierzchni i zakresu prac. Oferujemy rabat 10% dla nowych
@@ -1330,32 +1316,30 @@
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Czy
                 sprzątacie w weekendy i święta?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Tak, pracujemy 7
                 dni w tygodniu, również w weekendy i święta. Godziny pracy: 8:00-20:00. Możesz zamówić sprzątanie na
                 wygodny dla Ciebie termin, również w soboty i niedziele.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jak
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Jak
                 zamówić sprzątanie mieszkania w Warszawie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Możesz zamówić
                 sprzątanie przez telefon +48 888 742 534, WhatsApp, formularz na stronie lub media społecznościowe.
                 Podaj adres, powierzchnię i preferowany termin. Nasz menedżer skontaktuje się z Tobą w ciągu 15 minut.
@@ -1363,16 +1347,15 @@
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Czy
                 oferujecie regularne sprzątanie mieszkań?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Tak, oferujemy
                 regularne sprzątanie mieszkań w Warszawie - raz w tygodniu, dwa razy w tygodniu lub codziennie. Przy
                 regularnym sprzątaniu oferujemy specjalne ceny i rabaty. Możesz wybrać stałego specjalistę, który będzie
@@ -1380,34 +1363,32 @@
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
-              <span itemprop="name" style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Czy
+              class="faq-seo-summary">
+              <span itemprop="name" class="faq-seo-title">Czy
                 sprzątacie małe kawalerki i duże apartamenty?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Tak, sprzątamy
                 mieszkania o każdej powierzchni - od małych kawalerek 25m2 po duże apartamenty 200m2+. Cena zależy od
                 powierzchni i zakresu prac. Sprzątamy również domy jednorodzinne, biura i lokale komercyjne.</p>
             </div>
           </details>
           <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question"
-            style="background:#fff;border-radius:16px;border:1px solid #e9ecef;overflow:hidden;">
+            class="faq-seo-item">
             <summary
-              style="padding:28px 32px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:24px;list-style:none;">
+              class="faq-seo-summary">
               <span itemprop="name"
-                style="font-size:1.125rem;font-weight:600;color:#2c3e50;flex:1;line-height:1.5;">Jakie
+                class="faq-seo-title">Jakie
                 formy płatności
                 akceptujecie?</span>
-              <i class="fa-solid fa-chevron-down" style="color:#0f85c9;font-size:20px;"></i>
+              <i class="fa-solid fa-chevron-down faq-seo-icon"></i>
             </summary>
             <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-              <p itemprop="text"
-                style="margin:0;padding:0 32px 28px 32px;color:#7f8c8d;line-height:1.8;font-size:1rem;">
+              <p class="faq-seo-answer" itemprop="text">
                 Akceptujemy
                 gotówkę, BLIK i przelew bankowy. Płatność następuje po wykonaniu usługi. Wystawiamy faktury VAT i
                 paragony. Dla firm oferujemy płatność z odroczonym terminem.</p>
@@ -1437,70 +1418,54 @@
 
 
 
-  <footer style="background:#1a1a2e;color:#fff;padding:3rem 1.5rem 1.5rem;margin-top:0;">
-    <div style="max-width:1200px;margin:0 auto;">
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2.5rem;margin-bottom:2rem;">
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-grid">
         <div>
-          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Kontakt</h3>
-          <div style="display:flex;flex-direction:column;gap:.7rem;font-size:.95rem;">
-            <a href="tel:+48888742534" style="color:rgba(255,255,255,.85);text-decoration:none;">📞 +48 888 742
-              534</a>
-            <a href="mailto:sales@brightwaw.pl" style="color:rgba(255,255,255,.85);text-decoration:none;">📧
-              sales@brightwaw.pl</a>
-            <span style="color:rgba(255,255,255,.85);">📍 ul. WRONIA 45, lok. U2, 00-870 Warszawa</span>
-            <span style="color:rgba(255,255,255,.85);">🕐 Pn-Nd: 08:00-20:00</span>
+          <h3 class="site-footer-title">Kontakt</h3>
+          <div class="site-footer-list">
+            <a href="tel:+48888742534" data-site-phone-href class="site-footer-muted">📞 <span data-site-phone>+48 888 742 534</span></a>
+            <a href="mailto:sales@brightwaw.pl" data-site-email-href class="site-footer-muted">📧 <span data-site-email>sales@brightwaw.pl</span></a>
+            <span class="site-footer-muted">📍 <span data-site-address>ul. WRONIA 45, lok. U2, 00-870 Warszawa</span></span>
+            <span class="site-footer-muted">🕐 <span data-site-hours>Pn-Nd: 08:00-20:00</span></span>
           </div>
         </div>
         <div>
-          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Usługi</h3>
-          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;">
-            <a href="https://brightwaw.pl/cennik.html"
-              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie mieszkań</a>
-            <a href="https://brightwaw.pl/pranie.html" style="color:rgba(255,255,255,.85);text-decoration:none;">Pranie
-              chemiczne mebli</a>
-            <a href="https://brightwaw.pl/cennik.html"
-              style="color:rgba(255,255,255,.85);text-decoration:none;">Sprzątanie biur</a>
-            <a href="https://g.page/r/CQmCteFzMdvWEB0"
-              style="color:rgba(255,255,255,.85);text-decoration:none;">Opinie</a>
+          <h3 class="site-footer-title">Usługi</h3>
+          <div class="site-footer-list">
+            <a href="https://brightwaw.pl/cennik.html" class="site-footer-muted">Sprzątanie mieszkań</a>
+            <a href="https://brightwaw.pl/pranie.html" class="site-footer-muted">Pranie chemiczne mebli</a>
+            <a href="https://brightwaw.pl/cennik.html" class="site-footer-muted">Sprzątanie biur</a>
+            <a href="https://g.page/r/CQmCteFzMdvWEB0" class="site-footer-muted">Opinie</a>
           </div>
         </div>
         <div>
-          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Płatność</h3>
-          <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.95rem;color:rgba(255,255,255,.85);">
+          <h3 class="site-footer-title">Płatność</h3>
+          <div class="site-footer-list site-footer-muted">
             <span>✓ Gotówka / BLIK</span>
             <span>✓ Przelew bankowy</span>
             <span>✓ Faktury i paragony</span>
           </div>
-          <div style="margin-top:1.2rem;display:flex;gap:.6rem;flex-wrap:wrap;">
-            <span
-              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Kärcher</span>
-            <span
-              style="padding:.4rem .8rem;background:rgba(255,255,255,.1);border-radius:8px;font-size:.85rem;font-weight:600;">Professional</span>
+          <div class="site-footer-badge-row">
+            <span class="site-footer-badge">Kärcher</span>
+            <span class="site-footer-badge">Professional</span>
           </div>
         </div>
         <div>
-          <h3 style="font-size:1.2rem;font-weight:600;margin-bottom:1rem;color:#fff;">Media społecznościowe</h3>
-          <div style="display:flex;gap:.8rem;">
-            <a href="https://facebook.com/BrightHouseWaw"
-              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
-              title="Facebook"><img src="/public/facebook.svg" alt="Facebook" style="width:18px;height:18px;"></a>
-            <a href="https://instagram.com/cleaning_bright_house/"
-              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
-              title="Instagram"><img src="/public/insta.svg" alt="Instagram" style="width:18px;height:18px;"></a>
-            <a href="https://t.me/BrightHouse_Cleaning"
-              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
-              title="Telegram"><img src="/public/tg.svg" alt="Telegram" style="width:18px;height:18px;"></a>
-            <a href="https://wa.me/message/B3AQALEBNNLJH1"
-              style="width:36px;height:36px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all .3s;"
-              title="WhatsApp"><img src="/public/whatsapp.svg" alt="WhatsApp" style="width:18px;height:18px;"></a>
+          <h3 class="site-footer-title">Media społecznościowe</h3>
+          <div class="site-footer-social">
+            <a href="https://facebook.com/BrightHouseWaw" data-site-facebook class="site-footer-social-link" title="Facebook"><img src="/public/facebook.svg" alt="Facebook"></a>
+            <a href="https://instagram.com/cleaning_bright_house/" data-site-instagram class="site-footer-social-link" title="Instagram"><img src="/public/insta.svg" alt="Instagram"></a>
+            <a href="https://t.me/BrightHouse_Cleaning" data-site-telegram class="site-footer-social-link" title="Telegram"><img src="/public/tg.svg" alt="Telegram"></a>
+            <a href="https://wa.me/message/B3AQALEBNNLJH1" data-site-whatsapp class="site-footer-social-link" title="WhatsApp"><img src="/public/whatsapp.svg" alt="WhatsApp"></a>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:1.5rem;margin-top:2rem;text-align:center;">
-        <p style="font-size:.85rem;color:rgba(255,255,255,.7);margin:.3rem 0;"><strong>BRIGHTHOUSE Sp. z o.o.</strong>
+      <div class="site-footer-bottom">
+        <p class="site-footer-legal-top"><strong>BRIGHTHOUSE Sp. z o.o.</strong>
           |
           KRS 0001000542 | NIP: 5273026432</p>
-        <p style="font-size:.8rem;color:rgba(255,255,255,.6);margin:.3rem 0;">ul. WRONIA 45, lok. U2, 00-870 WARSZAWA
+        <p class="site-footer-legal-bottom"><span data-site-address-upper>ul. WRONIA 45, lok. U2, 00-870 WARSZAWA</span>
           |
           &copy; 2025 BrightHouse Cleaning</p>
       </div>
@@ -1547,7 +1512,38 @@
   <script src="/cookie.js?ver5"></script>
   <script src="/data.js?ver5"></script>
   <script>
+    const SITE_CONFIG = {
+      phoneDisplay: '+48 888 742 534',
+      phoneHref: 'tel:+48888742534',
+      email: 'sales@brightwaw.pl',
+      emailHref: 'mailto:sales@brightwaw.pl',
+      address: 'ul. WRONIA 45, lok. U2, 00-870 Warszawa',
+      addressUpper: 'ul. WRONIA 45, lok. U2, 00-870 WARSZAWA',
+      hours: 'Pn-Nd: 08:00-20:00',
+      social: {
+        facebook: 'https://facebook.com/BrightHouseWaw',
+        instagram: 'https://instagram.com/cleaning_bright_house/',
+        telegram: 'https://t.me/BrightHouse_Cleaning',
+        whatsapp: 'https://wa.me/message/B3AQALEBNNLJH1'
+      }
+    };
+
+    function applySiteConfig() {
+      document.querySelectorAll('[data-site-phone]').forEach((el) => { el.textContent = SITE_CONFIG.phoneDisplay; });
+      document.querySelectorAll('[data-site-phone-href]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.phoneHref); });
+      document.querySelectorAll('[data-site-email]').forEach((el) => { el.textContent = SITE_CONFIG.email; });
+      document.querySelectorAll('[data-site-email-href]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.emailHref); });
+      document.querySelectorAll('[data-site-address]').forEach((el) => { el.textContent = SITE_CONFIG.address; });
+      document.querySelectorAll('[data-site-address-upper]').forEach((el) => { el.textContent = SITE_CONFIG.addressUpper; });
+      document.querySelectorAll('[data-site-hours]').forEach((el) => { el.textContent = SITE_CONFIG.hours; });
+      document.querySelectorAll('[data-site-facebook]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.social.facebook); });
+      document.querySelectorAll('[data-site-instagram]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.social.instagram); });
+      document.querySelectorAll('[data-site-telegram]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.social.telegram); });
+      document.querySelectorAll('[data-site-whatsapp]').forEach((el) => { el.setAttribute('href', SITE_CONFIG.social.whatsapp); });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
+      applySiteConfig();
       const h = document.querySelector('.hamburger-menu'), o = document.querySelector('.overlay');
       h && h.addEventListener('click', () => {
         o.classList.toggle('active');
