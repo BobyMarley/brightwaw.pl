@@ -1291,7 +1291,7 @@ span.price-value {
   max-width: 900px;
 }
 
-.faq-seo-heading {
+.faq.faq-seo .faq-seo-heading {
   text-align: center;
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 700;
@@ -2183,7 +2183,8 @@ input[type="radio"]:focus-visible {
 
   .advantages h2,
   .reviews h2,
-  .faq h2 {
+  .faq h2,
+  .faq-seo-heading {
     font-size: 32px;
   }
 
