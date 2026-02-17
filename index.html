@@ -222,7 +222,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha384-t1nt8BQoYMLFN5p42tRAtuAAFQaCQODekUVeKKZrEnEyp4H2R0RHFz0KWpmj7i8g"
     crossorigin="anonymous" />
-  <link rel="stylesheet" href="/index.css?ver8">
+  <link rel="stylesheet" href="/index.css?ver9">
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23ffffff'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-size='90'%3E🛀%3C/text%3E%3C/svg%3E" />
   <script src="https://unpkg.com/imask@7.6.1/dist/imask.min.js"
@@ -354,19 +354,19 @@
         </div>
       </div>
 
-      <div style="display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;max-width:900px;">
-        <div style="text-align:center;">
-          <div style="font-size:2.5rem;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.2);">2500+</div>
-          <div style="font-size:1rem;color:rgba(255,255,255,.95);font-weight:600;margin-top:.5rem;">Zadowolonych
+      <div class="hero-stats">
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">2500+</div>
+          <div class="hero-stat-label">Zadowolonych
             klientów</div>
         </div>
-        <div style="text-align:center;">
-          <div style="font-size:2.5rem;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.2);">4.9/5</div>
-          <div style="font-size:1rem;color:rgba(255,255,255,.95);font-weight:600;margin-top:.5rem;">Średnia ocena</div>
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">4.9/5</div>
+          <div class="hero-stat-label">Średnia ocena</div>
         </div>
-        <div style="text-align:center;">
-          <div style="font-size:2.5rem;font-weight:800;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.2);">280+</div>
-          <div style="font-size:1rem;color:rgba(255,255,255,.95);font-weight:600;margin-top:.5rem;">Opinii na Google
+        <div class="hero-stat-item">
+          <div class="hero-stat-value">280+</div>
+          <div class="hero-stat-label">Opinii na Google
           </div>
         </div>
       </div>
@@ -380,15 +380,15 @@
       <p class="cards-subtitle">Profesjonalne sprzątanie mieszkań w Warszawie. Sprzątanie standardowe i generalne
         mieszkań od 160 zł</p>
       <div class="cards-container"></div>
-      <div style="max-width:1200px;margin:48px auto;padding:0 24px;">
-        <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+      <div class="benefits-3d-wrap">
+        <div class="benefits-3d-grid">
           <div class="benefit-card-3d">
             <div class="icon-3d icon-money">
               <i class="fa-solid fa-hand-holding-dollar"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Przejrzyste ceny</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">Bez ukrytych opłat</div>
+              <div class="benefit-card-3d-title">Przejrzyste ceny</div>
+              <div class="benefit-card-3d-text">Bez ukrytych opłat</div>
             </div>
           </div>
           <div class="benefit-card-3d">
@@ -396,8 +396,8 @@
               <i class="fa-solid fa-gift"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Rabat 10%</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">Przy pierwszym zamówieniu</div>
+              <div class="benefit-card-3d-title">Rabat 10%</div>
+              <div class="benefit-card-3d-text">Przy pierwszym zamówieniu</div>
             </div>
           </div>
           <div class="benefit-card-3d">
@@ -405,8 +405,8 @@
               <i class="fa-solid fa-bolt-lightning"></i>
             </div>
             <div>
-              <div style="font-size:17px;font-weight:700;color:#2c3e50;margin-bottom:6px;">Szybki dojazd</div>
-              <div style="font-size:14px;color:#7f8c8d;line-height:1.5;">W ciągu 2 godzin</div>
+              <div class="benefit-card-3d-title">Szybki dojazd</div>
+              <div class="benefit-card-3d-text">W ciągu 2 godzin</div>
             </div>
           </div>
         </div>
@@ -445,41 +445,41 @@
         </div>
       </div>
     </section>
-    <section class="full-width-section" style="background:#fdfdfd;">
+    <section class="full-width-section inl-001">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem;">
+        <h2 class="inl-002">
           Profesjonalne Sprzątanie Warszawa - Kompleksowa Obsługa</h2>
-        <p style="text-align:center;color:var(--text-gray);margin-bottom:3rem;max-width:800px;margin:0 auto 3rem;">
+        <p class="inl-003">
           Kompleksowe usługi sprzątania dostosowane do Twoich potrzeb. Pracujemy 7 dni w tygodniu.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;">
+        <div class="inl-004">
           <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏠 Mieszkania</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Standardowe sprzątanie od 160
+            class="inl-005">
+            <h3 class="inl-006">🏠 Mieszkania</h3>
+            <p class="inl-007">Standardowe sprzątanie od 160
               zł. Idealne na co dzień.</p>
           </div>
           <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">✨ Generalne</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Głębokie doczyszczanie
+            class="inl-005">
+            <h3 class="inl-006">✨ Generalne</h3>
+            <p class="inl-007">Głębokie doczyszczanie
               wszystkich powierzchni i detali.</p>
           </div>
           <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏡 Domy</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Kompleksowa obsługa dużych
+            class="inl-005">
+            <h3 class="inl-006">🏡 Domy</h3>
+            <p class="inl-007">Kompleksowa obsługa dużych
               powierzchni mieszkalnych.</p>
           </div>
           <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🧱 Po Remoncie</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Usuwanie pyłu pobudowlanego i
+            class="inl-005">
+            <h3 class="inl-006">🧱 Po Remoncie</h3>
+            <p class="inl-007">Usuwanie pyłu pobudowlanego i
               resztek farby.</p>
           </div>
           <div
-            style="padding:1.5rem;background:#fff;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.05);border-top:4px solid var(--primary);display:flex;flex-direction:column;justify-content:between;">
-            <h3 style="font-size:1.1rem;margin-bottom:0.8rem;font-weight:700;">🏢 Biura</h3>
-            <p style="color:var(--text-gray);font-size:0.85rem;line-height:1.5;margin:0;">Regularne sprzątanie firm i
+            class="inl-005">
+            <h3 class="inl-006">🏢 Biura</h3>
+            <p class="inl-007">Regularne sprzątanie firm i
               lokali komercyjnych.</p>
           </div>
         </div>
@@ -487,54 +487,54 @@
     </section>
 
     <!-- SEO: Districts Section -->
-    <section class="full-width-section" style="background:linear-gradient(135deg,#f8f9fa 0%,#eef2f5 100%);">
+    <section class="full-width-section inl-008">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:1rem;">Wszystkie
+        <h2 class="inl-002">Wszystkie
           Dzielnice Warszawy</h2>
-        <p style="text-align:center;color:var(--text-gray);margin-bottom:3rem;max-width:800px;margin:0 auto 3rem;">
+        <p class="inl-003">
           Dojazd
           gratis w całej Warszawie! Pracujemy we wszystkich dzielnicach 7 dni w tygodniu.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-bottom:3rem;">
+        <div class="inl-009">
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Mokotów</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Ursynów</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Wilanów</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Śródmieście</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Wola</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Żoliborz</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Praga</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Bemowo</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Bielany</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Ochota</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Białołęka</div>
           <div
-            style="padding:1rem;background:#fff;border-radius:8px;text-align:center;font-weight:600;color:var(--text-dark);box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            class="inl-010">
             📍 Targówek</div>
         </div>
-        <div style="text-align:center;">
+        <div class="inl-011">
           <a href="tel:+48888742534"
-            style="text-decoration:none;color:var(--primary);font-weight:700;font-size:1.1rem;display:inline-flex;align-items:center;gap:0.5rem;">
+            class="inl-012">
             📞 Sprawdź dostępność w Twojej dzielnicy: +48 888 742 534
           </a>
         </div>
@@ -542,390 +542,390 @@
     </section>
 
     <!-- SEO: Pricing Section -->
-    <section style="padding:5rem 0;background:#fff;">
+    <section class="inl-013">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">Cennik
+        <h2 class="inl-014">Cennik
           Sprzątania Warszawa - Przejrzyste Ceny</h2>
         <p
-          style="text-align:center;font-size:1.1rem;color:#7f8c8d;margin-bottom:3rem;max-width:800px;margin-left:auto;margin-right:auto;">
+          class="inl-015">
           Oferujemy konkurencyjne ceny na wszystkie usługi sprzątania w Warszawie. Bez ukrytych opłat. Rabat 10% dla
           nowych klientów.</p>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:3rem;">
+        <div class="inl-016">
           <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;position:relative;overflow:hidden;">
+            class="inl-017">
             <div
-              style="position:absolute;top:0;right:0;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;padding:.5rem 1.5rem;border-bottom-left-radius:12px;font-weight:600;font-size:.85rem;">
+              class="inl-018">
               POPULARNE</div>
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🧹 Sprzątanie Standardowe
+            <div class="inl-019">
+              <div class="inl-020">🧹 Sprzątanie Standardowe
               </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">160 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+              <div class="inl-021">160 zł</div>
+              <div class="inl-022">od / mieszkanie</div>
             </div>
             <ul class="price-card-features">
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Odkurzanie wszystkich
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Odkurzanie wszystkich
                   pomieszczeń</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie podłóg</span>
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Mycie podłóg</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie łazienki i
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Czyszczenie łazienki i
                   kuchni</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wycieranie kurzu</span>
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Wycieranie kurzu</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wynoszenie śmieci</span>
+              <li class="inl-025">
+                <i class="fa-solid fa-check inl-024"></i> <span>Wynoszenie śmieci</span>
               </li>
             </ul>
             <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
+              class="inl-026">☎
               Zamów teraz</a>
           </div>
 
           <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;">
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">✨ Sprzątanie Generalne
+            class="inl-027">
+            <div class="inl-019">
+              <div class="inl-020">✨ Sprzątanie Generalne
               </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">510 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+              <div class="inl-021">510 zł</div>
+              <div class="inl-022">od / mieszkanie</div>
             </div>
             <ul class="price-card-features">
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Wszystko ze sprzątania
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Wszystko ze sprzątania
                   standardowego</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie okien od
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Mycie okien od
                   wewnątrz</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie szaf i
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Czyszczenie szaf i
                   szafek</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Pranie dywanów i
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Pranie dywanów i
                   tapicerki</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie trudno
+              <li class="inl-025">
+                <i class="fa-solid fa-check inl-024"></i> <span>Czyszczenie trudno
                   dostępnych miejsc</span>
               </li>
             </ul>
             <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
+              class="inl-026">☎
               Zamów teraz</a>
           </div>
 
           <div
-            style="padding:2.5rem;background:linear-gradient(135deg,#fff 0%,#f8f9fa 100%);border-radius:20px;box-shadow:0 8px 30px rgba(0,0,0,.1);border:2px solid #e9ecef;">
-            <div style="text-align:center;margin-bottom:1.5rem;">
-              <div style="font-size:1.2rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🔨 Sprzątanie Po Remoncie
+            class="inl-027">
+            <div class="inl-019">
+              <div class="inl-020">🔨 Sprzątanie Po Remoncie
               </div>
-              <div style="font-size:3rem;font-weight:800;color:#0f85c9;line-height:1;">450 zł</div>
-              <div style="font-size:.9rem;color:#7f8c8d;margin-top:.3rem;">od / mieszkanie</div>
+              <div class="inl-021">450 zł</div>
+              <div class="inl-022">od / mieszkanie</div>
             </div>
-            <ul style="list-style:none;padding:0;margin:0 0 1.5rem 0;display:flex;flex-direction:column;gap:0.5rem;">
+            <ul class="inl-028">
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Usuwanie kurzu
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Usuwanie kurzu
                   budowlanego</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie plam po
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Czyszczenie plam po
                   farbie</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Mycie okien i ram</span>
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Mycie okien i ram</span>
               </li>
               <li
-                style="padding:.6rem 0;color:#7f8c8d;border-bottom:1px solid #e9ecef;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Czyszczenie wszystkich
+                class="inl-023">
+                <i class="fa-solid fa-check inl-024"></i> <span>Czyszczenie wszystkich
                   powierzchni</span>
               </li>
-              <li style="padding:.6rem 0;color:#7f8c8d;display:flex;align-items:flex-start;gap:.5rem;">
-                <i class="fa-solid fa-check" style="color:#0f85c9;margin-top:4px;"></i> <span>Profesjonalny sprzęt
+              <li class="inl-025">
+                <i class="fa-solid fa-check inl-024"></i> <span>Profesjonalny sprzęt
                   przemysłowy</span>
               </li>
             </ul>
             <a href="tel:+48888742534"
-              style="display:block;text-align:center;padding:1rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;transition:all .3s;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
+              class="inl-026">☎
               Zamów teraz</a>
           </div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;">
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🏡 Sprzątanie Domów</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 400 zł</div>
+        <div class="inl-029">
+          <div class="inl-030">
+            <div class="inl-031">🏡 Sprzątanie Domów</div>
+            <div class="inl-032">od 400 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🏢 Sprzątanie Biur</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 300 zł</div>
+          <div class="inl-030">
+            <div class="inl-031">🏢 Sprzątanie Biur</div>
+            <div class="inl-032">od 300 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">💇 Sprzątanie Salonów</div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 350 zł</div>
+          <div class="inl-030">
+            <div class="inl-031">💇 Sprzątanie Salonów</div>
+            <div class="inl-032">od 350 zł</div>
           </div>
-          <div style="padding:1.8rem;background:#f8f9fa;border-radius:12px;text-align:center;">
-            <div style="font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:.5rem;">🛍️ Sprzątanie Sklepów
+          <div class="inl-030">
+            <div class="inl-031">🛍️ Sprzątanie Sklepów
             </div>
-            <div style="font-size:2rem;font-weight:700;color:#0f85c9;">od 400 zł</div>
+            <div class="inl-032">od 400 zł</div>
           </div>
         </div>
 
         <div
-          style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg,rgba(15,133,201,.05) 0%,rgba(30,144,255,.05) 100%);border-radius:16px;border:2px dashed #0f85c9;text-align:center;">
-          <h3 style="font-size:1.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">🎁 Rabat 10% dla Nowych
+          class="inl-033">
+          <h3 class="inl-034">🎁 Rabat 10% dla Nowych
             Klientów!</h3>
-          <p style="color:#7f8c8d;font-size:1.1rem;margin-bottom:1.5rem;">Przy pierwszym zamówieniu sprzątania
+          <p class="inl-035">Przy pierwszym zamówieniu sprzątania
             standardowego lub generalnego otrzymasz rabat 10%. Zadzwoń i sprawdź ostateczną cenę!</p>
           <a href="tel:+48888742534"
-            style="display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;font-size:1.1rem;box-shadow:0 4px 15px rgba(15,133,201,.3);">☎
+            class="inl-036">☎
             +48 888 742 534</a>
         </div>
       </div>
     </section>
 
     <!-- SEO: Reviews Section -->
-    <section style="padding:5rem 0;background:#fff;">
+    <section class="inl-013">
       <div class="section-container">
-        <h2 style="text-align:center;font-size:2.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">Co Mówią Nasi
+        <h2 class="inl-014">Co Mówią Nasi
           Klienci</h2>
-        <p style="text-align:center;font-size:1.1rem;color:#7f8c8d;margin-bottom:1rem;">⭐ Ocena 4.9/5 na Google i Booksy
+        <p class="inl-037">⭐ Ocena 4.9/5 na Google i Booksy
           • 280+ pozytywnych opinii</p>
-        <p style="text-align:center;font-size:1rem;color:#0f85c9;font-weight:600;margin-bottom:3rem;">2500+ zadowolonych
+        <p class="inl-038">2500+ zadowolonych
           klientów poleca nasze usługi sprzątania</p>
 
         <div
-          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-bottom:2.5rem;">
+          class="inl-039">
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">
+            <p class="inl-043">
               "Profesjonalne sprzątanie mieszkania na Mokotowie. Ekipa przyjechała punktualnie, sprzątali 3 godziny.
               Mieszkanie lśni jak nowe! Polecam sprzątanie standardowe - super jakość za rozsądną cenę."</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 AK</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Anna Kowalska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Mokotów, Warszawa</div>
+                <div class="inl-046">Anna Kowalska</div>
+                <div class="inl-047">Mokotów, Warszawa</div>
               </div>
             </div>
           </div>
 
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Zamówiłem
+            <p class="inl-043">"Zamówiłem
               sprzątanie po remoncie. Ekipa usunęła cały kurz budowlany, wymyła plamy po farbie. Używają profesjonalnego
               sprzętu Kärcher. Najlepsza firma sprzątająca w Warszawie!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 MN</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Marek Nowak</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Ursynów, Warszawa</div>
+                <div class="inl-046">Marek Nowak</div>
+                <div class="inl-047">Ursynów, Warszawa</div>
               </div>
             </div>
           </div>
 
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
+            <p class="inl-043">"Sprzątanie
               generalne domu w Wilanowie. Ekipa sprzątała 6 godzin - wymyła okna, wyprali dywany, wyczyścili szafy.
               Używają ekologicznych środków, bezpiecznych dla dzieci. Goraco polecam!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 KW</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Katarzyna Wiśniewska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Wilanów, Warszawa</div>
+                <div class="inl-046">Katarzyna Wiśniewska</div>
+                <div class="inl-047">Wilanów, Warszawa</div>
               </div>
             </div>
           </div>
 
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
+            <p class="inl-043">"Sprzątanie
               biura w Śródmieściu. Ekipa przyjechała po godzinach pracy, sprzątali 4 godziny. Rano biuro było idealnie
               czyste. Polecam usługi sprzątania dla firm!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 PK</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Piotr Kamiński</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Śródmieście, Warszawa</div>
+                <div class="inl-046">Piotr Kamiński</div>
+                <div class="inl-047">Śródmieście, Warszawa</div>
               </div>
             </div>
           </div>
 
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
+            <p class="inl-043">"Sprzątanie
               salonu kosmetycznego na Woli. Ekipa dezynfekuje wszystkie powierzchnie, myje lustra i witryny. Utrzymują
               najwyższe standardy higieny. Polecam cleaning Warszawa!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 EZ</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Ewa Zielińska</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Wola, Warszawa</div>
+                <div class="inl-046">Ewa Zielińska</div>
+                <div class="inl-047">Wola, Warszawa</div>
               </div>
             </div>
           </div>
 
           <div
-            style="padding:2rem;background:#f8f9fa;border-radius:16px;box-shadow:0 4px 20px rgba(0,0,0,.06);position:relative;">
-            <div style="display:flex;gap:.3rem;margin-bottom:1rem;">
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
-              <i class="fa-solid fa-star" style="color:#ffc107;font-size:1.2rem;"></i>
+            class="inl-040">
+            <div class="inl-041">
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
+              <i class="fa-solid fa-star inl-042"></i>
             </div>
-            <p style="color:#2c3e50;line-height:1.7;font-size:1rem;margin-bottom:1.5rem;font-style:italic;">"Sprzątanie
+            <p class="inl-043">"Sprzątanie
               mieszkania na Żoliborzu. Zamówiłam przez telefon, ekipa przyjechała w 2 godziny. Sprzątali szybko i
               dokładnie. Cena przejrzysta, bez ukrytych opłat. Polecam!"</p>
-            <div style="display:flex;align-items:center;gap:1rem;">
+            <div class="inl-044">
               <div
-                style="width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:1.2rem;">
+                class="inl-045">
                 JS</div>
               <div>
-                <div style="font-weight:600;color:#2c3e50;">Joanna Szymczak</div>
-                <div style="font-size:.85rem;color:#7f8c8d;">Żoliborz, Warszawa</div>
+                <div class="inl-046">Joanna Szymczak</div>
+                <div class="inl-047">Żoliborz, Warszawa</div>
               </div>
             </div>
           </div>
         </div>
 
         <div
-          style="text-align:center;padding:2.5rem;background:linear-gradient(135deg,rgba(15,133,201,.05) 0%,rgba(30,144,255,.05) 100%);border-radius:16px;">
-          <h3 style="font-size:1.5rem;font-weight:700;color:#2c3e50;margin-bottom:1rem;">🌟 Zobacz Więcej Opinii na
+          class="inl-048">
+          <h3 class="inl-034">🌟 Zobacz Więcej Opinii na
             Google</h3>
-          <p style="color:#7f8c8d;font-size:1rem;margin-bottom:1.5rem;">Przeczytaj 280+ pozytywnych opinii od naszych
+          <p class="inl-049">Przeczytaj 280+ pozytywnych opinii od naszych
             klientów na Google i Booksy</p>
           <a href="https://g.page/r/CQmCteFzMdvWEB0" target="_blank" rel="noopener"
-            style="display:inline-block;padding:1rem 2.5rem;background:linear-gradient(135deg,#0f85c9 0%,#1E90FF 100%);color:#fff;text-decoration:none;border-radius:12px;font-weight:600;font-size:1.1rem;box-shadow:0 4px 15px rgba(15,133,201,.3);">Zobacz
+            class="inl-036">Zobacz
             opinie na Google</a>
         </div>
       </div>
     </section>
 
-    <section class="benefits"
-      style="padding:5rem 0;width:100%;background:linear-gradient(135deg,rgba(255,255,255,.95) 0%,rgba(240,248,255,.98) 100%);position:relative;overflow:hidden;">
-      <div class="section-container" style="position:relative;z-index:1;">
+    <section class="benefits inl-050"
+     >
+      <div class="section-container inl-051">
         <h2
-          style="text-align:center;font-size:clamp(2rem,5vw,2.8rem);font-weight:700;color:var(--text-dark);margin-bottom:1rem;">
+          class="inl-052">
           Dlaczego Wybierają BrightHouse?</h2>
         <p
-          style="text-align:center;color:var(--text-gray);font-size:1.1rem;margin-bottom:1rem;max-width:700px;margin-left:auto;margin-right:auto;">
+          class="inl-053">
           Ponad 2500 zadowolonych klientów ufa nam sprzątanie swoich domów</p>
         <p
-          style="text-align:center;color:#0f85c9;font-size:1.15rem;font-weight:700;margin-bottom:3rem;max-width:700px;margin-left:auto;margin-right:auto;">
+          class="inl-054">
           <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 16' width='24' height='16' style='vertical-align:middle;margin-right:0.35em'%3E%3Crect width='24' height='16' fill='%23dc143c'/%3E%3Crect width='24' height='8' fill='%23fff'/%3E%3C/svg%3E" alt="" aria-hidden="true" width="24" height="16"> Polska firma • Polski zespół • Obsługa w języku polskim</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;">
+        <div class="inl-055">
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-bolt"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Szybki Wyjazd</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Przyjeżdżamy w ciągu 2 godzin od
+            class="inl-056">
+            <div class="inl-057"><i class="fa-solid fa-bolt"></i></div>
+            <h3 class="inl-058">Szybki Wyjazd</h3>
+            <p class="inl-059">Przyjeżdżamy w ciągu 2 godzin od
               zamówienia. Pracujemy 7 dni w tygodniu od 8:00 do 20:00</p>
           </div>
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-trophy"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Profesjonalny Sprzęt
+            class="inl-056">
+            <div class="inl-057"><i class="fa-solid fa-trophy"></i></div>
+            <h3 class="inl-058">Profesjonalny Sprzęt
             </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Używamy sprzętu Kärcher i ekologicznych
+            <p class="inl-059">Używamy sprzętu Kärcher i ekologicznych
               środków. Bezpieczne dla dzieci i zwierząt</p>
           </div>
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-shield-halved"></i>
+            class="inl-056">
+            <div class="inl-057"><i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Gwarancja Jakości
+            <h3 class="inl-058">Gwarancja Jakości
             </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">100% gwarancja na wszystkie usługi. Jeśli
+            <p class="inl-059">100% gwarancja na wszystkie usługi. Jeśli
               nie będziesz zadowolony - przerabiamy za darmo</p>
           </div>
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i
+            class="inl-056">
+            <div class="inl-057"><i
                 class="fa-solid fa-hand-holding-dollar"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Przejrzyste Ceny
+            <h3 class="inl-058">Przejrzyste Ceny
             </h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Stała cena bez ukrytych opłat. Rabat 10%
+            <p class="inl-059">Stała cena bez ukrytych opłat. Rabat 10%
               przy pierwszym zamówieniu</p>
           </div>
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-people-roof"></i>
+            class="inl-056">
+            <div class="inl-057"><i class="fa-solid fa-people-roof"></i>
             </div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Bezpieczne dla
+            <h3 class="inl-058">Bezpieczne dla
               Rodziny</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">Ekologiczne środki bez szkodliwych
+            <p class="inl-059">Ekologiczne środki bez szkodliwych
               chemikaliów. Bezpieczne dla dzieci i zwierząt domowych</p>
           </div>
           <div
-            style="padding:2.5rem 2rem;background:rgba(255,255,255,.95);border:1px solid rgba(30,144,255,.1);border-radius:20px;text-align:center;box-shadow:0 4px 20px rgba(0,0,0,.05);">
-            <div style="font-size:3.5rem;margin-bottom:1.5rem;color:#0f85c9;"><i class="fa-solid fa-star"></i></div>
-            <h3 style="font-size:1.4rem;margin-bottom:1rem;color:var(--text-dark);font-weight:600;">Ocena 4.9/5</h3>
-            <p style="color:var(--text-gray);line-height:1.7;font-size:1rem;">280+ pozytywnych opinii na Google i
+            class="inl-056">
+            <div class="inl-057"><i class="fa-solid fa-star"></i></div>
+            <h3 class="inl-058">Ocena 4.9/5</h3>
+            <p class="inl-059">280+ pozytywnych opinii na Google i
               Booksy. Nasi klienci polecają nas swoim znajomym</p>
           </div>
         </div>
@@ -1415,3 +1415,4 @@
 </body>
 
 </html>
+
