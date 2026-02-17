@@ -53,7 +53,9 @@ a:hover {
 #pl,
 #by,
 #ru,
-#en {
+#en,
+#pl-mobile,
+#en-mobile {
   font-size: 16px;
   font-weight: 500;
   text-transform: uppercase;
@@ -63,7 +65,9 @@ a:hover {
 a#pl.active,
 a#by.active,
 a#ru.active,
-a#en.active {
+a#en.active,
+a#pl-mobile.active,
+a#en-mobile.active {
   font-size: 18px;
   font-weight: 700;
   color: var(--primary);

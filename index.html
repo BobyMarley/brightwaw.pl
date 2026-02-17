@@ -393,13 +393,13 @@
     <div class="overlay">
       <ul class="mobile-langSwitch">
         <li>
-          <a href="https://brightwaw.pl" id="pl" title="Polish language" aria-label="Polish language" class="active">
+          <a href="https://brightwaw.pl" id="pl-mobile" title="Polish language" aria-label="Polish language" class="active">
             <b class="lang">PL</b>
           </a>
         </li>
         <li> | </li>
         <li>
-          <a href="https://brightwaw.pl/en/" id="en" title="English language" aria-label="English language">
+          <a href="https://brightwaw.pl/en/" id="en-mobile" title="English language" aria-label="English language">
             <b class="lang">EN</b>
           </a>
         </li>
@@ -1553,11 +1553,6 @@
         o.classList.remove('active');
         document.body.style.overflow = 'auto';
       }));
-      document.querySelectorAll('.faq details').forEach(d => d.addEventListener('toggle', () => {
-        const arrow = d.querySelector('i');
-        if (arrow) arrow.style.transform = d.open ? 'rotate(180deg)' : '';
-      }));
-
       let currentType = 'kompleksowa';
       const roomImages = { 1: 'room.png', 2: 'corridor.png', 3: 'kitchen.png', 4: 'bathroom.png' };
 
@@ -1646,7 +1641,7 @@
     }, 500);
 
     // Accordion animation
-    document.querySelectorAll('details').forEach(d => {
+    document.querySelectorAll('.faq details').forEach(d => {
       d.addEventListener('toggle', () => {
         const icon = d.querySelector('summary i');
         if (icon) icon.style.transform = d.open ? 'rotate(180deg)' : '';
