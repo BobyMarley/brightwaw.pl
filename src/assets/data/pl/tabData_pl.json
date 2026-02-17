@@ -1,0 +1,77 @@
+﻿{
+	"1": {
+		"title": "PokГіj",
+		"description": "рџ“ў Co sprzД…tamy w salonie i sypialniach:",
+		"items": [
+			"в‘пёЏ Ељciere kurze z otwartych pГіЕ‚ek i stolikГіw",
+			"в‘пёЏ Czyszczenie fasad mebli",
+			"в‘пёЏ Mycie blatГіw i krzeseЕ‚",
+			"в‘пёЏ Czyszczenie lamp i lamp",
+			"в‘пёЏ Mycie parapetГіw i grzejnikГіw",
+			"в‘пёЏ Czyszczenie telewizora",
+			"в‘пёЏ Usuwanie kurzu z kabli, gniazdek, wЕ‚Д…cznikГіw i klimatyzatora",
+			"в‘пёЏ Czyszczenie obrazГіw i elementГіw dekoracyjnych",
+			"в‘пёЏ Mycie i polerowanie luster",
+			"в‘пёЏ Mycie drzwi, klamek i cokoЕ‚Гіw",
+			"в‘пёЏ Odkurzanie sofy",
+			"в‘пёЏ Zmiana poЕ›cieli",
+			"в‘пёЏ Mycie podЕ‚Гіg",
+			"<br>",
+			"рџЌЏ Dodatkowe usЕ‚ugi:",
+			"в‘пёЏ SprzД…tanie wewnД…trz szaf",
+			"в‘пёЏ Przesuwanie mebli i dywanГіw",
+			"в‘пёЏ Mycie okien i balkonu"
+		]
+	},
+	"2": {
+		"title": "Korytarz",
+		"description": "рџ“ў Co sprzД…tamy w korytarzu:",
+		"items": [
+			"в‘пёЏ Ељciere kurze z otwartych pГіЕ‚ek i stolikГіw",
+			"в‘пёЏ Mycie i polerowanie luster",
+			"в‘пёЏ Mycie powierzchni szafek (a przy sprzД…taniu generalnym takЕјe wewnД…trz)",
+			"в‘пёЏ Czyszczenie gniazdek, domofonu i cokoЕ‚Гіw",
+			"в‘пёЏ Mycie podЕ‚ogi i drzwi, klamek"
+		]
+	},
+	"3": {
+		"title": "Kuchnia",
+		"description": "рџ“ў Co sprzД…tamy na kuchni:",
+		"items": [
+			"в‘пёЏ Czyszczenie kuchennego zestawu z zewnД…trz",
+			"в‘пёЏ Usuwanie tЕ‚ustych plam z fasad zestawu kuchennego",
+			"в‘пёЏ Mycie blatГіw",
+			"в‘пёЏ Usuwanie tЕ‚uszczu z kafelkГіw nad blatem i kuchenkД…",
+			"в‘пёЏ Czyszczenie kuchenki gazowej",
+			"в‘пёЏ Usuwanie kamienia w umywalce",
+			"в‘пёЏ Polerowanie armatury sanitarnej",
+			"в‘пёЏ SprzД…tanie wewnД…trz kosza na Е›mieci",
+			"в‘пёЏ Wyrzucanie Е›mieci",
+			"в‘пёЏ Mycie fasady lodГіwki",
+			"в‘пёЏ Mycie cokoЕ‚Гіw i gniazdek",
+			"в‘пёЏ Mycie podЕ‚ogi",
+			"<br>",
+			"рџЌЏ Dodatkowe usЕ‚ugi:",
+			"в‘пёЏ SprzД…tanie wewnД…trz szafek",
+			"в‘пёЏ Mycie piekarnika i mikrofalГіwki",
+			"в‘пёЏ Mycie lodГіwki."
+		]
+	},
+	"4": {
+		"title": "ЕЃazienka",
+		"description": "рџ“ў Co sprzД…tamy w Е‚azience:",
+		"items": [
+			"в‘пёЏ Mycie i usuwanie osadГіw z kabiny prysznicowej",
+			"в‘пёЏ Czyszczenie odpЕ‚ywu",
+			"в‘пёЏ Mycie i polerowanie wanny i umywalki",
+			"в‘пёЏ Polerowanie armatury sanitarnej i luster",
+			"в‘пёЏ SpЕ‚ukiwanie muszli klozetowej",
+			"в‘пёЏ Mycie powierzchni szafek (a przy sprzД…taniu generalnym takЕјe wewnД…trz)",
+			"в‘пёЏ Czyszczenie kaloryferГіw i suszarek",
+			"в‘пёЏ Usuwanie kurzu z pralki",
+			"в‘пёЏ Czyszczenie gniazdek i cokoЕ‚Гіw",
+			"в‘пёЏ Mycie podЕ‚ogi i drzwi"
+		]
+	}
+}
+

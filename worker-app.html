@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BrightHouse - Кабинет работника</title>
+    <title>BrightHouse - РљР°Р±РёРЅРµС‚ СЂР°Р±РѕС‚РЅРёРєР°</title>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
@@ -206,15 +206,15 @@
 <body>
     <!-- Login Form -->
     <div id="loginForm" class="login-form">
-        <h2 style="text-align: center; margin-bottom: 24px;">Вход в кабинет работника</h2>
+        <h2 style="text-align: center; margin-bottom: 24px;">Р’С…РѕРґ РІ РєР°Р±РёРЅРµС‚ СЂР°Р±РѕС‚РЅРёРєР°</h2>
         <div class="form-group">
-            <label>ID работника</label>
-            <input type="text" id="workerIdInput" placeholder="Получите у менеджера">
+            <label>ID СЂР°Р±РѕС‚РЅРёРєР°</label>
+            <input type="text" id="workerIdInput" placeholder="РџРѕР»СѓС‡РёС‚Рµ Сѓ РјРµРЅРµРґР¶РµСЂР°">
             <small style="color: #64748b; font-size: 12px; margin-top: 4px; display: block;">
-                Пример: ABC123 или последние 6 символов из админки
+                РџСЂРёРјРµСЂ: ABC123 РёР»Рё РїРѕСЃР»РµРґРЅРёРµ 6 СЃРёРјРІРѕР»РѕРІ РёР· Р°РґРјРёРЅРєРё
             </small>
         </div>
-        <button class="btn btn-primary" style="width: 100%;" onclick="login()">Войти</button>
+        <button class="btn btn-primary" style="width: 100%;" onclick="login()">Р’РѕР№С‚Рё</button>
         <div id="loginError" class="error hidden"></div>
     </div>
 
@@ -223,44 +223,44 @@
         <div class="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
                 <div>
-                    <h1>Кабинет работника</h1>
-                    <p style="color: #64748b; margin-top: 8px;">Управляйте своим расписанием и профилем</p>
+                    <h1>РљР°Р±РёРЅРµС‚ СЂР°Р±РѕС‚РЅРёРєР°</h1>
+                    <p style="color: #64748b; margin-top: 8px;">РЈРїСЂР°РІР»СЏР№С‚Рµ СЃРІРѕРёРј СЂР°СЃРїРёСЃР°РЅРёРµРј Рё РїСЂРѕС„РёР»РµРј</p>
                 </div>
-                <button class="btn btn-primary" onclick="logout()">Выйти</button>
+                <button class="btn btn-primary" onclick="logout()">Р’С‹Р№С‚Рё</button>
             </div>
         </div>
 
         <div class="profile-section">
             <div class="card profile-card">
-                <div class="avatar" id="workerAvatar">А</div>
-                <h2 id="workerName">Анна Иванова</h2>
-                <p style="color: #64748b; margin: 8px 0;" id="workerPosition">Клинер</p>
-                <p style="color: #64748b;" id="workerExperience">Работает 2 года</p>
+                <div class="avatar" id="workerAvatar">Рђ</div>
+                <h2 id="workerName">РђРЅРЅР° РРІР°РЅРѕРІР°</h2>
+                <p style="color: #64748b; margin: 8px 0;" id="workerPosition">РљР»РёРЅРµСЂ</p>
+                <p style="color: #64748b;" id="workerExperience">Р Р°Р±РѕС‚Р°РµС‚ 2 РіРѕРґР°</p>
                 
                 <div style="margin-top: 20px;">
-                    <p><strong>Телефон:</strong> <span id="workerPhone">+48 123 456 789</span></p>
+                    <p><strong>РўРµР»РµС„РѕРЅ:</strong> <span id="workerPhone">+48 123 456 789</span></p>
                     <p><strong>Email:</strong> <span id="workerEmail">anna@example.com</span></p>
                 </div>
                 
                 <button class="btn btn-primary" style="margin-top: 16px;" onclick="editProfile()">
-                    Редактировать профиль
+                    Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ РїСЂРѕС„РёР»СЊ
                 </button>
             </div>
 
             <div class="card">
-                <h3>Статистика за месяц</h3>
+                <h3>РЎС‚Р°С‚РёСЃС‚РёРєР° Р·Р° РјРµСЃСЏС†</h3>
                 <div class="stats">
                     <div class="stat-card">
                         <div class="stat-number" id="workDays">0</div>
-                        <div>Рабочих дней</div>
+                        <div>Р Р°Р±РѕС‡РёС… РґРЅРµР№</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="workHours">0</div>
-                        <div>Часов работы</div>
+                        <div>Р§Р°СЃРѕРІ СЂР°Р±РѕС‚С‹</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="avgHours">0</div>
-                        <div>Часов в день</div>
+                        <div>Р§Р°СЃРѕРІ РІ РґРµРЅСЊ</div>
                     </div>
                 </div>
             </div>
@@ -268,10 +268,10 @@
 
         <div class="card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3>Мое расписание - <span id="currentMonth"></span></h3>
+                <h3>РњРѕРµ СЂР°СЃРїРёСЃР°РЅРёРµ - <span id="currentMonth"></span></h3>
                 <div>
-                    <button class="btn btn-primary" onclick="changeMonth(-1)">← Предыдущий</button>
-                    <button class="btn btn-primary" onclick="changeMonth(1)" style="margin-left: 8px;">Следующий →</button>
+                    <button class="btn btn-primary" onclick="changeMonth(-1)">в†ђ РџСЂРµРґС‹РґСѓС‰РёР№</button>
+                    <button class="btn btn-primary" onclick="changeMonth(1)" style="margin-left: 8px;">РЎР»РµРґСѓСЋС‰РёР№ в†’</button>
                 </div>
             </div>
             
@@ -280,7 +280,7 @@
             </div>
             
             <div style="margin-top: 20px; text-align: center;">
-                <button class="btn btn-success" onclick="saveSchedule()">Сохранить расписание</button>
+                <button class="btn btn-success" onclick="saveSchedule()">РЎРѕС…СЂР°РЅРёС‚СЊ СЂР°СЃРїРёСЃР°РЅРёРµ</button>
             </div>
         </div>
     </div>
@@ -311,12 +311,12 @@
             const workerId = document.getElementById('workerIdInput').value.trim();
             
             if (!workerId) {
-                showError('Введите ID работника');
+                showError('Р’РІРµРґРёС‚Рµ ID СЂР°Р±РѕС‚РЅРёРєР°');
                 return;
             }
 
             try {
-                // Поиск по ID (последние 6 символов документа)
+                // РџРѕРёСЃРє РїРѕ ID (РїРѕСЃР»РµРґРЅРёРµ 6 СЃРёРјРІРѕР»РѕРІ РґРѕРєСѓРјРµРЅС‚Р°)
                 const workersRef = db.collection('workers');
                 const snapshot = await workersRef.get();
                 
@@ -329,7 +329,7 @@
                 });
                 
                 if (!foundWorker) {
-                    showError('Работник с таким ID не найден');
+                    showError('Р Р°Р±РѕС‚РЅРёРє СЃ С‚Р°РєРёРј ID РЅРµ РЅР°Р№РґРµРЅ');
                     return;
                 }
 
@@ -337,7 +337,7 @@
                 showMainApp();
                 
             } catch (error) {
-                showError('Ошибка входа: ' + error.message);
+                showError('РћС€РёР±РєР° РІС…РѕРґР°: ' + error.message);
             }
         }
 
@@ -365,17 +365,17 @@
             if (!currentWorker) return;
 
             document.getElementById('workerName').textContent = currentWorker.name;
-            document.getElementById('workerPosition').textContent = currentWorker.position || 'Клинер';
+            document.getElementById('workerPosition').textContent = currentWorker.position || 'РљР»РёРЅРµСЂ';
             document.getElementById('workerPhone').textContent = currentWorker.phone;
-            document.getElementById('workerEmail').textContent = currentWorker.email || 'Не указан';
+            document.getElementById('workerEmail').textContent = currentWorker.email || 'РќРµ СѓРєР°Р·Р°РЅ';
             document.getElementById('workerAvatar').textContent = currentWorker.name[0].toUpperCase();
             
             if (currentWorker.startDate) {
                 const startDate = new Date(currentWorker.startDate);
                 const now = new Date();
                 const months = Math.floor((now - startDate) / (1000 * 60 * 60 * 24 * 30));
-                const experience = months > 12 ? `${Math.floor(months / 12)} лет` : `${months} мес`;
-                document.getElementById('workerExperience').textContent = `Работает ${experience}`;
+                const experience = months > 12 ? `${Math.floor(months / 12)} Р»РµС‚` : `${months} РјРµСЃ`;
+                document.getElementById('workerExperience').textContent = `Р Р°Р±РѕС‚Р°РµС‚ ${experience}`;
             }
 
             schedule = currentWorker.availability || {};
@@ -412,7 +412,7 @@
             const dayHeader = document.createElement('div');
             dayHeader.innerHTML = `
                 <strong>${date.toLocaleDateString('ru-RU', { weekday: 'short', day: 'numeric' })}</strong>
-                ${isToday ? '<span style="color: #3b82f6; font-size: 12px;">Сегодня</span>' : ''}
+                ${isToday ? '<span style="color: #3b82f6; font-size: 12px;">РЎРµРіРѕРґРЅСЏ</span>' : ''}
             `;
 
             const timeSlotsDiv = document.createElement('div');
@@ -438,7 +438,7 @@
                 hoursInfo.style.marginTop = '8px';
                 hoursInfo.style.fontSize = '12px';
                 hoursInfo.style.color = '#64748b';
-                hoursInfo.textContent = `${daySchedule.length} часов работы`;
+                hoursInfo.textContent = `${daySchedule.length} С‡Р°СЃРѕРІ СЂР°Р±РѕС‚С‹`;
                 dayCard.appendChild(hoursInfo);
             }
 
@@ -488,14 +488,14 @@
                 await db.collection('workers').doc(currentWorker.id).update({
                     availability: schedule
                 });
-                alert('Расписание сохранено!');
+                alert('Р Р°СЃРїРёСЃР°РЅРёРµ СЃРѕС…СЂР°РЅРµРЅРѕ!');
             } catch (error) {
-                alert('Ошибка сохранения: ' + error.message);
+                alert('РћС€РёР±РєР° СЃРѕС…СЂР°РЅРµРЅРёСЏ: ' + error.message);
             }
         }
 
         function editProfile() {
-            alert('Функция редактирования профиля будет добавлена позже');
+            alert('Р¤СѓРЅРєС†РёСЏ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ РїСЂРѕС„РёР»СЏ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅР° РїРѕР·Р¶Рµ');
         }
 
         // Initialize
@@ -505,3 +505,6 @@
     </script>
 </body>
 </html>
+
+
+

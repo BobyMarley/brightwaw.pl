@@ -176,18 +176,18 @@
     }
     </script>
     
-    <link rel="preload" href="/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/subset-Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/public/bg.webp" as="image" fetchpriority="high">
     <link rel="preload" href="/public/logo.svg" as="image">
-    <link rel="preload" href="/index.min.css?ver6" as="style">
-    <link rel="stylesheet" href="/index.min.css?ver6">
+    <link rel="preload" href="/assets/css/index.min.css?ver6" as="style">
+    <link rel="stylesheet" href="/assets/css/index.min.css?ver6">
     <style>
-      @font-face{font-family:'Montserrat';src:url('/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:optional}
+      @font-face{font-family:'Montserrat';src:url('/assets/fonts/subset-Montserrat-SemiBold.woff2') format('woff2');font-weight:600;font-style:normal;font-display:optional}
       :root{--h2:Montserrat;--main-font:Montserrat;--h2-size:1.5rem;--font-size-lg:1.13rem;--primary:#0f85c9;--primary-contrast:#fff;--primary-blue:#1E90FF;--primary-dark:#1874CD;--text-dark:#2c3e50;--text-gray:#7f8c8d;--text-light:#bdc3c7;--bg-darker:#050508;--bg-overlay:rgba(255,255,255,0.95);--shadow-soft:0 8px 32px rgba(0,0,0,0.1);--shadow-hover:0 16px 48px rgba(0,0,0,0.15);--gap-5xl:1.5rem;--gap-lg:1.13rem;--padding-13xl:2rem;--padding-111xl:8.13rem;--padding-base:1rem;--padding-5xl:1.5rem;--br-mini:15px;--radio-border-color:#8b8c89;--radio-checked-color:var(--primary);--radio-hover-color:#a3cef1;--radio-disabled-bg-color:#d9d9d9;--button-prime:0px 207px 58px rgba(25,23,176,0.01),0px 133px 53px rgba(25,23,176,0.06),0px 75px 45px rgba(25,23,176,0.2),0px 33px 33px rgba(25,23,176,0.34),0px 8px 18px rgba(25,23,176,0.39),0px 0px 0px rgba(25,23,176,0.4)}
     </style>
     <link rel="preload" href="/public/fa-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/public/fa-icons.min.css"></noscript>
-    <link rel="stylesheet" href="/ru/optimized-styles.css">
+    <link rel="stylesheet" href="/assets/locales/ru/css/optimized-styles.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22256%22 height=%22256%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23ffffff%22></rect><text x=%2250%%22 y=%2250%%22 dominant-baseline=%22central%22 text-anchor=%22middle%22 font-size=%2290%22>🛀</text></svg>" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="theme-color" content="#0f85c9">
@@ -198,7 +198,7 @@
       let loaded=0;const load=()=>{if(loaded)return;loaded=1;const s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=AW-11273981561';document.head.appendChild(s);s.onload=()=>{gtag('js',new Date());gtag('config','AW-11273981561')}};setTimeout(load,5000);['click','scroll','touchstart','mousemove','keydown'].forEach(e=>document.addEventListener(e,load,{once:1,passive:1}))
     </script>
     <script>
-      setTimeout(()=>{const s=document.createElement('style');s.textContent='@font-face{font-family:Montserrat;src:url(/fonts/subset-Montserrat-ExtraBold.woff2) format(woff2);font-weight:800;font-style:normal;font-display:swap}@font-face{font-family:Montserrat;src:url(/fonts/subset-Montserrat-Medium.woff2) format(woff2);font-weight:500;font-style:normal;font-display:swap}';document.head.appendChild(s)},1000)
+      setTimeout(()=>{const s=document.createElement('style');s.textContent='@font-face{font-family:Montserrat;src:url(/assets/fonts/subset-Montserrat-ExtraBold.woff2) format(woff2);font-weight:800;font-style:normal;font-display:swap}@font-face{font-family:Montserrat;src:url(/assets/fonts/subset-Montserrat-Medium.woff2) format(woff2);font-weight:500;font-style:normal;font-display:swap}';document.head.appendChild(s)},1000)
     </script>    
     
     <style>
@@ -848,18 +848,21 @@
       <p>Этот сайт использует cookies, использование Сайта без изменения настроек Вашего браузера означает, что они будут размещены на вашем устройстве. <a href="https://brightwaw.pl/ru/privacy-policy/">политика приватности</a>.</p>
       <button id="accept-button">Принять</button>
     </div>     
-    <script src="/vanilla-app.js?ver2" defer></script>
-    <script src="/ru/data.js?ver21" defer></script>
+    <script src="/assets/js/vanilla-app.js?ver2" defer></script>
+    <script src="/assets/locales/ru/data.js?ver21" defer></script>
     <script>
       let imaskLoaded=false;
       const loadIMask=()=>{if(imaskLoaded)return;imaskLoaded=true;const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/imask@7.1.3/dist/imask.min.js';s.defer=1;document.head.appendChild(s)};
       setTimeout(()=>{const phoneInput=document.getElementById('phone');if(phoneInput){phoneInput.addEventListener('focus',loadIMask,{once:true})}},1000);
       setTimeout(loadIMask,3000);
     </script>
-    <script src="/modal.js?ver18" defer></script>
-    <script src="/form.js?ver18" defer></script>
-    <script src="/cookie.js?ver18" defer></script>
-    <script src="/ru/init.js" defer></script>
+    <script src="/assets/js/modal.js?ver18" defer></script>
+    <script src="/assets/js/form.js?ver18" defer></script>
+    <script src="/assets/js/cookie.js?ver18" defer></script>
+    <script src="/assets/locales/ru/init.js" defer></script>
     
   </body>
 </html>
+
+
+

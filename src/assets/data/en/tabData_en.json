@@ -1,0 +1,76 @@
+﻿{
+  "1": {
+    "title": "Room",
+    "description": "рџ“ў What we clean in living rooms and bedrooms:",
+    "items": [
+      "в‘пёЏ Dusting open shelves and nightstands",
+      "в‘пёЏ Wiping furniture fronts",
+      "в‘пёЏ Cleaning countertops and chairs",
+      "в‘пёЏ Dusting torchieres and lamps",
+      "в‘пёЏ Cleaning windowsills and radiators",
+      "в‘пёЏ Wiping TV dry",
+      "в‘пёЏ Dusting wires, sockets, switches, and air conditioner",
+      "в‘пёЏ Polishing pictures and interior items",
+      "в‘пёЏ Cleaning and polishing mirrors",
+      "в‘пёЏ Cleaning doors, doorknobs, and baseboards",
+      "в‘пёЏ Vacuuming the sofa",
+      "в‘пёЏ Changing bed linens",
+      "в‘пёЏ Mopping the floors",
+      "<br>",
+      "рџЌЏ Additional Services:",
+      "в‘пёЏ Cleaning inside cabinets",
+      "в‘пёЏ Moving furniture and carpets",
+      "в‘пёЏ Window and balcony cleaning"
+    ]
+  },
+  "2": {
+    "title": "Corridor",
+    "description": "рџ“ў What we clean in the corridor:",
+    "items": [
+      "в‘пёЏ Dusting open shelves and nightstands",
+      "в‘пёЏ Cleaning and polishing mirrors",
+      "в‘пёЏ Cleaning cabinet surfaces (inside during general cleaning)",
+      "в‘пёЏ Polishing sockets, intercoms, and baseboards",
+      "в‘пёЏ Mopping the floor and doors, including doorknobs"
+    ]
+  },
+  "3": {
+    "title": "Kitchen",
+    "description": "рџ“ў What we clean in the kitchen:",
+    "items": [
+      "в‘пёЏ Wiping the kitchen cabinet exterior",
+      "в‘пёЏ Removing grease stains from cabinet fronts",
+      "в‘пёЏ Cleaning countertops",
+      "в‘пёЏ Removing grease from tiles above countertops and the stove",
+      "в‘пёЏ Degreasing the stove",
+      "в‘пёЏ Cleaning limescale in the sink",
+      "в‘пёЏ Polishing the plumbing fixtures",
+      "в‘пёЏ Cleaning inside the trash cabinet",
+      "в‘пёЏ Taking out the trash",
+      "в‘пёЏ Wiping the fridge door",
+      "в‘пёЏ Polishing baseboards and sockets",
+      "в‘пёЏ Mopping the floor",
+      "<br>",
+      "рџЌЏ Additional Services:",
+      "в‘пёЏ Cleaning inside cabinets",
+      "в‘пёЏ Oven and microwave cleaning",
+      "в‘пёЏ Fridge cleaning"
+    ]
+  },
+  "4": {
+    "title": "Bathroom",
+    "description": "рџ“ў What we clean in the bathroom:",
+    "items": [
+      "пёЏв‘пёЏ Cleaning and descaling the shower cabin",
+      "в‘пёЏ Unclogging the drain",
+      "в‘пёЏ Cleaning and polishing the bathtub and sink",
+      "в‘пёЏ Polishing the plumbing fixtures and mirrors",
+      "в‘пёЏ Cleaning the inside and outside of cabinets",
+      "в‘пёЏ Dusting radiators and dryers",
+      "в‘пёЏ Removing dust from the washing machine",
+      "в‘пёЏ Wiping sockets and baseboards",
+      "в‘пёЏ Mopping the floor and doors"
+    ]
+  }
+}
+
